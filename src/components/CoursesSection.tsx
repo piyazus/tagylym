@@ -43,6 +43,15 @@ const courses = [
         isFree: true,
     },
     {
+        id: "lego-robotics",
+        title: "FLL: LEGO ROBOTICS",
+        description: "Программирование LEGO SPIKE Prime и EV3 для соревнований FIRST LEGO League. От блоков до Python.",
+        level: "Beginner",
+        duration: "1 - 4 Недели",
+        image: "/images/course-lego.png",
+        isFree: true,
+    },
+    {
         id: "ftc-cading",
         title: "FTC: TPEK CADing (Проектирование)",
         description: "Моделирование стандартных деталей FTC. Создание моделий уголков, пластин, валов. Работа с библиотекой компонентов REV/GoBilda.",

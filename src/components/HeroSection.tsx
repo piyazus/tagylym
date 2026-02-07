@@ -39,7 +39,7 @@ export default function HeroSection() {
                 <div className="flex flex-wrap items-center justify-center gap-4 md:gap-8 lg:gap-12 w-full mb-8">
 
                     {/* Robot 1 (Left Inner) */}
-                    <div className="w-32 h-32 md:w-48 md:h-48 lg:w-56 lg:h-56 relative transform -rotate-12 transition-transform hover:rotate-0">
+                    <div className="w-48 h-48 md:w-72 md:h-72 lg:w-96 lg:h-96 relative transform -rotate-12 transition-transform hover:rotate-0">
                         <Image
                             src="/images/robot1.png"
                             alt="Robot 1"
@@ -60,7 +60,7 @@ export default function HeroSection() {
                     </div>
 
                     {/* Robot 2 (Right Inner) */}
-                    <div className="w-32 h-32 md:w-48 md:h-48 lg:w-56 lg:h-56 relative transform rotate-12 transition-transform hover:rotate-0">
+                    <div className="w-48 h-48 md:w-72 md:h-72 lg:w-96 lg:h-96 relative transform rotate-12 transition-transform hover:rotate-0">
                         <Image
                             src="/images/robot2.png"
                             alt="Robot 2"
