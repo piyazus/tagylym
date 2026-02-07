@@ -18,73 +18,48 @@ export default function CourseCard({
     duration,
     lessonsCount,
 }: CourseCardProps) {
+    // Determine image based on ID or use placeholder
+    const getImage = (id: string) => {
+        if (id.includes("coding")) return "/images/course-coding.png";
+        if (id.includes("cad")) return "/images/course-cad.png";
+        if (id.includes("build")) return "/images/course-build.png";
+        return "/images/course-coding.png"; // Default
+    };
+
     return (
-        <Link href={`/courses/${id}`} className="card group block">
-            {/* Image Container with gradient placeholder */}
-            <div className="relative h-48 overflow-hidden bg-gradient-to-br from-[#1E5AFF] to-[#0D47A1]">
-                {/* Placeholder content */}
-                <div className="absolute inset-0 flex items-center justify-center">
-                    <svg
-                        className="w-20 h-20 text-white/30"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                    >
-                        <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={1}
-                            d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"
-                        />
-                    </svg>
-                </div>
-                <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
-                <div className="absolute top-3 left-3">
-                    <span className="bg-white text-[#1E5AFF] text-xs font-semibold px-3 py-1 rounded-full shadow-md">
-                        {level}
-                    </span>
+        <Link href={`/courses/${id}`} className="bg-white rounded-2xl overflow-hidden hover:shadow-xl transition-all duration-300 group border border-gray-100 flex flex-col h-full">
+            {/* Image Container */}
+            <div className="relative h-48 sm:h-56 bg-gray-200 overflow-hidden">
+                <img
+                    src={getImage(id)}
+                    alt={title}
+                    className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
+                />
+                {/* Preview Badge */}
+                <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm text-[#1A1A2E] text-xs font-bold px-3 py-1.5 rounded-full shadow-sm">
+                    Preview
                 </div>
             </div>
 
             {/* Content */}
-            <div className="p-5">
-                <h3 className="text-lg font-bold text-[#1A1A2E] mb-2 line-clamp-2 group-hover:text-[#1E5AFF] transition-colors">
+            <div className="p-6 flex-1 flex flex-col">
+                <p className="text-sm text-[#5B7CFA] font-medium mb-2">Свободный курс</p>
+                <h3 className="text-xl font-bold text-[#1A1A2E] mb-3 group-hover:text-[#2563EB] transition-colors leading-tight">
                     {title}
                 </h3>
-                <p className="text-[#4A5568] text-sm mb-4 line-clamp-2">{description}</p>
+                <p className="text-sm text-[#718096] mb-6 line-clamp-3 leading-relaxed flex-1">{description}</p>
 
                 {/* Meta */}
-                <div className="flex items-center justify-between text-sm text-[#718096]">
-                    <div className="flex items-center gap-1">
-                        <svg
-                            className="w-4 h-4"
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
-                        >
-                            <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth={2}
-                                d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
-                            />
-                        </svg>
-                        <span>{lessonsCount} уроков</span>
+                <div className="flex items-center justify-between mt-auto pt-4 border-t border-gray-100">
+                    <div className="flex items-center gap-2">
+                        <div className="flex text-[#1A1A2E]">
+                            <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24">
+                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                            </svg>
+                        </div>
+                        <span className="text-sm font-bold text-[#1A1A2E]">{level}</span>
                     </div>
-                    <div className="flex items-center gap-1">
-                        <svg
-                            className="w-4 h-4"
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
-                        >
-                            <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth={2}
-                                d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
-                            />
-                        </svg>
+                    <div className="flex items-center gap-2 text-sm text-[#718096] font-medium">
                         <span>{duration}</span>
                     </div>
                 </div>

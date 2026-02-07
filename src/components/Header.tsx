@@ -33,8 +33,12 @@ export default function Header() {
                     {/* Right - Powered by */}
                     <div className="hidden md:flex items-center gap-2 text-white/80 text-sm">
                         <span>Powered by</span>
-                        <div className="w-8 h-8 bg-white/20 backdrop-blur-sm rounded-lg flex items-center justify-center">
-                            <span className="text-white font-bold">🤖</span>
+                        <div className="w-8 h-8 relative bg-white/20 backdrop-blur-sm rounded-lg flex items-center justify-center overflow-hidden">
+                            <img
+                                src="/images/logo-horse.png"
+                                alt="Horse Logo"
+                                className="w-full h-full object-contain p-1"
+                            />
                         </div>
                     </div>
 

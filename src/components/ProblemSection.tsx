@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export default function ProblemSection() {
     return (
         <section className="py-16 md:py-24 bg-white">
@@ -6,9 +8,14 @@ export default function ProblemSection() {
                     {/* Left - Image */}
                     <div className="relative flex justify-center lg:justify-start order-2 lg:order-1">
                         <div className="relative">
-                            {/* Boy image placeholder */}
-                            <div className="w-72 h-96 md:w-80 md:h-[420px] rounded-3xl overflow-hidden bg-gradient-to-br from-blue-50 to-blue-100 flex items-center justify-center">
-                                <span className="text-8xl">👦</span>
+                            {/* Boy image */}
+                            <div className="w-72 h-96 md:w-80 md:h-[420px] relative rounded-3xl overflow-hidden bg-gradient-to-br from-blue-50 to-blue-100">
+                                <Image
+                                    src="/images/boy.png"
+                                    alt="Student Boy"
+                                    fill
+                                    className="object-cover object-center"
+                                />
                             </div>
 
                             {/* Decorative elements */}

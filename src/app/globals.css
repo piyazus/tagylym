@@ -215,3 +215,49 @@ body {
   background: var(--primary-blue);
   color: white;
 }
+
+/* Code syntax highlighting */
+.code-keyword {
+  color: #C678DD;
+}
+
+.code-string {
+  color: #98C379;
+}
+
+.code-comment {
+  color: #5C6370;
+  font-style: italic;
+}
+
+.code-annotation {
+  color: #E5C07B;
+}
+
+.code-number {
+  color: #D19A66;
+}
+
+.code-method {
+  color: #61AFEF;
+}
+
+/* Code block container */
+.code-block-container {
+  font-family: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
+}
+
+/* Lesson content prose styles */
+.lesson-content h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.lesson-content h4 {
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin-top: 1.25rem;
+  margin-bottom: 0.5rem;
+}

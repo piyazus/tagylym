@@ -34,27 +34,30 @@ const ftcTracks = [
 // Course cards data
 const courses = [
     {
-        id: "ftc-coding-1",
-        title: "FTC: ТРЕК CODING (Программирование)",
-        description: "Введение в экосистему FTC, Android Studio, SDK, структура проекта, OpMode: TeleOp vs Autonomous, Базовый шаблон.",
+        id: "ftc-coding",
+        title: "FTC: TPEK CODING (Программирование)",
+        description: "Введение в экосистему FTC. Android Studio, SDK, структура проекта. OpMode: TeleOp vs Autonomous. Базовый шаблон.",
         level: "Beginner",
         duration: "1 - 4 Недели",
+        image: "/images/course-coding.png",
         isFree: true,
     },
     {
-        id: "ftc-coding-2",
-        title: "FTC: ТРЕК CODING (Программирование)",
-        description: "Управление моторами и сервоприводами. Классы DcMotor и Servo. Настройка конфигурации на Control Hub. Простое движение по джойстику.",
+        id: "ftc-cading",
+        title: "FTC: TPEK CADing (Проектирование)",
+        description: "Моделирование стандартных деталей FTC. Создание моделий уголков, пластин, валов. Работа с библиотекой компонентов REV/GoBilda.",
         level: "Beginner",
         duration: "1 - 4 Недели",
+        image: "/images/course-cad.png",
         isFree: true,
     },
     {
-        id: "ftc-coding-3",
-        title: "FTC: ТРЕК CODING (Программирование)",
-        description: "Введение в экосистему FTC, Android Studio, SDK, структура проекта, OpMode: TeleOp vs Autonomous, Базовый шаблон.",
-        level: "Beginner",
+        id: "ftc-building",
+        title: "FTC: TPEK Building",
+        description: "Механизмы сезона: от идеи к железу. Анализ игровой задачи, выбор концепции механизма (аккумуляция, доставка, размещение).",
+        level: "Intermediate",
         duration: "1 - 4 Недели",
+        image: "/images/course-build.png",
         isFree: true,
     },
 ];
@@ -65,7 +68,7 @@ export default function CoursesSection() {
     const [activeLevel, setActiveLevel] = useState("3 Levels");
 
     return (
-        <section id="courses" className="py-16 md:py-24 bg-white">
+        <section id="courses" className="py-16 md:py-24 bg-gray-50">
             <div className="container-custom">
                 {/* Header */}
                 <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6 mb-10">
@@ -80,8 +83,8 @@ export default function CoursesSection() {
                                 key={level}
                                 onClick={() => setActiveLevel(level)}
                                 className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${activeLevel === level
-                                        ? "bg-[#2563EB] text-white"
-                                        : "bg-gray-100 text-[#4A5568] hover:bg-gray-200"
+                                    ? "bg-[#2563EB] text-white"
+                                    : "bg-white text-[#4A5568] border border-gray-200 hover:bg-gray-50"
                                     }`}
                             >
                                 {level}
@@ -90,122 +93,49 @@ export default function CoursesSection() {
                     </div>
                 </div>
 
-                {/* Main FTC Course Card */}
-                <div className="bg-white border border-gray-200 rounded-2xl p-6 md:p-8 mb-10 shadow-sm">
-                    <div className="grid lg:grid-cols-2 gap-8">
-                        {/* Left - Course Info */}
-                        <div>
-                            {/* FIRST Tech Challenge Logo */}
-                            <div className="flex items-center gap-3 mb-4">
-                                <div className="flex items-center gap-1">
-                                    <svg className="w-10 h-10 text-[#2563EB]" viewBox="0 0 40 40" fill="currentColor">
-                                        <path d="M20 5L5 12l15 7 15-7-15-7zM5 28l15 7 15-7M5 20l15 7 15-7" />
-                                    </svg>
-                                    <div className="text-xs font-bold text-[#E53935] leading-tight">
-                                        <div>FIRST</div>
-                                        <div className="text-[#2563EB]">TECH</div>
-                                        <div>CHALLENGE</div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <h3 className="text-xl md:text-2xl font-bold text-[#1A1A2E] mb-3">
-                                FTC Robotics Engineering<br />
-                                & Inspire Track
-                            </h3>
-
-                            <p className="text-xs text-[#718096] mb-4 leading-relaxed">
-                                Robot Design, FTC Game Strategy, Motor & Servo Control, Sensor Integration,
-                                Autonomous & TeleOp Programming (Blocks/Java), CAD Basics, Engineering
-                                Notebook, Judging & Inspire/Connect Prep.
-                            </p>
-
-                            {/* Rating */}
-                            <div className="flex items-center gap-2 mb-4">
-                                <div className="flex text-yellow-400">
-                                    <span>★</span>
-                                    <span>★</span>
-                                    <span>★</span>
-                                    <span className="text-gray-300">★</span>
-                                    <span className="text-gray-300">★</span>
-                                </div>
-                                <span className="text-xs text-[#718096]">4 months · Earn degree credit</span>
-                            </div>
-
-                            {/* CTA Button */}
-                            <Link
-                                href="/courses/ftc-robotics"
-                                className="inline-flex items-center gap-2 bg-[#2563EB] text-white px-6 py-3 rounded-lg font-medium hover:bg-[#1D4ED8] transition-colors"
-                            >
-                                Начни обучение
-                                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                                </svg>
-                            </Link>
-                        </div>
-
-                        {/* Right - Track Cards */}
-                        <div className="grid grid-cols-2 gap-4">
-                            {ftcTracks.map((track, index) => (
-                                <div
-                                    key={track.id}
-                                    className="bg-gray-50 rounded-xl p-3 flex flex-col items-center text-center"
-                                >
-                                    {/* Placeholder image */}
-                                    <div className="w-full h-20 bg-gradient-to-br from-gray-600 to-gray-800 rounded-lg mb-2 flex items-center justify-center">
-                                        <span className="text-2xl">
-                                            {track.image === "coding" && "💻"}
-                                            {track.image === "cad" && "📐"}
-                                            {track.image === "building" && "🔧"}
-                                            {track.image === "inspire" && "🏆"}
-                                        </span>
-                                    </div>
-                                    <p className="text-xs font-medium text-[#1A1A2E] leading-tight">
-                                        {track.title}
-                                        {track.subtitle && (
-                                            <span className="block text-[#718096]">{track.subtitle}</span>
-                                        )}
-                                    </p>
-                                    <p className="text-[10px] text-[#718096] mt-1">Курс {index + 1} из 4</p>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                </div>
-
                 {/* Course Cards Grid */}
-                <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {courses.map((course) => (
                         <Link
                             key={course.id}
                             href={`/courses/${course.id}`}
-                            className="bg-white border border-gray-200 rounded-xl overflow-hidden hover:shadow-lg transition-shadow group"
+                            className="bg-white rounded-2xl overflow-hidden hover:shadow-xl transition-all duration-300 group border border-gray-100 flex flex-col"
                         >
-                            {/* Image */}
-                            <div className="relative h-40 bg-gradient-to-br from-gray-700 to-gray-900 flex items-center justify-center">
-                                <span className="text-4xl opacity-50">💻</span>
-                                {/* Preview badge */}
-                                <div className="absolute top-3 right-3 bg-white text-[#2563EB] text-xs font-medium px-2 py-1 rounded">
+                            {/* Image Container */}
+                            <div className="relative h-48 sm:h-56 bg-gray-200 overflow-hidden">
+                                <img
+                                    src={course.image}
+                                    alt={course.title}
+                                    className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
+                                />
+                                {/* Preview Badge */}
+                                <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm text-[#1A1A2E] text-xs font-bold px-3 py-1.5 rounded-full shadow-sm">
                                     Preview
                                 </div>
                             </div>
 
                             {/* Content */}
-                            <div className="p-4">
-                                <p className="text-xs text-[#2563EB] font-medium mb-1">Свободный курс</p>
-                                <h4 className="font-bold text-[#1A1A2E] mb-2 group-hover:text-[#2563EB] transition-colors">
+                            <div className="p-6 flex-1 flex flex-col">
+                                <p className="text-sm text-[#5B7CFA] font-medium mb-2">Свободный курс</p>
+                                <h4 className="text-xl font-bold text-[#1A1A2E] mb-3 group-hover:text-[#2563EB] transition-colors leading-tight">
                                     {course.title}
                                 </h4>
-                                <p className="text-xs text-[#718096] mb-3 line-clamp-3">
+                                <p className="text-sm text-[#718096] mb-6 line-clamp-3 leading-relaxed flex-1">
                                     {course.description}
                                 </p>
 
                                 {/* Meta */}
-                                <div className="flex items-center gap-2 text-xs text-[#718096]">
-                                    <span className="text-yellow-500">★</span>
-                                    <span className="font-medium">{course.level}</span>
+                                <div className="flex items-center justify-between mt-auto pt-4 border-t border-gray-100">
+                                    <div className="flex items-center gap-2">
+                                        <div className="flex text-[#1A1A2E]">
+                                            <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24">
+                                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                                            </svg>
+                                        </div>
+                                        <span className="text-sm font-bold text-[#1A1A2E]">{course.level}</span>
+                                    </div>
+                                    <span className="text-sm text-[#718096] font-medium">{course.duration}</span>
                                 </div>
-                                <p className="text-xs text-[#718096] mt-1">{course.duration}</p>
                             </div>
                         </Link>
                     ))}

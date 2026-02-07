@@ -1,11 +1,11 @@
 import Link from "next/link";
+import Image from "next/image";
 
 export default function HeroSection() {
     return (
-        <section className="relative min-h-screen bg-[#2563EB] overflow-hidden">
-            {/* Wave background */}
-            <div className="absolute inset-0">
-                {/* Top wave layer */}
+        <section className="relative min-h-screen bg-[#2563EB] overflow-hidden flex flex-col items-center justify-center">
+            {/* Wave background and gradients */}
+            <div className="absolute inset-0 z-0">
                 <svg
                     className="absolute top-0 left-0 w-full h-full"
                     viewBox="0 0 1440 900"
@@ -20,7 +20,7 @@ export default function HeroSection() {
                         </linearGradient>
                     </defs>
                     <rect width="100%" height="100%" fill="url(#heroGradient)" />
-                    {/* Wave patterns */}
+                    {/* Subtle wave patterns */}
                     <path
                         d="M0 300 Q 360 200 720 300 T 1440 300 L 1440 0 L 0 0 Z"
                         fill="rgba(255,255,255,0.05)"
@@ -29,67 +29,60 @@ export default function HeroSection() {
                         d="M0 400 Q 360 300 720 400 T 1440 400 L 1440 0 L 0 0 Z"
                         fill="rgba(255,255,255,0.03)"
                     />
-                    <path
-                        d="M0 500 Q 360 400 720 500 T 1440 500 L 1440 0 L 0 0 Z"
-                        fill="rgba(255,255,255,0.02)"
-                    />
                 </svg>
             </div>
 
-            {/* Robot images decoration */}
-            <div className="absolute top-20 left-10 w-48 h-48 opacity-90 hidden lg:block">
-                <div className="relative w-full h-full">
-                    <div className="absolute inset-0 bg-gradient-to-br from-gray-600 to-gray-800 rounded-xl transform -rotate-12 shadow-2xl flex items-center justify-center">
-                        <span className="text-6xl">🤖</span>
+            {/* Content Container */}
+            <div className="relative z-10 w-full max-w-7xl mx-auto px-4 flex flex-col items-center">
+
+                {/* Main Composition */}
+                <div className="flex flex-wrap items-center justify-center gap-4 md:gap-8 lg:gap-12 w-full mb-8">
+
+                    {/* Robot 1 (Left Inner) */}
+                    <div className="w-24 h-24 md:w-32 md:h-32 relative transform -rotate-12 transition-transform hover:rotate-0">
+                        <Image
+                            src="/images/robot1.png"
+                            alt="Robot 1"
+                            fill
+                            className="object-contain drop-shadow-xl"
+                        />
+                    </div>
+
+                    {/* Tagylym Logo (Center) */}
+                    <div className="w-64 h-32 md:w-80 md:h-40 lg:w-96 lg:h-48 relative">
+                        <Image
+                            src="/images/tagylym.png"
+                            alt="Tagylym"
+                            fill
+                            className="object-contain filter drop-shadow-2xl"
+                            priority
+                        />
+                    </div>
+
+                    {/* Robot 2 (Right Inner) */}
+                    <div className="w-24 h-24 md:w-32 md:h-32 relative transform rotate-12 transition-transform hover:rotate-0">
+                        <Image
+                            src="/images/robot2.png"
+                            alt="Robot 2"
+                            fill
+                            className="object-contain drop-shadow-xl"
+                        />
                     </div>
                 </div>
-            </div>
-
-            <div className="absolute top-32 right-16 w-56 h-40 opacity-90 hidden lg:block">
-                <div className="relative w-full h-full">
-                    <div className="absolute inset-0 bg-gradient-to-br from-gray-500 to-gray-700 rounded-xl transform rotate-6 shadow-2xl flex items-center justify-center">
-                        <span className="text-5xl">⚙️</span>
-                    </div>
-                </div>
-            </div>
-
-            <div className="absolute bottom-48 left-20 w-40 h-40 opacity-90 hidden lg:block">
-                <div className="relative w-full h-full">
-                    <div className="absolute inset-0 bg-gradient-to-br from-pink-400 to-pink-600 rounded-full shadow-2xl flex items-center justify-center">
-                        <span className="text-4xl">🎾</span>
-                    </div>
-                </div>
-            </div>
-
-            <div className="absolute bottom-32 right-10 w-52 h-44 opacity-90 hidden lg:block">
-                <div className="relative w-full h-full">
-                    <div className="absolute inset-0 bg-gradient-to-br from-gray-600 to-gray-800 rounded-xl transform -rotate-3 shadow-2xl flex items-center justify-center">
-                        <span className="text-5xl">🔧</span>
-                    </div>
-                </div>
-            </div>
-
-            {/* Content */}
-            <div className="relative z-10 container-custom flex flex-col items-center justify-center min-h-screen pt-20 pb-32">
-                {/* Main title */}
-                <h1 className="text-6xl sm:text-7xl md:text-8xl lg:text-[120px] font-bold text-white mb-8 text-center tracking-tight">
-                    <span className="inline-block" style={{ fontFamily: "'Caveat', cursive" }}>
-                        Tagylym
-                    </span>
-                </h1>
 
                 {/* Subtitle */}
-                <p className="text-white/90 text-center text-base sm:text-lg max-w-2xl mx-auto leading-relaxed px-4">
+                <p className="text-white/90 text-center text-base sm:text-lg md:text-xl max-w-3xl mx-auto leading-relaxed px-4 font-medium backdrop-blur-sm bg-white/10 p-6 rounded-xl border border-white/10 shadow-lg">
                     Бесплатный доступ к системному обучению робототехнике и
                     инженерии для школьников и менторов.
-                    <br className="hidden sm:block" />
+                    <br className="hidden sm:block mt-2" />
                     Проект выстроен по ценностям и целям FIRST, чтобы готовить сильные
                     команды и будущих инженеров.
                 </p>
+
             </div>
 
-            {/* Bottom wave */}
-            <div className="absolute bottom-0 left-0 right-0">
+            {/* Bottom wave decoration */}
+            <div className="absolute bottom-0 left-0 right-0 z-20">
                 <svg
                     viewBox="0 0 1440 120"
                     className="w-full h-auto"

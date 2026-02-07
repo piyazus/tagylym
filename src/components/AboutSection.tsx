@@ -27,11 +27,14 @@ export default function AboutSection() {
                     {/* Right - Image */}
                     <div className="relative flex justify-center lg:justify-end">
                         <div className="relative">
-                            {/* Girl image placeholder */}
-                            <div className="w-72 h-96 md:w-80 md:h-[420px] rounded-3xl overflow-hidden bg-gradient-to-br from-pink-100 to-pink-200 flex items-end justify-center">
-                                <div className="text-center pb-4">
-                                    <span className="text-8xl">👧</span>
-                                </div>
+                            {/* Girl image */}
+                            <div className="w-72 h-96 md:w-80 md:h-[420px] relative rounded-3xl overflow-hidden bg-gradient-to-br from-pink-100 to-pink-200">
+                                <Image
+                                    src="/images/girl.png"
+                                    alt="Student Girl"
+                                    fill
+                                    className="object-cover object-center"
+                                />
                             </div>
 
                             {/* Decorative elements */}
