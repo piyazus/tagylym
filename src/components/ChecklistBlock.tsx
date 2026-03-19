@@ -72,7 +72,7 @@ export default function ChecklistBlock({ items, levelId }: ChecklistBlockProps) 
                 <div className="text-xs text-[#6B7280] mb-2 font-medium">
                     {completedCount} / {totalCount} орындалды
                 </div>
-                <div className="w-full h-1.5 bg-[#E5E7EB] rounded-full overflow-hidden">
+                <div className="w-full h-1 bg-[#E5E7EB] rounded-full overflow-hidden">
                     <div
                         className="h-full bg-[#2563EB] rounded-full transition-all duration-500 ease-out"
                         style={{ width: `${percentage}%` }}

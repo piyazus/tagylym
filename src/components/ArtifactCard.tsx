@@ -8,7 +8,7 @@ export default function ArtifactCard({ artifact }: ArtifactCardProps) {
         <div className="flex items-center gap-3 p-4 bg-white rounded-xl border border-[#E5E7EB] hover:shadow-sm transition-shadow cursor-pointer">
             {/* Icon */}
             <div className="w-10 h-10 bg-[#EFF6FF] rounded-lg flex items-center justify-center shrink-0">
-                <span className="text-xl text-[#2563EB]">📄</span>
+                <span className="w-2 h-2 rounded-full bg-[#2563EB]" />
             </div>
 
             {/* Info */}

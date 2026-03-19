@@ -82,7 +82,7 @@ export default function QuizCard({ quiz }: QuizCardProps) {
                                 className={`flex items-center gap-2 p-3 rounded-lg ${isCorrect ? "bg-[#F0FDF4] text-green-800 border border-green-300" : "bg-[#FEF2F2] text-red-700 border border-red-300"
                                     }`}
                             >
-                                <span className="text-lg">{isCorrect ? "🎉" : "❌"}</span>
+                                <span className="text-sm font-bold">{isCorrect ? "✓" : "✗"}</span>
                                 <span className="font-medium text-sm">
                                     {isCorrect ? t("correct") : t("incorrect")}
                                 </span>
@@ -92,7 +92,7 @@ export default function QuizCard({ quiz }: QuizCardProps) {
                             {quiz.tip && (
                                 <div className="bg-[#FFFBEB] border border-[#FDE68A] rounded-xl p-4">
                                     <div className="flex items-center gap-2 mb-1">
-                                        <span className="text-lg">💡</span>
+                                        <span className="w-2 h-2 rounded-full bg-amber-400" />
                                         <span className="font-mono text-xs uppercase tracking-wide text-[#92400E]">
                                             {t("tip")}
                                         </span>
@@ -134,7 +134,7 @@ export default function QuizCard({ quiz }: QuizCardProps) {
                             {quiz.tip && (
                                 <div className="bg-[#FFFBEB] border border-[#FDE68A] rounded-xl p-4">
                                     <div className="flex items-center gap-2 mb-1">
-                                        <span className="text-lg">💡</span>
+                                        <span className="w-2 h-2 rounded-full bg-amber-400" />
                                         <span className="font-mono text-xs uppercase tracking-wide text-[#92400E]">
                                             {t("tip")}
                                         </span>

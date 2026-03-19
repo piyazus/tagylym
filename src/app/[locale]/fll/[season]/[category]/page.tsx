@@ -65,8 +65,8 @@ function CategoryPageContent({
             {/* Header */}
             <section className="bg-white border-b border-[#E5E7EB] py-16 px-6">
                 <div className="max-w-7xl mx-auto text-center">
-                    <div className="text-5xl mb-6">{cat.icon}</div>
-                    <h1 className="text-4xl font-display font-bold text-[#1A1A1A] mb-4">{cat.name}</h1>
+                    <div className="text-5xl mb-6 flex items-center justify-center w-14 h-14 rounded-xl bg-[#F3F4F6] text-2xl mx-auto">{cat.icon}</div>
+                    <h1 className="text-4xl font-bold text-[#1A1A1A] mb-4">{cat.name}</h1>
                     <p className="text-[#6B7280] max-w-2xl mx-auto">
                         Осы санаттағы дағдыларыңызды дамытып, жаңа белестерді бағындырыңыз.
                     </p>
@@ -75,7 +75,7 @@ function CategoryPageContent({
 
             {/* Level Cards */}
             <section className="max-w-7xl mx-auto px-6 py-16">
-                <h2 className="text-2xl font-display font-bold text-center mb-12">{t("levels")}</h2>
+                <h2 className="text-2xl font-bold text-center mb-12">{t("levels")}</h2>
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6 stagger-children">
                     {levels.map((level) => {
@@ -107,11 +107,11 @@ function CategoryPageContent({
 
                                 <div className="space-y-3 text-sm text-[#6B7280] mb-8">
                                     <div className="flex items-center gap-2">
-                                        <span className="text-lg">🎬</span>
+                                        <span className="w-1.5 h-1.5 rounded-full bg-[#2563EB]" />
                                         {level.lessonCount} {t("lessons")}
                                     </div>
                                     <div className="flex items-center gap-2">
-                                        <span className="text-lg">✅</span>
+                                        <span className="w-1.5 h-1.5 rounded-full bg-[#16A34A]" />
                                         {level.checklistCount} {t("checklistItems")}
                                     </div>
                                 </div>
@@ -132,7 +132,7 @@ function CategoryPageContent({
             <section className="max-w-7xl mx-auto px-6 pb-24">
                 <div className="bg-[#EFF6FF] rounded-2xl p-6 border-l-4 border-[#2563EB]">
                     <h3 className="text-lg font-bold flex items-center gap-2 mb-3 text-[#1E40AF]">
-                        <span className="text-xl">💜</span>
+                        <span className="w-2 h-2 rounded-full bg-[#2563EB]" />
                         Негізгі Құндылықтар
                     </h3>
                     <p className="text-sm text-[#3B82F6] leading-relaxed">

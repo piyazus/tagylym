@@ -1,19 +1,28 @@
-import type { LevelBadgeProps } from "@/types";
-import { useTranslations } from "next-intl";
+import type { LevelName } from "@/types";
 
-export default function LevelBadge({ level }: LevelBadgeProps) {
-    const config: Record<string, string> = {
-        beginner: "text-[#2563EB]",
-        intermediate: "text-[#D97706]",
-        advanced: "text-[#16A34A]",
-    };
+const colors: Record<string, string> = {
+    beginner: '#2563EB',
+    intermediate: '#D97706',
+    advanced: '#16A34A',
+};
 
-    const t = useTranslations("common");
-    const colorClass = config[level] || config.beginner;
+const labels: Record<string, Record<string, string>> = {
+    beginner: { kz: 'Бастауыш', ru: 'Beginner', en: 'Beginner' },
+    intermediate: { kz: 'Орташа', ru: 'Intermediate', en: 'Intermediate' },
+    advanced: { kz: 'Жетілдірілген', ru: 'Advanced', en: 'Advanced' },
+};
+
+export default function LevelBadge({ level }: { level: LevelName | string }) {
+    const color = colors[level] || colors.beginner;
+    const label = labels[level]?.kz || level;
 
     return (
-        <span className={`inline-flex items-center gap-1 text-xs font-medium ${colorClass}`}>
-            ★ {t(level)}
+        <span
+            style={{ color }}
+            className="flex items-center gap-0.5 text-xs font-medium"
+        >
+            <span>★</span>
+            <span>{label}</span>
         </span>
     );
 }

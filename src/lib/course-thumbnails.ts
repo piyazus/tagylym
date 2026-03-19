@@ -1,25 +1,18 @@
-export function getCourseThumbnail(category: string, level?: string): string {
-    const cat = category?.toLowerCase()
-
-    // FTC courses
-    if (cat?.includes('ftc') && cat?.includes('cod')) return '/images/thumb-fll-coding.jpg'
-    if (cat?.includes('ftc') && cat?.includes('build')) return '/images/thumb-fll-robot.jpg'
-    if (cat?.includes('ftc') && cat?.includes('cad')) return '/images/thumb-cad.jpg'
-
-    // FLL courses  
-    if (cat?.includes('robot-design') || cat?.includes('конструир') || cat?.includes('building')) {
+export function getCourseThumbnail(category: string): string {
+    const c = (category || '').toLowerCase()
+    if (c.includes('robot-design') || c.includes('building') || c.includes('конструир'))
         return '/images/thumb-fll-robot.jpg'
-    }
-    if (cat?.includes('coding') || cat?.includes('программир')) {
+    if (c.includes('coding') || c.includes('программир'))
         return '/images/thumb-fll-coding.jpg'
-    }
-    if (cat?.includes('core-values') || cat?.includes('core values') || cat?.includes('құндылық')) {
+    if (c.includes('core-values') || c.includes('core values') || c.includes('құндылық'))
         return '/images/thumb-fll-robot.jpg'
-    }
-    if (cat?.includes('innovation') || cat?.includes('инновац') || cat?.includes('жоба')) {
+    if (c.includes('innovation') || c.includes('инновац') || c.includes('жоба'))
         return '/images/thumb-cad.jpg'
-    }
-
-    // Fallback
+    if (c.includes('cad') || c.includes('design'))
+        return '/images/thumb-cad.jpg'
+    if (c.includes('ftc') && c.includes('build'))
+        return '/images/thumb-fll-robot.jpg'
+    if (c.includes('inspire'))
+        return '/images/thumb-cad.jpg'
     return '/images/thumb-fll-robot.jpg'
 }

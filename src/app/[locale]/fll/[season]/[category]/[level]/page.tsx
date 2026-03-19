@@ -136,7 +136,7 @@ function LevelPageContent({
                             </svg>
                         </Link>
                         <div>
-                            <h1 className="font-display text-2xl text-[#1A1A1A]">
+                            <h1 className="text-2xl font-bold text-[#1A1A1A]">
                                 {categoryData?.name || "Трек"}
                             </h1>
                             <p className="text-sm text-[#6B7280] mt-1">
@@ -179,7 +179,7 @@ function LevelPageContent({
 
                 {/* Course Grid */}
                 <div>
-                    <h2 className="text-2xl font-display text-[#1A1A1A] mb-6 flex items-center gap-2">
+                    <h2 className="text-2xl font-bold text-[#1A1A1A] mb-6 flex items-center gap-2">
                         {t("courses")}
                     </h2>
                     {courses.length > 0 ? (
@@ -253,7 +253,7 @@ function LevelPageContent({
                     {artifacts.length > 0 && (
                         <div>
                             <h2 className="text-xl font-bold mb-4 flex items-center gap-2 text-[#1A1A1A]">
-                                <span className="text-lg">📎</span>
+                                <span className="w-1.5 h-1.5 rounded-full bg-[#2563EB]" />
                                 {t("artifacts")}
                             </h2>
                             <div className="space-y-3">

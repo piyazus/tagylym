@@ -1,14 +1,10 @@
-import type { TipBoxProps } from "@/types";
-import { useTranslations } from "next-intl";
-
-export default function TipBox({ text }: TipBoxProps) {
-    const t = useTranslations("lesson");
+export default function TipBox({ text }: { text: string }) {
     return (
-        <div className="bg-[#FFFBEB] border border-[#FDE68A] rounded-xl p-5 my-6">
-            <div className="flex items-center gap-2 mb-2">
-                <span className="text-xl">💡</span>
-                <span className="font-mono text-xs uppercase tracking-wide text-[#92400E]">
-                    {t("tips")}
+        <div className="bg-[#FFFBEB] border border-[#FDE68A] rounded-xl p-4 my-4">
+            <div className="flex items-center gap-2 mb-1.5">
+                <span className="w-2 h-2 rounded-full bg-amber-400" />
+                <span className="font-mono text-[10px] uppercase tracking-wider text-amber-700">
+                    КЕҢЕС
                 </span>
             </div>
             <p className="text-sm text-[#78350F] leading-relaxed">{text}</p>
