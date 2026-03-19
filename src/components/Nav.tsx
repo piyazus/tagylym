@@ -65,7 +65,17 @@ export default function Nav() {
 
                 {/* RIGHT: Powered by + Lang switcher */}
                 <div className="flex items-center gap-3">
-                    <span className="hidden md:inline text-xs text-[#6B7280]">Powered by Panheya</span>
+                    <span className="hidden md:flex items-center gap-1.5 text-xs text-[#6B7280]">
+                        Powered by
+                        <Image
+                            src="/images/logo-panheya.png"
+                            alt="Panheya"
+                            width={20}
+                            height={20}
+                            className="h-5 w-5"
+                        />
+                        Panheya
+                    </span>
 
                     {/* Locale Switcher */}
                     <div className="flex items-center border border-[#E5E7EB] rounded px-1 py-0.5 text-xs">
