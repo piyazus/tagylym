@@ -1,4 +1,4 @@
-import { supabase } from "./supabase";
+import { createClient } from "./supabase/server";
 import type {
     Competition,
     Season,
@@ -16,6 +16,7 @@ import type {
 // ─── Competitions ────────────────────────────────────────
 
 export async function getCompetitions(): Promise<Competition[]> {
+    const supabase = await createClient();
     const { data, error } = await supabase
         .from("competitions")
         .select("*");
@@ -28,6 +29,7 @@ export async function getCompetitions(): Promise<Competition[]> {
 export async function getActiveSeasonByCompetition(
     competitionSlug: string
 ): Promise<(Season & { competition: Competition }) | null> {
+    const supabase = await createClient();
     const { data, error } = await supabase
         .from("seasons")
         .select("*, competition:competitions!inner(*)")
@@ -42,6 +44,7 @@ export async function getSeasonBySlug(
     competitionSlug: string,
     seasonSlug: string
 ): Promise<Season | null> {
+    const supabase = await createClient();
     // seasonSlug format: "submerged-2025-26" → name: "SUBMERGED 2025-26"
     const { data: comp } = await supabase
         .from("competitions")
@@ -65,6 +68,7 @@ export async function getSeasonBySlug(
 export async function getCategoriesBySeason(
     seasonId: string
 ): Promise<Category[]> {
+    const supabase = await createClient();
     const { data, error } = await supabase
         .from("categories")
         .select("*")
@@ -78,6 +82,7 @@ export async function getCategoryBySlug(
     seasonId: string,
     slug: string
 ): Promise<Category | null> {
+    const supabase = await createClient();
     const { data, error } = await supabase
         .from("categories")
         .select("*")
@@ -93,6 +98,7 @@ export async function getCategoryBySlug(
 export async function getLevelsByCategory(
     categoryId: string
 ): Promise<Level[]> {
+    const supabase = await createClient();
     const { data, error } = await supabase
         .from("levels")
         .select("*")
@@ -106,6 +112,7 @@ export async function getLevelByCategoryAndName(
     categoryId: string,
     levelName: string
 ): Promise<Level | null> {
+    const supabase = await createClient();
     // levelName from URL: "beginner" → DB name: "Начинающий"
     const nameMap: Record<string, string> = {
         beginner: "Начинающий",
@@ -129,6 +136,7 @@ export async function getLevelByCategoryAndName(
 export async function getCoursesByLevel(
     levelId: string
 ): Promise<Course[]> {
+    const supabase = await createClient();
     const { data, error } = await supabase
         .from("courses")
         .select("*")
@@ -143,6 +151,7 @@ export async function getCoursesByLevel(
 export async function getLessonsByCourse(
     courseId: string
 ): Promise<Lesson[]> {
+    const supabase = await createClient();
     const { data, error } = await supabase
         .from("lessons")
         .select("*")
@@ -155,6 +164,7 @@ export async function getLessonsByCourse(
 export async function getLessonById(
     lessonId: string
 ): Promise<Lesson | null> {
+    const supabase = await createClient();
     const { data, error } = await supabase
         .from("lessons")
         .select("*")
@@ -167,6 +177,7 @@ export async function getLessonById(
 export async function getLessonCountByLevel(
     levelId: string
 ): Promise<number> {
+    const supabase = await createClient();
     const { count, error } = await supabase
         .from("lessons")
         .select("id, course:courses!inner(level_id)", { count: "exact", head: true })
@@ -180,6 +191,7 @@ export async function getLessonCountByLevel(
 export async function getChecklistItems(
     levelId: string
 ): Promise<ChecklistItem[]> {
+    const supabase = await createClient();
     const { data, error } = await supabase
         .from("checklist_items")
         .select("*")
@@ -192,6 +204,7 @@ export async function getChecklistItems(
 export async function getChecklistItemCount(
     levelId: string
 ): Promise<number> {
+    const supabase = await createClient();
     const { count, error } = await supabase
         .from("checklist_items")
         .select("id", { count: "exact", head: true })
@@ -205,6 +218,7 @@ export async function getChecklistItemCount(
 export async function getArtifactsByLevel(
     levelId: string
 ): Promise<Artifact[]> {
+    const supabase = await createClient();
     const { data, error } = await supabase
         .from("artifacts")
         .select("*")
@@ -219,6 +233,7 @@ export async function getQuizzes(filters?: {
     category?: string;
     level?: string;
 }): Promise<Quiz[]> {
+    const supabase = await createClient();
     let query = supabase.from("quizzes").select("*");
 
     if (filters?.category) {
@@ -236,6 +251,7 @@ export async function getQuizzes(filters?: {
 export async function getQuizzesByLesson(
     lessonId: string
 ): Promise<Quiz[]> {
+    const supabase = await createClient();
     const { data, error } = await supabase
         .from("quizzes")
         .select("*")
@@ -249,6 +265,7 @@ export async function getQuizzesByLesson(
 export async function getUserProgress(
     userId: string
 ): Promise<Progress[]> {
+    const supabase = await createClient();
     const { data, error } = await supabase
         .from("progress")
         .select("*")
@@ -261,6 +278,7 @@ export async function markLessonComplete(
     userId: string,
     lessonId: string
 ): Promise<void> {
+    const supabase = await createClient();
     await supabase.from("progress").upsert({
         user_id: userId,
         lesson_id: lessonId,
@@ -274,6 +292,7 @@ export async function getChecklistProgress(
     userId: string,
     levelId: string
 ): Promise<ChecklistProgress[]> {
+    const supabase = await createClient();
     const { data, error } = await supabase
         .from("checklist_progress")
         .select("*, item:checklist_items!inner(*)")
@@ -288,6 +307,7 @@ export async function toggleChecklistItem(
     itemId: string,
     checked: boolean
 ): Promise<void> {
+    const supabase = await createClient();
     await supabase.from("checklist_progress").upsert({
         user_id: userId,
         item_id: itemId,
