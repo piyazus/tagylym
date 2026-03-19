@@ -1,4 +1,6 @@
-export default {
+import type { Rule } from 'sanity';
+
+const lessonSchema = {
     name: 'lesson',
     title: 'Урок',
     type: 'document',
@@ -7,26 +9,26 @@ export default {
             name: 'title',
             title: 'Название',
             type: 'string',
-            validation: (Rule: any) => Rule.required(),
+            validation: (Rule: Rule) => Rule.required(),
         },
         {
             name: 'slug',
             title: 'Slug',
             type: 'slug',
             options: { source: 'title' },
-            validation: (Rule: any) => Rule.required(),
+            validation: (Rule: Rule) => Rule.required(),
         },
         {
             name: 'courseSlug',
             title: 'Slug курса (из Supabase)',
             type: 'string',
-            validation: (Rule: any) => Rule.required(),
+            validation: (Rule: Rule) => Rule.required(),
         },
         {
             name: 'order',
             title: 'Порядок в курсе',
             type: 'number',
-            validation: (Rule: any) => Rule.required(),
+            validation: (Rule: Rule) => Rule.required(),
         },
         {
             name: 'isFree',
@@ -69,3 +71,5 @@ export default {
         },
     ],
 }
+
+export default lessonSchema;

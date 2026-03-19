@@ -16,22 +16,22 @@ export default function QuizPage() {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
+        const fetchQuizzes = async () => {
+            setLoading(true);
+            let query = supabase.from("quizzes").select("*");
+
+            if (filterCategory) query = query.eq("category", filterCategory);
+            if (filterLevel) query = query.eq("level", filterLevel);
+
+            const { data, error } = await query;
+            if (!error && data) {
+                setQuizzes(data);
+            }
+            setLoading(false);
+        };
+
         fetchQuizzes();
     }, [filterCategory, filterLevel]);
-
-    const fetchQuizzes = async () => {
-        setLoading(true);
-        let query = supabase.from("quizzes").select("*");
-
-        if (filterCategory) query = query.eq("category", filterCategory);
-        if (filterLevel) query = query.eq("level", filterLevel);
-
-        const { data, error } = await query;
-        if (!error && data) {
-            setQuizzes(data);
-        }
-        setLoading(false);
-    };
 
     const categories = [
         { value: "", label: t("filter_all") },

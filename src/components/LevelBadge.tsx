@@ -14,7 +14,7 @@ export default function LevelBadge({ level }: { level: LevelName | string }) {
     let label = level;
     try {
         label = tLevels(level);
-    } catch (e) {
+    } catch {
         // Fallback
     }
 

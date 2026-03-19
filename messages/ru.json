@@ -61,7 +61,9 @@
     "rubric_beginning": "Начальный",
     "rubric_developing": "Развивающийся",
     "rubric_accomplished": "Достигнуто",
-    "rubric_exceeds": "Превосходит"
+    "rubric_exceeds": "Превосходит",
+    "no_content": "Содержимое этого урока ещё не готово.",
+    "back_to_courses": "Вернуться к курсам"
   },
   "checklist": {
     "title": "Чеклист",
@@ -71,14 +73,23 @@
   },
   "dashboard": {
     "welcome": "Добро пожаловать",
+    "subtitle": "Ваш учебный прогресс",
+    "guest": "Студент",
     "your_progress": "Ваш прогресс",
+    "progress": "Прогресс",
     "continue_learning": "Продолжить обучение",
     "last_lesson": "Последний урок",
     "lessons_done": "уроков завершено",
+    "lessons_completed": "уроков завершено",
     "checklist_status": "Чеклист",
+    "checklist": "Статус чеклиста",
     "of": "из",
+    "recent": "Недавняя активность",
     "recent_lessons": "Недавние уроки",
     "no_progress": "Еще ни один урок не завершен. Начнем!",
+    "noProgress": "Нет завершённых уроков. Начнём!",
+    "login_prompt": "Войдите, чтобы увидеть прогресс.",
+    "login_btn": "Войти",
     "categories": {
       "robot-design": "Дизайн Робота",
       "innovation": "Инновационный Проект",
@@ -148,7 +159,9 @@
     "categories": {
       "robot-design": "Дизайн Робота",
       "innovation": "Инновационный Проект",
-      "core-values": "Основные Ценности"
+      "core-values": "Основные Ценности",
+      "coding": "Программирование",
+      "robot-game": "Игра Роботов"
     }
   },
   "resources": {
@@ -182,6 +195,69 @@
     "success": "Спасибо! Ваш email успешно добавлен в список.",
     "subscribe": "Подписаться"
   },
+  "ftc": {
+    "competition": "FIRST Tech Challenge",
+    "season": "DECODE™ presented by RTX — 2025–2026",
+    "tagline": "Раскрой тайны артефактов. Построй робота. Победи.",
+    "age_range": "12–18 лет",
+    "parts_kit": "goBILDA",
+    "programming": "FTC Blocks, OnBot Java, Android Studio (Java)",
+    "discipline_soon_badge": "Скоро",
+    "d1_title": "Конструирование",
+    "d1_desc": "Сборка робота из набора goBILDA: привод, система захвата артефактов, механизм стрельбы и управление воротами.",
+    "d2_title": "Программирование",
+    "d2_desc": "FTC Blocks для новичков, OnBot Java для среднего уровня, Android Studio для продвинутых. Автономный режим и TeleOp.",
+    "d3_title": "Стратегия игры",
+    "d3_desc": "Сбор и доставка артефактов, управление воротами, эндгейм парковка. Алянс-стратегия и коммуникация с партнёром.",
+    "d4_title": "Инженерный журнал",
+    "d4_desc": "Документирование процесса проектирования, итераций и решений команды для судейских презентаций.",
+    "coming_section": "Что вас ждёт",
+    "coming_1": "Курсы по конструированию на goBILDA с нуля до соревнований",
+    "coming_2": "Программирование: Blocks → Java → Android Studio",
+    "coming_3": "Разбор игры DECODE™: артефакты, ворота, эндгейм",
+    "coming_4": "Чеклисты подготовки к соревнованиям",
+    "coming_5": "Банк квизов FTC",
+    "resources_section": "Ключевые ресурсы",
+    "r1_label": "Официальный сайт FTC",
+    "r2_label": "Ресурсы сезона DECODE™",
+    "r3_label": "Стартовый робот goBILDA",
+    "waitlist_title": "Уведомить меня о запуске",
+    "waitlist_placeholder": "Ваш email...",
+    "waitlist_button": "Уведомить меня",
+    "waitlist_success": "Спасибо! Мы сообщим вам о запуске."
+  },
+  "fgc": {
+    "competition": "FIRST Global Challenge",
+    "season": "Igniting Innovation — 2026",
+    "tagline": "190+ стран. Одна задача. Инчхон, октябрь 2026.",
+    "age_range": "14–18 лет",
+    "parts_kit": "REV DUO (стандартизированный набор)",
+    "location": "Инчхон, Республика Корея | 7–10 октября 2026",
+    "kz_badge": "Казахстан участвует",
+    "discipline_soon_badge": "Скоро",
+    "d1_title": "Конструирование",
+    "d1_desc": "Сборка робота из стандартного набора REV DUO. Тема сезона — предотвращение и ликвидация лесных пожаров.",
+    "d2_title": "Программирование",
+    "d2_desc": "Автономный режим и управление водителем. Работа с REV Control Hub и сенсорами.",
+    "d3_title": "Стратегия игры",
+    "d3_desc": "Восстановление экосистем, защита видов, поддержание экологического баланса на игровом поле. Кооперативная игра с командами из других стран.",
+    "d4_title": "Командная работа и ценности",
+    "d4_desc": "FGC оценивает не только результат на поле — дух сотрудничества, инклюзивность и взаимопомощь между странами.",
+    "coming_section": "Что вас ждёт",
+    "coming_1": "Полный курс подготовки к FGC Incheon 2026",
+    "coming_2": "Конструирование на REV DUO: от нуля до готового робота",
+    "coming_3": "Стратегия игры Eco Equilibrium",
+    "coming_4": "Программирование: REV Control Hub, автономный режим",
+    "coming_5": "Подготовка презентаций и командной документации",
+    "resources_section": "Ключевые ресурсы",
+    "r1_label": "Официальный сайт FGC",
+    "r2_label": "FGC 2026 Incheon",
+    "r3_label": "REV DUO Build System",
+    "waitlist_title": "Уведомить меня о запуске",
+    "waitlist_placeholder": "Ваш email...",
+    "waitlist_button": "Уведомить меня",
+    "waitlist_success": "Спасибо! Мы сообщим вам о запуске."
+  },
   "errors": {
     "not_found": "Страница не найдена",
     "not_found_desc": "Страницы, которую вы ищете, не существует",
@@ -208,6 +284,28 @@
     "category": "категория",
     "competition": "соревнование",
     "try_again": "Попробовать снова",
-    "hide": "Скрыть"
+    "hide": "Скрыть",
+    "loading": "Загрузка...",
+    "coming_soon": "Скоро"
+  },
+  "lesson_page": {
+    "no_content": "Содержимое этого урока ещё не готово.",
+    "back_to_courses": "Вернуться к курсам"
+  },
+  "level": {
+    "lessons": "уроков",
+    "progress": "завершено",
+    "checklist": "Чеклист"
+  },
+  "roi": {
+    "title": "Калькулятор ROI",
+    "missionName": "Название миссии",
+    "points": "Баллы",
+    "time": "Время (сек)",
+    "roi": "ROI",
+    "addRow": "Добавить строку",
+    "removeRow": "Удалить строку",
+    "sortByRoi": "Сортировать по ROI",
+    "exportCsv": "Экспорт CSV"
   }
 }

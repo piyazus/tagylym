@@ -3,58 +3,193 @@
 import { useState } from "react";
 import { useTranslations } from "next-intl";
 
+const DISCIPLINE_CARDS = [
+    { key: "d1", color: "#3B82F6" },
+    { key: "d2", color: "#F97316" },
+    { key: "d3", color: "#22C55E" },
+    { key: "d4", color: "#8B5CF6" },
+] as const;
+
+const COMING_ITEMS = [
+    "coming_1",
+    "coming_2",
+    "coming_3",
+    "coming_4",
+    "coming_5",
+] as const;
+
+const RESOURCES = [
+    {
+        key: "r1_label",
+        url: "https://first.global/fgc/",
+    },
+    {
+        key: "r2_label",
+        url: "https://first.global/press-releases/south-korea-to-host-190-national-teams-at-the-2026-first-global-challenge-robotics-premier-global-competition/",
+    },
+    {
+        key: "r3_label",
+        url: "https://www.revrobotics.com/duo/",
+    },
+] as const;
+
 export default function FGCPage() {
-    const t = useTranslations("coming_soon");
-    const tAuth = useTranslations("auth");
+    const t = useTranslations("fgc");
     const [email, setEmail] = useState("");
     const [submitted, setSubmitted] = useState(false);
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
-        if (email) {
-            setSubmitted(true);
-        }
+        if (email.trim()) setSubmitted(true);
     };
 
     return (
-        <div className="min-h-screen bg-[#0f172a] text-[#f1f5f9] flex items-center justify-center">
-            <div className="text-center max-w-md mx-auto px-6 py-20">
-                <div className="w-24 h-24 rounded-2xl bg-[#1e293b] border border-[#334155] flex items-center justify-center mx-auto mb-8 text-5xl shadow-lg shadow-black/20">
-                    🌍
-                </div>
-                <h1 className="text-4xl font-black text-white mb-3 tracking-wide">
-                    FIRST Global Challenge
-                </h1>
-                <div className="inline-flex items-center px-4 py-2 rounded-full bg-[#22C55E]/10 border border-[#22C55E]/30 text-sm text-[#22C55E] font-semibold tracking-wider mb-6">
-                    {t("badge")}
-                </div>
-                <p className="text-[#94a3b8] leading-relaxed mb-8">
-                    {t("fgc_desc")}
-                </p>
+        <div className="min-h-screen bg-[#F5F5F5] text-[#1A1A1A]">
+            {/* === Competition Header === */}
+            <div className="bg-white border-b border-[#E5E7EB]">
+                <div className="max-w-5xl mx-auto px-6 py-8">
+                    <p className="text-xs font-semibold text-[#9CA3AF] uppercase tracking-widest mb-1">
+                        {t("competition")}
+                    </p>
+                    <h1 className="text-2xl md:text-3xl font-extrabold text-[#1A1A1A] mb-1 leading-tight">
+                        {t("season")}
+                    </h1>
+                    <p className="text-base text-[#6B7280] italic mb-1">
+                        {t("tagline")}
+                    </p>
+                    <p className="text-xs text-[#9CA3AF] mb-4">
+                        {t("location")}
+                    </p>
 
-                {submitted ? (
-                    <div className="bg-[#22C55E]/10 border border-[#22C55E]/30 text-[#22C55E] p-4 rounded-xl font-medium animate-fade-in-up">
-                        🎉 {t("success")}
+                    {/* Kazakhstan badge */}
+                    <div className="flex flex-wrap items-center gap-3 mb-1">
+                        <span className="inline-flex items-center gap-1.5 bg-[#8B5CF6]/10 border border-[#8B5CF6]/30 text-[#7C3AED] text-xs font-semibold px-3 py-1 rounded-full">
+                            <span className="w-1.5 h-1.5 rounded-full bg-[#8B5CF6]" />
+                            {t("kz_badge")}
+                        </span>
                     </div>
-                ) : (
-                    <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3 max-w-sm mx-auto">
-                        <input
-                            type="email"
-                            required
-                            placeholder={tAuth("email_placeholder")}
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
-                            className="flex-1 bg-[#1e293b] text-white placeholder:text-[#64748b] border border-[#334155] rounded-xl px-4 py-3 focus:outline-none focus:border-[#22C55E] transition-colors"
-                        />
-                        <button
-                            type="submit"
-                            className="bg-[#22C55E] hover:bg-green-500 text-white font-semibold px-6 py-3 rounded-xl transition-colors shadow-lg shadow-green-500/20 whitespace-nowrap"
-                        >
-                            {t("subscribe")}
-                        </button>
-                    </form>
-                )}
+
+                    <div className="flex flex-wrap gap-3 text-xs text-[#6B7280] mt-3">
+                        <span className="bg-[#F3F4F6] border border-[#E5E7EB] rounded-full px-3 py-1 font-medium">
+                            {t("age_range")}
+                        </span>
+                        <span className="bg-[#F3F4F6] border border-[#E5E7EB] rounded-full px-3 py-1 font-medium">
+                            {t("parts_kit")}
+                        </span>
+                    </div>
+                </div>
             </div>
+
+            <main className="max-w-5xl mx-auto px-6 py-8 space-y-10">
+                {/* === Discipline Cards === */}
+                <section>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                        {DISCIPLINE_CARDS.map(({ key, color }) => (
+                            <div
+                                key={key}
+                                className="relative bg-white rounded-xl border border-[#E5E7EB] p-4 opacity-100 hover:opacity-90 transition-opacity"
+                                style={{ cursor: "default" }}
+                            >
+                                {/* "Скоро" badge */}
+                                <span
+                                    className="absolute top-3 right-3 text-[10px] font-bold px-2 py-0.5 rounded-full text-white"
+                                    style={{ backgroundColor: color }}
+                                >
+                                    {t("discipline_soon_badge")}
+                                </span>
+
+                                {/* Colour accent bar */}
+                                <div
+                                    className="w-8 h-1 rounded-full mb-3"
+                                    style={{ backgroundColor: color }}
+                                />
+
+                                <h3
+                                    className="text-sm font-bold mb-2 leading-snug"
+                                    style={{ color }}
+                                >
+                                    {t(`${key}_title` as Parameters<typeof t>[0])}
+                                </h3>
+                                <p className="text-xs text-[#6B7280] leading-[1.5]">
+                                    {t(`${key}_desc` as Parameters<typeof t>[0])}
+                                </p>
+                            </div>
+                        ))}
+                    </div>
+                </section>
+
+                {/* === What's Coming === */}
+                <section className="bg-white rounded-xl border border-[#E5E7EB] p-6">
+                    <h2 className="text-base font-bold text-[#1A1A1A] mb-4">
+                        {t("coming_section")}
+                    </h2>
+                    <ul className="space-y-2">
+                        {COMING_ITEMS.map((item) => (
+                            <li
+                                key={item}
+                                className="flex items-start gap-3 text-sm text-[#374151]"
+                            >
+                                <span className="mt-0.5 w-5 h-5 flex-shrink-0 rounded-full bg-[#8B5CF6]/10 border border-[#8B5CF6]/30 flex items-center justify-center">
+                                    <span className="w-1.5 h-1.5 rounded-full bg-[#8B5CF6]" />
+                                </span>
+                                {t(item as Parameters<typeof t>[0])}
+                            </li>
+                        ))}
+                    </ul>
+                </section>
+
+                {/* === Key Resources === */}
+                <section>
+                    <h2 className="text-base font-bold text-[#1A1A1A] mb-3">
+                        {t("resources_section")}
+                    </h2>
+                    <div className="flex flex-col sm:flex-row gap-3">
+                        {RESOURCES.map(({ key, url }) => (
+                            <a
+                                key={key}
+                                href={url}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="flex-1 bg-white border border-[#E5E7EB] rounded-xl px-4 py-3 text-sm font-medium text-[#7C3AED] hover:bg-[#F5F3FF] hover:border-[#8B5CF6]/30 transition-colors"
+                            >
+                                {t(key as Parameters<typeof t>[0])} →
+                            </a>
+                        ))}
+                    </div>
+                </section>
+
+                {/* === Waitlist CTA === */}
+                <section className="bg-white border border-[#E5E7EB] rounded-xl p-6">
+                    <h2 className="text-base font-bold text-[#1A1A1A] mb-4">
+                        {t("waitlist_title")}
+                    </h2>
+                    {submitted ? (
+                        <div className="bg-[#22C55E]/10 border border-[#22C55E]/30 text-[#16A34A] text-sm font-medium px-4 py-3 rounded-lg">
+                            {t("waitlist_success")}
+                        </div>
+                    ) : (
+                        <form
+                            onSubmit={handleSubmit}
+                            className="flex flex-col sm:flex-row gap-3 max-w-md"
+                        >
+                            <input
+                                type="email"
+                                required
+                                placeholder={t("waitlist_placeholder")}
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                                className="flex-1 bg-[#F9FAFB] border border-[#E5E7EB] text-[#1A1A1A] placeholder:text-[#9CA3AF] rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:border-[#8B5CF6] transition-colors"
+                            />
+                            <button
+                                type="submit"
+                                className="bg-[#8B5CF6] hover:bg-violet-600 text-white font-semibold text-sm px-5 py-2.5 rounded-lg transition-colors whitespace-nowrap"
+                            >
+                                {t("waitlist_button")}
+                            </button>
+                        </form>
+                    )}
+                </section>
+            </main>
         </div>
     );
 }

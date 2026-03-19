@@ -1,4 +1,6 @@
-export default {
+import type { Rule } from 'sanity';
+
+const courseSchema = {
     name: 'course',
     title: 'Курс',
     type: 'document',
@@ -7,14 +9,14 @@ export default {
             name: 'title',
             title: 'Название',
             type: 'string',
-            validation: (Rule: any) => Rule.required(),
+            validation: (Rule: Rule) => Rule.required(),
         },
         {
             name: 'slug',
             title: 'Slug',
             type: 'slug',
             options: { source: 'title' },
-            validation: (Rule: any) => Rule.required(),
+            validation: (Rule: Rule) => Rule.required(),
         },
         {
             name: 'description',
@@ -44,3 +46,5 @@ export default {
         },
     ],
 }
+
+export default courseSchema;

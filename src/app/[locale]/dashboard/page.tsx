@@ -17,34 +17,32 @@ export default function DashboardPage() {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
+        const init = async () => {
+            const { data: { user: authUser } } = await supabase.auth.getUser();
+            setUser(authUser ? { id: authUser.id, email: authUser.email } : null);
+
+            // Fetch categories
+            const { data: cats } = await supabase
+                .from("categories")
+                .select("id, name, icon")
+                .order("order");
+            if (cats) setCategories(cats);
+
+            // Fetch user progress
+            if (authUser) {
+                const { data: prog } = await supabase
+                    .from("progress")
+                    .select("*")
+                    .eq("user_id", authUser.id)
+                    .order("completed_at", { ascending: false });
+                if (prog) setProgress(prog);
+            }
+
+            setLoading(false);
+        };
+
         init();
     }, []);
-
-    const init = async () => {
-        const { data: { user: authUser } } = await supabase.auth.getUser();
-        setUser(authUser ? { id: authUser.id, email: authUser.email } : null);
-
-        // Fetch categories
-        const { data: cats } = await supabase
-            .from("categories")
-            .select("id, name, icon")
-            .order("order");
-        if (cats) setCategories(cats);
-
-        // Fetch user progress
-        if (authUser) {
-            const { data: prog } = await supabase
-                .from("progress")
-                .select("*")
-                .eq("user_id", authUser.id)
-                .order("completed_at", { ascending: false });
-            if (prog) setProgress(prog);
-        }
-
-        setLoading(false);
-    };
-
-    const completedCount = progress.length;
 
     return (
         <div className="min-h-screen bg-[#0f172a] text-[#f1f5f9]">

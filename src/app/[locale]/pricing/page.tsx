@@ -65,7 +65,7 @@ export default function PricingPage() {
                                 <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-accent to-beginner" />
                             )}
 
-                            <h3 className="text-xl font-bold text-white mb-1">{t(plan.name as any)}</h3>
+                            <h3 className="text-xl font-bold text-white mb-1">{t(plan.name as Parameters<typeof t>[0])}</h3>
 
                             <div className="flex items-end gap-1 mb-8">
                                 <span className="text-4xl font-black text-white">₸{plan.price}</span>
@@ -76,7 +76,7 @@ export default function PricingPage() {
                                 {plan.features.map((feature, idx) => (
                                     <li key={idx} className="flex items-start gap-2 text-sm text-slate-300">
                                         <span className="text-accent mt-0.5">✓</span>
-                                        {t(feature as any)}
+                                        {t(feature as Parameters<typeof t>[0])}
                                     </li>
                                 ))}
                             </ul>
@@ -87,7 +87,7 @@ export default function PricingPage() {
                                     : "bg-surface-lighter text-slate-300 hover:text-white hover:bg-surface-lighter/80"
                                     }`}
                             >
-                                {t(plan.cta as any)}
+                                {t(plan.cta as Parameters<typeof t>[0])}
                             </button>
                         </div>
                     ))}

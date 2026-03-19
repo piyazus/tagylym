@@ -51,7 +51,7 @@ export default async function LevelPage({
 }: {
     params: Promise<{ locale: string; season: string; category: string; level: string }>;
 }) {
-    const { category, level, season, locale } = await params;
+    const { category, level, season } = await params;
 
     const seasonData = await getSeasonBySlug("fll", season);
     const categoryData = seasonData
@@ -136,7 +136,7 @@ function LevelPageContent({
                 <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
                     {/* LEFT */}
                     <div className="flex items-center gap-4 w-full md:w-auto">
-                        <Link href={`/fll/${season}/${category}` as any} className="text-[#6B7280] hover:text-[#1A1A1A] transition-colors flex items-center justify-center w-10 h-10 rounded-full hover:bg-[#F3F4F6]">
+                        <Link href={`/fll/${season}/${category}` as React.ComponentProps<typeof Link>["href"]} className="text-[#6B7280] hover:text-[#1A1A1A] transition-colors flex items-center justify-center w-10 h-10 rounded-full hover:bg-[#F3F4F6]">
                             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7" />
                             </svg>
@@ -156,7 +156,7 @@ function LevelPageContent({
                         {allLevels.map(lvl => (
                             <Link
                                 key={lvl}
-                                href={`/fll/${season}/${category}/${lvl}` as any}
+                                href={`/fll/${season}/${category}/${lvl}` as React.ComponentProps<typeof Link>["href"]}
                                 className={`px-4 py-2 rounded-lg text-sm transition-all whitespace-nowrap ${lvl === level
                                     ? "bg-white shadow-sm text-[#1A1A1A] font-medium"
                                     : "text-[#6B7280] hover:text-[#374151]"
@@ -193,7 +193,7 @@ function LevelPageContent({
                             {courses.map((course, idx) => (
                                 <Link
                                     key={course.id}
-                                    href={`/fll/${season}/${category}/${level}/${course.id}` as any}
+                                    href={`/fll/${season}/${category}/${level}/${course.id}` as React.ComponentProps<typeof Link>["href"]}
                                     className="block bg-white border border-[#E5E7EB] rounded-2xl overflow-hidden hover:shadow-md transition-shadow group"
                                 >
                                     {/* Course Thumbnail */}

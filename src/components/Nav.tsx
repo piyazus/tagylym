@@ -49,7 +49,7 @@ export default function Nav() {
         <nav className="sticky top-0 z-50 bg-white border-b border-[#E5E7EB] h-12">
             <div className="max-w-7xl mx-auto px-6 h-full flex items-center justify-between">
                 {/* LEFT: Logo + wordmark */}
-                <Link href={"/" as "/"} className="flex items-center gap-2">
+                <Link href={"/" as const} className="flex items-center gap-2">
                     <Image
                         src="/images/logo-tagylym.png"
                         alt="Tagylym"
@@ -115,7 +115,7 @@ export default function Nav() {
                         </button>
                     ) : (
                         <Link
-                            href={"/auth/login" as "/"}
+                            href={"/auth/login" as const}
                             className="hidden md:inline text-xs px-3 py-1 rounded bg-[#2563EB] text-white hover:bg-[#1D4ED8] transition-colors"
                         >
                             {tNav("login")}
@@ -169,7 +169,7 @@ export default function Nav() {
                             </div>
                         ) : (
                             <Link
-                                href={"/auth/login" as "/"}
+                                href={"/auth/login" as const}
                                 className="block w-full text-center py-2 rounded-lg bg-[#2563EB] text-white text-sm font-medium"
                                 onClick={() => setIsOpen(false)}
                             >

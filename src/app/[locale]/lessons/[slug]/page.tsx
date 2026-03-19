@@ -19,7 +19,7 @@ interface SanityLesson {
     order: number;
     isFree: boolean;
     videoUrl: string | null;
-    content: any[] | null;
+    content: { _type: string; [key: string]: unknown }[] | null;
     tip: string | null;
     rubricCriterion: string | null;
     rubricLevel: string | null;
@@ -58,59 +58,71 @@ function LessonContent({ slug }: { slug: string }) {
     const [lesson, setLesson] = useState<SanityLesson | null>(null);
     const [quizzes, setQuizzes] = useState<Quiz[]>([]);
     const [siblings, setSiblings] = useState<{ slug: string; title: string }[]>([]);
+    const [supabaseLessonId, setSupabaseLessonId] = useState<string | null>(null);
     const [loading, setLoading] = useState(true);
     const [notFound, setNotFound] = useState(false);
     const [userId, setUserId] = useState<string | null>(null);
 
     useEffect(() => {
+        const fetchLesson = async () => {
+            setLoading(true);
+            setNotFound(false);
+
+            try {
+                // Fetch from Sanity
+                const data = await getLessonBySlug(slug);
+
+                if (!data) {
+                    setNotFound(true);
+                    setLoading(false);
+                    return;
+                }
+
+                setLesson(data);
+
+                // Fetch sibling lessons in same course from Sanity
+                const { getLessonsByCourseSlug } = await import("@/lib/sanity");
+                const sibs = await getLessonsByCourseSlug(data.courseSlug);
+                if (sibs) setSiblings(sibs);
+
+                // Look up the Supabase lesson UUID by title match
+                const { data: sbLesson } = await supabase
+                    .from("lessons")
+                    .select("id")
+                    .eq("title", data.title)
+                    .maybeSingle();
+                const lessonUuid = sbLesson?.id ?? null;
+                setSupabaseLessonId(lessonUuid);
+
+                // Fetch quizzes by Supabase UUID (if found)
+                if (lessonUuid) {
+                    const { data: quizData } = await supabase
+                        .from("quizzes")
+                        .select("*")
+                        .eq("lesson_id", lessonUuid);
+                    if (quizData) setQuizzes(quizData);
+                }
+            } catch {
+                setNotFound(true);
+            }
+
+            setLoading(false);
+        };
+
         fetchLesson();
         supabase.auth.getUser().then(({ data: { user } }) => {
             setUserId(user?.id ?? null);
         });
     }, [slug]);
 
-    const fetchLesson = async () => {
-        setLoading(true);
-        setNotFound(false);
-
-        try {
-            // Fetch from Sanity
-            const data = await getLessonBySlug(slug);
-
-            if (!data) {
-                setNotFound(true);
-                setLoading(false);
-                return;
-            }
-
-            setLesson(data);
-
-            // Fetch sibling lessons in same course from Sanity
-            const { getLessonsByCourseSlug } = await import("@/lib/sanity");
-            const sibs = await getLessonsByCourseSlug(data.courseSlug);
-            if (sibs) setSiblings(sibs);
-
-            // Fetch quizzes linked to this lesson from Supabase (by lesson slug match)
-            const { data: quizData } = await supabase
-                .from("quizzes")
-                .select("*")
-                .eq("lesson_id", slug);
-            if (quizData) setQuizzes(quizData);
-        } catch {
-            setNotFound(true);
-        }
-
-        setLoading(false);
-    };
-
+    // VideoPlayer calls this when the video ends; we write progress here using the Supabase UUID
     const handleVideoEnd = async () => {
-        if (!userId || !lesson) return;
-        // Track completion in Supabase progress table
+        if (!userId || !supabaseLessonId) return;
         await supabase.from("progress").upsert({
             user_id: userId,
-            lesson_id: lesson.slug,
+            lesson_id: supabaseLessonId,
             completed_at: new Date().toISOString(),
-        });
+        }, { onConflict: "user_id,lesson_id" });
     };
 
     if (loading) return <LessonLoading />;

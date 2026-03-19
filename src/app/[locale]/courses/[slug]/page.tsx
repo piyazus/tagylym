@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { useTranslations } from "next-intl";
+
 import { Link } from "@/i18n/routing";
 import { getCourseBySlug, getLessonsByCourseSlug } from "@/lib/sanity";
 import { supabase } from "@/lib/supabase";
@@ -47,45 +47,44 @@ export default function CoursePage({
 }
 
 function CourseContent({ slug }: { slug: string }) {
-    const t = useTranslations("common");
     const [course, setCourse] = useState<SanityCourse | null>(null);
     const [lessons, setLessons] = useState<SanityLessonListItem[]>([]);
     const [completedLessons, setCompletedLessons] = useState<Set<string>>(new Set());
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
+        const fetchCourse = async () => {
+            setLoading(true);
+
+            try {
+                const courseData = await getCourseBySlug(slug);
+                setCourse(courseData);
+
+                if (courseData) {
+                    const lessonData = await getLessonsByCourseSlug(slug);
+                    if (lessonData) setLessons(lessonData);
+                }
+
+                // Fetch user progress
+                const { data: { user } } = await supabase.auth.getUser();
+                if (user) {
+                    const { data: progress } = await supabase
+                        .from("progress")
+                        .select("lesson_id")
+                        .eq("user_id", user.id);
+                    if (progress) {
+                        setCompletedLessons(new Set(progress.map((p) => p.lesson_id)));
+                    }
+                }
+            } catch {
+                // Sanity fetch error
+            }
+
+            setLoading(false);
+        };
+
         fetchCourse();
     }, [slug]);
-
-    const fetchCourse = async () => {
-        setLoading(true);
-
-        try {
-            const courseData = await getCourseBySlug(slug);
-            setCourse(courseData);
-
-            if (courseData) {
-                const lessonData = await getLessonsByCourseSlug(slug);
-                if (lessonData) setLessons(lessonData);
-            }
-
-            // Fetch user progress
-            const { data: { user } } = await supabase.auth.getUser();
-            if (user) {
-                const { data: progress } = await supabase
-                    .from("progress")
-                    .select("lesson_id")
-                    .eq("user_id", user.id);
-                if (progress) {
-                    setCompletedLessons(new Set(progress.map((p) => p.lesson_id)));
-                }
-            }
-        } catch {
-            // Sanity fetch error
-        }
-
-        setLoading(false);
-    };
 
     if (loading) {
         return (

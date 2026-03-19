@@ -5,43 +5,36 @@ import { useTranslations } from "next-intl";
 import { supabase } from "@/lib/supabase";
 import type { ChecklistBlockProps } from "@/types";
 
-export default function ChecklistBlock({ items, levelId }: ChecklistBlockProps) {
+export default function ChecklistBlock({ items }: ChecklistBlockProps) {
     const t = useTranslations("level");
     const [checkedItems, setCheckedItems] = useState<Record<string, boolean>>({});
 
     useEffect(() => {
-        // Initialize all items as unchecked
-        const initial: Record<string, boolean> = {};
-        items.forEach((item) => {
-            initial[item.id] = false;
-        });
-        setCheckedItems(initial);
+        const loadProgress = async () => {
+            try {
+                const { data: { user } } = await supabase.auth.getUser();
+                if (!user) return;
+
+                const { data } = await supabase
+                    .from("checklist_progress")
+                    .select("item_id, checked")
+                    .eq("user_id", user.id);
+
+                if (data) {
+                    const progress: Record<string, boolean> = {};
+                    data.forEach((row) => {
+                        progress[row.item_id] = row.checked;
+                    });
+                    setCheckedItems((prev) => ({ ...prev, ...progress }));
+                }
+            } catch {
+                // Not logged in or error — use local state
+            }
+        };
 
         // Try to load from Supabase
         loadProgress();
     }, [items]);
-
-    const loadProgress = async () => {
-        try {
-            const { data: { user } } = await supabase.auth.getUser();
-            if (!user) return;
-
-            const { data } = await supabase
-                .from("checklist_progress")
-                .select("item_id, checked")
-                .eq("user_id", user.id);
-
-            if (data) {
-                const progress: Record<string, boolean> = {};
-                data.forEach((row) => {
-                    progress[row.item_id] = row.checked;
-                });
-                setCheckedItems((prev) => ({ ...prev, ...progress }));
-            }
-        } catch {
-            // Not logged in or error — use local state
-        }
-    };
 
     const toggleItem = async (itemId: string) => {
         const newChecked = !checkedItems[itemId];

@@ -43,10 +43,7 @@ async function runViaREST(label, sql) {
 
     // Try the /rest/v1/rpc approach — create a temp function
     // Actually, let's try the SQL endpoint that Supabase exposes
-    const endpoints = [
-        `${SUPABASE_URL}/pg/query`,
-        `${SUPABASE_URL}/rest/v1/rpc`,
-    ];
+    // Actually, let's try the SQL endpoint that Supabase exposes
 
     // Use the standard Supabase approach: split SQL into statements and run via service role
     // The supabase-js client can execute raw SQL via .rpc() if we create a helper function

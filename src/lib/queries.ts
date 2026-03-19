@@ -57,7 +57,7 @@ export async function getSeasonBySlug(
         .from("seasons")
         .select("*")
         .eq("competition_id", comp.id)
-        .eq("is_active", true)
+        .eq("slug", seasonSlug)
         .single();
     if (error) return null;
     return data;

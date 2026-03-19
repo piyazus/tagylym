@@ -61,7 +61,9 @@
     "rubric_beginning": "Beginning",
     "rubric_developing": "Developing",
     "rubric_accomplished": "Accomplished",
-    "rubric_exceeds": "Exceeds"
+    "rubric_exceeds": "Exceeds",
+    "no_content": "This lesson's content is not ready yet.",
+    "back_to_courses": "Back to Courses"
   },
   "checklist": {
     "title": "Checklist",
@@ -71,14 +73,23 @@
   },
   "dashboard": {
     "welcome": "Welcome",
+    "subtitle": "Your learning progress",
+    "guest": "Student",
     "your_progress": "Your Progress",
+    "progress": "Progress",
     "continue_learning": "Continue Learning",
     "last_lesson": "Last Lesson",
     "lessons_done": "lessons done",
+    "lessons_completed": "lessons completed",
     "checklist_status": "Checklist",
+    "checklist": "Checklist Status",
     "of": "of",
+    "recent": "Recent Activity",
     "recent_lessons": "Recent Lessons",
     "no_progress": "No lessons completed yet. Let's start!",
+    "noProgress": "No completed lessons yet. Let's begin!",
+    "login_prompt": "Sign in to view your progress.",
+    "login_btn": "Sign In",
     "categories": {
       "robot-design": "Robot Design",
       "innovation": "Innovation Project",
@@ -148,7 +159,9 @@
     "categories": {
       "robot-design": "Robot Design",
       "innovation": "Innovation Project",
-      "core-values": "Core Values"
+      "core-values": "Core Values",
+      "coding": "Coding",
+      "robot-game": "Robot Game"
     }
   },
   "resources": {
@@ -182,6 +195,69 @@
     "success": "Thank you! Your email has been successfully added to the list.",
     "subscribe": "Subscribe"
   },
+  "ftc": {
+    "competition": "FIRST Tech Challenge",
+    "season": "DECODE\u2122 presented by RTX \u2014 2025\u20132026",
+    "tagline": "Decode the artifacts. Build the robot. Win.",
+    "age_range": "Ages 12\u201318",
+    "parts_kit": "goBILDA",
+    "programming": "FTC Blocks, OnBot Java, Android Studio (Java)",
+    "discipline_soon_badge": "Soon",
+    "d1_title": "Engineering & Build",
+    "d1_desc": "Building a robot from the goBILDA kit: drivetrain, artifact collection system, shooting mechanism, and gate control.",
+    "d2_title": "Programming",
+    "d2_desc": "FTC Blocks for beginners, OnBot Java for intermediate, Android Studio for advanced. Autonomous mode and TeleOp.",
+    "d3_title": "Game Strategy",
+    "d3_desc": "Collecting and delivering artifacts, gate control, end-game parking. Alliance strategy and partner communication.",
+    "d4_title": "Engineering Notebook",
+    "d4_desc": "Documenting the design process, iterations, and team decisions for judging presentations.",
+    "coming_section": "What's Coming",
+    "coming_1": "Build courses on goBILDA from zero to competition-ready",
+    "coming_2": "Programming: Blocks \u2192 Java \u2192 Android Studio",
+    "coming_3": "DECODE\u2122 game breakdown: artifacts, gates, end-game",
+    "coming_4": "Competition prep checklists",
+    "coming_5": "FTC Quiz Bank",
+    "resources_section": "Key Resources",
+    "r1_label": "Official FTC site",
+    "r2_label": "DECODE\u2122 Season Resources",
+    "r3_label": "goBILDA Starter Bot",
+    "waitlist_title": "Notify me at launch",
+    "waitlist_placeholder": "Your email...",
+    "waitlist_button": "Notify me",
+    "waitlist_success": "Thank you! We\u2019ll notify you at launch."
+  },
+  "fgc": {
+    "competition": "FIRST Global Challenge",
+    "season": "Igniting Innovation \u2014 2026",
+    "tagline": "190+ countries. One mission. Incheon, October 2026.",
+    "age_range": "Ages 14\u201318",
+    "parts_kit": "REV DUO (standardised kit)",
+    "location": "Incheon, Republic of Korea | 7\u201310 October 2026",
+    "kz_badge": "Kazakhstan is participating",
+    "discipline_soon_badge": "Soon",
+    "d1_title": "Engineering & Build",
+    "d1_desc": "Building a robot from the standard REV DUO kit. Season theme: wildfire prevention and suppression.",
+    "d2_title": "Programming",
+    "d2_desc": "Autonomous mode and driver-controlled period. Working with the REV Control Hub and sensors.",
+    "d3_title": "Game Strategy",
+    "d3_desc": "Ecosystem restoration, species protection, maintaining ecological balance on the field. Cooperative play with international teams.",
+    "d4_title": "Teamwork & Values",
+    "d4_desc": "FGC judges more than on-field performance \u2014 the spirit of cooperation, inclusivity, and mutual aid between countries.",
+    "coming_section": "What's Coming",
+    "coming_1": "Full prep course for FGC Incheon 2026",
+    "coming_2": "Building on REV DUO: from zero to competition robot",
+    "coming_3": "Eco Equilibrium game strategy",
+    "coming_4": "Programming: REV Control Hub, autonomous mode",
+    "coming_5": "Presentation and team documentation preparation",
+    "resources_section": "Key Resources",
+    "r1_label": "Official FGC site",
+    "r2_label": "FGC 2026 Incheon",
+    "r3_label": "REV DUO Build System",
+    "waitlist_title": "Notify me at launch",
+    "waitlist_placeholder": "Your email...",
+    "waitlist_button": "Notify me",
+    "waitlist_success": "Thank you! We\u2019ll notify you at launch."
+  },
   "errors": {
     "not_found": "Page Not Found",
     "not_found_desc": "The page you are looking for does not exist",
@@ -208,6 +284,28 @@
     "category": "category",
     "competition": "competition",
     "try_again": "Try again",
-    "hide": "Hide"
+    "hide": "Hide",
+    "loading": "Loading...",
+    "coming_soon": "Coming Soon"
+  },
+  "lesson_page": {
+    "no_content": "This lesson's content is not ready yet.",
+    "back_to_courses": "Back to Courses"
+  },
+  "level": {
+    "lessons": "lessons",
+    "progress": "completed",
+    "checklist": "Checklist"
+  },
+  "roi": {
+    "title": "ROI Calculator",
+    "missionName": "Mission Name",
+    "points": "Points",
+    "time": "Time (sec)",
+    "roi": "ROI",
+    "addRow": "Add Row",
+    "removeRow": "Remove Row",
+    "sortByRoi": "Sort by ROI",
+    "exportCsv": "Export CSV"
   }
 }

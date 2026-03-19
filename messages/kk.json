@@ -61,7 +61,9 @@
     "rubric_beginning": "Бастауыш",
     "rubric_developing": "Дамушы",
     "rubric_accomplished": "Орындады",
-    "rubric_exceeds": "Асып кетті"
+    "rubric_exceeds": "Асып кетті",
+    "no_content": "Бұл сабақтың мазмұны әлі дайын емес.",
+    "back_to_courses": "Курстарға қайту"
   },
   "checklist": {
     "title": "Чеклист",
@@ -71,14 +73,23 @@
   },
   "dashboard": {
     "welcome": "Қош келдің",
+    "subtitle": "Сіздің оқу үлгерімі",
+    "guest": "Студент",
     "your_progress": "Сенің үлгерімің",
+    "progress": "Үлгерім",
     "continue_learning": "Оқуды жалғастыру",
     "last_lesson": "Соңғы сабақ",
     "lessons_done": "сабақ аяқталды",
+    "lessons_completed": "сабақ аяқталды",
     "checklist_status": "Чеклист",
+    "checklist": "Чеклист күйі",
     "of": "ден",
+    "recent": "Соңғы белсенділік",
     "recent_lessons": "Соңғы сабақтар",
     "no_progress": "Әлі бірде-бір сабақ аяқталмады. Бастайық!",
+    "noProgress": "Аяқталған сабақтар жоқ. Бастайық!",
+    "login_prompt": "Үлгерімді көру үшін кіріңіз.",
+    "login_btn": "Кіру",
     "categories": {
       "robot-design": "Робот Дизайны",
       "innovation": "Инновациялық Жоба",
@@ -148,7 +159,9 @@
     "categories": {
       "robot-design": "Робот Дизайны",
       "innovation": "Инновациялық Жоба",
-      "core-values": "Негізгі Құндылықтар"
+      "core-values": "Негізгі Құндылықтар",
+      "coding": "Бағдарламалау",
+      "robot-game": "Робот Ойыны"
     }
   },
   "resources": {
@@ -208,6 +221,28 @@
     "category": "категория",
     "competition": "жарыс",
     "try_again": "Қайтадан байқап көру",
-    "hide": "Жасыру"
+    "hide": "Жасыру",
+    "loading": "Жүктелуде...",
+    "coming_soon": "Жақында"
+  },
+  "lesson_page": {
+    "no_content": "Бұл сабақтың мазмұны әлі дайын емес.",
+    "back_to_courses": "Курстарға қайту"
+  },
+  "level": {
+    "lessons": "сабақ",
+    "progress": "орындалды",
+    "checklist": "Чеклист"
+  },
+  "roi": {
+    "title": "ROI Калькуляторы",
+    "missionName": "Миссия атауы",
+    "points": "Балл",
+    "time": "Уақыт (сек)",
+    "roi": "ROI",
+    "addRow": "Жол қосу",
+    "removeRow": "Жолды жою",
+    "sortByRoi": "ROI бойынша сұрыптау",
+    "exportCsv": "CSV-ге шығару"
   }
 }
