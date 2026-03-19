@@ -1,29 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Calistoga&family=Inter:wght@400;500;600;700&display=swap');
 @import "tailwindcss";
 
 @theme {
-  --color-blue-main: #2563EB;
-  --color-text-dark: #1A1A2E;
-  --color-text-gray: #4A5568;
-  --color-text-light-gray: #718096;
-  --color-yellow-bg: #FEF3C7;
-  --color-yellow-border: #F59E0B;
-  --color-yellow-text: #92400E;
-  --color-bg-white: #FFFFFF;
-
-  /* Keep old colors for other pages if needed, but the landing will use the new ones */
-  --color-beginner: #3B82F6;
-  --color-intermediate: #F97316;
-  --color-advanced: #22C55E;
-  --color-accent: #8B5CF6;
-  --color-brand: #1E3A5F;
-  --color-surface: #0F172A;
-  --color-surface-light: #1E293B;
-  --color-surface-lighter: #334155;
-  --color-muted: #94A3B8;
-
   --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
-  --font-caveat: 'Caveat', cursive;
+  --font-display: 'Calistoga', Georgia, serif;
 }
 
 /* ─── Base Styles ─────────────────────────────────────── */
@@ -33,9 +13,13 @@ html {
 
 body {
   font-family: var(--font-sans);
-  background-color: var(--color-surface);
-  color: #E2E8F0;
+  background-color: #F5F5F5;
+  color: #1A1A1A;
   line-height: 1.7;
+}
+
+.font-display {
+  font-family: var(--font-display);
 }
 
 /* ─── Scrollbar ───────────────────────────────────────── */

@@ -24,33 +24,33 @@ export default function QuizCard({ quiz }: QuizCardProps) {
     };
 
     return (
-        <div className="glass-card p-6 space-y-4">
+        <div className="bg-white border border-[#E5E7EB] rounded-xl p-6 shadow-sm space-y-4">
             {/* Question */}
-            <p className="font-semibold text-white leading-relaxed">{quiz.question}</p>
+            <p className="font-semibold text-base text-[#1A1A1A] mb-4">{quiz.question}</p>
 
             {quiz.type === "mcq" ? (
                 <>
                     {/* MCQ Options */}
                     <div className="space-y-2">
                         {quiz.options?.map((option, idx) => {
-                            let optionClass = "border-surface-lighter/50 hover:border-accent/50 hover:bg-surface-lighter/30";
+                            let optionClass = "border-[#E5E7EB] text-[#374151] hover:bg-[#F3F4F6]";
 
                             if (isSubmitted) {
                                 if (option === quiz.correct_answer) {
-                                    optionClass = "border-success/50 bg-success/10 text-success";
+                                    optionClass = "bg-[#F0FDF4] border-green-300 text-green-800 font-medium";
                                 } else if (option === selectedOption && !isCorrect) {
-                                    optionClass = "border-error/50 bg-error/10 text-error";
+                                    optionClass = "bg-[#FEF2F2] border-red-300 text-red-700 font-medium";
                                 } else {
-                                    optionClass = "border-surface-lighter/30 opacity-50";
+                                    optionClass = "border-[#E5E7EB] opacity-50";
                                 }
                             } else if (option === selectedOption) {
-                                optionClass = "border-accent bg-accent/10 text-accent";
+                                optionClass = "border-[#2563EB] bg-blue-50 text-[#1D4ED8] font-medium";
                             }
 
                             return (
                                 <label
                                     key={idx}
-                                    className={`flex items-center gap-3 p-3 rounded-lg border cursor-pointer transition-all ${optionClass}`}
+                                    className={`w-full text-left px-4 py-3 rounded-lg border flex items-center gap-3 cursor-pointer transition-colors ${optionClass}`}
                                 >
                                     <input
                                         type="radio"
@@ -59,7 +59,7 @@ export default function QuizCard({ quiz }: QuizCardProps) {
                                         checked={selectedOption === option}
                                         onChange={() => !isSubmitted && setSelectedOption(option)}
                                         disabled={isSubmitted}
-                                        className="accent-accent"
+                                        className="w-4 h-4 text-[#2563EB] border-[#D1D5DB] focus:ring-[#2563EB]/30 bg-white"
                                     />
                                     <span className="text-sm">{option}</span>
                                 </label>
@@ -72,14 +72,14 @@ export default function QuizCard({ quiz }: QuizCardProps) {
                         <button
                             onClick={handleSubmit}
                             disabled={!selectedOption}
-                            className="w-full py-2.5 rounded-lg font-medium text-sm gradient-brand text-white disabled:opacity-40 disabled:cursor-not-allowed hover:opacity-90 transition-opacity"
+                            className="bg-[#2563EB] text-white px-6 py-2.5 rounded-lg text-sm hover:bg-[#1D4ED8] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                         >
                             {t("submit")}
                         </button>
                     ) : (
-                        <div className="space-y-3">
+                        <div className="space-y-4 mt-4">
                             <div
-                                className={`flex items-center gap-2 p-3 rounded-lg ${isCorrect ? "bg-success/10 text-success" : "bg-error/10 text-error"
+                                className={`flex items-center gap-2 p-3 rounded-lg ${isCorrect ? "bg-[#F0FDF4] text-green-800 border border-green-300" : "bg-[#FEF2F2] text-red-700 border border-red-300"
                                     }`}
                             >
                                 <span className="text-lg">{isCorrect ? "🎉" : "❌"}</span>
@@ -90,20 +90,20 @@ export default function QuizCard({ quiz }: QuizCardProps) {
 
                             {/* Tip */}
                             {quiz.tip && (
-                                <div className="flex items-start gap-2 p-3 rounded-lg bg-tip-bg/50 border border-tip/20">
-                                    <span className="text-lg mt-0.5">💡</span>
-                                    <div>
-                                        <span className="font-semibold text-tip text-xs uppercase tracking-wider">
+                                <div className="bg-[#FFFBEB] border border-[#FDE68A] rounded-xl p-4">
+                                    <div className="flex items-center gap-2 mb-1">
+                                        <span className="text-lg">💡</span>
+                                        <span className="font-mono text-xs uppercase tracking-wide text-[#92400E]">
                                             {t("tip")}
                                         </span>
-                                        <p className="text-sm text-slate-300 mt-1 leading-relaxed">{quiz.tip}</p>
                                     </div>
+                                    <p className="text-sm text-[#78350F] leading-relaxed">{quiz.tip}</p>
                                 </div>
                             )}
 
                             <button
                                 onClick={resetQuiz}
-                                className="text-sm text-[#8B5CF6] hover:text-purple-400 transition-colors mt-2"
+                                className="text-sm text-[#2563EB] hover:text-[#1D4ED8] underline transition-colors"
                             >
                                 ↻ Қайтадан байқап көру
                             </button>
@@ -116,36 +116,36 @@ export default function QuizCard({ quiz }: QuizCardProps) {
                     {!showAnswer ? (
                         <button
                             onClick={() => setShowAnswer(true)}
-                            className="w-full py-2.5 rounded-lg font-medium text-sm bg-[#8B5CF6] hover:bg-purple-500 text-white transition-opacity"
+                            className="bg-[#2563EB] text-white px-6 py-2.5 rounded-lg text-sm hover:bg-[#1D4ED8] transition-colors"
                         >
                             {t("showAnswer")}
                         </button>
                     ) : (
-                        <div className="space-y-3 animate-fade-in-up">
-                            <div className="p-4 rounded-lg bg-[#8B5CF6]/10 border border-[#8B5CF6]/20">
-                                <span className="font-semibold text-[#8B5CF6] text-xs uppercase tracking-wider block mb-2">
+                        <div className="space-y-4 mt-4 animate-fade-in-up">
+                            <div className="p-4 rounded-xl bg-blue-50 border border-blue-200">
+                                <span className="font-semibold text-[#1D4ED8] text-xs uppercase tracking-wider block mb-2">
                                     {t("modelAnswer")}
                                 </span>
-                                <p className="text-sm text-slate-300 leading-relaxed">
+                                <p className="text-sm text-[#374151] leading-relaxed">
                                     {quiz.correct_answer}
                                 </p>
                             </div>
 
                             {quiz.tip && (
-                                <div className="flex items-start gap-2 p-3 rounded-lg bg-yellow-500/10 border border-yellow-500/20">
-                                    <span className="text-lg mt-0.5">💡</span>
-                                    <div>
-                                        <span className="font-semibold text-yellow-500 text-xs uppercase tracking-wider">
+                                <div className="bg-[#FFFBEB] border border-[#FDE68A] rounded-xl p-4">
+                                    <div className="flex items-center gap-2 mb-1">
+                                        <span className="text-lg">💡</span>
+                                        <span className="font-mono text-xs uppercase tracking-wide text-[#92400E]">
                                             {t("tip")}
                                         </span>
-                                        <p className="text-sm text-slate-300 mt-1 leading-relaxed">{quiz.tip}</p>
                                     </div>
+                                    <p className="text-sm text-[#78350F] leading-relaxed">{quiz.tip}</p>
                                 </div>
                             )}
 
                             <button
                                 onClick={resetQuiz}
-                                className="text-sm text-[#8B5CF6] hover:text-purple-400 transition-colors mt-2"
+                                className="text-sm text-[#2563EB] hover:text-[#1D4ED8] underline transition-colors"
                             >
                                 ↻ Жасыру
                             </button>

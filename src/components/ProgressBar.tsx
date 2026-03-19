@@ -1,24 +1,22 @@
 import type { ProgressBarProps } from "@/types";
+import { useTranslations } from "next-intl";
 
 export default function ProgressBar({ completed, total }: ProgressBarProps) {
     const percentage = total > 0 ? Math.round((completed / total) * 100) : 0;
+    const t = useTranslations("level");
 
     return (
         <div className="w-full">
-            <div className="flex items-center justify-between mb-2">
-                <span className="text-xs text-muted font-medium">
-                    {completed} / {total}
-                </span>
-                <span className="text-xs font-semibold text-accent">{percentage}%</span>
-            </div>
-            <div className="w-full h-2.5 bg-surface-lighter rounded-full overflow-hidden">
+            <div className="w-full h-1.5 bg-[#E5E7EB] rounded-full overflow-hidden">
                 <div
-                    className="h-full rounded-full bg-gradient-to-r from-beginner via-accent to-advanced transition-all duration-700 ease-out relative"
+                    className="h-full rounded-full bg-[#2563EB] transition-all duration-500 ease-out"
                     style={{ width: `${percentage}%` }}
-                >
-                    {/* Shimmer effect */}
-                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent animate-shimmer" />
-                </div>
+                />
+            </div>
+            <div className="mt-1">
+                <span className="text-xs text-[#6B7280]">
+                    {completed} / {total} {t("lessons")}
+                </span>
             </div>
         </div>
     );

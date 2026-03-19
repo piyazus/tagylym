@@ -42,10 +42,10 @@ export default function LessonPage({
 
 function LessonLoading() {
     return (
-        <div className="min-h-screen flex items-center justify-center bg-[#0f172a] text-[#f1f5f9]">
+        <div className="min-h-screen flex items-center justify-center bg-[#F5F5F5] text-[#1A1A1A]">
             <div className="text-center">
-                <div className="w-8 h-8 border-2 border-accent border-t-transparent rounded-full animate-spin mx-auto mb-3" />
-                <p className="text-muted text-sm">Загрузка урока...</p>
+                <div className="w-8 h-8 border-2 border-[#2563EB] border-t-transparent rounded-full animate-spin mx-auto mb-3" />
+                <p className="text-[#6B7280] text-sm">Урок жүктелуде...</p>
             </div>
         </div>
     );
@@ -115,20 +115,20 @@ function LessonContent({ slug }: { slug: string }) {
 
     if (notFound || !lesson) {
         return (
-            <div className="min-h-screen flex items-center justify-center bg-[#0f172a] text-[#f1f5f9]">
+            <div className="min-h-screen flex items-center justify-center bg-[#F5F5F5] text-[#1A1A1A]">
                 <div className="text-center max-w-md mx-auto px-6">
-                    <div className="w-20 h-20 rounded-2xl glass flex items-center justify-center mx-auto mb-6 text-4xl">
+                    <div className="w-20 h-20 rounded-2xl bg-white border border-[#E5E7EB] shadow-sm flex items-center justify-center mx-auto mb-6 text-4xl">
                         📝
                     </div>
-                    <h1 className="text-2xl font-bold text-white mb-3">Контент жақында шығады</h1>
-                    <p className="text-[#94a3b8] text-sm leading-relaxed mb-6">
+                    <h1 className="text-2xl font-bold font-display text-[#1A1A1A] mb-3">Контент жақында шығады</h1>
+                    <p className="text-[#6B7280] text-sm leading-relaxed mb-6">
                         Бұл сабақ әлі әзірленуде. Біз бейне, мәтін және тапсырмаларды жақын арада қосамыз.
                     </p>
                     <Link
                         href={"/fll" as "/"}
-                        className="inline-flex px-5 py-2.5 rounded-lg bg-[#3B82F6] text-white font-medium text-sm hover:opacity-90 transition-opacity"
+                        className="inline-flex px-6 py-2.5 rounded-lg bg-[#2563EB] text-white font-medium text-sm hover:bg-[#1D4ED8] transition-colors"
                     >
-                        ← FLL-ге қайту
+                        ← Курстарға қайту
                     </Link>
                 </div>
             </div>
@@ -141,14 +141,14 @@ function LessonContent({ slug }: { slug: string }) {
     const nextLesson = currentIdx < siblings.length - 1 ? siblings[currentIdx + 1] : null;
 
     return (
-        <div className="min-h-screen bg-[#0f172a] text-[#f1f5f9]">
-            <div className="max-w-4xl mx-auto px-6 pt-16 pb-24">
+        <div className="min-h-screen bg-[#F5F5F5] text-[#1A1A1A]">
+            <div className="max-w-3xl mx-auto py-10 px-6">
                 {/* Title */}
-                <h1 className="text-3xl font-black text-white mb-6">{lesson.title}</h1>
+                <h1 className="font-display text-3xl font-bold text-[#1A1A1A] mb-6">{lesson.title}</h1>
 
                 {/* Video */}
                 {lesson.videoUrl && (
-                    <div className="mb-8">
+                    <div className="aspect-video bg-black rounded-2xl overflow-hidden mb-8 shadow-sm">
                         <VideoPlayer
                             videoUrl={lesson.videoUrl}
                             lessonId={lesson.slug}
@@ -159,7 +159,7 @@ function LessonContent({ slug }: { slug: string }) {
 
                 {/* Content (Portable Text) */}
                 {lesson.content && lesson.content.length > 0 && (
-                    <div className="prose-custom mb-8 text-[#f1f5f9]">
+                    <div className="prose prose-lg max-w-none mb-8 text-base text-[#374151] leading-relaxed prose-headings:font-semibold prose-headings:text-[#1A1A1A] prose-h2:text-2xl prose-h2:mt-8 prose-h2:mb-4 prose-h3:text-xl prose-h3:mt-8 prose-h3:mb-4">
                         <PortableText value={lesson.content} />
                     </div>
                 )}
@@ -180,22 +180,24 @@ function LessonContent({ slug }: { slug: string }) {
 
                 {/* Quizzes */}
                 {quizzes.length > 0 && (
-                    <div className="mt-8 space-y-6">
-                        <h2 className="text-xl font-bold text-white">{t("quiz")}</h2>
-                        {quizzes.map((q) => (
-                            <QuizCard key={q.id} quiz={q} />
-                        ))}
+                    <div className="mt-12 mb-6">
+                        <h2 className="text-2xl font-bold text-[#1A1A1A] mb-6">Проверка знаний</h2>
+                        <div className="space-y-6">
+                            {quizzes.map((q) => (
+                                <QuizCard key={q.id} quiz={q} />
+                            ))}
+                        </div>
                     </div>
                 )}
 
                 {/* Navigation */}
-                <div className="mt-12 flex items-center justify-between border-t border-[#334155] pt-8">
+                <div className="mt-12 flex items-center justify-between border-t border-[#E5E7EB] pt-8">
                     {prevLesson ? (
                         <Link
                             href={`/lessons/${prevLesson.slug}` as "/"}
-                            className="text-sm text-[#3B82F6] hover:text-white transition-colors flex items-center gap-1"
+                            className="bg-white border border-[#E5E7EB] text-[#374151] hover:bg-[#F3F4F6] transition-colors rounded-lg px-6 py-2.5 text-sm font-medium flex items-center gap-2 shadow-sm"
                         >
-                            {t("previous")}
+                            &larr; {t("previous")}
                         </Link>
                     ) : (
                         <span />
@@ -203,9 +205,9 @@ function LessonContent({ slug }: { slug: string }) {
                     {nextLesson ? (
                         <Link
                             href={`/lessons/${nextLesson.slug}` as "/"}
-                            className="text-sm text-[#3B82F6] hover:text-white transition-colors flex items-center gap-1"
+                            className="bg-[#2563EB] text-white hover:bg-[#1D4ED8] transition-colors rounded-lg px-6 py-2.5 text-sm font-medium flex items-center gap-2 shadow-sm"
                         >
-                            {t("next")}
+                            {t("next")} &rarr;
                         </Link>
                     ) : (
                         <span />

@@ -54,33 +54,28 @@ function CategoryPageContent({
 
     if (!cat) {
         return (
-            <div className="min-h-screen flex items-center justify-center">
-                <p className="text-slate-400">Категория табылмады.</p>
+            <div className="min-h-screen flex items-center justify-center bg-[#F5F5F5]">
+                <p className="text-[#6B7280]">Категория табылмады.</p>
             </div>
         );
     }
 
     return (
-        <div className="min-h-screen bg-[#0f172a] text-[#f1f5f9]">
+        <div className="min-h-screen bg-[#F5F5F5] text-[#1A1A1A]">
             {/* Header */}
-            <section className="relative overflow-hidden">
-                <div className="absolute inset-0">
-                    <div className="absolute top-0 left-1/3 w-80 h-80 bg-[#8B5CF6]/10 rounded-full blur-[100px]" />
-                </div>
-
-                <div className="relative max-w-7xl mx-auto px-6 pt-16 pb-12 text-center">
-                    <div className="text-5xl mb-4">{cat.icon}</div>
-                    <h1 className="text-4xl font-black text-white mb-3">{cat.name}</h1>
-                    <p className="mt-4 text-sm text-[#8B5CF6] font-medium">
-                        Стандартты шешім (X) → Біздің тәсіл (Y), өйткені (Z)
+            <section className="bg-white border-b border-[#E5E7EB] py-16 px-6">
+                <div className="max-w-7xl mx-auto text-center">
+                    <div className="text-5xl mb-6">{cat.icon}</div>
+                    <h1 className="text-4xl font-display font-bold text-[#1A1A1A] mb-4">{cat.name}</h1>
+                    <p className="text-[#6B7280] max-w-2xl mx-auto">
+                        Осы санаттағы дағдыларыңызды дамытып, жаңа белестерді бағындырыңыз.
                     </p>
                 </div>
             </section>
 
             {/* Level Cards */}
-            <section className="max-w-7xl mx-auto px-6 pb-16">
-                <h2 className="text-2xl font-bold text-center mb-2">{t("levels")}</h2>
-                <div className="w-12 h-1 bg-gradient-to-r from-[#3B82F6] via-[#F97316] to-[#22C55E] rounded-full mx-auto mb-10" />
+            <section className="max-w-7xl mx-auto px-6 py-16">
+                <h2 className="text-2xl font-display font-bold text-center mb-12">{t("levels")}</h2>
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6 stagger-children">
                     {levels.map((level) => {
@@ -96,34 +91,34 @@ function CategoryPageContent({
                             <Link
                                 key={level.id}
                                 href={`/fll/${season}/${category}/${slug}` as "/"}
-                                className="bg-[#1e293b] rounded-xl border border-[#334155] p-8 group relative overflow-hidden transition-all hover:border-[#8B5CF6]/50 shadow-lg shadow-black/20 hover:shadow-purple-500/10"
+                                className="bg-white rounded-2xl border border-[#E5E7EB] p-8 group relative overflow-hidden transition-all hover:border-[#2563EB]/50 hover:shadow-md"
                             >
                                 {/* Top accent bar */}
                                 <div
-                                    className="absolute top-0 left-0 right-0 h-1 rounded-t-xl"
+                                    className="absolute top-0 left-0 right-0 h-1"
                                     style={{ backgroundColor: level.color }}
                                 />
 
                                 <LevelBadge level={slug} />
 
-                                <h3 className="text-xl font-bold text-white mt-4 mb-3 group-hover:text-[#8B5CF6] transition-colors">
+                                <h3 className="text-xl font-bold text-[#1A1A1A] mt-6 mb-3 group-hover:text-[#2563EB] transition-colors">
                                     {displayName}
                                 </h3>
 
-                                <div className="space-y-2 text-xs text-[#94a3b8] mb-6">
+                                <div className="space-y-3 text-sm text-[#6B7280] mb-8">
                                     <div className="flex items-center gap-2">
-                                        <span className="text-base">🎬</span>
+                                        <span className="text-lg">🎬</span>
                                         {level.lessonCount} {t("lessons")}
                                     </div>
                                     <div className="flex items-center gap-2">
-                                        <span className="text-base">✅</span>
+                                        <span className="text-lg">✅</span>
                                         {level.checklistCount} {t("checklistItems")}
                                     </div>
                                 </div>
 
                                 <div
-                                    className="py-2.5 rounded-lg text-center text-sm font-semibold transition-all"
-                                    style={{ backgroundColor: `${level.color}20`, color: level.color }}
+                                    className="py-3 rounded-xl text-center text-sm font-semibold transition-all group-hover:opacity-90"
+                                    style={{ backgroundColor: `${level.color}15`, color: level.color }}
                                 >
                                     {t("start")}
                                 </div>
@@ -135,12 +130,12 @@ function CategoryPageContent({
 
             {/* Core Values */}
             <section className="max-w-7xl mx-auto px-6 pb-24">
-                <div className="bg-[#1e293b] rounded-xl border-l-4 border-[#8B5CF6] p-6 shadow-md shadow-black/20">
-                    <h3 className="text-lg font-bold flex items-center gap-2 mb-3 text-white">
+                <div className="bg-[#EFF6FF] rounded-2xl p-6 border-l-4 border-[#2563EB]">
+                    <h3 className="text-lg font-bold flex items-center gap-2 mb-3 text-[#1E40AF]">
                         <span className="text-xl">💜</span>
                         Негізгі Құндылықтар
                     </h3>
-                    <p className="text-sm text-[#94a3b8] leading-relaxed">
+                    <p className="text-sm text-[#3B82F6] leading-relaxed">
                         Негізгі құндылықтар жеке пән емес. Олар барлық сабақтар процесіне біріктірілген. Бағалау кезінде төрешілер команданың жарыс барысында бұл құндылықтарды қалай көрсететініне назар аударады.
                     </p>
                 </div>

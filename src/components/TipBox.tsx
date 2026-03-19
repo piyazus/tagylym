@@ -4,14 +4,14 @@ import { useTranslations } from "next-intl";
 export default function TipBox({ text }: TipBoxProps) {
     const t = useTranslations("lesson");
     return (
-        <div className="flex items-start gap-3 p-4 rounded-lg bg-tip-bg/50 border border-tip/20 my-4 transition-all hover:border-tip/40 hover:shadow-lg hover:shadow-tip/5">
-            <span className="text-2xl mt-0.5 animate-float">💡</span>
-            <div>
-                <span className="font-bold text-tip text-xs uppercase tracking-wider block mb-1">
+        <div className="bg-[#FFFBEB] border border-[#FDE68A] rounded-xl p-5 my-6">
+            <div className="flex items-center gap-2 mb-2">
+                <span className="text-xl">💡</span>
+                <span className="font-mono text-xs uppercase tracking-wide text-[#92400E]">
                     {t("tips")}
                 </span>
-                <p className="text-sm text-slate-300 leading-relaxed">{text}</p>
             </div>
+            <p className="text-sm text-[#78350F] leading-relaxed">{text}</p>
         </div>
     );
 }

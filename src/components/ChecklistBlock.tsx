@@ -66,41 +66,36 @@ export default function ChecklistBlock({ items, levelId }: ChecklistBlockProps) 
     const percentage = totalCount > 0 ? Math.round((completedCount / totalCount) * 100) : 0;
 
     return (
-        <div className="glass-card p-6">
-            <div className="flex items-center justify-between mb-4">
-                <h3 className="text-lg font-bold flex items-center gap-2">
-                    <span className="text-xl">✅</span>
-                    {t("checklist")}
-                </h3>
-                <span className="text-sm text-muted">
-                    {completedCount}/{totalCount} ({percentage}%)
-                </span>
+        <div className="bg-white rounded-xl border border-[#E5E7EB] p-5">
+            {/* Progress bar at top */}
+            <div className="mb-4">
+                <div className="text-xs text-[#6B7280] mb-2 font-medium">
+                    {completedCount} / {totalCount} орындалды
+                </div>
+                <div className="w-full h-1.5 bg-[#E5E7EB] rounded-full overflow-hidden">
+                    <div
+                        className="h-full bg-[#2563EB] rounded-full transition-all duration-500 ease-out"
+                        style={{ width: `${percentage}%` }}
+                    />
+                </div>
             </div>
 
-            {/* Progress bar */}
-            <div className="w-full h-2 bg-surface-lighter rounded-full mb-5 overflow-hidden">
-                <div
-                    className="h-full rounded-full bg-gradient-to-r from-beginner to-advanced transition-all duration-500 ease-out"
-                    style={{ width: `${percentage}%` }}
-                />
-            </div>
-
-            <ul className="space-y-2">
+            <ul className="space-y-0">
                 {items
                     .sort((a, b) => a.order - b.order)
                     .map((item) => (
-                        <li key={item.id}>
-                            <label className="flex items-start gap-3 p-3 rounded-lg hover:bg-surface-lighter/30 cursor-pointer transition-colors group">
+                        <li key={item.id} className="py-2.5 border-b border-[#F3F4F6] last:border-0 hover:bg-[#F9FAFB] transition-colors -mx-2 px-2 rounded-md">
+                            <label className="flex items-start gap-3 cursor-pointer group">
                                 <input
                                     type="checkbox"
                                     checked={checkedItems[item.id] || false}
                                     onChange={() => toggleItem(item.id)}
-                                    className="mt-0.5 w-5 h-5 rounded border-2 border-surface-lighter text-accent focus:ring-accent/30 focus:ring-offset-0 bg-transparent cursor-pointer accent-accent"
+                                    className="mt-0.5 w-4 h-4 rounded border-[#D1D5DB] flex-shrink-0 cursor-pointer text-[#2563EB] focus:ring-[#2563EB]/30 bg-white checked:bg-[#2563EB] checked:border-[#2563EB]"
                                 />
                                 <span
                                     className={`text-sm leading-relaxed transition-colors ${checkedItems[item.id]
-                                            ? "text-muted line-through"
-                                            : "text-slate-300 group-hover:text-white"
+                                        ? "text-[#9CA3AF] line-through"
+                                        : "text-[#374151]"
                                         }`}
                                 >
                                     {item.text}
