@@ -2,7 +2,6 @@
 
 import { useCallback } from "react";
 import YouTube from "react-youtube";
-import { supabase } from "@/lib/supabase";
 import type { VideoPlayerProps } from "@/types";
 
 function extractVideoId(url: string): string {
@@ -23,21 +22,7 @@ export default function VideoPlayer({ videoUrl, lessonId, onComplete }: VideoPla
 
     const onEnd = useCallback(async () => {
         if (onComplete) onComplete();
-
-        if (!lessonId) return;
-        try {
-            const { data: { user } } = await supabase.auth.getUser();
-            if (!user) return;
-
-            await supabase.from("progress").upsert({
-                user_id: user.id,
-                lesson_id: lessonId,
-                completed_at: new Date().toISOString(),
-            });
-        } catch {
-            // Not logged in
-        }
-    }, [lessonId, onComplete]);
+    }, [onComplete]);
 
     return (
         <div className="relative w-full rounded-xl overflow-hidden shadow-2xl shadow-black/30 group">

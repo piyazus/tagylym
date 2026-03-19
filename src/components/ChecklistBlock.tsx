@@ -1,58 +1,10 @@
 "use client";
 
-import { useState, useEffect } from "react";
 import { useTranslations } from "next-intl";
-import { supabase } from "@/lib/supabase";
 import type { ChecklistBlockProps } from "@/types";
 
-export default function ChecklistBlock({ items }: ChecklistBlockProps) {
+export default function ChecklistBlock({ items, checkedItems, onToggle }: ChecklistBlockProps) {
     const t = useTranslations("level");
-    const [checkedItems, setCheckedItems] = useState<Record<string, boolean>>({});
-
-    useEffect(() => {
-        const loadProgress = async () => {
-            try {
-                const { data: { user } } = await supabase.auth.getUser();
-                if (!user) return;
-
-                const { data } = await supabase
-                    .from("checklist_progress")
-                    .select("item_id, checked")
-                    .eq("user_id", user.id);
-
-                if (data) {
-                    const progress: Record<string, boolean> = {};
-                    data.forEach((row) => {
-                        progress[row.item_id] = row.checked;
-                    });
-                    setCheckedItems((prev) => ({ ...prev, ...progress }));
-                }
-            } catch {
-                // Not logged in or error — use local state
-            }
-        };
-
-        // Try to load from Supabase
-        loadProgress();
-    }, [items]);
-
-    const toggleItem = async (itemId: string) => {
-        const newChecked = !checkedItems[itemId];
-        setCheckedItems((prev) => ({ ...prev, [itemId]: newChecked }));
-
-        try {
-            const { data: { user } } = await supabase.auth.getUser();
-            if (!user) return;
-
-            await supabase.from("checklist_progress").upsert({
-                user_id: user.id,
-                item_id: itemId,
-                checked: newChecked,
-            });
-        } catch {
-            // Persist locally only
-        }
-    };
 
     const completedCount = Object.values(checkedItems).filter(Boolean).length;
     const totalCount = items.length;
@@ -82,7 +34,7 @@ export default function ChecklistBlock({ items }: ChecklistBlockProps) {
                                 <input
                                     type="checkbox"
                                     checked={checkedItems[item.id] || false}
-                                    onChange={() => toggleItem(item.id)}
+                                    onChange={() => onToggle(item.id)}
                                     className="mt-0.5 w-4 h-4 rounded border-[#D1D5DB] flex-shrink-0 cursor-pointer text-[#2563EB] focus:ring-[#2563EB]/30 bg-white checked:bg-[#2563EB] checked:border-[#2563EB]"
                                 />
                                 <span

@@ -130,6 +130,8 @@ export interface RubricCalloutProps {
 export interface ChecklistBlockProps {
     items: ChecklistItem[];
     levelId: string;
+    checkedItems: Record<string, boolean>;
+    onToggle: (itemId: string) => Promise<void>;
 }
 
 export interface QuizCardProps {

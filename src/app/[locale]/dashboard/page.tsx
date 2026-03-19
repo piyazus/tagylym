@@ -14,6 +14,7 @@ export default function DashboardPage() {
     const [user, setUser] = useState<{ id: string; email?: string } | null>(null);
     const [progress, setProgress] = useState<Progress[]>([]);
     const [categories, setCategories] = useState<{ id: string; name: string; icon: string }[]>([]);
+    const [categoryStats, setCategoryStats] = useState<Record<string, { total: number; completed: number }>>({});
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
@@ -29,13 +30,70 @@ export default function DashboardPage() {
             if (cats) setCategories(cats);
 
             // Fetch user progress
+            let completedIds: string[] = [];
             if (authUser) {
                 const { data: prog } = await supabase
                     .from("progress")
                     .select("*")
                     .eq("user_id", authUser.id)
                     .order("completed_at", { ascending: false });
-                if (prog) setProgress(prog);
+                if (prog) {
+                    setProgress(prog);
+                    completedIds = prog.map((p) => p.lesson_id);
+                }
+            }
+
+            // Compute per-category stats: fetch levels → courses → lessons grouped by category
+            if (cats && cats.length > 0) {
+                const stats: Record<string, { total: number; completed: number }> = {};
+
+                // Fetch all levels for these categories
+                const catIds = cats.map((c) => c.id);
+                const { data: levels } = await supabase
+                    .from("levels")
+                    .select("id, category_id")
+                    .in("category_id", catIds);
+
+                if (levels && levels.length > 0) {
+                    const levelIds = levels.map((l) => l.id);
+
+                    // Fetch all courses for those levels
+                    const { data: courses } = await supabase
+                        .from("courses")
+                        .select("id, level_id")
+                        .in("level_id", levelIds);
+
+                    if (courses && courses.length > 0) {
+                        const courseIds = courses.map((c) => c.id);
+
+                        // Fetch all lessons for those courses
+                        const { data: lessons } = await supabase
+                            .from("lessons")
+                            .select("id, course_id")
+                            .in("course_id", courseIds);
+
+                        if (lessons) {
+                            // Build lookup: lessonId → categoryId
+                            const courseToLevel: Record<string, string> = {};
+                            courses.forEach((c) => { courseToLevel[c.id] = c.level_id; });
+                            const levelToCategory: Record<string, string> = {};
+                            levels.forEach((l) => { levelToCategory[l.id] = l.category_id; });
+
+                            lessons.forEach((lesson) => {
+                                const levelId = courseToLevel[lesson.course_id];
+                                const catId = levelToCategory[levelId];
+                                if (!catId) return;
+                                if (!stats[catId]) stats[catId] = { total: 0, completed: 0 };
+                                stats[catId].total += 1;
+                                if (completedIds.includes(lesson.id)) {
+                                    stats[catId].completed += 1;
+                                }
+                            });
+                        }
+                    }
+                }
+
+                setCategoryStats(stats);
             }
 
             setLoading(false);
@@ -91,20 +149,23 @@ export default function DashboardPage() {
                                 {t("progress")}
                             </h2>
                             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                                {categories.map((cat) => (
-                                    <div key={cat.id} className="bg-[#1e293b] rounded-xl border border-[#334155] p-6">
-                                        <div className="flex items-center gap-3 mb-4">
-                                            <span className="text-2xl">{cat.icon}</span>
-                                            <div>
-                                                <h3 className="font-semibold text-white">{cat.name}</h3>
-                                                <p className="text-xs text-[#94a3b8]">
-                                                    0 / 0 {t("lessons_completed")}
-                                                </p>
+                            {categories.map((cat) => {
+                                    const stats = categoryStats[cat.id] ?? { total: 0, completed: 0 };
+                                    return (
+                                        <div key={cat.id} className="bg-[#1e293b] rounded-xl border border-[#334155] p-6">
+                                            <div className="flex items-center gap-3 mb-4">
+                                                <span className="text-2xl">{cat.icon}</span>
+                                                <div>
+                                                    <h3 className="font-semibold text-white">{cat.name}</h3>
+                                                    <p className="text-xs text-[#94a3b8]">
+                                                        {stats.completed} / {stats.total} {t("lessons_completed")}
+                                                    </p>
+                                                </div>
                                             </div>
+                                            <ProgressBar completed={stats.completed} total={Math.max(stats.total, 1)} />
                                         </div>
-                                        <ProgressBar completed={0} total={1} />
-                                    </div>
-                                ))}
+                                    );
+                                })}
                             </div>
                         </section>
 

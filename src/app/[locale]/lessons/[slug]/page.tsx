@@ -174,9 +174,30 @@ function LessonContent({ slug }: { slug: string }) {
                 {/* Content (Portable Text) */}
                 {lesson.content && lesson.content.length > 0 && (
                     <div className="prose prose-lg max-w-none mb-8 text-base text-[#374151] leading-relaxed prose-headings:font-semibold prose-headings:text-[#1A1A1A] prose-h2:text-2xl prose-h2:mt-8 prose-h2:mb-4 prose-h3:text-xl prose-h3:mt-8 prose-h3:mb-4">
-                        <PortableText value={lesson.content} />
+                        <PortableText
+                            value={lesson.content}
+                            components={{
+                                types: {
+                                    code: ({ value }: { value: { code?: string; language?: string } }) => (
+                                        <pre className="bg-[#1A1A1A] rounded-xl p-4 overflow-x-auto my-6 border border-[#2D2D2D]">
+                                            <code className="font-mono text-sm text-[#E2E8F0] leading-relaxed" style={{ fontFamily: "'JetBrains Mono', monospace" }}>
+                                                {value.code}
+                                            </code>
+                                        </pre>
+                                    ),
+                                },
+                                marks: {
+                                    code: ({ children }: { children?: React.ReactNode }) => (
+                                        <code className="bg-[#F3F4F6] text-[#1A1A1A] px-1.5 py-0.5 rounded text-sm" style={{ fontFamily: "'JetBrains Mono', monospace" }}>
+                                            {children}
+                                        </code>
+                                    ),
+                                },
+                            }}
+                        />
                     </div>
                 )}
+
 
                 {/* Tip */}
                 {lesson.tip && <TipBox text={lesson.tip} />}

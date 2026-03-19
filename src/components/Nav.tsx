@@ -107,12 +107,15 @@ export default function Nav() {
 
                     {/* Auth (desktop) */}
                     {user ? (
-                        <button
-                            onClick={handleLogout}
-                            className="hidden md:inline text-xs text-red-500 hover:text-red-600 font-medium"
-                        >
-                            {tNav("logout")}
-                        </button>
+                        <div className="hidden md:flex items-center gap-2">
+                            <span className="text-xs text-[#6B7280] max-w-[140px] truncate">{user.email}</span>
+                            <button
+                                onClick={handleLogout}
+                                className="text-xs text-red-500 hover:text-red-600 font-medium"
+                            >
+                                {tNav("logout")}
+                            </button>
+                        </div>
                     ) : (
                         <Link
                             href={"/auth/login" as const}
