@@ -314,3 +314,46 @@ export async function getLevelsWithCounts(
 
     return enriched;
 }
+
+// ─── All courses for a season (flat grid) ────────────────
+
+export interface EnrichedCourse extends Course {
+    categoryName: string;
+    categorySlug: string;
+    levelName: string;
+    levelSlug: string;
+    levelColor: string;
+}
+
+const levelSlugMap: Record<string, string> = {
+    "Начинающий": "beginner",
+    "Средний": "intermediate",
+    "Продвинутый": "advanced",
+};
+
+export async function getAllCoursesForSeason(
+    seasonId: string
+): Promise<EnrichedCourse[]> {
+    const categories = await getCategoriesBySeason(seasonId);
+    const allCourses: EnrichedCourse[] = [];
+
+    for (const cat of categories) {
+        const levels = await getLevelsByCategory(cat.id);
+        for (const level of levels) {
+            const courses = await getCoursesByLevel(level.id);
+            for (const course of courses) {
+                allCourses.push({
+                    ...course,
+                    categoryName: cat.name,
+                    categorySlug: cat.slug,
+                    levelName: level.name,
+                    levelSlug: levelSlugMap[level.name] || "beginner",
+                    levelColor: level.color,
+                });
+            }
+        }
+    }
+
+    return allCourses;
+}
+

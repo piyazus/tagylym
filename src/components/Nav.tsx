@@ -65,7 +65,7 @@ export default function Nav() {
 
                 {/* RIGHT: Powered by + Lang switcher */}
                 <div className="flex items-center gap-3">
-                    <span className="hidden md:inline text-xs text-[#6B7280]">Powered by USTEM</span>
+                    <span className="hidden md:inline text-xs text-[#6B7280]">Powered by Panheya</span>
 
                     {/* Locale Switcher */}
                     <div className="flex items-center border border-[#E5E7EB] rounded px-1 py-0.5 text-xs">
