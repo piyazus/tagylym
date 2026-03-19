@@ -5,6 +5,7 @@ import { Link, useRouter } from "@/i18n/routing";
 import { usePathname } from "next/navigation";
 import { useTranslations, useLocale } from "next-intl";
 import { supabase } from "@/lib/supabase";
+import Image from "next/image";
 
 export default function Nav() {
     const t = useTranslations("nav");
@@ -57,13 +58,24 @@ export default function Nav() {
         <nav className="sticky top-0 z-50 bg-white border-b border-[#E5E7EB] h-14">
             <div className="max-w-7xl mx-auto px-6 h-full flex items-center justify-between">
                 {/* LEFT: Logo */}
-                <Link href={"/" as "/"} className="flex items-center gap-2">
-                    <svg className="w-5 h-5 text-[#1A1A1A]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905 0 .714-.211 1.412-.608 2.006L7 11v9m7-10h-2M7 20H5a2 2 0 01-2-2v-6a2 2 0 012-2h2.5" />
-                    </svg>
-                    <span className="font-display text-xl text-[#1A1A1A]">
-                        Tagylym
-                    </span>
+                <Link href={"/" as "/"} className="flex items-center gap-3">
+                    <Image
+                        src="/images/logo-tagylym.png"
+                        alt="Tagylym"
+                        width={120}
+                        height={32}
+                        className="h-7 w-auto"
+                        style={{ filter: 'invert(1)' }}
+                        priority
+                    />
+                    <span className="hidden sm:inline-block w-px h-5 bg-[#E5E7EB]"></span>
+                    <Image
+                        src="/images/logo-first.png"
+                        alt="FIRST"
+                        width={36}
+                        height={32}
+                        className="hidden sm:block h-6 w-auto"
+                    />
                 </Link>
 
                 {/* CENTER: Navigation links */}
@@ -75,8 +87,8 @@ export default function Nav() {
                                 key={link.href}
                                 href={link.href as any}
                                 className={`text-sm transition-colors ${active
-                                        ? "text-[#2563EB] font-medium"
-                                        : "text-[#6B7280] hover:text-[#1A1A1A]"
+                                    ? "text-[#2563EB] font-medium"
+                                    : "text-[#6B7280] hover:text-[#1A1A1A]"
                                     }`}
                             >
                                 {link.label}
@@ -95,8 +107,8 @@ export default function Nav() {
                                 href={"/" as "/"}
                                 locale={l as any}
                                 className={`px-1.5 py-0.5 rounded transition-colors uppercase ${locale === l
-                                        ? "bg-[#2563EB] text-white"
-                                        : "text-[#6B7280] hover:bg-gray-100 hover:text-[#1A1A1A]"
+                                    ? "bg-[#2563EB] text-white"
+                                    : "text-[#6B7280] hover:bg-gray-100 hover:text-[#1A1A1A]"
                                     }`}
                             >
                                 {l}
@@ -154,8 +166,8 @@ export default function Nav() {
                                 locale={l as any}
                                 onClick={() => setIsOpen(false)}
                                 className={`px-2 py-1 rounded transition-colors uppercase ${locale === l
-                                        ? "bg-[#2563EB] text-white"
-                                        : "text-[#6B7280]"
+                                    ? "bg-[#2563EB] text-white"
+                                    : "text-[#6B7280]"
                                     }`}
                             >
                                 {l}

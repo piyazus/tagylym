@@ -1,5 +1,7 @@
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/routing";
+import Image from "next/image";
+import { getCourseThumbnail } from "@/lib/course-thumbnails";
 import LevelBadge from "@/components/LevelBadge";
 import ChecklistBlock from "@/components/ChecklistBlock";
 import RubricCallout from "@/components/RubricCallout";
@@ -188,10 +190,18 @@ function LevelPageContent({
                                     href={`/fll/${season}/${category}/${level}/${course.id}` as any}
                                     className="block bg-white border border-[#E5E7EB] rounded-2xl overflow-hidden hover:shadow-md transition-shadow group"
                                 >
-                                    {/* Image Placeholder */}
-                                    <div className="bg-[#F3F4F6] aspect-video flex items-center justify-center relative overflow-hidden">
-                                        <span className="text-4xl">📚</span>
-                                        <div className="absolute inset-0 bg-black/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                                    {/* Course Thumbnail */}
+                                    <div className="relative aspect-video overflow-hidden">
+                                        <Image
+                                            src={getCourseThumbnail(category)}
+                                            alt={course.title}
+                                            fill
+                                            className="object-cover group-hover:scale-105 transition-transform duration-300"
+                                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                                        />
+                                        <span className="absolute top-2 right-2 bg-black/60 text-white text-xs px-2 py-0.5 rounded">
+                                            Preview
+                                        </span>
                                     </div>
 
                                     {/* Content */}

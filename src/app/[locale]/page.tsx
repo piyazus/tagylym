@@ -2,6 +2,7 @@
 
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/routing";
+import Image from "next/image";
 
 export default function HomePage() {
     const t = useTranslations("home");
@@ -15,31 +16,52 @@ export default function HomePage() {
                     background: "linear-gradient(135deg, #1A237E 0%, #283593 50%, #1565C0 100%)",
                 }}
             >
-                {/* Decorative Elements */}
-                <div className="absolute left-10 top-1/2 -translate-y-1/2 hidden md:block drop-shadow-2xl">
-                    <div className="w-48 h-48 bg-white/10 rounded-full flex items-center justify-center backdrop-blur-sm border border-white/20">
-                        <span className="text-6xl">🤖</span>
-                    </div>
+                {/* LEFT Robot (desktop only) */}
+                <div className="absolute left-6 lg:left-16 bottom-0 hidden md:block">
+                    <Image
+                        src="/images/robot-ftc.png"
+                        alt="FTC Robot"
+                        width={320}
+                        height={380}
+                        className="object-contain drop-shadow-2xl"
+                        priority
+                    />
                 </div>
-                <div className="absolute right-10 top-1/2 -translate-y-1/2 hidden md:block drop-shadow-2xl">
-                    <div className="w-48 h-48 bg-white/10 rounded-full flex items-center justify-center backdrop-blur-sm border border-white/20">
-                        <span className="text-6xl">⚙️</span>
-                    </div>
+
+                {/* RIGHT Robot (desktop only) */}
+                <div className="absolute right-6 lg:right-16 bottom-0 hidden md:block">
+                    <Image
+                        src="/images/robot-fll.png"
+                        alt="FLL Robot"
+                        width={280}
+                        height={320}
+                        className="object-contain drop-shadow-2xl"
+                        priority
+                    />
                 </div>
 
                 <div className="relative z-10 text-center max-w-4xl mx-auto flex flex-col items-center">
                     {/* Logo row */}
                     <div className="flex items-center justify-center gap-4 text-white/80 text-sm mb-8">
-                        <div className="flex items-center gap-1.5 font-display">
-                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905 0 .714-.211 1.412-.608 2.006L7 11v9m7-10h-2M7 20H5a2 2 0 01-2-2v-6a2 2 0 012-2h2.5" />
-                            </svg>
-                            Tagylym
-                        </div>
+                        <Image
+                            src="/images/logo-tagylym.png"
+                            alt="Tagylym"
+                            width={100}
+                            height={28}
+                            className="h-6 w-auto"
+                            priority
+                        />
                         <span className="w-1 h-1 bg-white/30 rounded-full"></span>
-                        <span className="font-semibold tracking-wider">FIRST Kazakhstan</span>
-                        <span className="w-1 h-1 bg-white/30 rounded-full"></span>
-                        <span>Powered by USTEM Foundation</span>
+                        <Image
+                            src="/images/logo-first.png"
+                            alt="FIRST"
+                            width={36}
+                            height={32}
+                            className="h-6 w-auto"
+                        />
+                        <span className="font-semibold tracking-wider text-white/80">FIRST Kazakhstan</span>
+                        <span className="w-1 h-1 bg-white/30 rounded-full hidden sm:block"></span>
+                        <span className="hidden sm:inline text-white/60">Powered by USTEM Foundation</span>
                     </div>
 
                     <h1 className="font-display text-6xl md:text-8xl text-white text-center italic mb-4">
@@ -83,15 +105,20 @@ export default function HomePage() {
 
                         <div className="rounded-2xl border border-[#E5E7EB] bg-[#FFFBEB] px-6 py-4 max-w-sm">
                             <p className="italic text-sm text-[#92400E]">
-                                "Сотни школ с робототехникой не используют её в полную силу из-за нехватки контента и менторов."
+                                &quot;Сотни школ с робототехникой не используют её в полную силу из-за нехватки контента и менторов.&quot;
                             </p>
                         </div>
                     </div>
                     <div className="relative">
                         <div className="absolute -z-10 bg-blue-100 rounded-3xl inset-0 translate-x-4 translate-y-4"></div>
-                        <div className="rounded-3xl overflow-hidden shadow-lg bg-gray-200 aspect-square flex items-center justify-center">
-                            <span className="text-gray-400">Photo placeholder</span>
-                            {/* In reality, an <Image /> component or img tag would be here */}
+                        <div className="rounded-3xl overflow-hidden shadow-lg bg-[#F3F4F6] aspect-square flex items-center justify-center">
+                            <Image
+                                src="/images/photo-girl.png"
+                                alt="Студентка"
+                                width={400}
+                                height={480}
+                                className="object-contain w-full h-full"
+                            />
                         </div>
                     </div>
                 </div>
@@ -102,8 +129,14 @@ export default function HomePage() {
                 <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
                     <div className="order-last md:order-first relative">
                         <div className="absolute -z-10 bg-orange-100 rounded-3xl inset-0 -translate-x-4 translate-y-4"></div>
-                        <div className="rounded-3xl overflow-hidden shadow-lg bg-gray-200 aspect-[4/3] flex items-center justify-center">
-                            <span className="text-gray-400">Photo placeholder</span>
+                        <div className="rounded-3xl overflow-hidden shadow-lg bg-[#F3F4F6] aspect-[4/3] flex items-center justify-center">
+                            <Image
+                                src="/images/photo-boy.png"
+                                alt="Студент"
+                                width={400}
+                                height={480}
+                                className="object-contain w-full h-full"
+                            />
                         </div>
                     </div>
                     <div>
@@ -114,7 +147,7 @@ export default function HomePage() {
 
                         <div className="rounded-2xl border border-[#E5E7EB] bg-[#EFF6FF] px-6 py-4 mt-6">
                             <p className="italic text-sm text-[#1E40AF]">
-                                "Более 60% школьников Казахстана учатся в сельских школах, где проблема нехватки квалифицированных тренеров стоит особенно остро."
+                                &quot;Более 60% школьников Казахстана учатся в сельских школах, где проблема нехватки квалифицированных тренеров стоит особенно остро.&quot;
                             </p>
                         </div>
                     </div>
