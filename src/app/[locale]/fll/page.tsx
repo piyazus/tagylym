@@ -94,20 +94,20 @@ function FLLPageContent({
                                     <h3 className="text-xl font-bold text-white mb-2 group-hover:text-accent transition-colors">
                                         {cat.name}
                                     </h3>
-                                    <p className="text-sm text-muted leading-relaxed mb-4">
-                                        3 уровня подготовки от начального до продвинутого. Видеоуроки, чек-листы и критерии оценки.
+                                    <p className="text-sm text-[#94a3b8] leading-relaxed mb-4">
+                                        Бастауыштан бастап жетілдірілгенге дейінгі 3 дайындық деңгейі. Бейнесабақтар, чек-листтер және бағалау критерийлері.
                                     </p>
-                                    <div className="flex items-center gap-4 text-xs text-muted">
+                                    <div className="flex items-center gap-4 text-xs text-[#94a3b8]">
                                         <span className="flex items-center gap-1">
-                                            <span className="w-2 h-2 rounded-full bg-beginner" />
+                                            <span className="w-2 h-2 rounded-full bg-[#3B82F6]" />
                                             {t("category.beginner")}
                                         </span>
                                         <span className="flex items-center gap-1">
-                                            <span className="w-2 h-2 rounded-full bg-intermediate" />
+                                            <span className="w-2 h-2 rounded-full bg-[#F97316]" />
                                             {t("category.intermediate")}
                                         </span>
                                         <span className="flex items-center gap-1">
-                                            <span className="w-2 h-2 rounded-full bg-advanced" />
+                                            <span className="w-2 h-2 rounded-full bg-[#22C55E]" />
                                             {t("category.advanced")}
                                         </span>
                                     </div>
@@ -125,10 +125,10 @@ function FLLPageContent({
                 <div className="mt-12 glass-card p-6 border-l-4 border-accent">
                     <h3 className="text-lg font-bold flex items-center gap-2 mb-3">
                         <span className="text-xl">💜</span>
-                        {t("category.coreValues")}
+                        Негізгі Құндылықтар
                     </h3>
-                    <p className="text-sm text-muted leading-relaxed">
-                        {t("category.coreValuesText")}
+                    <p className="text-sm text-slate-400 leading-relaxed">
+                        Негізгі құндылықтар жеке пән емес. Олар барлық сабақтар процесіне біріктірілген. Бағалау кезінде төрешілер команданың жарыс барысында бұл құндылықтарды қалай көрсететініне назар аударады.
                     </p>
                 </div>
             </section>

@@ -42,7 +42,7 @@ export default function LessonPage({
 
 function LessonLoading() {
     return (
-        <div className="min-h-screen flex items-center justify-center">
+        <div className="min-h-screen flex items-center justify-center bg-[#0f172a] text-[#f1f5f9]">
             <div className="text-center">
                 <div className="w-8 h-8 border-2 border-accent border-t-transparent rounded-full animate-spin mx-auto mb-3" />
                 <p className="text-muted text-sm">Загрузка урока...</p>
@@ -115,20 +115,20 @@ function LessonContent({ slug }: { slug: string }) {
 
     if (notFound || !lesson) {
         return (
-            <div className="min-h-screen flex items-center justify-center">
+            <div className="min-h-screen flex items-center justify-center bg-[#0f172a] text-[#f1f5f9]">
                 <div className="text-center max-w-md mx-auto px-6">
                     <div className="w-20 h-20 rounded-2xl glass flex items-center justify-center mx-auto mb-6 text-4xl">
                         📝
                     </div>
-                    <h1 className="text-2xl font-bold text-white mb-3">Контент скоро появится</h1>
-                    <p className="text-muted text-sm leading-relaxed mb-6">
-                        Этот урок ещё в разработке. Мы добавим видео, текст и задания в ближайшее время.
+                    <h1 className="text-2xl font-bold text-white mb-3">Контент жақында шығады</h1>
+                    <p className="text-[#94a3b8] text-sm leading-relaxed mb-6">
+                        Бұл сабақ әлі әзірленуде. Біз бейне, мәтін және тапсырмаларды жақын арада қосамыз.
                     </p>
                     <Link
                         href={"/fll" as "/"}
-                        className="inline-flex px-5 py-2.5 rounded-lg gradient-brand text-white font-medium text-sm hover:opacity-90 transition-opacity"
+                        className="inline-flex px-5 py-2.5 rounded-lg bg-[#3B82F6] text-white font-medium text-sm hover:opacity-90 transition-opacity"
                     >
-                        ← Вернуться к FLL
+                        ← FLL-ге қайту
                     </Link>
                 </div>
             </div>
@@ -141,7 +141,7 @@ function LessonContent({ slug }: { slug: string }) {
     const nextLesson = currentIdx < siblings.length - 1 ? siblings[currentIdx + 1] : null;
 
     return (
-        <div className="min-h-screen">
+        <div className="min-h-screen bg-[#0f172a] text-[#f1f5f9]">
             <div className="max-w-4xl mx-auto px-6 pt-16 pb-24">
                 {/* Title */}
                 <h1 className="text-3xl font-black text-white mb-6">{lesson.title}</h1>
@@ -159,7 +159,7 @@ function LessonContent({ slug }: { slug: string }) {
 
                 {/* Content (Portable Text) */}
                 {lesson.content && lesson.content.length > 0 && (
-                    <div className="prose-custom mb-8">
+                    <div className="prose-custom mb-8 text-[#f1f5f9]">
                         <PortableText value={lesson.content} />
                     </div>
                 )}
@@ -173,7 +173,7 @@ function LessonContent({ slug }: { slug: string }) {
                         <RubricCallout
                             criterion={lesson.rubricCriterion as RubricCriterion}
                             level={lesson.rubricLevel as RubricLevel}
-                            text={`Критерий: ${lesson.rubricCriterion} — Уровень: ${lesson.rubricLevel}`}
+                            text={`Критерий: ${lesson.rubricCriterion} — Деңгей: ${lesson.rubricLevel}`}
                         />
                     </div>
                 )}
@@ -181,7 +181,7 @@ function LessonContent({ slug }: { slug: string }) {
                 {/* Quizzes */}
                 {quizzes.length > 0 && (
                     <div className="mt-8 space-y-6">
-                        <h2 className="text-xl font-bold">{t("quiz")}</h2>
+                        <h2 className="text-xl font-bold text-white">{t("quiz")}</h2>
                         {quizzes.map((q) => (
                             <QuizCard key={q.id} quiz={q} />
                         ))}
@@ -189,13 +189,13 @@ function LessonContent({ slug }: { slug: string }) {
                 )}
 
                 {/* Navigation */}
-                <div className="mt-12 flex items-center justify-between">
+                <div className="mt-12 flex items-center justify-between border-t border-[#334155] pt-8">
                     {prevLesson ? (
                         <Link
                             href={`/lessons/${prevLesson.slug}` as "/"}
-                            className="text-sm text-accent hover:text-white transition-colors flex items-center gap-1"
+                            className="text-sm text-[#3B82F6] hover:text-white transition-colors flex items-center gap-1"
                         >
-                            ← {t("prev")}
+                            {t("previous")}
                         </Link>
                     ) : (
                         <span />
@@ -203,9 +203,9 @@ function LessonContent({ slug }: { slug: string }) {
                     {nextLesson ? (
                         <Link
                             href={`/lessons/${nextLesson.slug}` as "/"}
-                            className="text-sm text-accent hover:text-white transition-colors flex items-center gap-1"
+                            className="text-sm text-[#3B82F6] hover:text-white transition-colors flex items-center gap-1"
                         >
-                            {t("next")} →
+                            {t("next")}
                         </Link>
                     ) : (
                         <span />

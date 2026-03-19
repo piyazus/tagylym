@@ -33,17 +33,18 @@ export default function QuizPage() {
 
     const categories = [
         { value: "", label: t("all") },
-        { value: "robot-design", label: "Конструирование" },
-        { value: "innovation", label: "Инновационный проект" },
-        { value: "coding", label: "Программирование" },
-        { value: "robot-game", label: "Игра роботов" },
+        { value: "robot-design", label: "Робот Дизайны" },
+        { value: "innovation", label: "Инновациялық Жоба" },
+        { value: "coding", label: "Бағдарламалау" },
+        { value: "robot-game", label: "Робот Ойыны" },
+        { value: "core-values", label: "Негізгі Құндылықтар" },
     ];
 
     const levels = [
         { value: "", label: t("all") },
-        { value: "beginner", label: "Начинающий" },
-        { value: "intermediate", label: "Средний" },
-        { value: "advanced", label: "Продвинутый" },
+        { value: "beginner", label: "Бастауыш" },
+        { value: "intermediate", label: "Орташа" },
+        { value: "advanced", label: "Жетілдірілген" },
     ];
 
     return (
@@ -52,21 +53,21 @@ export default function QuizPage() {
                 {/* Header */}
                 <div className="text-center mb-12">
                     <h1 className="text-4xl font-black text-white mb-3">{t("title")}</h1>
-                    <p className="text-muted">
-                        Проверьте знания команды по всем категориям и уровням
+                    <p className="text-slate-400">
+                        Команданың барлық категориялар мен деңгейлер бойынша білімін тексеріңіз
                     </p>
                 </div>
 
                 {/* Filters */}
-                <div className="glass-card p-4 mb-8 flex flex-wrap gap-4">
+                <div className="bg-[#1e293b] rounded-xl border border-[#334155] p-4 mb-8 flex flex-wrap gap-4">
                     <div className="flex-1 min-w-[150px]">
-                        <label className="block text-xs text-muted font-medium mb-1.5">
+                        <label className="block text-xs text-slate-400 font-medium mb-1.5">
                             {t("filterCategory")}
                         </label>
                         <select
                             value={filterCategory}
                             onChange={(e) => setFilterCategory(e.target.value)}
-                            className="w-full bg-surface-lighter text-slate-300 text-sm rounded-lg px-3 py-2 border border-surface-lighter/50 focus:border-accent/50 focus:outline-none"
+                            className="w-full bg-[#0f172a] text-slate-300 text-sm rounded-lg px-3 py-2 border border-[#334155] focus:border-[#8B5CF6] focus:outline-none"
                         >
                             {categories.map((c) => (
                                 <option key={c.value} value={c.value}>{c.label}</option>
@@ -75,13 +76,13 @@ export default function QuizPage() {
                     </div>
 
                     <div className="flex-1 min-w-[150px]">
-                        <label className="block text-xs text-muted font-medium mb-1.5">
+                        <label className="block text-xs text-slate-400 font-medium mb-1.5">
                             {t("filterLevel")}
                         </label>
                         <select
                             value={filterLevel}
                             onChange={(e) => setFilterLevel(e.target.value)}
-                            className="w-full bg-surface-lighter text-slate-300 text-sm rounded-lg px-3 py-2 border border-surface-lighter/50 focus:border-accent/50 focus:outline-none"
+                            className="w-full bg-[#0f172a] text-slate-300 text-sm rounded-lg px-3 py-2 border border-[#334155] focus:border-[#8B5CF6] focus:outline-none"
                         >
                             {levels.map((l) => (
                                 <option key={l.value} value={l.value}>{l.label}</option>
@@ -91,8 +92,8 @@ export default function QuizPage() {
                 </div>
 
                 {/* Results count */}
-                <p className="text-sm text-muted mb-6">
-                    {loading ? "Загрузка..." : `${quizzes.length} вопросов найдено`}
+                <p className="text-sm text-slate-400 mb-6">
+                    {loading ? "Жүктелуде..." : `${quizzes.length} сұрақ табылды`}
                 </p>
 
                 {/* Quiz Grid */}
@@ -107,7 +108,7 @@ export default function QuizPage() {
                 {!loading && quizzes.length === 0 && (
                     <div className="text-center py-16">
                         <span className="text-4xl mb-4 block">🔍</span>
-                        <p className="text-muted">Вопросы не найдены. Попробуйте изменить фильтры.</p>
+                        <p className="text-slate-400">Сұрақтар табылған жоқ. Фильтрлерді өзгертіп көріңіз.</p>
                     </div>
                 )}
             </div>

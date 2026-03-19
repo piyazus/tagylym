@@ -55,24 +55,24 @@ function CategoryPageContent({
     if (!cat) {
         return (
             <div className="min-h-screen flex items-center justify-center">
-                <p className="text-muted">Category not found.</p>
+                <p className="text-slate-400">Категория табылмады.</p>
             </div>
         );
     }
 
     return (
-        <div className="min-h-screen">
+        <div className="min-h-screen bg-[#0f172a] text-[#f1f5f9]">
             {/* Header */}
             <section className="relative overflow-hidden">
                 <div className="absolute inset-0">
-                    <div className="absolute top-0 left-1/3 w-80 h-80 bg-accent/10 rounded-full blur-[100px]" />
+                    <div className="absolute top-0 left-1/3 w-80 h-80 bg-[#8B5CF6]/10 rounded-full blur-[100px]" />
                 </div>
 
                 <div className="relative max-w-7xl mx-auto px-6 pt-16 pb-12 text-center">
                     <div className="text-5xl mb-4">{cat.icon}</div>
                     <h1 className="text-4xl font-black text-white mb-3">{cat.name}</h1>
-                    <p className="mt-4 text-sm text-accent font-medium">
-                        Стандартное решение (X) → Наш подход (Y) потому что (Z)
+                    <p className="mt-4 text-sm text-[#8B5CF6] font-medium">
+                        Стандартты шешім (X) → Біздің тәсіл (Y), өйткені (Z)
                     </p>
                 </div>
             </section>
@@ -80,30 +80,37 @@ function CategoryPageContent({
             {/* Level Cards */}
             <section className="max-w-7xl mx-auto px-6 pb-16">
                 <h2 className="text-2xl font-bold text-center mb-2">{t("levels")}</h2>
-                <div className="w-12 h-1 bg-gradient-to-r from-beginner via-intermediate to-advanced rounded-full mx-auto mb-10" />
+                <div className="w-12 h-1 bg-gradient-to-r from-[#3B82F6] via-[#F97316] to-[#22C55E] rounded-full mx-auto mb-10" />
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6 stagger-children">
                     {levels.map((level) => {
                         const slug = levelSlugMap[level.name] || "beginner";
+                        const displayNames: Record<string, string> = {
+                            "beginner": "Бастауыш",
+                            "intermediate": "Орташа",
+                            "advanced": "Жетілдірілген"
+                        };
+                        const displayName = displayNames[slug] || level.name;
+
                         return (
                             <Link
                                 key={level.id}
                                 href={`/fll/${season}/${category}/${slug}` as "/"}
-                                className="glass-card p-8 group relative overflow-hidden"
+                                className="bg-[#1e293b] rounded-xl border border-[#334155] p-8 group relative overflow-hidden transition-all hover:border-[#8B5CF6]/50 shadow-lg shadow-black/20 hover:shadow-purple-500/10"
                             >
                                 {/* Top accent bar */}
                                 <div
-                                    className="absolute top-0 left-0 right-0 h-1 rounded-t-2xl"
+                                    className="absolute top-0 left-0 right-0 h-1 rounded-t-xl"
                                     style={{ backgroundColor: level.color }}
                                 />
 
                                 <LevelBadge level={slug} />
 
-                                <h3 className="text-xl font-bold text-white mt-4 mb-3 group-hover:text-accent transition-colors">
-                                    {level.name}
+                                <h3 className="text-xl font-bold text-white mt-4 mb-3 group-hover:text-[#8B5CF6] transition-colors">
+                                    {displayName}
                                 </h3>
 
-                                <div className="space-y-2 text-xs text-muted mb-6">
+                                <div className="space-y-2 text-xs text-[#94a3b8] mb-6">
                                     <div className="flex items-center gap-2">
                                         <span className="text-base">🎬</span>
                                         {level.lessonCount} {t("lessons")}
@@ -115,7 +122,7 @@ function CategoryPageContent({
                                 </div>
 
                                 <div
-                                    className="py-2.5 rounded-lg text-center text-sm font-medium transition-all"
+                                    className="py-2.5 rounded-lg text-center text-sm font-semibold transition-all"
                                     style={{ backgroundColor: `${level.color}20`, color: level.color }}
                                 >
                                     {t("start")}
@@ -128,12 +135,14 @@ function CategoryPageContent({
 
             {/* Core Values */}
             <section className="max-w-7xl mx-auto px-6 pb-24">
-                <div className="glass-card p-6 border-l-4 border-accent">
-                    <h3 className="text-lg font-bold flex items-center gap-2 mb-3">
+                <div className="bg-[#1e293b] rounded-xl border-l-4 border-[#8B5CF6] p-6 shadow-md shadow-black/20">
+                    <h3 className="text-lg font-bold flex items-center gap-2 mb-3 text-white">
                         <span className="text-xl">💜</span>
-                        {t("coreValues")}
+                        Негізгі Құндылықтар
                     </h3>
-                    <p className="text-sm text-muted leading-relaxed">{t("coreValuesText")}</p>
+                    <p className="text-sm text-[#94a3b8] leading-relaxed">
+                        Негізгі құндылықтар жеке пән емес. Олар барлық сабақтар процесіне біріктірілген. Бағалау кезінде төрешілер команданың жарыс барысында бұл құндылықтарды қалай көрсететініне назар аударады.
+                    </p>
                 </div>
             </section>
         </div>

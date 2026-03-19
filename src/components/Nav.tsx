@@ -47,145 +47,158 @@ export default function Nav() {
         router.push("/");
     };
 
-    const otherLocale = locale === "ru" ? "en" : "ru";
+    const navLinks = [
+        { href: "/", label: "Үй" },
+        { href: "/fll", label: "FLL" },
+        { href: "/ftc", label: "FTC*" },
+        { href: "/fgc", label: "FGC*" },
+        { href: "/quiz", label: "Quiz" },
+        { href: "/resources", label: "Ресурстар" },
+    ];
+
     const useLightText = isHome && !isScrolled;
+    const locales = ["kz", "ru", "en"];
 
     return (
         <nav
             className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${useLightText
                 ? "h-20 bg-transparent text-white"
-                : "h-16 glass bg-white/95 backdrop-blur-md border-b border-surface-lighter/20 text-text-dark"
+                : "h-16 glass bg-[#0f172a]/95 backdrop-blur-md border-b border-[#334155]/50 text-[#f1f5f9]"
                 }`}
         >
             <div className="max-w-[1200px] mx-auto px-4 sm:px-8 h-full flex items-center justify-between">
                 {/* Left Side: Logo + Tagylym */}
                 <Link href={"/" as "/"} className="flex items-center gap-2 group">
-                    <div className="w-8 h-8 rounded-lg bg-blue-600 flex items-center justify-center border border-white/20 overflow-hidden">
-                        {/* Abstract symbol replacing the hieroglyph */}
-                        <svg className="w-4 h-4 text-white" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M4 6V4h16v2H4zm8 14V8h-2v12h2z" />
+                    <div className="w-8 h-8 rounded-lg bg-[#8B5CF6] flex items-center justify-center border border-white/20 overflow-hidden shadow-lg shadow-purple-500/20">
+                        {/* Robot Icon */}
+                        <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905 0 .714-.211 1.412-.608 2.006L7 11v9m7-10h-2M7 20H5a2 2 0 01-2-2v-6a2 2 0 012-2h2.5" />
                         </svg>
                     </div>
-                    <span className={`text-lg font-semibold tracking-wide ${useLightText ? "text-white" : "text-text-dark"}`}>
-                        Taǵylym
+                    <span className={`text-lg font-bold tracking-wide ${useLightText ? "text-white" : "text-[#f1f5f9]"}`}>
+                        TAGYLYM
                     </span>
                 </Link>
 
-                {/* Center: FIRST Logo */}
-                {isHome && (
-                    <div className="hidden md:flex items-center gap-2">
-                        <div className={`flex gap-0.5 ${useLightText ? "text-white" : "text-blue-main"}`}>
-                            <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
-                                <polygon points="3,3 21,3 12,21" />
-                            </svg>
-                            <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
-                                <circle cx="12" cy="12" r="9" />
-                            </svg>
-                            <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
-                                <rect x="3" y="3" width="18" height="18" />
-                            </svg>
-                        </div>
-                        <span className={`font-bold italic tracking-wider ${useLightText ? "text-white" : "text-text-dark"}`}>FIRST</span>
-                    </div>
-                )}
+                {/* Center: Desktop Links */}
+                <div className={`hidden md:flex items-center gap-6 ${useLightText ? "text-white/90" : "text-[#cbd5e1]"}`}>
+                    {navLinks.map((link) => (
+                        <Link
+                            key={link.href}
+                            href={link.href as any}
+                            className="text-sm font-medium hover:text-[#8B5CF6] transition-colors"
+                        >
+                            {link.label}
+                        </Link>
+                    ))}
+                </div>
 
-                {/* Right Side: Powered by + Auth */}
+                {/* Right Side: Auth + Locale Switcher */}
                 <div className="flex items-center gap-4">
-                    {/* Powered By (Hidden on mobile) */}
-                    <div className={`hidden md:flex items-center gap-2 ${useLightText ? "text-white" : "text-text-dark"}`}>
-                        <span className="text-sm font-medium">Powered by</span>
-                        {/* Centaur Robot Icon placeholder */}
-                        <svg className="w-6 h-6 text-blue-300" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M12 2C8 2 6 5 6 5v4h12V5s-2-3-6-3zm-2 5h4v2h-4V7zm-4 4v7h2v-5h8v5h2v-7H6zm3 9v2h6v-2H9z" />
-                        </svg>
-                    </div>
-
                     {/* Locale Switcher */}
-                    <Link
-                        href={"/" as "/"}
-                        locale={otherLocale}
-                        className={`text-xs px-2 py-1 rounded transition-colors ${useLightText ? "text-white/80 hover:text-white bg-white/10" : "text-text-gray hover:text-text-dark bg-gray-100"
-                            }`}
-                    >
-                        {otherLocale.toUpperCase()}
-                    </Link>
+                    <div className="hidden sm:flex items-center gap-1 bg-white/5 p-1 rounded-lg border border-white/10">
+                        {locales.map((l) => (
+                            <Link
+                                key={l}
+                                href={"/" as "/"}
+                                locale={l as any}
+                                className={`text-[10px] font-bold px-2 py-1 rounded transition-colors uppercase ${locale === l
+                                    ? "bg-[#8B5CF6] text-white"
+                                    : "text-slate-400 hover:text-white"
+                                    }`}
+                            >
+                                {l}
+                            </Link>
+                        ))}
+                    </div>
 
                     {/* Auth Status */}
                     {user ? (
                         <div className="hidden md:flex items-center gap-3">
-                            <Link
-                                href={"/dashboard" as "/"}
-                                className={`text-sm transition-colors ${useLightText ? "text-white/80 hover:text-white" : "text-text-gray hover:text-blue-main"}`}
-                            >
-                                {t("dashboard")}
-                            </Link>
+                            <span className="text-sm text-slate-300 font-medium">
+                                {user.email?.split("@")[0]}
+                            </span>
                             <button
                                 onClick={handleLogout}
-                                className={`text-xs px-3 py-1.5 rounded-md transition-colors ${useLightText
-                                    ? "bg-white/10 text-white hover:bg-white/20"
-                                    : "bg-error/10 text-error hover:bg-error/20"
-                                    }`}
+                                className="text-xs font-semibold px-4 py-2 rounded-lg bg-red-500/10 text-red-400 hover:bg-red-500/20 border border-red-500/20 transition-colors"
                             >
-                                {t("logout")}
+                                Шығу
                             </button>
                         </div>
                     ) : (
                         <Link
                             href={"/auth/login" as "/"}
-                            className="text-sm px-4 py-2 rounded-lg bg-blue-600 text-white font-medium hover:bg-blue-700 transition-colors"
+                            className="hidden md:inline-flex text-sm px-5 py-2 rounded-lg bg-[#8B5CF6] text-white font-medium hover:bg-purple-500 transition-colors shadow-lg shadow-purple-500/20"
                         >
-                            {t("login")}
+                            Кіру
                         </Link>
                     )}
 
                     {/* Mobile toggle */}
                     <button
-                        className={`md:hidden w-10 h-10 rounded-lg flex flex-col items-center justify-center gap-1 ${useLightText ? "bg-white/10" : "bg-gray-100"}`}
+                        className={`md:hidden w-10 h-10 rounded-lg flex flex-col items-center justify-center gap-1.5 ${useLightText ? "bg-white/10" : "bg-[#1e293b]"}`}
                         onClick={() => setIsOpen(!isOpen)}
                         aria-label="Menu"
                     >
-                        <span className={`block w-5 h-0.5 transition-transform ${useLightText ? "bg-white" : "bg-black"} ${isOpen ? "rotate-45 translate-y-1.5" : ""}`} />
-                        <span className={`block w-5 h-0.5 transition-opacity ${useLightText ? "bg-white" : "bg-black"} ${isOpen ? "opacity-0" : ""}`} />
-                        <span className={`block w-5 h-0.5 transition-transform ${useLightText ? "bg-white" : "bg-black"} ${isOpen ? "-rotate-45 -translate-y-1.5" : ""}`} />
+                        <span className={`block w-5 h-[2px] rounded-full transition-transform ${useLightText ? "bg-white" : "bg-[#f1f5f9]"} ${isOpen ? "rotate-45 translate-y-[8px]" : ""}`} />
+                        <span className={`block w-5 h-[2px] rounded-full transition-opacity ${useLightText ? "bg-white" : "bg-[#f1f5f9]"} ${isOpen ? "opacity-0" : ""}`} />
+                        <span className={`block w-5 h-[2px] rounded-full transition-transform ${useLightText ? "bg-white" : "bg-[#f1f5f9]"} ${isOpen ? "-rotate-45 -translate-y-[8px]" : ""}`} />
                     </button>
                 </div>
             </div>
 
             {/* Mobile menu */}
             {isOpen && (
-                <div className="md:hidden absolute top-20 left-0 right-0 bg-surface border-t border-surface-lighter/50 p-6 space-y-4">
-                    <Link
-                        href={"/courses" as "/"}
-                        className="block text-sm text-slate-300 hover:text-white transition-colors"
-                        onClick={() => setIsOpen(false)}
-                    >
-                        Курсы
-                    </Link>
-                    {user ? (
-                        <>
+                <div className="md:hidden absolute top-full left-0 right-0 bg-[#0f172a] border-t border-[#334155] p-6 shadow-2xl space-y-4 shadow-black/50">
+                    <div className="flex items-center gap-2 bg-white/5 p-1 rounded-lg border border-white/10 w-fit mb-6">
+                        {locales.map((l) => (
                             <Link
-                                href={"/dashboard" as "/"}
-                                className="block text-sm text-accent"
+                                key={l}
+                                href={"/" as "/"}
+                                locale={l as any}
                                 onClick={() => setIsOpen(false)}
+                                className={`text-xs font-bold px-3 py-1.5 rounded transition-colors uppercase ${locale === l
+                                    ? "bg-[#8B5CF6] text-white"
+                                    : "text-slate-400 hover:text-white"
+                                    }`}
                             >
-                                {t("dashboard")}
+                                {l}
                             </Link>
-                            <button
-                                onClick={() => { handleLogout(); setIsOpen(false); }}
-                                className="text-sm text-error"
-                            >
-                                {t("logout")}
-                            </button>
-                        </>
-                    ) : (
+                        ))}
+                    </div>
+
+                    {navLinks.map((link) => (
                         <Link
-                            href={"/auth/login" as "/"}
-                            className="block text-sm text-accent"
+                            key={link.href}
+                            href={link.href as any}
+                            className="block text-lg font-medium text-slate-300 hover:text-white transition-colors py-2 border-b border-[#334155]/50"
                             onClick={() => setIsOpen(false)}
                         >
-                            {t("login")}
+                            {link.label}
                         </Link>
-                    )}
+                    ))}
+
+                    <div className="pt-4">
+                        {user ? (
+                            <>
+                                <p className="text-sm text-slate-400 mb-4 font-medium">Кірген аккаунт: {user.email}</p>
+                                <button
+                                    onClick={() => { handleLogout(); setIsOpen(false); }}
+                                    className="w-full text-center py-3 rounded-xl bg-red-500/10 text-red-400 border border-red-500/20 font-semibold"
+                                >
+                                    Шығу
+                                </button>
+                            </>
+                        ) : (
+                            <Link
+                                href={"/auth/login" as "/"}
+                                className="block w-full text-center py-3 rounded-xl bg-[#8B5CF6] text-white font-semibold shadow-lg shadow-purple-500/20"
+                                onClick={() => setIsOpen(false)}
+                            >
+                                Кіру
+                            </Link>
+                        )}
+                    </div>
                 </div>
             )}
         </nav>

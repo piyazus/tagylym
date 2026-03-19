@@ -22,24 +22,24 @@ const rubricCriterionMap: Record<string, "DESIGN" | "CREATE" | "INNOVATION" | "I
 
 const rubricTexts: Record<string, Record<string, string>> = {
     "robot-design": {
-        beginner: "Робот спроектирован, может выполнять основные задачи. Команда может объяснить базовые решения дизайна.",
-        intermediate: "Дизайн итерирован на основе тестирования. Документация процесса в инженерном журнале.",
-        advanced: "Инновационный дизайн с чётким обоснованием. Команда демонстрирует глубокое понимание инженерного процесса.",
+        beginner: "Робот жобаланды, негізгі тапсырмаларды орындай алады. Команда дизайнның негізгі шешімдерін түсіндіре алады.",
+        intermediate: "Дизайн тестілеу негізінде жақсартылды. Инженерлік журналда процесс құжатталған.",
+        advanced: "Нақты негіздемесі бар инновациялық дизайн. Команда инженерлік процесті терең түсінетінін көрсетеді.",
     },
     coding: {
-        beginner: "Программа запускает робота для выполнения миссий. Код организован и понятен.",
-        intermediate: "Использование датчиков и условий. P-контроллер для точного движения.",
-        advanced: "PID-регулятор, модульный код на PyBricks. Алгоритмы оптимизации маршрутов.",
+        beginner: "Бағдарлама роботты миссияларды орындау үшін іске қосады. Код жүйелі және түсінікті.",
+        intermediate: "Датчиктер мен шарттарды қолдану. Дәл қозғалыс үшін P-контроллер.",
+        advanced: "PID-реттегіш, PyBricks-тегі модульдік код. Маршрутты оңтайландыру алгоритмдері.",
     },
     innovation: {
-        beginner: "Проблема идентифицирована, решение предложено. Презентация структурирована.",
-        intermediate: "Прототип протестирован с реальными пользователями. Есть цифры воздействия.",
-        advanced: "Impact First: цифровой результат в первых 10 секундах. Масштабируемое решение.",
+        beginner: "Мәселе анықталды, шешім ұсынылды. Презентация құрылымдалған.",
+        intermediate: "Прототип нақты пайдаланушылармен сыналды. Әсер ету көрсеткіштері бар.",
+        advanced: "Impact First: алғашқы 10 секундта цифрлық нәтиже. Масштабталатын шешім.",
     },
     "robot-game": {
-        beginner: "Робот выполняет 3+ миссии. Команда знает правила и стратегию.",
-        intermediate: "ROI-анализ миссий. Оптимизированные маршруты. 150+ баллов.",
-        advanced: "300+ баллов. Полная автономная стратегия с fallback-планами.",
+        beginner: "Робот 3+ миссияны орындайды. Команда ережелер мен стратегияны біледі.",
+        intermediate: "Миссиялардың ROI-анализі. Оңтайландырылған маршруттар. 150+ ұпай.",
+        advanced: "300+ ұпай. Резервтік жоспарлары бар толық автономды стратегия.",
     },
 };
 
@@ -97,18 +97,26 @@ function LevelPageContent({
     const levelName = level as LevelName;
     const rubricLevel = level === "advanced" ? "EXCEEDS" as const : "ACCOMPLISHED" as const;
     const criterion = rubricCriterionMap[category] || "DESIGN";
-    const rubricText = rubricTexts[category]?.[level] || "Критерии оценки для данного уровня.";
+    const rubricText = rubricTexts[category]?.[level] || "Бұл деңгей үшін бағалау критерийлері.";
 
     if (!levelData) {
         return (
             <div className="min-h-screen flex items-center justify-center">
-                <p className="text-muted">Level not found.</p>
+                <p className="text-[#94a3b8]">Деңгей табылмады.</p>
             </div>
         );
     }
 
+    // Replace the Russian level names from DB with Kazakh for display if needed
+    const displayNames: Record<string, string> = {
+        "beginner": "Бастауыш",
+        "intermediate": "Орташа",
+        "advanced": "Жетілдірілген"
+    };
+    const displayName = displayNames[level] || levelData.name;
+
     return (
-        <div className="min-h-screen">
+        <div className="min-h-screen bg-[#0f172a] text-[#f1f5f9]">
             {/* Header */}
             <section className="max-w-5xl mx-auto px-6 pt-16 pb-8">
                 <div className="flex items-center gap-4 mb-6">
@@ -118,11 +126,11 @@ function LevelPageContent({
                     />
                     <div>
                         <LevelBadge level={levelName} />
-                        <h1 className="text-3xl font-black text-white mt-2">{levelData.name}</h1>
+                        <h1 className="text-3xl font-black text-white mt-2">{displayName}</h1>
                     </div>
                 </div>
-                <p className="text-sm text-accent font-medium">
-                    Стандартное решение (X) → Наш подход (Y) потому что (Z)
+                <p className="text-sm text-[#8B5CF6] font-medium">
+                    Стандартты шешім (X) → Біздің тәсіл (Y), өйткені (Z)
                 </p>
             </section>
 
@@ -144,7 +152,7 @@ function LevelPageContent({
                     {courses.length > 0 ? (
                         <div className="space-y-3">
                             {courses.map((course, idx) => (
-                                <div key={course.id} className="glass-card p-5 flex items-center gap-4 group">
+                                <div key={course.id} className="bg-[#1e293b] rounded-xl border border-[#334155] p-5 flex items-center gap-4 group hover:border-[#8B5CF6]/50 transition-colors cursor-pointer">
                                     <div
                                         className="w-10 h-10 rounded-lg flex items-center justify-center text-sm font-bold shrink-0"
                                         style={{ backgroundColor: `${levelData.color}30`, color: levelData.color }}
@@ -152,19 +160,19 @@ function LevelPageContent({
                                         {idx + 1}
                                     </div>
                                     <div className="flex-1">
-                                        <h3 className="font-semibold text-white group-hover:text-accent transition-colors">
+                                        <h3 className="font-semibold text-white group-hover:text-[#8B5CF6] transition-colors">
                                             {course.title}
                                         </h3>
                                         {course.description && (
-                                            <p className="text-xs text-muted mt-0.5">{course.description}</p>
+                                            <p className="text-xs text-[#94a3b8] mt-0.5">{course.description}</p>
                                         )}
                                     </div>
-                                    <span className="text-muted group-hover:text-accent transition-colors">→</span>
+                                    <span className="text-[#94a3b8] group-hover:text-[#8B5CF6] transition-colors">→</span>
                                 </div>
                             ))}
                         </div>
                     ) : (
-                        <p className="text-sm text-muted">Курсы пока не добавлены.</p>
+                        <p className="text-sm text-[#94a3b8]">Курстар әзірге қосылмаған.</p>
                     )}
                 </div>
 
@@ -184,7 +192,7 @@ function LevelPageContent({
                             ))}
                         </div>
                     ) : (
-                        <p className="text-sm text-muted">{t("noArtifacts")}</p>
+                        <p className="text-sm text-[#94a3b8]">{t("noArtifacts")}</p>
                     )}
                 </div>
             </div>

@@ -103,9 +103,9 @@ export default function QuizCard({ quiz }: QuizCardProps) {
 
                             <button
                                 onClick={resetQuiz}
-                                className="text-sm text-accent hover:text-accent/80 transition-colors"
+                                className="text-sm text-[#8B5CF6] hover:text-purple-400 transition-colors mt-2"
                             >
-                                ↻ Try again
+                                ↻ Қайтадан байқап көру
                             </button>
                         </div>
                     )}
@@ -116,14 +116,14 @@ export default function QuizCard({ quiz }: QuizCardProps) {
                     {!showAnswer ? (
                         <button
                             onClick={() => setShowAnswer(true)}
-                            className="w-full py-2.5 rounded-lg font-medium text-sm gradient-brand text-white hover:opacity-90 transition-opacity"
+                            className="w-full py-2.5 rounded-lg font-medium text-sm bg-[#8B5CF6] hover:bg-purple-500 text-white transition-opacity"
                         >
                             {t("showAnswer")}
                         </button>
                     ) : (
                         <div className="space-y-3 animate-fade-in-up">
-                            <div className="p-4 rounded-lg bg-accent/10 border border-accent/20">
-                                <span className="font-semibold text-accent text-xs uppercase tracking-wider block mb-2">
+                            <div className="p-4 rounded-lg bg-[#8B5CF6]/10 border border-[#8B5CF6]/20">
+                                <span className="font-semibold text-[#8B5CF6] text-xs uppercase tracking-wider block mb-2">
                                     {t("modelAnswer")}
                                 </span>
                                 <p className="text-sm text-slate-300 leading-relaxed">
@@ -132,10 +132,10 @@ export default function QuizCard({ quiz }: QuizCardProps) {
                             </div>
 
                             {quiz.tip && (
-                                <div className="flex items-start gap-2 p-3 rounded-lg bg-tip-bg/50 border border-tip/20">
+                                <div className="flex items-start gap-2 p-3 rounded-lg bg-yellow-500/10 border border-yellow-500/20">
                                     <span className="text-lg mt-0.5">💡</span>
                                     <div>
-                                        <span className="font-semibold text-tip text-xs uppercase tracking-wider">
+                                        <span className="font-semibold text-yellow-500 text-xs uppercase tracking-wider">
                                             {t("tip")}
                                         </span>
                                         <p className="text-sm text-slate-300 mt-1 leading-relaxed">{quiz.tip}</p>
@@ -145,9 +145,9 @@ export default function QuizCard({ quiz }: QuizCardProps) {
 
                             <button
                                 onClick={resetQuiz}
-                                className="text-sm text-accent hover:text-accent/80 transition-colors"
+                                className="text-sm text-[#8B5CF6] hover:text-purple-400 transition-colors mt-2"
                             >
-                                ↻ Reset
+                                ↻ Жасыру
                             </button>
                         </div>
                     )}
