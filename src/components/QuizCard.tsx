@@ -5,7 +5,8 @@ import { useTranslations } from "next-intl";
 import type { QuizCardProps } from "@/types";
 
 export default function QuizCard({ quiz }: QuizCardProps) {
-    const t = useTranslations("quiz");
+    const tLesson = useTranslations("lesson");
+    const tCommon = useTranslations("common");
     const [selectedOption, setSelectedOption] = useState<string | null>(null);
     const [isSubmitted, setIsSubmitted] = useState(false);
     const [showAnswer, setShowAnswer] = useState(false);
@@ -74,7 +75,7 @@ export default function QuizCard({ quiz }: QuizCardProps) {
                             disabled={!selectedOption}
                             className="bg-[#2563EB] text-white px-6 py-2.5 rounded-lg text-sm hover:bg-[#1D4ED8] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                         >
-                            {t("submit")}
+                            {tLesson("quiz_submit")}
                         </button>
                     ) : (
                         <div className="space-y-4 mt-4">
@@ -84,7 +85,7 @@ export default function QuizCard({ quiz }: QuizCardProps) {
                             >
                                 <span className="text-sm font-bold">{isCorrect ? "✓" : "✗"}</span>
                                 <span className="font-medium text-sm">
-                                    {isCorrect ? t("correct") : t("incorrect")}
+                                    {isCorrect ? tLesson("quiz_correct") : tLesson("quiz_wrong")}
                                 </span>
                             </div>
 
@@ -94,7 +95,7 @@ export default function QuizCard({ quiz }: QuizCardProps) {
                                     <div className="flex items-center gap-2 mb-1">
                                         <span className="w-2 h-2 rounded-full bg-amber-400" />
                                         <span className="font-mono text-xs uppercase tracking-wide text-[#92400E]">
-                                            {t("tip")}
+                                            {tLesson("tip_label")}
                                         </span>
                                     </div>
                                     <p className="text-sm text-[#78350F] leading-relaxed">{quiz.tip}</p>
@@ -105,7 +106,7 @@ export default function QuizCard({ quiz }: QuizCardProps) {
                                 onClick={resetQuiz}
                                 className="text-sm text-[#2563EB] hover:text-[#1D4ED8] underline transition-colors"
                             >
-                                ↻ Қайтадан байқап көру
+                                ↻ {tCommon("try_again")}
                             </button>
                         </div>
                     )}
@@ -118,13 +119,13 @@ export default function QuizCard({ quiz }: QuizCardProps) {
                             onClick={() => setShowAnswer(true)}
                             className="bg-[#2563EB] text-white px-6 py-2.5 rounded-lg text-sm hover:bg-[#1D4ED8] transition-colors"
                         >
-                            {t("showAnswer")}
+                            {tLesson("quiz_show_answer")}
                         </button>
                     ) : (
                         <div className="space-y-4 mt-4 animate-fade-in-up">
                             <div className="p-4 rounded-xl bg-blue-50 border border-blue-200">
                                 <span className="font-semibold text-[#1D4ED8] text-xs uppercase tracking-wider block mb-2">
-                                    {t("modelAnswer")}
+                                    {tLesson("quiz_answer_label")}
                                 </span>
                                 <p className="text-sm text-[#374151] leading-relaxed">
                                     {quiz.correct_answer}
@@ -136,7 +137,7 @@ export default function QuizCard({ quiz }: QuizCardProps) {
                                     <div className="flex items-center gap-2 mb-1">
                                         <span className="w-2 h-2 rounded-full bg-amber-400" />
                                         <span className="font-mono text-xs uppercase tracking-wide text-[#92400E]">
-                                            {t("tip")}
+                                            {tLesson("tip_label")}
                                         </span>
                                     </div>
                                     <p className="text-sm text-[#78350F] leading-relaxed">{quiz.tip}</p>
@@ -147,7 +148,7 @@ export default function QuizCard({ quiz }: QuizCardProps) {
                                 onClick={resetQuiz}
                                 className="text-sm text-[#2563EB] hover:text-[#1D4ED8] underline transition-colors"
                             >
-                                ↻ Жасыру
+                                ↻ {tCommon("hide")}
                             </button>
                         </div>
                     )}

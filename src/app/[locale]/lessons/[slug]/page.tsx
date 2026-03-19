@@ -41,11 +41,12 @@ export default function LessonPage({
 }
 
 function LessonLoading() {
+    const tCommon = useTranslations("common");
     return (
         <div className="min-h-screen flex items-center justify-center bg-[#F5F5F5] text-[#1A1A1A]">
             <div className="text-center">
                 <div className="w-8 h-8 border-2 border-[#2563EB] border-t-transparent rounded-full animate-spin mx-auto mb-3" />
-                <p className="text-[#6B7280] text-sm">Урок жүктелуде...</p>
+                <p className="text-[#6B7280] text-sm">{tCommon("loading")}</p>
             </div>
         </div>
     );
@@ -53,6 +54,7 @@ function LessonLoading() {
 
 function LessonContent({ slug }: { slug: string }) {
     const t = useTranslations("lesson");
+    const tCommon = useTranslations("common");
     const [lesson, setLesson] = useState<SanityLesson | null>(null);
     const [quizzes, setQuizzes] = useState<Quiz[]>([]);
     const [siblings, setSiblings] = useState<{ slug: string; title: string }[]>([]);
@@ -120,15 +122,15 @@ function LessonContent({ slug }: { slug: string }) {
                     <div className="w-20 h-20 rounded-2xl bg-white border border-[#E5E7EB] shadow-sm flex items-center justify-center mx-auto mb-6 text-4xl">
                         📝
                     </div>
-                    <h1 className="text-2xl font-bold font-display text-[#1A1A1A] mb-3">Контент жақында шығады</h1>
+                    <h1 className="text-2xl font-bold font-display text-[#1A1A1A] mb-3">{tCommon("coming_soon")}</h1>
                     <p className="text-[#6B7280] text-sm leading-relaxed mb-6">
-                        Бұл сабақ әлі әзірленуде. Біз бейне, мәтін және тапсырмаларды жақын арада қосамыз.
+                        {t("no_content")}
                     </p>
                     <Link
                         href={"/fll" as "/"}
                         className="inline-flex px-6 py-2.5 rounded-lg bg-[#2563EB] text-white font-medium text-sm hover:bg-[#1D4ED8] transition-colors"
                     >
-                        ← Курстарға қайту
+                        ← {t("back_to_courses")}
                     </Link>
                 </div>
             </div>
@@ -173,7 +175,7 @@ function LessonContent({ slug }: { slug: string }) {
                         <RubricCallout
                             criterion={lesson.rubricCriterion as RubricCriterion}
                             level={lesson.rubricLevel as RubricLevel}
-                            text={`Критерий: ${lesson.rubricCriterion} — Деңгей: ${lesson.rubricLevel}`}
+                            text={`${t("rubric_label")}: ${lesson.rubricCriterion} — Деңгей: ${lesson.rubricLevel}`}
                         />
                     </div>
                 )}
@@ -181,7 +183,7 @@ function LessonContent({ slug }: { slug: string }) {
                 {/* Quizzes */}
                 {quizzes.length > 0 && (
                     <div className="mt-12 mb-6">
-                        <h2 className="text-2xl font-bold text-[#1A1A1A] mb-6">Проверка знаний</h2>
+                        <h2 className="text-2xl font-bold text-[#1A1A1A] mb-6">{t("quiz_title")}</h2>
                         <div className="space-y-6">
                             {quizzes.map((q) => (
                                 <QuizCard key={q.id} quiz={q} />
@@ -197,7 +199,7 @@ function LessonContent({ slug }: { slug: string }) {
                             href={`/lessons/${prevLesson.slug}` as "/"}
                             className="bg-white border border-[#E5E7EB] text-[#374151] hover:bg-[#F3F4F6] transition-colors rounded-lg px-6 py-2.5 text-sm font-medium flex items-center gap-2 shadow-sm"
                         >
-                            &larr; {t("previous")}
+                            &larr; {t("prev")}
                         </Link>
                     ) : (
                         <span />

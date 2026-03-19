@@ -11,7 +11,7 @@ export default function middleware(request: NextRequest) {
     const { pathname } = request.nextUrl;
 
     // Strip locale prefix to check the path
-    const pathWithoutLocale = pathname.replace(/^\/(kz|ru|en)/, "") || "/";
+    const pathWithoutLocale = pathname.replace(/^\/(kk|ru|en)/, "") || "/";
 
     // Check if this is a protected route
     const isProtected = protectedPaths.some((p) => pathWithoutLocale.startsWith(p));
@@ -24,7 +24,7 @@ export default function middleware(request: NextRequest) {
 
         if (!hasAuthToken) {
             // Redirect to login
-            const locale = pathname.match(/^\/(kz|ru|en)/)?.[1] || "kz";
+            const locale = pathname.match(/^\/(kk|ru|en)/)?.[1] || "kk";
             const loginUrl = new URL(`/${locale}/auth/login`, request.url);
             loginUrl.searchParams.set("redirect", pathname);
             return NextResponse.redirect(loginUrl);
@@ -35,5 +35,5 @@ export default function middleware(request: NextRequest) {
 }
 
 export const config = {
-    matcher: ["/", "/(kz|ru|en)/:path*", "/((?!api|_next|_vercel|.*\\..*).*)"],
+    matcher: ["/", "/(kk|ru|en)/:path*", "/((?!api|_next|_vercel|.*\\..*).*)"],
 };

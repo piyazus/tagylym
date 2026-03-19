@@ -1,4 +1,5 @@
 import type { LevelName } from "@/types";
+import { useTranslations } from "next-intl";
 
 const colors: Record<string, string> = {
     beginner: '#2563EB',
@@ -6,15 +7,16 @@ const colors: Record<string, string> = {
     advanced: '#16A34A',
 };
 
-const labels: Record<string, Record<string, string>> = {
-    beginner: { kz: 'Бастауыш', ru: 'Beginner', en: 'Beginner' },
-    intermediate: { kz: 'Орташа', ru: 'Intermediate', en: 'Intermediate' },
-    advanced: { kz: 'Жетілдірілген', ru: 'Advanced', en: 'Advanced' },
-};
-
 export default function LevelBadge({ level }: { level: LevelName | string }) {
+    const tLevels = useTranslations("levels");
     const color = colors[level] || colors.beginner;
-    const label = labels[level]?.kz || level;
+
+    let label = level;
+    try {
+        label = tLevels(level);
+    } catch (e) {
+        // Fallback
+    }
 
     return (
         <span

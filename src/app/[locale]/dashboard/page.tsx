@@ -9,6 +9,8 @@ import type { Progress } from "@/types";
 
 export default function DashboardPage() {
     const t = useTranslations("dashboard");
+    const tCommon = useTranslations("common");
+    const tCourses = useTranslations("courses");
     const [user, setUser] = useState<{ id: string; email?: string } | null>(null);
     const [progress, setProgress] = useState<Progress[]>([]);
     const [categories, setCategories] = useState<{ id: string; name: string; icon: string }[]>([]);
@@ -51,9 +53,9 @@ export default function DashboardPage() {
                 <div className="mb-12 flex flex-col md:flex-row md:items-end md:justify-between gap-6">
                     <div>
                         <h1 className="text-3xl font-black text-white mb-2">
-                            Қош келдің, {user?.email ? user.email.split("@")[0] : "қонақ"}! 👋
+                            {t("welcome")}, {user?.email ? user.email.split("@")[0] : t("guest")}! 👋
                         </h1>
-                        <p className="text-[#94a3b8]">FLL категориялары бойынша сіздің үлгеріміңіз</p>
+                        <p className="text-[#94a3b8]">{t("subtitle")}</p>
                     </div>
 
                     {/* Quick Access: Continue Learning */}
@@ -62,24 +64,24 @@ export default function DashboardPage() {
                             href={`/lessons/${progress[0].lesson_id}` as "/"}
                             className="inline-flex bg-[#8B5CF6] hover:bg-purple-500 text-white font-semibold py-3 px-8 rounded-xl transition-all shadow-lg shadow-purple-500/30 whitespace-nowrap"
                         >
-                            Соңғы сабақты жалғастыру
+                            {t("continue_learning")}
                         </Link>
                     )}
                 </div>
 
                 {loading ? (
                     <div className="text-center py-16">
-                        <p className="text-[#94a3b8]">Жүктелуде...</p>
+                        <p className="text-[#94a3b8]">{tCommon("loading")}</p>
                     </div>
                 ) : !user ? (
                     <div className="text-center py-16">
                         <span className="text-4xl mb-4 block">🔒</span>
-                        <p className="text-[#94a3b8] mb-4">Оқу үлгерімін көру үшін жүйеге кіріңіз.</p>
+                        <p className="text-[#94a3b8] mb-4">{t("login_prompt")}</p>
                         <Link
                             href="/auth/login"
                             className="inline-flex px-6 py-3 rounded-xl bg-[#8B5CF6] text-white font-medium hover:opacity-90 transition-opacity"
                         >
-                            Үлгерімді бақылау үшін кіріңіз
+                            {t("login_btn")}
                         </Link>
                     </div>
                 ) : (
@@ -98,7 +100,7 @@ export default function DashboardPage() {
                                             <div>
                                                 <h3 className="font-semibold text-white">{cat.name}</h3>
                                                 <p className="text-xs text-[#94a3b8]">
-                                                    0 / 0 сабақ аяқталды
+                                                    0 / 0 {t("lessons_completed")}
                                                 </p>
                                             </div>
                                         </div>
@@ -125,7 +127,7 @@ export default function DashboardPage() {
                                                     {idx + 1}
                                                 </div>
                                                 <div className="flex-1">
-                                                    <p className="text-sm text-white font-medium">Сабақ: {p.lesson_id}</p>
+                                                    <p className="text-sm text-white font-medium">{tCommon("lesson")}: {p.lesson_id}</p>
                                                     <p className="text-xs text-[#94a3b8]">
                                                         {new Date(p.completed_at).toLocaleDateString("kk-KZ")}
                                                     </p>
@@ -144,7 +146,7 @@ export default function DashboardPage() {
                                     {t("checklist")}
                                 </h2>
                                 <div className="grid grid-cols-1 gap-4">
-                                    {["Бастауыш", "Орташа", "Жетілдірілген"].map((level, idx) => {
+                                    {[tCourses("beginner"), tCourses("intermediate"), tCourses("advanced")].map((level, idx) => {
                                         const colors = ["bg-[#3B82F6]", "bg-[#F97316]", "bg-[#22C55E]"];
                                         return (
                                             <div key={level} className="bg-[#1e293b] rounded-xl border border-[#334155] p-5">

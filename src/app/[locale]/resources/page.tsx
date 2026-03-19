@@ -8,7 +8,7 @@ export default function ResourcesPage() {
         <div className="min-h-screen">
             <div className="max-w-5xl mx-auto px-6 pt-16 pb-24">
                 <div className="text-center mb-12">
-                    <h1 className="text-4xl font-black text-white mb-3">{t("title")}</h1>
+                    <h1 className="text-4xl font-black text-white mb-3">{t("page_title")}</h1>
                     <p className="text-muted">{t("subtitle")}</p>
                 </div>
 
@@ -19,13 +19,13 @@ export default function ResourcesPage() {
 
                 {/* Useful Links */}
                 <section>
-                    <h2 className="text-xl font-bold mb-6">{t("linksTitle")}</h2>
+                    <h2 className="text-xl font-bold mb-6">{t("useful_links")}</h2>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         {[
-                            { title: t("link1Title"), url: "https://www.firstlegoleague.org/", desc: t("link1Desc") },
-                            { title: t("link2Title"), url: "https://education.lego.com/en-us/product-resources/spike-prime", desc: t("link2Desc") },
-                            { title: t("link3Title"), url: "https://docs.pybricks.com/", desc: t("link3Desc") },
-                            { title: t("link4Title"), url: "https://www.firstinspires.org/resource-library/fll/challenge/challenge-and-updates", desc: t("link4Desc") },
+                            { title: t("first_fll_title"), url: "https://www.firstlegoleague.org/", desc: t("first_fll_desc") },
+                            { title: t("lego_education_title"), url: "https://education.lego.com/en-us/product-resources/spike-prime", desc: t("lego_education_desc") },
+                            { title: t("pybricks_title"), url: "https://docs.pybricks.com/", desc: t("pybricks_desc") },
+                            { title: t("challenge_updates_title"), url: "https://www.firstinspires.org/resource-library/fll/challenge/challenge-and-updates", desc: t("challenge_updates_desc") },
                         ].map((link, idx) => (
                             <a
                                 key={idx}

@@ -1,4 +1,5 @@
 import type { RubricCalloutProps } from "@/types";
+import { useTranslations } from "next-intl";
 
 const levels = ["BEGINNING", "DEVELOPING", "ACCOMPLISHED", "EXCEEDS"];
 
@@ -7,13 +8,14 @@ export default function RubricCallout({
     level,
     text,
 }: RubricCalloutProps) {
+    const tLesson = useTranslations("lesson");
     const activeIndex = levels.indexOf(level.toUpperCase());
 
     return (
         <div className="bg-[#EFF6FF] border-l-4 border-[#2563EB] rounded-r-xl p-5 my-6">
             <div className="flex items-center justify-between mb-3">
                 <span className="font-mono text-xs uppercase tracking-wide text-[#1E40AF] font-semibold">
-                    РУБРИКА · {criterion}
+                    {tLesson("rubric_label")} · {criterion}
                 </span>
                 <div className="flex items-center gap-1.5 ml-auto" title={level}>
                     {levels.map((lvl, i) => (

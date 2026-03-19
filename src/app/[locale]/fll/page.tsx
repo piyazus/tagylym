@@ -47,7 +47,9 @@ function FLLPageContent({
     seasonName: string;
     seasonYear: number;
 }) {
-    const t = useTranslations();
+    const tCourses = useTranslations("courses");
+    const tFll = useTranslations("fll");
+    const tCommon = useTranslations("common");
 
     return (
         <div className="min-h-screen bg-[#F5F5F5] text-[#1A1A1A]">
@@ -55,16 +57,16 @@ function FLLPageContent({
             <header className="bg-white border-b border-[#E5E7EB] h-[52px]">
                 <div className="max-w-7xl mx-auto px-6 h-full flex items-center justify-between">
                     <h1 className="text-3xl font-extrabold text-[#1A1A1A]">
-                        Сабақтар
+                        {tCourses("page_title")}
                     </h1>
                     <div className="hidden md:flex items-center gap-3 text-sm">
-                        <span className="text-[#1A1A1A] font-semibold">3 Levels</span>
+                        <span className="text-[#1A1A1A] font-semibold">{tCourses("levels")}</span>
                         <span className="text-[#D1D5DB]">·</span>
-                        <span className="text-[#6B7280] cursor-pointer hover:text-[#1A1A1A]">Beginner</span>
+                        <span className="text-[#6B7280] cursor-pointer hover:text-[#1A1A1A]">{tCourses("beginner")}</span>
                         <span className="text-[#D1D5DB]">·</span>
-                        <span className="text-[#6B7280] cursor-pointer hover:text-[#1A1A1A]">Intermediate</span>
+                        <span className="text-[#6B7280] cursor-pointer hover:text-[#1A1A1A]">{tCourses("intermediate")}</span>
                         <span className="text-[#D1D5DB]">·</span>
-                        <span className="text-[#6B7280] cursor-pointer hover:text-[#1A1A1A]">Advanced</span>
+                        <span className="text-[#6B7280] cursor-pointer hover:text-[#1A1A1A]">{tCourses("advanced")}</span>
                     </div>
                 </div>
             </header>
@@ -84,20 +86,20 @@ function FLLPageContent({
                             />
                             <div>
                                 <h2 className="text-sm font-semibold text-[#1A1A1A] leading-tight">
-                                    FLL Robotics Engineering & Innovation Track
+                                    {tFll("hub_title")}
                                 </h2>
                                 <p className="text-xs text-[#6B7280] mt-1 line-clamp-3">
-                                    {seasonName} {seasonYear ? `(${seasonYear})` : ""} — Робототехника, инженерия және инновация бойынша толық дайындық трегі.
+                                    {seasonName} {seasonYear ? `(${seasonYear})` : ""} — {tFll("hub_subtitle")}
                                 </p>
                                 <div className="flex items-center gap-1 mt-2">
                                     <span className="text-sm text-amber-400">★★★</span>
-                                    <span className="text-xs text-[#6B7280]">Beginner · 4 апта</span>
+                                    <span className="text-xs text-[#6B7280]">{tCourses("beginner")} · 4 {tCommon("week")}</span>
                                 </div>
                                 <Link
                                     href={`/fll/${seasonSlug}/${categories[0]?.slug || "robot-design"}/beginner` as "/"}
                                     className="inline-block mt-3 bg-[#2563EB] text-white text-xs font-medium px-4 py-2 rounded-lg hover:bg-[#1D4ED8] transition-colors"
                                 >
-                                    Оқуды бастау →
+                                    {tCourses("begin_learning")} →
                                 </Link>
                             </div>
                         </div>
@@ -125,7 +127,7 @@ function FLLPageContent({
                                         {cat.name}
                                     </p>
                                     <p className="text-xs text-[#9CA3AF] mt-0.5">
-                                        Курс {i + 1} из {categories.length}
+                                        {tCourses("course_of")} {i + 1} {tCourses("of")} {categories.length}
                                     </p>
                                 </Link>
                             ))}
@@ -154,14 +156,14 @@ function FLLPageContent({
                                         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                                     />
                                     <span className="absolute top-2 right-2 bg-black/65 text-white text-[10px] font-medium px-[7px] py-[2px] rounded">
-                                        Preview
+                                        {tCourses("preview")}
                                     </span>
                                 </div>
 
                                 {/* Body */}
                                 <div className="px-3.5 pt-3 pb-3.5">
                                     <p className="text-[11px] text-[#9CA3AF] mb-1">
-                                        Свободный курс
+                                        {tCourses("free_label")}
                                     </p>
                                     <h3 className="text-sm font-semibold text-[#1A1A1A] leading-[1.3] line-clamp-2 min-h-[2.4rem] mb-1.5">
                                         FLL CHALLENGE: ТРЕК {course.categoryName}
@@ -177,7 +179,7 @@ function FLLPageContent({
 
                                     {/* Duration */}
                                     <p className="text-[11px] text-[#9CA3AF] mt-0.5">
-                                        1 – 4 Недели
+                                        {tCourses("week_range")}
                                     </p>
                                 </div>
                             </Link>
@@ -185,8 +187,8 @@ function FLLPageContent({
                     </div>
                 ) : (
                     <div className="text-center py-20 text-[#6B7280]">
-                        <p className="text-lg">Курстар жүктелуде...</p>
-                        <p className="text-sm mt-2">Деректер табылмады немесе сервермен байланыс жоқ.</p>
+                        <p className="text-lg">{tCommon("loading")}</p>
+                        <p className="text-sm mt-2">{tCourses("no_courses")}</p>
                     </div>
                 )}
             </main>

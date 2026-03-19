@@ -1,8 +1,8 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Link, useRouter } from "@/i18n/routing";
-import { usePathname } from "next/navigation";
+import { Link } from "@/i18n/routing";
+import { usePathname, useRouter } from "next/navigation";
 import { useTranslations, useLocale } from "next-intl";
 import { supabase } from "@/lib/supabase";
 import Image from "next/image";
@@ -11,6 +11,7 @@ export default function Nav() {
     const locale = useLocale();
     const router = useRouter();
     const pathname = usePathname();
+    const tNav = useTranslations("nav");
     const [isOpen, setIsOpen] = useState(false);
     const [user, setUser] = useState<{ email?: string } | null>(null);
 
@@ -32,8 +33,17 @@ export default function Nav() {
         router.push("/");
     };
 
-    const locales = ["kz", "ru", "en"];
-    const localeLabels: Record<string, string> = { kz: "KAZ", ru: "RUS", en: "ENG" };
+    const locales = [
+        { code: 'kk', label: 'ҚАЗ' },
+        { code: 'ru', label: 'РУС' },
+        { code: 'en', label: 'ENG' },
+    ];
+
+    const switchLocale = (newLocale: string) => {
+        const segments = pathname.split('/');
+        segments[1] = newLocale;
+        router.push(segments.join('/'));
+    };
 
     return (
         <nav className="sticky top-0 z-50 bg-white border-b border-[#E5E7EB] h-12">
@@ -80,18 +90,17 @@ export default function Nav() {
                     {/* Locale Switcher */}
                     <div className="flex items-center border border-[#E5E7EB] rounded px-1 py-0.5 text-xs">
                         {locales.map((l, i) => (
-                            <span key={l} className="flex items-center">
+                            <span key={l.code} className="flex items-center">
                                 {i > 0 && <span className="text-[#D1D5DB] mx-0.5">|</span>}
-                                <Link
-                                    href={"/" as "/"}
-                                    locale={l as any}
-                                    className={`px-1 py-0.5 rounded transition-colors ${locale === l
+                                <button
+                                    onClick={() => switchLocale(l.code)}
+                                    className={`px-1 py-0.5 rounded transition-colors ${locale === l.code
                                         ? "text-[#1A1A1A] font-medium"
                                         : "text-[#6B7280] hover:text-[#1A1A1A]"
                                         }`}
                                 >
-                                    {localeLabels[l]}
-                                </Link>
+                                    {l.label}
+                                </button>
                             </span>
                         ))}
                     </div>
@@ -102,14 +111,14 @@ export default function Nav() {
                             onClick={handleLogout}
                             className="hidden md:inline text-xs text-red-500 hover:text-red-600 font-medium"
                         >
-                            Шығу
+                            {tNav("logout")}
                         </button>
                     ) : (
                         <Link
                             href={"/auth/login" as "/"}
                             className="hidden md:inline text-xs px-3 py-1 rounded bg-[#2563EB] text-white hover:bg-[#1D4ED8] transition-colors"
                         >
-                            Кіру
+                            {tNav("login")}
                         </Link>
                     )}
 
@@ -135,16 +144,14 @@ export default function Nav() {
                 <div className="sm:hidden absolute top-full left-0 right-0 bg-white border-b border-[#E5E7EB] p-4 shadow-md space-y-3">
                     <div className="flex items-center gap-1 border border-[#E5E7EB] rounded px-1 py-0.5 text-xs w-fit">
                         {locales.map((l, i) => (
-                            <span key={l} className="flex items-center">
+                            <span key={l.code} className="flex items-center">
                                 {i > 0 && <span className="text-[#D1D5DB] mx-0.5">|</span>}
-                                <Link
-                                    href={"/" as "/"}
-                                    locale={l as any}
-                                    onClick={() => setIsOpen(false)}
-                                    className={`px-1.5 py-0.5 rounded ${locale === l ? "text-[#1A1A1A] font-medium" : "text-[#6B7280]"}`}
+                                <button
+                                    onClick={() => { switchLocale(l.code); setIsOpen(false); }}
+                                    className={`px-1.5 py-0.5 rounded ${locale === l.code ? "text-[#1A1A1A] font-medium" : "text-[#6B7280]"}`}
                                 >
-                                    {localeLabels[l]}
-                                </Link>
+                                    {l.label}
+                                </button>
                             </span>
                         ))}
                     </div>
@@ -157,7 +164,7 @@ export default function Nav() {
                                     onClick={() => { handleLogout(); setIsOpen(false); }}
                                     className="text-sm text-red-500 font-medium"
                                 >
-                                    Шығу
+                                    {tNav("logout")}
                                 </button>
                             </div>
                         ) : (
@@ -166,7 +173,7 @@ export default function Nav() {
                                 className="block w-full text-center py-2 rounded-lg bg-[#2563EB] text-white text-sm font-medium"
                                 onClick={() => setIsOpen(false)}
                             >
-                                Кіру
+                                {tNav("login")}
                             </Link>
                         )}
                     </div>

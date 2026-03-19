@@ -102,7 +102,13 @@ function LevelPageContent({
     courses: { id: string; title: string; description: string | null; order: number }[];
     artifacts: { id: string; name: string; file_url: string; description: string | null }[];
 }) {
-    const t = useTranslations("level");
+    const tCommon = useTranslations("common");
+    const tCourses = useTranslations("courses");
+    const tNav = useTranslations("nav");
+    const tErrors = useTranslations("errors");
+    const tLesson = useTranslations("lesson");
+    const tQuiz = useTranslations("quiz");
+    const tChecklist = useTranslations("checklist");
     const levelName = level as LevelName;
     const rubricLevel = level === "advanced" ? "EXCEEDS" as const : "ACCOMPLISHED" as const;
     const criterion = rubricCriterionMap[category] || "DESIGN";
@@ -111,16 +117,16 @@ function LevelPageContent({
     if (!levelData) {
         return (
             <div className="min-h-screen flex items-center justify-center bg-[#F5F5F5]">
-                <p className="text-[#6B7280]">Деңгей табылмады.</p>
+                <p className="text-[#6B7280]">{tErrors("not_found")}</p>
             </div>
         );
     }
 
     const allLevels = ["beginner", "intermediate", "advanced"];
     const displayNames: Record<string, string> = {
-        "beginner": "Бастауыш",
-        "intermediate": "Орташа",
-        "advanced": "Жетілдірілген"
+        "beginner": tCourses("beginner"),
+        "intermediate": tCourses("intermediate"),
+        "advanced": tCourses("advanced")
     };
 
     return (
@@ -140,7 +146,7 @@ function LevelPageContent({
                                 {categoryData?.name || "Трек"}
                             </h1>
                             <p className="text-sm text-[#6B7280] mt-1">
-                                {checklist.length} тапсырмасының 0 орындалды
+                                0 / {checklist.length} {tChecklist("progress")}
                             </p>
                         </div>
                     </div>
@@ -167,7 +173,7 @@ function LevelPageContent({
             <div className="bg-white border-b border-[#E5E7EB]">
                 <div className="max-w-7xl mx-auto px-6 py-4 flex flex-col md:flex-row justify-between items-center gap-4">
                     <div className="flex items-center gap-3">
-                        <span className="text-lg font-semibold text-[#1A1A1A]">Трек: {categoryData?.name}</span>
+                        <span className="text-lg font-semibold text-[#1A1A1A]">{tQuiz("filter_track")}: {categoryData?.name}</span>
                         <LevelBadge level={levelName} />
                     </div>
                 </div>
@@ -180,7 +186,7 @@ function LevelPageContent({
                 {/* Course Grid */}
                 <div>
                     <h2 className="text-2xl font-bold text-[#1A1A1A] mb-6 flex items-center gap-2">
-                        {t("courses")}
+                        {tCourses("page_title")}
                     </h2>
                     {courses.length > 0 ? (
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -200,14 +206,14 @@ function LevelPageContent({
                                             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                                         />
                                         <span className="absolute top-2 right-2 bg-black/60 text-white text-xs px-2 py-0.5 rounded">
-                                            Preview
+                                            {tCommon("preview")}
                                         </span>
                                     </div>
 
                                     {/* Content */}
                                     <div className="p-5">
                                         <span className="text-xs font-bold text-[#2563EB] tracking-wider mb-2 block uppercase">
-                                            УРОК {idx + 1}
+                                            {tCommon("lesson")} {idx + 1}
                                         </span>
                                         <h3 className="text-lg font-semibold text-[#1A1A1A] leading-tight mb-3 group-hover:text-[#2563EB] transition-colors">
                                             {course.title}
@@ -224,11 +230,11 @@ function LevelPageContent({
                                         <div className="flex justify-between items-center text-xs font-medium text-[#6B7280]">
                                             <div className="flex items-center gap-1.5">
                                                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                                                15 мин
+                                                15 {tLesson("minutes")}
                                             </div>
                                             <div className="flex items-center gap-1.5">
                                                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path></svg>
-                                                3 задания
+                                                3 {tCommon("lessons")}
                                             </div>
                                         </div>
                                     </div>
@@ -236,7 +242,7 @@ function LevelPageContent({
                             ))}
                         </div>
                     ) : (
-                        <p className="text-[#6B7280]">Курстар әзірге қосылмаған.</p>
+                        <p className="text-[#6B7280]">{tCourses("no_courses")}</p>
                     )}
                 </div>
 
@@ -244,7 +250,7 @@ function LevelPageContent({
                     {/* Checklist */}
                     {checklist.length > 0 && (
                         <div>
-                            <h2 className="text-xl font-bold mb-4 text-[#1A1A1A]">Тексеру тізімі</h2>
+                            <h2 className="text-xl font-bold mb-4 text-[#1A1A1A]">{tChecklist("title")}</h2>
                             <ChecklistBlock items={checklist} levelId={levelData.id} />
                         </div>
                     )}
@@ -254,7 +260,7 @@ function LevelPageContent({
                         <div>
                             <h2 className="text-xl font-bold mb-4 flex items-center gap-2 text-[#1A1A1A]">
                                 <span className="w-1.5 h-1.5 rounded-full bg-[#2563EB]" />
-                                {t("artifacts")}
+                                {tNav("resources")}
                             </h2>
                             <div className="space-y-3">
                                 {artifacts.map((artifact) => (

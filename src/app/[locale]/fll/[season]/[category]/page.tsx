@@ -50,12 +50,15 @@ function CategoryPageContent({
     cat: { id: string; name: string; slug: string; icon: string } | null;
     levels: { id: string; name: string; color: string; order: number; lessonCount: number; checklistCount: number }[];
 }) {
-    const t = useTranslations("category");
+    const tCommon = useTranslations("common");
+    const tCourses = useTranslations("courses");
+    const tFll = useTranslations("fll");
+    const tErrors = useTranslations("errors");
 
     if (!cat) {
         return (
             <div className="min-h-screen flex items-center justify-center bg-[#F5F5F5]">
-                <p className="text-[#6B7280]">Категория табылмады.</p>
+                <p className="text-[#6B7280]">{tErrors("not_found")}</p>
             </div>
         );
     }
@@ -68,22 +71,22 @@ function CategoryPageContent({
                     <div className="text-5xl mb-6 flex items-center justify-center w-14 h-14 rounded-xl bg-[#F3F4F6] text-2xl mx-auto">{cat.icon}</div>
                     <h1 className="text-4xl font-bold text-[#1A1A1A] mb-4">{cat.name}</h1>
                     <p className="text-[#6B7280] max-w-2xl mx-auto">
-                        Осы санаттағы дағдыларыңызды дамытып, жаңа белестерді бағындырыңыз.
+                        {tFll("category_subtitle")}
                     </p>
                 </div>
             </section>
 
             {/* Level Cards */}
             <section className="max-w-7xl mx-auto px-6 py-16">
-                <h2 className="text-2xl font-bold text-center mb-12">{t("levels")}</h2>
+                <h2 className="text-2xl font-bold text-center mb-12">{tCourses("levels")}</h2>
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6 stagger-children">
                     {levels.map((level) => {
                         const slug = levelSlugMap[level.name] || "beginner";
                         const displayNames: Record<string, string> = {
-                            "beginner": "Бастауыш",
-                            "intermediate": "Орташа",
-                            "advanced": "Жетілдірілген"
+                            "beginner": tCourses("beginner"),
+                            "intermediate": tCourses("intermediate"),
+                            "advanced": tCourses("advanced")
                         };
                         const displayName = displayNames[slug] || level.name;
 
@@ -108,11 +111,11 @@ function CategoryPageContent({
                                 <div className="space-y-3 text-sm text-[#6B7280] mb-8">
                                     <div className="flex items-center gap-2">
                                         <span className="w-1.5 h-1.5 rounded-full bg-[#2563EB]" />
-                                        {level.lessonCount} {t("lessons")}
+                                        {level.lessonCount} {tCommon("lessons")}
                                     </div>
                                     <div className="flex items-center gap-2">
                                         <span className="w-1.5 h-1.5 rounded-full bg-[#16A34A]" />
-                                        {level.checklistCount} {t("checklistItems")}
+                                        {level.checklistCount} {tFll("checklist_count")}
                                     </div>
                                 </div>
 
@@ -120,7 +123,7 @@ function CategoryPageContent({
                                     className="py-3 rounded-xl text-center text-sm font-semibold transition-all group-hover:opacity-90"
                                     style={{ backgroundColor: `${level.color}15`, color: level.color }}
                                 >
-                                    {t("start")}
+                                    {tCourses("start")}
                                 </div>
                             </Link>
                         );
@@ -133,10 +136,10 @@ function CategoryPageContent({
                 <div className="bg-[#EFF6FF] rounded-2xl p-6 border-l-4 border-[#2563EB]">
                     <h3 className="text-lg font-bold flex items-center gap-2 mb-3 text-[#1E40AF]">
                         <span className="w-2 h-2 rounded-full bg-[#2563EB]" />
-                        Негізгі Құндылықтар
+                        {tFll("categories.core-values")}
                     </h3>
                     <p className="text-sm text-[#3B82F6] leading-relaxed">
-                        Негізгі құндылықтар жеке пән емес. Олар барлық сабақтар процесіне біріктірілген. Бағалау кезінде төрешілер команданың жарыс барысында бұл құндылықтарды қалай көрсететініне назар аударады.
+                        {tFll("core_values_text")}
                     </p>
                 </div>
             </section>

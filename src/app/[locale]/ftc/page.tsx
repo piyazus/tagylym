@@ -1,8 +1,11 @@
 "use client";
 
 import { useState } from "react";
+import { useTranslations } from "next-intl";
 
 export default function FTCPage() {
+    const t = useTranslations("coming_soon");
+    const tAuth = useTranslations("auth");
     const [email, setEmail] = useState("");
     const [submitted, setSubmitted] = useState(false);
 
@@ -23,22 +26,22 @@ export default function FTCPage() {
                     FIRST Tech Challenge
                 </h1>
                 <div className="inline-flex items-center px-4 py-2 rounded-full bg-[#F97316]/10 border border-[#F97316]/30 text-sm text-[#F97316] font-semibold tracking-wider mb-6">
-                    ЖАҚЫНДА
+                    {t("badge")}
                 </div>
                 <p className="text-[#94a3b8] leading-relaxed mb-8">
-                    FTC бағыты бойынша оқу материалдары мен курстар жақын арада платформаға қосылады. Алғашқылардың бірі болып білу үшін кезекке жазылыңыз!
+                    {t("ftc_desc")}
                 </p>
 
                 {submitted ? (
                     <div className="bg-[#22C55E]/10 border border-[#22C55E]/30 text-[#22C55E] p-4 rounded-xl font-medium animate-fade-in-up">
-                        🎉 Рахмет! Сіздің элекронды поштаңыз тізімге сәтті қосылды.
+                        🎉 {t("success")}
                     </div>
                 ) : (
                     <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3 max-w-sm mx-auto">
                         <input
                             type="email"
                             required
-                            placeholder="Электронды поштаңыз..."
+                            placeholder={tAuth("email_placeholder")}
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
                             className="flex-1 bg-[#1e293b] text-white placeholder:text-[#64748b] border border-[#334155] rounded-xl px-4 py-3 focus:outline-none focus:border-[#F97316] transition-colors"
@@ -47,7 +50,7 @@ export default function FTCPage() {
                             type="submit"
                             className="bg-[#F97316] hover:bg-orange-500 text-white font-semibold px-6 py-3 rounded-xl transition-colors shadow-lg shadow-orange-500/20 whitespace-nowrap"
                         >
-                            Жазылу
+                            {t("subscribe")}
                         </button>
                     </form>
                 )}

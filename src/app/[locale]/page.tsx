@@ -47,16 +47,14 @@ export default function HomePage() {
                         className="text-7xl md:text-8xl text-white text-center italic mb-6"
                         style={{ fontWeight: 800, letterSpacing: "-0.02em" }}
                     >
-                        Tagylym
+                        {t("hero_title")}
                     </h1>
 
                     <p className="text-sm text-white/90 text-center max-w-[480px] mx-auto leading-relaxed">
-                        Бесплатный доступ к системному обучению робототехнике и
-                        инженерии для школьников и менторов.
+                        {t("hero_subtitle_1")} {t("hero_subtitle_2")}
                     </p>
                     <p className="text-sm text-white/90 text-center max-w-[480px] mx-auto leading-relaxed mt-2">
-                        Проект выстроен по ценностям и целям FIRST, чтобы
-                        готовить сильные команды и будущих инженеров.
+                        {t("hero_subtitle_3")} {t("hero_subtitle_4")}
                     </p>
                 </div>
 
@@ -84,22 +82,16 @@ export default function HomePage() {
                             className="text-4xl text-[#1A1A1A] mb-6"
                             style={{ fontWeight: 700, lineHeight: 1.1 }}
                         >
-                            О проекте{"\n"}Tagylym
+                            {t("about_title")}
                         </h2>
                         <p className="text-base text-[#6B7280] leading-relaxed mb-6">
-                            Tagylym — это открытая онлайн-платформа, которая даёт школьникам
-                            и менторам из любых регионов Казахстана бесплатный доступ к
-                            структурированным курсам по робототехнике, программированию и
-                            инженерии. Все треки выстроены по ценностям и критериям FIRST, чтобы
-                            не просто учить собирать робота, а помогать командам расти до уровня
-                            сильных участников, менторов и будущих инженеров.
+                            {t("about_body")}
                         </p>
 
                         {/* Callout */}
                         <div className="bg-[#FEFCE8] border border-[#FDE68A] rounded-2xl px-5 py-4 max-w-[340px]">
                             <p className="italic text-sm text-[#92400E]">
-                                &quot;Сотни школ с робототехникой не используют её в полную силу
-                                из-за нехватки контента и менторов.&quot;
+                                &quot;{t("about_quote")}&quot;
                             </p>
                         </div>
                     </div>
@@ -134,23 +126,16 @@ export default function HomePage() {
                             className="text-4xl text-[#1A1A1A] mb-6"
                             style={{ fontWeight: 700, lineHeight: 1.1 }}
                         >
-                            Проблема
+                            {t("problem_title")}
                         </h2>
                         <p className="text-base text-[#6B7280] leading-relaxed">
-                            Сегодня доступ к качественному STEM-образованию и робототехнике
-                            сильно зависит от города, школы и дохода семьи: в крупных центрах
-                            есть НИШ, специализированные лицеи и кружки, а в сельских школах
-                            даже при появлении кабинетов робототехники часто не хватает контента,
-                            методик и наставников. В результате тысячи детей с интересом к
-                            технике не получают системного обучения, не знают про FIRST и теряют
-                            шанс выстроить свой инженерный путь.
+                            {t("problem_body")}
                         </p>
 
                         {/* Callout */}
                         <div className="bg-[#EFF6FF] border border-[#BFDBFE] rounded-2xl px-5 py-4 mt-6">
                             <p className="italic text-sm text-[#1E40AF]">
-                                &quot;Более 60% школьников Казахстана учатся в сельских школах и
-                                малых городах, где доступ к устойчивым STEM-программам ограничен.&quot;
+                                &quot;{t("problem_quote")}&quot;
                             </p>
                         </div>
                     </div>

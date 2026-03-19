@@ -1,8 +1,11 @@
 "use client";
 
 import { useState } from "react";
+import { useTranslations } from "next-intl";
 
 export default function FGCPage() {
+    const t = useTranslations("coming_soon");
+    const tAuth = useTranslations("auth");
     const [email, setEmail] = useState("");
     const [submitted, setSubmitted] = useState(false);
 
@@ -23,22 +26,22 @@ export default function FGCPage() {
                     FIRST Global Challenge
                 </h1>
                 <div className="inline-flex items-center px-4 py-2 rounded-full bg-[#22C55E]/10 border border-[#22C55E]/30 text-sm text-[#22C55E] font-semibold tracking-wider mb-6">
-                    ЖАҚЫНДА
+                    {t("badge")}
                 </div>
                 <p className="text-[#94a3b8] leading-relaxed mb-8">
-                    FGC бағыты бойынша оқу материалдары мен курстар жақын арада платформаға қосылады. Алғашқылардың бірі болып білу үшін кезекке жазылыңыз!
+                    {t("fgc_desc")}
                 </p>
 
                 {submitted ? (
                     <div className="bg-[#22C55E]/10 border border-[#22C55E]/30 text-[#22C55E] p-4 rounded-xl font-medium animate-fade-in-up">
-                        🎉 Рахмет! Сіздің элекронды поштаңыз тізімге сәтті қосылды.
+                        🎉 {t("success")}
                     </div>
                 ) : (
                     <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3 max-w-sm mx-auto">
                         <input
                             type="email"
                             required
-                            placeholder="Электронды поштаңыз..."
+                            placeholder={tAuth("email_placeholder")}
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
                             className="flex-1 bg-[#1e293b] text-white placeholder:text-[#64748b] border border-[#334155] rounded-xl px-4 py-3 focus:outline-none focus:border-[#22C55E] transition-colors"
@@ -47,7 +50,7 @@ export default function FGCPage() {
                             type="submit"
                             className="bg-[#22C55E] hover:bg-green-500 text-white font-semibold px-6 py-3 rounded-xl transition-colors shadow-lg shadow-green-500/20 whitespace-nowrap"
                         >
-                            Жазылу
+                            {t("subscribe")}
                         </button>
                     </form>
                 )}

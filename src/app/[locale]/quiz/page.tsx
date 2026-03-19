@@ -8,6 +8,8 @@ import type { Quiz } from "@/types";
 
 export default function QuizPage() {
     const t = useTranslations("quiz");
+    const tCourses = useTranslations("courses");
+    const tCommon = useTranslations("common");
     const [quizzes, setQuizzes] = useState<Quiz[]>([]);
     const [filterCategory, setFilterCategory] = useState("");
     const [filterLevel, setFilterLevel] = useState("");
@@ -32,19 +34,19 @@ export default function QuizPage() {
     };
 
     const categories = [
-        { value: "", label: t("all") },
-        { value: "robot-design", label: "Робот Дизайны" },
-        { value: "innovation", label: "Инновациялық Жоба" },
-        { value: "coding", label: "Бағдарламалау" },
-        { value: "robot-game", label: "Робот Ойыны" },
-        { value: "core-values", label: "Негізгі Құндылықтар" },
+        { value: "", label: t("filter_all") },
+        { value: "robot-design", label: t("categories.robot-design") },
+        { value: "innovation", label: t("categories.innovation") },
+        { value: "coding", label: t("categories.coding") },
+        { value: "robot-game", label: t("categories.robot-game") },
+        { value: "core-values", label: t("categories.core-values") },
     ];
 
     const levels = [
-        { value: "", label: t("all") },
-        { value: "beginner", label: "Бастауыш" },
-        { value: "intermediate", label: "Орташа" },
-        { value: "advanced", label: "Жетілдірілген" },
+        { value: "", label: t("filter_all") },
+        { value: "beginner", label: tCourses("beginner") },
+        { value: "intermediate", label: tCourses("intermediate") },
+        { value: "advanced", label: tCourses("advanced") },
     ];
 
     return (
@@ -52,9 +54,9 @@ export default function QuizPage() {
             <div className="max-w-5xl mx-auto px-6 pt-16 pb-24">
                 {/* Header */}
                 <div className="text-center mb-12">
-                    <h1 className="text-4xl font-black text-white mb-3">{t("title")}</h1>
+                    <h1 className="text-4xl font-black text-white mb-3">{t("page_title")}</h1>
                     <p className="text-slate-400">
-                        Команданың барлық категориялар мен деңгейлер бойынша білімін тексеріңіз
+                        {t("subtitle")}
                     </p>
                 </div>
 
@@ -62,7 +64,7 @@ export default function QuizPage() {
                 <div className="bg-[#1e293b] rounded-xl border border-[#334155] p-4 mb-8 flex flex-wrap gap-4">
                     <div className="flex-1 min-w-[150px]">
                         <label className="block text-xs text-slate-400 font-medium mb-1.5">
-                            {t("filterCategory")}
+                            {t("filter_track")}
                         </label>
                         <select
                             value={filterCategory}
@@ -77,7 +79,7 @@ export default function QuizPage() {
 
                     <div className="flex-1 min-w-[150px]">
                         <label className="block text-xs text-slate-400 font-medium mb-1.5">
-                            {t("filterLevel")}
+                            {t("filter_level")}
                         </label>
                         <select
                             value={filterLevel}
@@ -93,7 +95,7 @@ export default function QuizPage() {
 
                 {/* Results count */}
                 <p className="text-sm text-slate-400 mb-6">
-                    {loading ? "Жүктелуде..." : `${quizzes.length} сұрақ табылды`}
+                    {loading ? tCommon("loading") : `${quizzes.length} ${t("results_count")}`}
                 </p>
 
                 {/* Quiz Grid */}
@@ -108,7 +110,7 @@ export default function QuizPage() {
                 {!loading && quizzes.length === 0 && (
                     <div className="text-center py-16">
                         <span className="text-4xl mb-4 block">🔍</span>
-                        <p className="text-slate-400">Сұрақтар табылған жоқ. Фильтрлерді өзгертіп көріңіз.</p>
+                        <p className="text-slate-400">{t("no_results")}</p>
                     </div>
                 )}
             </div>

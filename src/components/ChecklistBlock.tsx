@@ -70,7 +70,7 @@ export default function ChecklistBlock({ items, levelId }: ChecklistBlockProps) 
             {/* Progress bar at top */}
             <div className="mb-4">
                 <div className="text-xs text-[#6B7280] mb-2 font-medium">
-                    {completedCount} / {totalCount} орындалды
+                    {completedCount} / {totalCount} {t("progress")}
                 </div>
                 <div className="w-full h-1 bg-[#E5E7EB] rounded-full overflow-hidden">
                     <div
