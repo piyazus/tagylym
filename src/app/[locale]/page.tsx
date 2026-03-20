@@ -405,7 +405,7 @@ function CountUpNumber({
     useEffect(() => {
         if (!isInView) return;
         const start = performance.now();
-        const durationMs = 1200;
+        const durationMs = 800;
 
         const easeOut = (x: number) => 1 - Math.pow(1 - x, 3);
 
