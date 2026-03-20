@@ -96,7 +96,8 @@ export default function LandingPage({
 
             {/* 3. STATS BAR */}
             <StatsBar locale={locale} t={t} />
-            <div id="curriculum" />
+            {/* 4. COURSE CATALOG */}
+            <CatalogSection locale={locale} t={t} />
             <div id="how-it-works" />
             <div id="cta" />
             <div id="footer" />
@@ -542,5 +543,281 @@ function StatsBar({
             </div>
         </section>
     );
+}
+
+function CatalogSection({
+    locale,
+    t,
+}: {
+    locale: string;
+    t: ReturnType<typeof useTranslations>;
+}) {
+    const tLevels = useTranslations("levels");
+    const isKK = locale === "kk";
+    const reducedMotionForBadge = useReducedMotion();
+
+    const landingEase = [0.16, 1, 0.3, 1] as const;
+
+    const catalogContainer = {
+        hidden: {},
+        visible: {
+            transition: {
+                staggerChildren: 0.1,
+                delayChildren: 0.05,
+            },
+        },
+    };
+
+    const catalogCard = {
+        hidden: { opacity: 0, y: 32 },
+        visible: {
+            opacity: 1,
+            y: 0,
+            transition: { duration: 0.55, ease: landingEase },
+        },
+    };
+
+    const categories = [
+        {
+            id: "robot-design",
+            icon: "wrench",
+            color: "#3B82F6",
+            titleKK: t("catalog_robot_design_title_kk"),
+            titleEN: t("catalog_robot_design_title_en"),
+            descKK: t("catalog_robot_design_desc_kk"),
+            descEN: t("catalog_robot_design_desc_en"),
+        },
+        {
+            id: "innovation",
+            icon: "lightbulb",
+            color: "#8B5CF6",
+            titleKK: t("catalog_innovation_title_kk"),
+            titleEN: t("catalog_innovation_title_en"),
+            descKK: t("catalog_innovation_desc_kk"),
+            descEN: t("catalog_innovation_desc_en"),
+        },
+        {
+            id: "coding",
+            icon: "terminal",
+            color: "#F97316",
+            titleKK: t("catalog_coding_title_kk"),
+            titleEN: t("catalog_coding_title_en"),
+            descKK: t("catalog_coding_desc_kk"),
+            descEN: t("catalog_coding_desc_en"),
+        },
+        {
+            id: "robot-game",
+            icon: "trophy",
+            color: "#22C55E",
+            titleKK: t("catalog_robot_game_title_kk"),
+            titleEN: t("catalog_robot_game_title_en"),
+            descKK: t("catalog_robot_game_desc_kk"),
+            descEN: t("catalog_robot_game_desc_en"),
+        },
+    ];
+
+    const levelChips = [
+        { key: "beginner", label: tLevels("beginner"), bg: "#EFF6FF", fg: "#3B82F6" },
+        { key: "intermediate", label: tLevels("intermediate"), bg: "#FFF7ED", fg: "#F97316" },
+        { key: "advanced", label: tLevels("advanced"), bg: "#F0FDF4", fg: "#22C55E" },
+    ];
+
+    const exploreText = isKK ? t("catalog_explore_kk") : t("catalog_explore_en");
+
+    return (
+        <section id="curriculum" className="py-24">
+            <div className="max-w-7xl mx-auto px-6">
+                <div className="text-center mb-16">
+                    {/* Badge */}
+                    <CatalogBadge />
+                    <h2
+                        className="mt-6 font-bold"
+                        style={{
+                            fontFamily: "'Syne', sans-serif",
+                            fontSize: 48,
+                            color: "#0F172A",
+                            lineHeight: 1.05,
+                        }}
+                    >
+                        {isKK ? t("catalog_heading_kk") : t("catalog_heading_en")}
+                    </h2>
+                    <p
+                        className="mt-4"
+                        style={{
+                            fontFamily: "'DM Sans', sans-serif",
+                            fontSize: 18,
+                            color: "#64748B",
+                            lineHeight: 1.7,
+                        }}
+                    >
+                        {isKK ? t("catalog_subtext_kk") : t("catalog_subtext_en")}
+                    </p>
+                </div>
+
+                <motion.div
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, amount: 0.1, margin: "-60px" }}
+                    variants={catalogContainer}
+                    className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto"
+                >
+                    {categories.map((cat) => (
+                        <motion.div
+                            key={cat.id}
+                            variants={catalogCard}
+                            whileHover={{
+                                y: -4,
+                                boxShadow: "0 20px 40px rgba(0,82,255,0.10)",
+                            }}
+                            transition={{ duration: 0.25, ease: "easeOut" }}
+                            className="bg-white border border-[#E2E8F0] rounded-[20px] p-8"
+                            style={{ boxShadow: "0 4px 6px rgba(0,0,0,0.05)" }}
+                        >
+                            {/* Icon container */}
+                            <div
+                                className="w-12 h-12 rounded-xl mb-4"
+                                style={{
+                                    background:
+                                        "linear-gradient(135deg, #0052FF, #4D7CFF)",
+                                }}
+                            >
+                                <div className="w-full h-full flex items-center justify-center">
+                                    {cat.icon === "wrench" ? <WrenchIcon /> : null}
+                                    {cat.icon === "lightbulb" ? <LightbulbIcon /> : null}
+                                    {cat.icon === "terminal" ? <TerminalIcon /> : null}
+                                    {cat.icon === "trophy" ? <TrophyIcon /> : null}
+                                </div>
+                            </div>
+
+                            {/* Titles */}
+                            <h3
+                                style={{
+                                    fontFamily: "'DM Sans', sans-serif",
+                                    fontSize: 22,
+                                    fontWeight: 600,
+                                    color: "#0F172A",
+                                }}
+                            >
+                                {isKK ? cat.titleKK : cat.titleEN}
+                            </h3>
+                            <p
+                                className="mt-2"
+                                style={{
+                                    fontFamily: "'DM Sans', sans-serif",
+                                    fontSize: 15,
+                                    color: "#64748B",
+                                    lineHeight: 1.6,
+                                }}
+                            >
+                                {isKK ? cat.descKK : cat.descEN}
+                            </p>
+
+                            {/* Chips */}
+                            <div className="flex gap-2 mt-4">
+                                {levelChips.map((chip) => (
+                                    <span
+                                        key={chip.key}
+                                        className="inline-flex items-center justify-center px-3 py-1 rounded-lg font-mono text-[12px] uppercase"
+                                        style={{
+                                            background: chip.bg,
+                                            color: chip.fg,
+                                        }}
+                                    >
+                                        {chip.label}
+                                    </span>
+                                ))}
+                            </div>
+
+                            {/* Explore link */}
+                            <div className="mt-6">
+                                <Link
+                                    href={`/${locale}/fll/submerged-2025-26/${cat.id}/beginner`}
+                                    className="inline-flex items-center gap-2"
+                                    style={{
+                                        fontFamily: "'DM Sans', sans-serif",
+                                        fontSize: 14,
+                                        color: "#0052FF",
+                                    }}
+                                >
+                                    <span>{exploreText}</span>
+                                    <motion.span
+                                        whileHover={{ x: 4 }}
+                                        transition={{ duration: 0.25, ease: "easeOut" }}
+                                    >
+                                        →
+                                    </motion.span>
+                                </Link>
+                            </div>
+                        </motion.div>
+                    ))}
+                </motion.div>
+            </div>
+        </section>
+    );
+
+    function CatalogBadge() {
+        return (
+            <div className="inline-flex items-center gap-3">
+                <motion.span
+                    animate={
+                        reducedMotionForBadge
+                            ? undefined
+                            : { scale: [1, 1.3, 1], opacity: [1, 0.7, 1] }
+                    }
+                    transition={
+                        reducedMotionForBadge
+                            ? undefined
+                            : { duration: 2, repeat: Infinity, ease: "easeOut" }
+                    }
+                    style={{ width: 8, height: 8, borderRadius: 9999, background: "#0052FF" }}
+                />
+                <span className="font-mono uppercase text-xs" style={{ letterSpacing: "0.15em", color: "#0F172A" }}>
+                    {t("catalog_badge")}
+                </span>
+            </div>
+        );
+    }
+
+    function WrenchIcon() {
+        return (
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M21 2l-2 2" />
+                <path d="M7.5 13.5L2 19l3 3 5.5-5.5" />
+                <path d="M15 4l5 5" />
+            </svg>
+        );
+    }
+
+    function LightbulbIcon() {
+        return (
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M9 18h6" />
+                <path d="M10 22h4" />
+                <path d="M8 14c-1.5-1.5-2-3-2-5a6 6 0 1112 0c0 2-0.5 3.5-2 5-0.8 0.8-1 1.5-1 2H9c0-0.5-0.2-1.2-1-2z" />
+            </svg>
+        );
+    }
+
+    function TerminalIcon() {
+        return (
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M4 17l6-5-6-5" />
+                <path d="M12 19h8" />
+            </svg>
+        );
+    }
+
+    function TrophyIcon() {
+        return (
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M8 21h8" />
+                <path d="M12 17v4" />
+                <path d="M7 4h10" />
+                <path d="M7 4v6a5 5 0 0010 0V4" />
+                <path d="M17 4h3v3a4 4 0 01-3 4" />
+                <path d="M7 4H4v3a4 4 0 003 4" />
+            </svg>
+        );
+    }
 }
 
