@@ -45,6 +45,7 @@
     "of": "/",
     "selected": "Таңдалды",
     "no_courses": "Сабақтар табылмады",
+    "coming_soon_course_desc": "Бұл курс дайындалуда",
     "fll_label": "FLL CHALLENGE",
     "ftc_label": "FTC CHALLENGE",
     "fgc_label": "FGC CHALLENGE"
@@ -152,6 +153,10 @@
     "checklist_count": "чеклист пункті",
     "enter": "Кіру",
     "category_subtitle": "Осы санаттағы дағдыларыңызды дамытып, жаңа белестерді бағындырыңыз.",
+    "level_learn_heading": "Бұл деңгейде не үйренесің",
+    "core_values_title": "Командалық құндылықтар",
+    "core_values_body": "Командалық құндылықтар чемпион ұпайының 25%-ын құрайды. Командалық жұмыс, инклюзивтілік және қызықты оқу — жарыстың ажырамас бөлігі.",
+    "core_values_badge": "25% чемпион ұпайы",
     "core_values_text": "Негізгі құндылықтар жеке пән емес. Олар барлық сабақтар процесіне біріктірілген. Бағалау кезінде төрешілер команданың жарыс барысында бұл құндылықтарды қалай көрсететініне назар аударады."
   },
   "quiz": {
@@ -325,5 +330,24 @@
     "removeRow": "Жолды жою",
     "sortByRoi": "ROI бойынша сұрыптау",
     "exportCsv": "CSV-ге шығару"
+  },
+  "landing": {
+    "hero_tracks": "• FLL · FTC · FGC",
+    "hero_headline_prefix_kk": "Болашақ",
+    "hero_headline_gradient_kk": "инженерлер",
+    "hero_headline_suffix_kk": "осында оқиды",
+    "hero_headline_prefix_en": "Future",
+    "hero_headline_gradient_en": "engineers",
+    "hero_headline_suffix_en": "learn here",
+    "hero_body_kk": "Робототехника мен инженерияны жүйелі түрде оқытуға тегін қол жеткізу — мектеп оқушылары мен тренерлер үшін.",
+    "hero_body_en": "Free, structured access to robotics and engineering education — for school students and coaches.",
+    "hero_cta_primary_kk": "Оқуды бастау",
+    "hero_cta_primary_en": "Start Learning",
+    "hero_cta_secondary_kk": "Бағдарламаны қарау",
+    "hero_cta_secondary_en": "View Curriculum",
+    "hero_stat_countries_kk": "160+ ел",
+    "hero_stat_countries_en": "160+ countries",
+    "hero_stat_teams_kk": "1000+ команда",
+    "hero_stat_teams_en": "1000+ teams"
   }
 }

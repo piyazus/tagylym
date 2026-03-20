@@ -45,6 +45,7 @@
     "of": "из",
     "selected": "Выбрано",
     "no_courses": "Курсы не найдены",
+    "coming_soon_course_desc": "Этот курс готовится",
     "fll_label": "FLL CHALLENGE",
     "ftc_label": "FTC CHALLENGE",
     "fgc_label": "FGC CHALLENGE"
@@ -152,6 +153,10 @@
     "checklist_count": "пунктов",
     "enter": "Войти",
     "category_subtitle": "Развивайте навыки в этой категории и достигайте новых высот.",
+    "level_learn_heading": "Чему вы научитесь на этом уровне",
+    "core_values_title": "Командные ценности",
+    "core_values_body": "Командные ценности составляют 25% баллов, получаемых за Champion Award. Командная работа, инклюзивность и увлекательное обучение — неотъемлемая часть соревнования.",
+    "core_values_badge": "25% от баллов Champion Award",
     "core_values_text": "Основные ценности — это не отдельный предмет. Они интегрированы во весь процесс. При оценке судьи обращают внимание на то, как команда демонстрирует эти ценности на соревнованиях."
   },
   "quiz": {
@@ -325,5 +330,24 @@
     "removeRow": "Удалить строку",
     "sortByRoi": "Сортировать по ROI",
     "exportCsv": "Экспорт CSV"
+  },
+  "landing": {
+    "hero_tracks": "• FLL · FTC · FGC",
+    "hero_headline_prefix_kk": "Болашақ",
+    "hero_headline_gradient_kk": "инженерлер",
+    "hero_headline_suffix_kk": "осында оқиды",
+    "hero_headline_prefix_en": "Future",
+    "hero_headline_gradient_en": "engineers",
+    "hero_headline_suffix_en": "learn here",
+    "hero_body_kk": "Робототехника мен инженерияны жүйелі түрде оқытуға тегін қол жеткізу — мектеп оқушылары мен тренерлер үшін.",
+    "hero_body_en": "Free, structured access to robotics and engineering education — for school students and coaches.",
+    "hero_cta_primary_kk": "Оқуды бастау",
+    "hero_cta_primary_en": "Start Learning",
+    "hero_cta_secondary_kk": "Бағдарламаны қарау",
+    "hero_cta_secondary_en": "View Curriculum",
+    "hero_stat_countries_kk": "160+ ел",
+    "hero_stat_countries_en": "160+ countries",
+    "hero_stat_teams_kk": "1000+ команда",
+    "hero_stat_teams_en": "1000+ teams"
   }
 }
