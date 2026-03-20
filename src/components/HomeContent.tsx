@@ -5,6 +5,7 @@ import Image from "next/image";
 import { Link } from "@/i18n/routing";
 import { motion } from "framer-motion";
 import CourseCard from "./CourseCard";
+import ComingSoonCard from "./ComingSoonCard";
 import type { EnrichedCourse } from "@/lib/queries";
 
 const easeOut = [0.16, 1, 0.3, 1] as const;
@@ -128,7 +129,7 @@ export default function HomeContent({ courses, seasonSlug }: HomeContentProps) {
                             {tCourses("page_title")}
                         </motion.h2>
                         <motion.p variants={fadeInUp} className="text-lg text-slate-600">
-                            Explore our structured courses designed for the current FLL season
+                            {t("courses_subtitle")}
                         </motion.p>
                     </motion.div>
 
@@ -144,6 +145,14 @@ export default function HomeContent({ courses, seasonSlug }: HomeContentProps) {
                                 <CourseCard course={course} seasonSlug={seasonSlug} />
                             </motion.div>
                         ))}
+                        
+                        {/* "Coming Soon" for other competitions */}
+                        <motion.div variants={fadeInUp}>
+                            <ComingSoonCard competition="ftc" />
+                        </motion.div>
+                        <motion.div variants={fadeInUp}>
+                            <ComingSoonCard competition="fgc" />
+                        </motion.div>
                     </motion.div>
                 </div>
             </section>
@@ -165,7 +174,7 @@ export default function HomeContent({ courses, seasonSlug }: HomeContentProps) {
                                 className="h-2 w-2 rounded-full bg-accent" 
                             />
                             <span className="font-mono text-xs uppercase tracking-[0.15em] text-accent font-semibold">
-                                About
+                                {t("about_label")}
                             </span>
                         </motion.div>
 
@@ -242,7 +251,7 @@ export default function HomeContent({ courses, seasonSlug }: HomeContentProps) {
                                 className="h-2 w-2 rounded-full bg-accent-secondary" 
                             />
                             <span className="font-mono text-xs uppercase tracking-[0.15em] text-accent-secondary font-semibold">
-                                Highlight
+                                {t("highlight_label")}
                             </span>
                         </motion.div>
 

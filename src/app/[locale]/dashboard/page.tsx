@@ -7,12 +7,19 @@ import { supabase } from "@/lib/supabase";
 import ProgressBar from "@/components/ProgressBar";
 import type { Progress } from "@/types";
 
+import { getAllLessons } from "@/lib/sanity";
+
+interface EnrichedProgress extends Progress {
+    lessonTitle?: string;
+    lessonSlug?: string;
+}
+
 export default function DashboardPage() {
     const t = useTranslations("dashboard");
     const tCommon = useTranslations("common");
     const tCourses = useTranslations("courses");
     const [user, setUser] = useState<{ id: string; email?: string } | null>(null);
-    const [progress, setProgress] = useState<Progress[]>([]);
+    const [progress, setProgress] = useState<EnrichedProgress[]>([]);
     const [categories, setCategories] = useState<{ id: string; name: string; icon: string }[]>([]);
     const [categoryStats, setCategoryStats] = useState<Record<string, { total: number; completed: number }>>({});
     const [loading, setLoading] = useState(true);
@@ -29,6 +36,18 @@ export default function DashboardPage() {
                 .order("order");
             if (cats) setCategories(cats);
 
+            // Fetch Sanity lessons (for slugs) and Supabase lessons (for titles)
+            const [sanityLessons, { data: sbLessons }] = await Promise.all([
+                getAllLessons(),
+                supabase.from("lessons").select("id, title")
+            ]);
+
+            const lessonIdToTitle: Record<string, string> = {};
+            sbLessons?.forEach(l => { lessonIdToTitle[l.id] = l.title; });
+
+            const titleToSlug: Record<string, string> = {};
+            sanityLessons?.forEach((l: { title: string; slug: string }) => { titleToSlug[l.title] = l.slug; });
+
             // Fetch user progress
             let completedIds: string[] = [];
             if (authUser) {
@@ -37,8 +56,14 @@ export default function DashboardPage() {
                     .select("*")
                     .eq("user_id", authUser.id)
                     .order("completed_at", { ascending: false });
+                
                 if (prog) {
-                    setProgress(prog);
+                    const enriched: EnrichedProgress[] = prog.map(p => {
+                        const title = lessonIdToTitle[p.lesson_id];
+                        const slug = title ? titleToSlug[title] : undefined;
+                        return { ...p, lessonTitle: title, lessonSlug: slug };
+                    });
+                    setProgress(enriched);
                     completedIds = prog.map((p) => p.lesson_id);
                 }
             }
@@ -115,9 +140,9 @@ export default function DashboardPage() {
                     </div>
 
                     {/* Quick Access: Continue Learning */}
-                    {progress.length > 0 && (
+                    {progress.length > 0 && progress[0].lessonSlug && (
                         <Link
-                            href={`/lessons/${progress[0].lesson_id}` as "/"}
+                            href={`/lessons/${progress[0].lessonSlug}` as "/"}
                             className="inline-flex bg-[#8B5CF6] hover:bg-purple-500 text-white font-semibold py-3 px-8 rounded-xl transition-all shadow-lg shadow-purple-500/30 whitespace-nowrap"
                         >
                             {t("continue_learning")}
@@ -181,17 +206,21 @@ export default function DashboardPage() {
                                 ) : (
                                     <div className="space-y-3">
                                         {progress.slice(0, 3).map((p, idx) => (
-                                            <Link href={`/lessons/${p.lesson_id}` as "/"} key={`${p.user_id}-${p.lesson_id}`} className="bg-[#1e293b] rounded-xl border border-[#334155] hover:border-[#8B5CF6] transition-colors p-4 flex items-center gap-4 cursor-pointer">
+                                            <Link 
+                                                href={p.lessonSlug ? (`/lessons/${p.lessonSlug}` as "/") : ("#" as "/")} 
+                                                key={`${p.user_id}-${p.lesson_id}`} 
+                                                className={`bg-[#1e293b] rounded-xl border border-[#334155] hover:border-[#8B5CF6] transition-colors p-4 flex items-center gap-4 ${p.lessonSlug ? 'cursor-pointer' : 'cursor-default opacity-80'}`}
+                                            >
                                                 <div className="w-10 h-10 rounded-lg bg-[#8B5CF6]/15 flex items-center justify-center text-sm font-bold text-[#8B5CF6] shrink-0">
                                                     {idx + 1}
                                                 </div>
                                                 <div className="flex-1">
-                                                    <p className="text-sm text-white font-medium">{tCommon("lesson")}: {p.lesson_id}</p>
+                                                    <p className="text-sm text-white font-medium">{p.lessonTitle || `${tCommon("lesson")}: ${p.lesson_id}`}</p>
                                                     <p className="text-xs text-[#94a3b8]">
                                                         {new Date(p.completed_at).toLocaleDateString("kk-KZ")}
                                                     </p>
                                                 </div>
-                                                <div className="text-[#94a3b8]">→</div>
+                                                {p.lessonSlug && <div className="text-[#94a3b8]">→</div>}
                                             </Link>
                                         ))}
                                     </div>

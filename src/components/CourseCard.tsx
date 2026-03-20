@@ -14,10 +14,11 @@ interface CourseCardProps {
 
 export default function CourseCard({ course, seasonSlug }: CourseCardProps) {
     const tCourses = useTranslations("courses");
+    const tFll = useTranslations("fll");
 
     return (
         <Link
-            href={`/fll/${seasonSlug}/${course.categorySlug}/${course.levelSlug}/${course.id}` as "/"}
+            href={`/${course.competitionSlug}/${seasonSlug}/${course.categorySlug}/${course.levelSlug}/${course.id}` as "/"}
             className="bg-white rounded-xl overflow-hidden border border-[#E5E7EB] cursor-pointer transition-shadow duration-150 hover:shadow-md group flex flex-col h-full"
         >
             {/* Thumbnail */}
@@ -40,7 +41,7 @@ export default function CourseCard({ course, seasonSlug }: CourseCardProps) {
                     {tCourses("free_label")}
                 </p>
                 <h3 className="text-sm font-semibold text-[#1A1A1A] leading-[1.3] line-clamp-2 min-h-[2.4rem] mb-1.5">
-                    FLL CHALLENGE: {course.categoryName.toUpperCase()}
+                    {tCourses(`${course.competitionSlug}_label` as any)}: {tFll(`categories.${course.categorySlug}`).toUpperCase()}
                 </h3>
                 {course.description && (
                     <p className="text-[12px] text-slate-700 leading-[1.4] line-clamp-3 mb-2.5 flex-1">

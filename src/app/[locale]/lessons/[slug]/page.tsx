@@ -55,6 +55,7 @@ function LessonLoading() {
 function LessonContent({ slug }: { slug: string }) {
     const t = useTranslations("lesson");
     const tCommon = useTranslations("common");
+    const tCourses = useTranslations("courses");
     const [lesson, setLesson] = useState<SanityLesson | null>(null);
     const [quizzes, setQuizzes] = useState<Quiz[]>([]);
     const [siblings, setSiblings] = useState<{ slug: string; title: string }[]>([]);
@@ -164,7 +165,7 @@ function LessonContent({ slug }: { slug: string }) {
                     </Link>
                     <span>/</span>
                     <Link href={"/fll" as "/"} className="hover:text-[#6B7280] transition-colors">
-                        FLL
+                        {tCourses("fll_label")}
                     </Link>
                     <span>/</span>
                     <span className="text-[#374151] font-medium truncate max-w-[200px]">{lesson.title}</span>
@@ -221,7 +222,7 @@ function LessonContent({ slug }: { slug: string }) {
                         <RubricCallout
                             criterion={lesson.rubricCriterion as RubricCriterion}
                             level={lesson.rubricLevel as RubricLevel}
-                            text={`${t("rubric_label")}: ${lesson.rubricCriterion} — Деңгей: ${lesson.rubricLevel}`}
+                            text={`${t("rubric_label")}: ${lesson.rubricCriterion} — ${tCommon("level")}: ${lesson.rubricLevel}`}
                         />
                     </div>
                 )}

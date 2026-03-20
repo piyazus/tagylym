@@ -68,6 +68,7 @@ export default function LevelPageContent({
     const tLesson = useTranslations("lesson");
     const tQuiz = useTranslations("quiz");
     const tChecklist = useTranslations("checklist");
+    const tFll = useTranslations("fll");
     const levelName = level as LevelName;
     const rubricLevel = level === "advanced" ? "EXCEEDS" as const : "ACCOMPLISHED" as const;
     const criterion = rubricCriterionMap[category] || "DESIGN";
@@ -150,7 +151,7 @@ export default function LevelPageContent({
                         </Link>
                         <div>
                             <h1 className="text-2xl font-bold text-[#1A1A1A]">
-                                {categoryData?.name || "Трек"}
+                                {tFll(`categories.${category}`)}
                             </h1>
                             <p className="text-sm text-[#6B7280] mt-1">
                                 {completedCount} / {checklist.length} {tChecklist("progress")}
@@ -180,7 +181,7 @@ export default function LevelPageContent({
             <div className="bg-white border-b border-[#E5E7EB]">
                 <div className="max-w-7xl mx-auto px-6 py-4 flex flex-col md:flex-row justify-between items-center gap-4">
                     <div className="flex items-center gap-3">
-                        <span className="text-lg font-semibold text-[#1A1A1A]">{tQuiz("filter_track")}: {categoryData?.name}</span>
+                        <span className="text-lg font-semibold text-[#1A1A1A]">{tQuiz("filter_track")}: {tFll(`categories.${category}`)}</span>
                         <LevelBadge level={levelName} />
                     </div>
                 </div>

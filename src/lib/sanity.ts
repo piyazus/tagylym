@@ -69,3 +69,11 @@ export async function getAllCourses() {
     }`
     );
 }
+export async function getAllLessons() {
+    return sanityClient.fetch(
+        `*[_type == "lesson"]{
+      title,
+      "slug": slug.current
+    }`
+    );
+}

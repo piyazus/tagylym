@@ -23,7 +23,10 @@
     "about_quote": "Hundreds of schools with robotics equipment don't use it to its full potential due to lack of content and mentors.",
     "problem_title": "The Problem",
     "problem_body": "Today, access to quality STEM education and robotics depends heavily on city, school, and family income: major centers have specialized Lyceums and clubs, while rural schools, even when they have robotics classrooms, often lack content, methodologies, and mentors. As a result, thousands of children interested in technology cannot receive structured education, don't learn about FIRST, and lose the opportunity to start their engineering career.",
-    "problem_quote": "Over 60% of Kazakhstan's students study in rural schools and small towns where access to sustainable STEM programs is limited."
+    "problem_quote": "Over 60% of Kazakhstan's students study in rural schools and small towns where access to sustainable STEM programs is limited.",
+    "courses_subtitle": "Explore our structured courses designed for the current competition season",
+    "about_label": "ABOUT",
+    "highlight_label": "HIGHLIGHT"
   },
   "courses": {
     "page_title": "Courses",
@@ -41,7 +44,10 @@
     "course_of": "Course",
     "of": "of",
     "selected": "Selected",
-    "no_courses": "No courses found"
+    "no_courses": "No courses found",
+    "fll_label": "FLL CHALLENGE",
+    "ftc_label": "FTC CHALLENGE",
+    "fgc_label": "FGC CHALLENGE"
   },
   "lesson": {
     "tip_label": "TIP",

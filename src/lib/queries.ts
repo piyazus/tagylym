@@ -345,6 +345,8 @@ export interface EnrichedCourse extends Course {
     levelName: string;
     levelSlug: string;
     levelColor: string;
+    competitionSlug: string;
+    competitionName: string;
 }
 
 const levelSlugMap: Record<string, string> = {
@@ -359,6 +361,12 @@ export async function getAllCoursesForSeason(
     const categories = await getCategoriesBySeason(seasonId);
     const allCourses: EnrichedCourse[] = [];
 
+    const { data: seasonData } = await (await createClient())
+        .from("seasons")
+        .select("competition:competitions(slug, name)")
+        .eq("id", seasonId)
+        .single();
+
     for (const cat of categories) {
         const levels = await getLevelsByCategory(cat.id);
         for (const level of levels) {
@@ -371,6 +379,8 @@ export async function getAllCoursesForSeason(
                     levelName: level.name,
                     levelSlug: levelSlugMap[level.name] || "beginner",
                     levelColor: level.color,
+                    competitionSlug: (seasonData?.competition as any)?.slug || "fll",
+                    competitionName: (seasonData?.competition as any)?.name || "FLL",
                 });
             }
         }
