@@ -60,7 +60,7 @@ export default function HomeContent({ courses, seasonSlug }: HomeContentProps) {
                             {t("hero_tagline")}
                         </motion.p>
 
-                        <motion.div variants={fadeInUp} className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-lg space-y-4 mb-8">
+                        <motion.div variants={fadeInUp} className="text-lg md:text-xl text-slate-700 leading-relaxed max-w-lg space-y-4 mb-8">
                             <p>{t("hero_subtitle_1")} {t("hero_subtitle_2")}</p>
                             <p>{t("hero_subtitle_3")} {t("hero_subtitle_4")}</p>
                         </motion.div>
@@ -127,7 +127,7 @@ export default function HomeContent({ courses, seasonSlug }: HomeContentProps) {
                         >
                             {tCourses("page_title")}
                         </motion.h2>
-                        <motion.p variants={fadeInUp} className="text-lg text-muted-foreground">
+                        <motion.p variants={fadeInUp} className="text-lg text-slate-600">
                             Explore our structured courses designed for the current FLL season
                         </motion.p>
                     </motion.div>
@@ -176,7 +176,7 @@ export default function HomeContent({ courses, seasonSlug }: HomeContentProps) {
                             {t("about_title")}
                         </motion.h2>
                         
-                        <motion.p variants={fadeInUp} className="text-lg text-muted-foreground leading-relaxed mb-8">
+                        <motion.p variants={fadeInUp} className="text-lg text-slate-700 leading-relaxed mb-8">
                             {t("about_body")}
                         </motion.p>
 
