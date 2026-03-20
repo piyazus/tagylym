@@ -1,6 +1,7 @@
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/routing";
 import LevelBadge from "@/components/LevelBadge";
+import CoreValuesCallout from "@/components/CoreValuesCallout";
 import {
     getSeasonBySlug,
     getCategoryBySlug,
@@ -133,15 +134,7 @@ function CategoryPageContent({
 
             {/* Core Values */}
             <section className="max-w-7xl mx-auto px-6 pb-24">
-                <div className="bg-[#EFF6FF] rounded-2xl p-6 border-l-4 border-[#2563EB]">
-                    <h3 className="text-lg font-bold flex items-center gap-2 mb-3 text-[#1E40AF]">
-                        <span className="w-2 h-2 rounded-full bg-[#2563EB]" />
-                        {tFll("categories.core-values")}
-                    </h3>
-                    <p className="text-sm text-[#3B82F6] leading-relaxed">
-                        {tFll("core_values_text")}
-                    </p>
-                </div>
+                <CoreValuesCallout />
             </section>
         </div>
     );

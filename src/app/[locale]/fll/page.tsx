@@ -10,6 +10,7 @@ import {
     getAllCoursesForSeason,
 } from "@/lib/queries";
 import type { EnrichedCourse } from "@/lib/queries";
+import { toSlug } from "@/lib/utils";
 
 export default async function FLLPage() {
     const season = await getActiveSeasonByCompetition("fll");
@@ -21,7 +22,7 @@ export default async function FLLPage() {
         : [];
 
     const seasonSlug = season
-        ? season.name.toLowerCase().replace(/\s+/g, "-")
+        ? toSlug(season.name)
         : "current";
 
     return (

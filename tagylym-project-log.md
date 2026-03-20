@@ -148,6 +148,15 @@ If missing, run the trigger block from `schema.sql` lines 178–191.
 
 ---
 
+### Additional fixes (2026-03-20 — URL stability + content UI)
+- Fixed season slug en-dash leakage by adding `toSlug()` in `src/lib/utils.ts` and using it in `src/app/[locale]/page.tsx` and `src/app/[locale]/fll/page.tsx`.
+- Fixed legacy “UUID-in-level-URL” 404s by adding `src/app/[locale]/fll/[season]/[category]/[level]/[id]/page.tsx` redirect route to the canonical level page.
+- Removed UUID URL segment from link generation:
+  - `src/components/CourseCard.tsx` now links to the canonical level page (no trailing UUID).
+  - `src/app/[locale]/fll/[season]/[category]/[level]/LevelPageContent.tsx` renders course cards pointing back to the level page.
+- Added `src/components/CoreValuesCallout.tsx` and updated the category page to use it.
+- Added per-level “What you’ll learn” section and upgraded the level course grid layout (2-column desktop + dashed placeholder + course progress bar + CTA).
+
 ## NEEDS REVIEW
 
 1. **Dashboard "Continue Learning" link** — The link uses `p.lesson_id` (Supabase UUID) as the URL slug for `/lessons/{id}`. But the lesson page loads from Sanity by slug, so navigating to a UUID returns "not found". Fix requires either: (a) storing the Sanity slug in the `progress` table, or (b) fetching lesson titles from Supabase and resolving slugs. Needs a design decision.

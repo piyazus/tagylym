@@ -1,18 +1,151 @@
 "use client";
 
 import React, { useEffect, useMemo, useRef, useState } from "react";
-import { motion, useReducedMotion } from "framer-motion";
-import { useInView } from "framer-motion";
+import {
+    motion,
+    useScroll,
+    useTransform,
+    useSpring,
+    useMotionValue,
+    useReducedMotion,
+    useInView,
+    animate,
+} from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { useTranslations } from "next-intl";
+
+// ============================================================================
+// MOTION PRIMITIVES
+// ============================================================================
+
+// Primitive 1: useScrollProgress — tracks scroll position within a section
+function useSectionScroll(ref: React.RefObject<HTMLElement>) {
+    const { scrollYProgress } = useScroll({
+        target: ref,
+        offset: ["start end", "end start"],
+    });
+    return scrollYProgress;
+}
+
+// Primitive 2: WordReveal — splits text into words, each animates up with stagger
+interface WordRevealProps {
+    text: string;
+    className?: string;
+    delay?: number;
+    stagger?: number;
+    accentWords?: string[];
+}
+
+function WordReveal({
+    text,
+    className = "",
+    delay = 0,
+    stagger = 0.06,
+    accentWords = [],
+}: WordRevealProps) {
+    const words = text.split(" ");
+    const easeOut = [0.16, 1, 0.3, 1] as const;
+
+    return (
+        <div className={`flex flex-wrap gap-x-2 ${className}`}>
+            {words.map((word, idx) => {
+                const isAccent = accentWords.some(
+                    (aw) => aw.toLowerCase() === word.toLowerCase()
+                );
+                return (
+                    <div
+                        key={idx}
+                        className="overflow-hidden inline-block"
+                        style={{ display: "inline-block" }}
+                    >
+                        <motion.span
+                            initial={{ y: "110%", opacity: 1 }}
+                            whileInView={{ y: "0%", opacity: 1 }}
+                            transition={{
+                                duration: 0.65,
+                                ease: easeOut,
+                                delay: delay + idx * stagger,
+                            }}
+                            viewport={{
+                                once: true,
+                                amount: 0.5,
+                                margin: "-60px",
+                            }}
+                            className={
+                                isAccent
+                                    ? "bg-gradient-to-r from-[#0052FF] to-[#4D7CFF] bg-clip-text text-transparent"
+                                    : ""
+                            }
+                            style={{
+                                fontFamily: isAccent ? "'Syne', sans-serif" : "inherit",
+                            }}
+                        >
+                            {word}
+                        </motion.span>
+                    </div>
+                );
+            })}
+        </div>
+    );
+}
+
+// Primitive 3: MagneticButton — button that follows cursor with spring physics
+interface MagneticButtonProps {
+    children: React.ReactNode;
+    onClick?: () => void;
+    className?: string;
+}
+
+function MagneticButton({
+    children,
+    onClick,
+    className = "",
+}: MagneticButtonProps) {
+    const ref = useRef<HTMLDivElement>(null);
+    const x = useSpring(0, { stiffness: 150, damping: 15 });
+    const y = useSpring(0, { stiffness: 150, damping: 15 });
+    const [isHovered, setIsHovered] = useState(false);
+
+    const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+        if (!ref.current) return;
+        const rect = ref.current.getBoundingClientRect();
+        const centerX = rect.left + rect.width / 2;
+        const centerY = rect.top + rect.height / 2;
+
+        const offsetX = (e.clientX - centerX) * 0.35;
+        const offsetY = (e.clientY - centerY) * 0.35;
+
+        x.set(offsetX);
+        y.set(offsetY);
+    };
+
+    const handleMouseLeave = () => {
+        x.set(0);
+        y.set(0);
+        setIsHovered(false);
+    };
+
+    return (
+        <motion.div
+            ref={ref}
+            style={{ x, y }}
+            onMouseMove={handleMouseMove}
+            onMouseLeave={handleMouseLeave}
+            onMouseEnter={() => setIsHovered(true)}
+            onClick={onClick}
+            className={`relative ${className}`}
+        >
+            {children}
+        </motion.div>
+    );
+}
 
 export default function LandingPage({
     params,
 }: {
     params: { locale: string };
 }) {
-    const tNav = useTranslations("nav");
     const locale = params.locale === "en" ? "en" : "kk";
     const t = useTranslations("landing");
 

@@ -18,7 +18,8 @@ export default function CourseCard({ course, seasonSlug }: CourseCardProps) {
 
     return (
         <Link
-            href={`/${course.competitionSlug}/${seasonSlug}/${course.categorySlug}/${course.levelSlug}/${course.id}` as "/"}
+            // Canonical FLL destination is the level page (no UUID in URL).
+            href={`/${course.competitionSlug}/${seasonSlug}/${course.categorySlug}/${course.levelSlug}` as "/"}
             className="bg-white rounded-xl overflow-hidden border border-[#E5E7EB] cursor-pointer transition-shadow duration-150 hover:shadow-md group flex flex-col h-full"
         >
             {/* Thumbnail */}
