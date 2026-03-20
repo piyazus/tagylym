@@ -56,42 +56,30 @@ export default function Nav() {
             <div className="max-w-7xl mx-auto px-6 h-full flex items-center justify-between">
                 {/* LEFT: Logo + wordmark */}
                 <Link href={"/" as const} className="flex items-center gap-2">
-                    <Image
-                        src="/images/logo-tagylym.png"
-                        alt="Tagylym"
-                        width={28}
-                        height={28}
-                        className="h-7 w-7"
-                        style={{ filter: 'invert(1)' }}
-                        priority
-                    />
                     <span className="text-sm font-semibold text-[#1A1A1A]">Tagylym</span>
                 </Link>
 
                 {/* CENTER: FIRST logo */}
                 <div className="hidden sm:flex items-center">
                     <Image
-                        src="/images/logo-first.png"
-                        alt="FIRST"
-                        width={48}
-                        height={24}
-                        className="h-6 w-auto"
+                        src="/images/logo-tagylym.png"
+                        alt="Tagylym"
+                        width={32}
+                        height={32}
+                        className="h-8 w-8"
+                        priority
                     />
                 </div>
 
                 {/* RIGHT: Powered by + Lang switcher */}
-                <div className="flex items-center gap-3">
-                    <span className="hidden md:flex items-center gap-1.5 text-xs text-[#6B7280]">
-                        Powered by
-                        <Image
-                            src="/images/logo-panheya.png"
-                            alt="Panheya"
-                            width={20}
-                            height={20}
-                            className="h-5 w-5"
-                        />
-                        Panheya
-                    </span>
+                <div className="flex items-center gap-4">
+                    <Image
+                        src="/images/logo-first.png"
+                        alt="Team Logo"
+                        width={48}
+                        height={24}
+                        className="hidden md:block h-6 w-auto"
+                    />
 
                     {/* Locale Switcher */}
                     <div className="flex items-center gap-0.5 text-xs">
