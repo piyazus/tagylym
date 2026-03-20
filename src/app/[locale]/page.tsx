@@ -98,7 +98,8 @@ export default function LandingPage({
             <StatsBar locale={locale} t={t} />
             {/* 4. COURSE CATALOG */}
             <CatalogSection locale={locale} t={t} />
-            <div id="how-it-works" />
+            {/* 5. HOW IT WORKS */}
+            <HowItWorksSection locale={locale} t={t} />
             <div id="cta" />
             <div id="footer" />
         </div>
@@ -816,6 +817,195 @@ function CatalogSection({
                 <path d="M7 4v6a5 5 0 0010 0V4" />
                 <path d="M17 4h3v3a4 4 0 01-3 4" />
                 <path d="M7 4H4v3a4 4 0 003 4" />
+            </svg>
+        );
+    }
+}
+
+function HowItWorksSection({
+    locale,
+    t,
+}: {
+    locale: string;
+    t: ReturnType<typeof useTranslations>;
+}) {
+    const isKK = locale === "kk";
+    const reducedMotion = useReducedMotion();
+    const stepsEase = [0.16, 1, 0.3, 1] as const;
+
+    const parentVariants = {
+        hidden: {},
+        visible: {
+            transition: { staggerChildren: 0.15 },
+        },
+    };
+
+    const stepVariants = {
+        hidden: { opacity: 0, y: 24 },
+        visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: stepsEase } },
+    };
+
+    const steps = [
+        {
+            n: "01",
+            title: isKK ? t("howitworks_step1_title_kk") : t("howitworks_step1_title_en"),
+            desc: isKK ? "" : t("howitworks_step1_desc_en"),
+            icon: <LevelIcon />,
+        },
+        {
+            n: "02",
+            title: isKK ? t("howitworks_step2_title_kk") : t("howitworks_step2_title_en"),
+            desc: isKK ? "" : t("howitworks_step2_desc_en"),
+            icon: <WatchIcon />,
+        },
+        {
+            n: "03",
+            title: isKK ? t("howitworks_step3_title_kk") : t("howitworks_step3_title_en"),
+            desc: isKK ? "" : t("howitworks_step3_desc_en"),
+            icon: <ReadyIcon />,
+        },
+    ];
+
+    return (
+        <section id="how-it-works" className="py-24">
+            <div className="max-w-7xl mx-auto px-6">
+                <div className="text-center mb-16">
+                    <div className="inline-flex items-center gap-3">
+                        <motion.span
+                            animate={
+                                reducedMotion
+                                    ? undefined
+                                    : { scale: [1, 1.3, 1], opacity: [1, 0.7, 1] }
+                            }
+                            transition={
+                                reducedMotion
+                                    ? undefined
+                                    : { duration: 2, repeat: Infinity, ease: "easeOut" }
+                            }
+                            style={{
+                                width: 8,
+                                height: 8,
+                                borderRadius: 9999,
+                                background: "#0052FF",
+                            }}
+                        />
+                        <span
+                            className="font-mono uppercase text-xs"
+                            style={{ letterSpacing: "0.15em", color: "#0F172A" }}
+                        >
+                            {isKK ? t("howitworks_badge_kk") : t("howitworks_badge_en")}
+                        </span>
+                    </div>
+                    <h2
+                        className="mt-6 font-bold"
+                        style={{
+                            fontFamily: "'Syne', sans-serif",
+                            fontSize: 48,
+                            color: "#0F172A",
+                            lineHeight: 1.05,
+                        }}
+                    >
+                        {isKK ? t("howitworks_heading_kk") : t("howitworks_heading_en")}
+                    </h2>
+                </div>
+
+                <motion.div
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, amount: 0.15, margin: "-60px" }}
+                    variants={parentVariants}
+                    className="w-full flex flex-col md:flex-row items-center justify-center gap-10 md:gap-4"
+                >
+                    {steps.map((s, idx) => (
+                        <React.Fragment key={s.n}>
+                            <motion.div
+                                variants={stepVariants}
+                                className="w-full md:w-[320px] flex flex-col items-center md:items-start"
+                            >
+                                <div className="flex items-center gap-4">
+                                    <div
+                                        style={{
+                                            fontFamily: "'Syne', sans-serif",
+                                            fontSize: 64,
+                                            fontWeight: 700,
+                                            color: "rgba(0,82,255,0.08)",
+                                            lineHeight: 1,
+                                        }}
+                                    >
+                                        {s.n}
+                                    </div>
+                                    <div
+                                        className="w-10 h-10 rounded-xl flex items-center justify-center"
+                                        style={{
+                                            background: "linear-gradient(135deg, #0052FF, #4D7CFF)",
+                                        }}
+                                    >
+                                        {s.icon}
+                                    </div>
+                                </div>
+                                <h3
+                                    className="mt-5"
+                                    style={{
+                                        fontFamily: "'DM Sans', sans-serif",
+                                        fontSize: 20,
+                                        fontWeight: 600,
+                                        color: "#0F172A",
+                                    }}
+                                >
+                                    {s.title}
+                                </h3>
+                                {s.desc ? (
+                                    <p
+                                        className="mt-2"
+                                        style={{
+                                            fontFamily: "'DM Sans', sans-serif",
+                                            fontSize: 15,
+                                            color: "#64748B",
+                                            lineHeight: 1.6,
+                                        }}
+                                    >
+                                        {s.desc}
+                                    </p>
+                                ) : null}
+                            </motion.div>
+
+                            {idx < steps.length - 1 ? (
+                                <>
+                                    <div className="md:hidden w-px h-8 border-l border-dashed border-[#E2E8F0] my-1" />
+                                    <div className="hidden md:block flex-1 border-t border-dashed border-[#E2E8F0] mt-6" />
+                                </>
+                            ) : null}
+                        </React.Fragment>
+                    ))}
+                </motion.div>
+            </div>
+        </section>
+    );
+
+    function LevelIcon() {
+        return (
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M3 12l9-9 9 9" />
+                <path d="M9 21V9h6v12" />
+            </svg>
+        );
+    }
+
+    function WatchIcon() {
+        return (
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M23 7l-7 5 7 5V7z" />
+                <path d="M1 5h8v14H1z" />
+            </svg>
+        );
+    }
+
+    function ReadyIcon() {
+        return (
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M20 6L9 17l-5-5" />
+                <path d="M22 6h-2" />
+                <path d="M6 22v-2" />
             </svg>
         );
     }

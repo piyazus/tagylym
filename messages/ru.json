@@ -383,6 +383,19 @@
     "catalog_robot_game_title_kk": "Роботтар ойыны",
     "catalog_robot_game_title_en": "Robot Game",
     "catalog_robot_game_desc_kk": "ROI стратегиясы, маршруттар және жарыс күні хаттамасы",
-    "catalog_robot_game_desc_en": "ROI strategy, routes, and competition day protocol"
+    "catalog_robot_game_desc_en": "ROI strategy, routes, and competition day protocol",
+    "howitworks_badge_kk": "ҚАДАМДАР",
+    "howitworks_badge_en": "STEPS",
+    "howitworks_heading_kk": "Қалай жұмыс істейді",
+    "howitworks_heading_en": "How it works",
+    "howitworks_step1_title_kk": "Деңгейіңді таңда",
+    "howitworks_step1_title_en": "Choose your level",
+    "howitworks_step1_desc_en": "pick Beginner, Intermediate, or Advanced",
+    "howitworks_step2_title_kk": "Сабақтарды қара",
+    "howitworks_step2_title_en": "Watch lessons",
+    "howitworks_step2_desc_en": "video + text + quiz per lesson",
+    "howitworks_step3_title_kk": "Жарысқа дайындал",
+    "howitworks_step3_title_en": "Get competition-ready",
+    "howitworks_step3_desc_en": "checklists, artifacts, ROI tools"
   }
 }
