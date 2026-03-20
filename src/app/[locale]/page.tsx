@@ -1,7 +1,8 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
+import { useInView } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { useTranslations } from "next-intl";
@@ -93,7 +94,8 @@ export default function LandingPage({
             {/* 2. HERO */}
             <Hero locale={locale} t={t} />
 
-            <div id="stats" />
+            {/* 3. STATS BAR */}
+            <StatsBar locale={locale} t={t} />
             <div id="curriculum" />
             <div id="how-it-works" />
             <div id="cta" />
@@ -378,6 +380,165 @@ function Hero({
                         </div>
                     </motion.div>
                 </motion.div>
+            </div>
+        </section>
+    );
+}
+
+function CountUpNumber({
+    target,
+    suffix,
+    finalDisplay,
+}: {
+    target: number;
+    suffix?: string;
+    finalDisplay: string;
+}) {
+    const ref = useRef<HTMLSpanElement | null>(null);
+    const isInView = useInView(ref, { once: true, amount: 0.15, margin: "-60px" });
+    const [value, setValue] = useState(0);
+
+    useEffect(() => {
+        if (!isInView) return;
+        const start = performance.now();
+        const durationMs = 1200;
+
+        const easeOut = (x: number) => 1 - Math.pow(1 - x, 3);
+
+        const tick = (now: number) => {
+            const t = Math.min(1, (now - start) / durationMs);
+            const eased = easeOut(t);
+            const next = Math.round(target * eased);
+            setValue(next);
+            if (t < 1) requestAnimationFrame(tick);
+        };
+
+        requestAnimationFrame(tick);
+    }, [isInView, target]);
+
+    const display = useMemo(() => {
+        // If we animate a string-like value (e.g. seasons range), show the exact final on completion.
+        if (target === 0) return finalDisplay;
+        if (value >= target) return finalDisplay;
+        return `${value}${suffix ?? ""}`;
+    }, [finalDisplay, suffix, target, value]);
+
+    return (
+        <span ref={ref}>
+            {display}
+        </span>
+    );
+}
+
+function StatsBar({
+    locale,
+    t,
+}: {
+    locale: string;
+    t: ReturnType<typeof useTranslations>;
+}) {
+    const isKK = locale === "kk";
+
+    const teamsNumber = t("stats_teams_number");
+    const countriesNumber = t("stats_countries_number");
+    const coursesNumber = t("stats_courses_number");
+    const seasonsNumber = t("stats_seasons_number");
+
+    // Numeric targets for the count-up animation.
+    const teamsTarget = Number(teamsNumber.replace("+", ""));
+    const countriesTarget = Number(countriesNumber.replace("+", ""));
+    const coursesTarget = Number(coursesNumber);
+    const seasonsTarget = 2025;
+
+    const teamsLabel = isKK ? t("stats_teams_label_kk") : t("stats_teams_label_en");
+    const countriesLabel = isKK ? t("stats_countries_label_kk") : t("stats_countries_label_en");
+    const coursesLabel = isKK ? t("stats_courses_label_kk") : t("stats_courses_label_en");
+    const seasonsLabel = isKK ? t("stats_seasons_label_kk") : t("stats_seasons_label_en");
+
+    return (
+        <section
+            id="stats"
+            className="relative bg-[#0F172A] text-white overflow-hidden"
+        >
+            <div
+                className="absolute inset-0"
+                style={{
+                    backgroundImage:
+                        "radial-gradient(circle, rgba(255,255,255,0.04) 1px, transparent 1px)",
+                    backgroundSize: "28px 28px",
+                }}
+            />
+            <div className="relative max-w-7xl mx-auto px-6">
+                <div className="grid grid-cols-2 md:grid-cols-4">
+                    {[
+                        {
+                            number: teamsNumber,
+                            target: teamsTarget,
+                            suffix: "+",
+                            label: teamsLabel,
+                            borderRight: false,
+                        },
+                        {
+                            number: countriesNumber,
+                            target: countriesTarget,
+                            suffix: "+",
+                            label: countriesLabel,
+                            borderRight: false,
+                        },
+                        {
+                            number: coursesNumber,
+                            target: coursesTarget,
+                            suffix: "",
+                            label: coursesLabel,
+                            borderRight: false,
+                        },
+                        {
+                            number: seasonsNumber,
+                            target: seasonsTarget,
+                            suffix: "",
+                            label: seasonsLabel,
+                            borderRight: false,
+                        },
+                    ].map((s, idx) => {
+                        // Divider spec: vertical dividers between columns on desktop.
+                        // Render a right border on the first 3 items for md+.
+                        const dividerClass = idx < 3 ? "md:border-r md:border-white/10" : "";
+
+                        return (
+                            <div
+                                key={idx}
+                                className={`text-center py-16 px-6 ${dividerClass}`}
+                            >
+                                <div
+                                    style={{
+                                        fontFamily: "'Syne', sans-serif",
+                                        fontSize: 48,
+                                        fontWeight: 700,
+                                        color: "white",
+                                        lineHeight: 1.1,
+                                    }}
+                                >
+                                    <CountUpNumber
+                                        target={s.target}
+                                        suffix={s.suffix}
+                                        finalDisplay={s.number}
+                                    />
+                                </div>
+                                <div
+                                    style={{
+                                        fontFamily: "'DM Sans', sans-serif",
+                                        fontSize: 14,
+                                        color: "rgba(255,255,255,0.5)",
+                                        letterSpacing: "0.1em",
+                                    }}
+                                    className="uppercase mt-3"
+                                >
+                                    {s.label}
+                                </div>
+                            </div>
+                        );
+                    })}
+                </div>
             </div>
         </section>
     );

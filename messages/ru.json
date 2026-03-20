@@ -348,6 +348,18 @@
     "hero_stat_countries_kk": "160+ ел",
     "hero_stat_countries_en": "160+ countries",
     "hero_stat_teams_kk": "1000+ команда",
-    "hero_stat_teams_en": "1000+ teams"
+    "hero_stat_teams_en": "1000+ teams",
+    "stats_teams_number": "1000+",
+    "stats_teams_label_kk": "команда",
+    "stats_teams_label_en": "Teams",
+    "stats_countries_number": "160+",
+    "stats_countries_label_kk": "ел",
+    "stats_countries_label_en": "Countries",
+    "stats_courses_number": "4",
+    "stats_courses_label_kk": "бағыт",
+    "stats_courses_label_en": "Directions",
+    "stats_seasons_number": "2025–26",
+    "stats_seasons_label_kk": "маусым",
+    "stats_seasons_label_en": "Season"
   }
 }
