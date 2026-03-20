@@ -42,10 +42,11 @@ export async function getActiveSeasonByCompetition(
 
 export async function getSeasonBySlug(
     competitionSlug: string,
-    seasonSlug: string
+    // seasonSlug is accepted for URL compatibility but seasons table has no slug column
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    _seasonSlug: string
 ): Promise<Season | null> {
     const supabase = await createClient();
-    // seasonSlug format: "submerged-2025-26" → name: "SUBMERGED 2025-26"
     const { data: comp } = await supabase
         .from("competitions")
         .select("id")
@@ -53,11 +54,12 @@ export async function getSeasonBySlug(
         .single();
     if (!comp) return null;
 
+    // Fetch the active season for this competition
     const { data, error } = await supabase
         .from("seasons")
         .select("*")
         .eq("competition_id", comp.id)
-        .eq("slug", seasonSlug)
+        .eq("is_active", true)
         .single();
     if (error) return null;
     return data;

@@ -12,6 +12,8 @@
   },
   "home": {
     "hero_title": "Tagylym",
+    "hero_tagline": "Біз болашақ инженерлерді тәрбиелейміз",
+    "hero_cta": "Тегін бастау",
     "hero_subtitle_1": "Робототехника мен инженерияны жүйелі түрде оқытуға тегін қол жеткізу",
     "hero_subtitle_2": "мектеп оқушылары мен тренерлер үшін.",
     "hero_subtitle_3": "Жоба FIRST-тің құндылықтары мен мақсаттарына сай құрылған,",
@@ -37,7 +39,7 @@
     "intermediate": "Орташа",
     "advanced": "Жетілдірілген",
     "course_of": "Курс",
-    "of": "из",
+    "of": "/",
     "selected": "Таңдалды",
     "no_courses": "Сабақтар табылмады"
   },
@@ -166,6 +168,7 @@
   },
   "resources": {
     "page_title": "Ресурстар",
+    "subtitle": "Команданы дайындауға арналған құралдар мен материалдар",
     "roi_calculator_title": "ROI Калькуляторы",
     "roi_description": "Миссияларды ROI бойынша приоритет беріп, стратегияңызды жоспарлаңыз",
     "mission_name": "Миссия атауы",
@@ -177,7 +180,16 @@
     "export_csv": "CSV ретінде экспорттау",
     "roi_high": "Жоғары",
     "roi_medium": "Орташа",
-    "roi_low": "Төмен"
+    "roi_low": "Төмен",
+    "useful_links": "Пайдалы сілтемелер",
+    "first_fll_title": "FIRST LEGO League Official",
+    "first_fll_desc": "FLL ресми сайты — ережелер және маусымдық материалдар",
+    "lego_education_title": "LEGO Education SPIKE Prime",
+    "lego_education_desc": "SPIKE Prime үшін құжаттама мен ресурстар",
+    "pybricks_title": "Pybricks Documentation",
+    "pybricks_desc": "Pybricks арқылы LEGO бағдарламалау",
+    "challenge_updates_title": "Challenge & Updates",
+    "challenge_updates_desc": "FLL SUBMERGED тапсырмасының ресми жаңартулары"
   },
   "pricing": {
     "page_title": "Тарифтер",

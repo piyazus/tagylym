@@ -33,13 +33,19 @@ export default function Nav() {
         router.push("/");
     };
 
-    const locales = [
-        { code: 'kk', label: 'ҚАЗ' },
-        { code: 'ru', label: 'РУС' },
-        { code: 'en', label: 'ENG' },
+    // KK and EN are primary; RU is secondary (separated by a divider)
+    const primaryLocales = [
+        { code: 'kk', label: 'KK' },
+        { code: 'en', label: 'EN' },
+    ];
+    const secondaryLocales = [
+        { code: 'ru', label: 'RU' },
     ];
 
     const switchLocale = (newLocale: string) => {
+        if (typeof window !== 'undefined') {
+            localStorage.setItem('tagylym_locale', newLocale);
+        }
         const segments = pathname.split('/');
         segments[1] = newLocale;
         router.push(segments.join('/'));
@@ -88,20 +94,31 @@ export default function Nav() {
                     </span>
 
                     {/* Locale Switcher */}
-                    <div className="flex items-center border border-[#E5E7EB] rounded px-1 py-0.5 text-xs">
-                        {locales.map((l, i) => (
-                            <span key={l.code} className="flex items-center">
-                                {i > 0 && <span className="text-[#D1D5DB] mx-0.5">|</span>}
-                                <button
-                                    onClick={() => switchLocale(l.code)}
-                                    className={`px-1 py-0.5 rounded transition-colors ${locale === l.code
-                                        ? "text-[#1A1A1A] font-medium"
-                                        : "text-[#6B7280] hover:text-[#1A1A1A]"
-                                        }`}
-                                >
-                                    {l.label}
-                                </button>
-                            </span>
+                    <div className="flex items-center gap-0.5 text-xs">
+                        {primaryLocales.map((l) => (
+                            <button
+                                key={l.code}
+                                onClick={() => switchLocale(l.code)}
+                                className={`px-2 py-1 rounded transition-colors font-medium ${locale === l.code
+                                    ? "bg-[#8B5CF6] text-white"
+                                    : "border border-[#E5E7EB] text-[#6B7280] hover:text-[#1A1A1A]"
+                                    }`}
+                            >
+                                {l.label}
+                            </button>
+                        ))}
+                        <span className="text-[#D1D5DB] mx-0.5">|</span>
+                        {secondaryLocales.map((l) => (
+                            <button
+                                key={l.code}
+                                onClick={() => switchLocale(l.code)}
+                                className={`px-2 py-1 rounded transition-colors font-medium text-[10px] ${locale === l.code
+                                    ? "bg-[#8B5CF6] text-white"
+                                    : "border border-[#E5E7EB] text-[#9CA3AF] hover:text-[#6B7280]"
+                                    }`}
+                            >
+                                {l.label}
+                            </button>
                         ))}
                     </div>
 
@@ -145,17 +162,25 @@ export default function Nav() {
             {/* Mobile menu */}
             {isOpen && (
                 <div className="sm:hidden absolute top-full left-0 right-0 bg-white border-b border-[#E5E7EB] p-4 shadow-md space-y-3">
-                    <div className="flex items-center gap-1 border border-[#E5E7EB] rounded px-1 py-0.5 text-xs w-fit">
-                        {locales.map((l, i) => (
-                            <span key={l.code} className="flex items-center">
-                                {i > 0 && <span className="text-[#D1D5DB] mx-0.5">|</span>}
-                                <button
-                                    onClick={() => { switchLocale(l.code); setIsOpen(false); }}
-                                    className={`px-1.5 py-0.5 rounded ${locale === l.code ? "text-[#1A1A1A] font-medium" : "text-[#6B7280]"}`}
-                                >
-                                    {l.label}
-                                </button>
-                            </span>
+                    <div className="flex items-center gap-1 text-xs">
+                        {primaryLocales.map((l) => (
+                            <button
+                                key={l.code}
+                                onClick={() => { switchLocale(l.code); setIsOpen(false); }}
+                                className={`px-2.5 py-1 rounded font-medium ${locale === l.code ? "bg-[#8B5CF6] text-white" : "border border-[#E5E7EB] text-[#6B7280]"}`}
+                            >
+                                {l.label}
+                            </button>
+                        ))}
+                        <span className="text-[#D1D5DB]">|</span>
+                        {secondaryLocales.map((l) => (
+                            <button
+                                key={l.code}
+                                onClick={() => { switchLocale(l.code); setIsOpen(false); }}
+                                className={`px-2.5 py-1 rounded font-medium text-[10px] ${locale === l.code ? "bg-[#8B5CF6] text-white" : "border border-[#E5E7EB] text-[#9CA3AF]"}`}
+                            >
+                                {l.label}
+                            </button>
                         ))}
                     </div>
 

@@ -65,7 +65,7 @@ export default function ROICalculator() {
         const header = "Mission Name,Points,Time (sec),ROI\n";
         const csv = rows
             .map((row) => {
-                const roi = row.time > 0 ? (row.points / row.time).toFixed(2) : "0.00";
+                const roi = row.time > 0 ? (row.points / row.time).toFixed(2) : "—";
                 return `"${row.missionName}",${row.points},${row.time},${roi}`;
             })
             .join("\n");
@@ -79,7 +79,7 @@ export default function ROICalculator() {
         URL.revokeObjectURL(url);
     }, [rows]);
 
-    const maxRoi = Math.max(...rows.map((r) => (r.time > 0 ? r.points / r.time : 0)), 1);
+    const maxRoi = Math.max(...rows.map((r) => (r.time > 0 ? r.points / r.time : 0)), 0.001);
 
     return (
         <div className="glass-card p-6">
@@ -126,9 +126,9 @@ export default function ROICalculator() {
                     </thead>
                     <tbody>
                         {rows.map((row) => {
-                            const roi = row.time > 0 ? row.points / row.time : 0;
-                            const roiRounded = roi.toFixed(2);
-                            const roiPercent = (roi / maxRoi) * 100;
+                            const roi = row.time > 0 ? row.points / row.time : null;
+                            const roiRounded = roi !== null ? roi.toFixed(2) : "—";
+                            const roiPercent = roi !== null ? (roi / maxRoi) * 100 : 0;
 
                             return (
                                 <tr
@@ -170,11 +170,11 @@ export default function ROICalculator() {
                                         <div className="flex items-center gap-2">
                                             <div className="flex-1 h-2 bg-surface-lighter rounded-full overflow-hidden">
                                                 <div
-                                                    className={`h-full rounded-full transition-all duration-500 ${getRoiBarColor(roi)}`}
+                                                    className={`h-full rounded-full transition-all duration-500 ${roi !== null ? getRoiBarColor(roi) : "bg-surface-lighter"}`}
                                                     style={{ width: `${roiPercent}%` }}
                                                 />
                                             </div>
-                                            <span className={`text-xs font-mono font-semibold px-2 py-0.5 rounded ${getRoiColor(roi)}`}>
+                                            <span className={`text-xs font-mono font-semibold px-2 py-0.5 rounded ${roi !== null ? getRoiColor(roi) : "text-muted"}`}>
                                                 {roiRounded}
                                             </span>
                                         </div>

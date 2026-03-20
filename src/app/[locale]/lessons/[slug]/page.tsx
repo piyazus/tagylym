@@ -157,6 +157,19 @@ function LessonContent({ slug }: { slug: string }) {
     return (
         <div className="min-h-screen bg-[#F5F5F5] text-[#1A1A1A]">
             <div className="max-w-3xl mx-auto py-10 px-6">
+                {/* Breadcrumb */}
+                <nav className="flex items-center gap-1.5 text-xs text-[#9CA3AF] mb-6">
+                    <Link href={"/" as "/"} className="hover:text-[#6B7280] transition-colors">
+                        {t("breadcrumb_home")}
+                    </Link>
+                    <span>/</span>
+                    <Link href={"/fll" as "/"} className="hover:text-[#6B7280] transition-colors">
+                        FLL
+                    </Link>
+                    <span>/</span>
+                    <span className="text-[#374151] font-medium truncate max-w-[200px]">{lesson.title}</span>
+                </nav>
+
                 {/* Title */}
                 <h1 className="font-display text-3xl font-bold text-[#1A1A1A] mb-6">{lesson.title}</h1>
 

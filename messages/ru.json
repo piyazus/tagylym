@@ -12,6 +12,8 @@
   },
   "home": {
     "hero_title": "Tagylym",
+    "hero_tagline": "Мы воспитываем будущих инженеров",
+    "hero_cta": "Начать бесплатно",
     "hero_subtitle_1": "Бесплатный доступ к системному обучению робототехнике и",
     "hero_subtitle_2": "инженерии для школьников и менторов.",
     "hero_subtitle_3": "Проект выстроен по ценностям и целям FIRST, чтобы",
@@ -166,6 +168,7 @@
   },
   "resources": {
     "page_title": "Ресурсы",
+    "subtitle": "Инструменты и материалы для подготовки команды",
     "roi_calculator_title": "Калькулятор ROI",
     "roi_description": "Планируйте стратегию, приоритизируя миссии по ROI",
     "mission_name": "Название миссии",
@@ -177,7 +180,16 @@
     "export_csv": "Экспорт в CSV",
     "roi_high": "Высокий",
     "roi_medium": "Средний",
-    "roi_low": "Низкий"
+    "roi_low": "Низкий",
+    "useful_links": "Полезные ссылки",
+    "first_fll_title": "FIRST LEGO League Official",
+    "first_fll_desc": "Официальный сайт FLL — правила, сезонные материалы",
+    "lego_education_title": "LEGO Education SPIKE Prime",
+    "lego_education_desc": "Документация и ресурсы для SPIKE Prime",
+    "pybricks_title": "Pybricks Documentation",
+    "pybricks_desc": "Программирование LEGO через Pybricks",
+    "challenge_updates_title": "Challenge & Updates",
+    "challenge_updates_desc": "Официальные обновления задания FLL SUBMERGED"
   },
   "pricing": {
     "page_title": "Тарифы",

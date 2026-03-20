@@ -12,6 +12,8 @@
   },
   "home": {
     "hero_title": "Tagylym",
+    "hero_tagline": "We educate future engineers",
+    "hero_cta": "Start for Free",
     "hero_subtitle_1": "Free access to structured robotics and engineering education",
     "hero_subtitle_2": "for students and mentors.",
     "hero_subtitle_3": "Built on FIRST values and goals to develop",
@@ -166,6 +168,7 @@
   },
   "resources": {
     "page_title": "Resources",
+    "subtitle": "Tools and materials for team preparation",
     "roi_calculator_title": "ROI Calculator",
     "roi_description": "Plan your strategy by prioritizing missions by ROI",
     "mission_name": "Mission Name",
@@ -177,7 +180,16 @@
     "export_csv": "Export CSV",
     "roi_high": "High",
     "roi_medium": "Medium",
-    "roi_low": "Low"
+    "roi_low": "Low",
+    "useful_links": "Useful Links",
+    "first_fll_title": "FIRST LEGO League Official",
+    "first_fll_desc": "Official FLL site — rules and season materials",
+    "lego_education_title": "LEGO Education SPIKE Prime",
+    "lego_education_desc": "Documentation and resources for SPIKE Prime",
+    "pybricks_title": "Pybricks Documentation",
+    "pybricks_desc": "Programming LEGO via Pybricks",
+    "challenge_updates_title": "Challenge & Updates",
+    "challenge_updates_desc": "Official FLL SUBMERGED challenge updates"
   },
   "pricing": {
     "page_title": "Pricing",

@@ -2,6 +2,7 @@
 
 import { useTranslations } from "next-intl";
 import Image from "next/image";
+import { Link } from "@/i18n/routing";
 import { motion } from "framer-motion";
 
 const easeOut = [0.16, 1, 0.3, 1] as const;
@@ -34,9 +35,9 @@ export default function HomePage() {
                         variants={stagger}
                         className="relative z-10 flex flex-col justify-center items-start lg:pr-10"
                     >
-                        <motion.h1 
+                        <motion.h1
                             variants={fadeInUp}
-                            className="text-5xl md:text-6xl lg:text-[5.25rem] font-calistoga leading-[1.05] tracking-[-0.02em] text-foreground mb-8 text-left"
+                            className="text-5xl md:text-6xl lg:text-[5.25rem] font-calistoga leading-[1.05] tracking-[-0.02em] text-foreground mb-4 text-left"
                         >
                             <span className="relative inline-block">
                                 <span className="gradient-text">{t("hero_title")}</span>
@@ -44,9 +45,25 @@ export default function HomePage() {
                             </span>
                         </motion.h1>
 
-                        <motion.div variants={fadeInUp} className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-lg space-y-4">
+                        <motion.p
+                            variants={fadeInUp}
+                            className="text-2xl md:text-3xl font-semibold text-foreground mb-6 text-left leading-snug"
+                        >
+                            {t("hero_tagline")}
+                        </motion.p>
+
+                        <motion.div variants={fadeInUp} className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-lg space-y-4 mb-8">
                             <p>{t("hero_subtitle_1")} {t("hero_subtitle_2")}</p>
                             <p>{t("hero_subtitle_3")} {t("hero_subtitle_4")}</p>
+                        </motion.div>
+
+                        <motion.div variants={fadeInUp}>
+                            <Link
+                                href={"/lessons/zhestkoe-osnovanie" as "/"}
+                                className="inline-flex items-center gap-2 px-8 py-3.5 rounded-xl bg-[#8B5CF6] text-white font-semibold text-base hover:bg-[#7C3AED] transition-colors shadow-lg shadow-[#8B5CF6]/30"
+                            >
+                                {t("hero_cta")}
+                            </Link>
                         </motion.div>
                     </motion.div>
 
@@ -162,7 +179,7 @@ export default function HomePage() {
                     >
                         <div className="rounded-tl-[4rem] rounded-br-[4rem] overflow-hidden shadow-2xl relative">
                              <div className="absolute inset-0 bg-gradient-to-br from-accent/20 to-transparent z-10 pointer-events-none" />
-                            <Image src="/images/photo-boy.png" alt="Student photo" width={500} height={600} className="w-full object-cover aspect-square md:aspect-[4/5] grayscale hover:grayscale-0 transition-all duration-700" />
+                            <Image src="/images/photo-boy.png" alt="Student photo" width={500} height={600} className="w-full object-cover aspect-square md:aspect-[4/5] transition-all duration-700" />
                         </div>
                     </motion.div>
 
