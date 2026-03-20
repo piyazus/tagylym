@@ -208,7 +208,7 @@ export default function HomePage() {
                             {t("problem_title")}
                         </motion.h2>
 
-                        <motion.p variants={fadeInUp} className="text-lg text-slate-300 leading-relaxed mb-8">
+                        <motion.p variants={fadeInUp} className="text-lg text-slate-100 leading-relaxed mb-8">
                             {t("problem_body")}
                         </motion.p>
 
