@@ -100,8 +100,10 @@ export default function LandingPage({
             <CatalogSection locale={locale} t={t} />
             {/* 5. HOW IT WORKS */}
             <HowItWorksSection locale={locale} t={t} />
-            <div id="cta" />
-            <div id="footer" />
+            {/* 6. CTA SECTION (INVERTED) */}
+            <CTASection locale={locale} t={t} />
+            {/* 7. FOOTER */}
+            <FooterSection locale={locale} t={t} />
         </div>
     );
 }
@@ -1009,5 +1011,194 @@ function HowItWorksSection({
             </svg>
         );
     }
+}
+
+function CTASection({
+    locale,
+    t,
+}: {
+    locale: string;
+    t: ReturnType<typeof useTranslations>;
+}) {
+    const isKK = locale === "kk";
+    const reducedMotion = useReducedMotion();
+
+    return (
+        <motion.section
+            id="cta"
+            className="relative bg-[#0F172A] text-white overflow-hidden"
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={
+                reducedMotion ? { opacity: 1, y: 0 } : { opacity: 1, y: 0 }
+            }
+            viewport={{ once: true, amount: 0.15, margin: "-60px" }}
+            transition={{ duration: 0.7 }}
+        >
+            <div
+                className="absolute inset-0"
+                style={{
+                    backgroundImage:
+                        "radial-gradient(circle, rgba(255,255,255,0.04) 1px, transparent 1px)",
+                    backgroundSize: "28px 28px",
+                }}
+            />
+            <div
+                className="absolute inset-0"
+                style={{
+                    background:
+                        "radial-gradient(ellipse 800px 400px at 50% 50%, rgba(0,82,255,0.12), transparent)",
+                }}
+            />
+
+            <div className="relative max-w-6xl mx-auto px-6 py-32 text-center">
+                <h2
+                    style={{
+                        fontFamily: "'Syne', sans-serif",
+                        fontSize: 52,
+                        lineHeight: 1.05,
+                        fontWeight: 700,
+                    }}
+                >
+                    {isKK ? t("cta_title_kk") : t("cta_title_en")}
+                </h2>
+                <p
+                    className="mt-6"
+                    style={{
+                        fontFamily: "'DM Sans', sans-serif",
+                        fontSize: 18,
+                        color: "rgba(255,255,255,0.6)",
+                        lineHeight: 1.7,
+                    }}
+                >
+                    {isKK ? t("cta_subtitle_kk") : t("cta_subtitle_en")}
+                </p>
+
+                <div className="mt-10 flex justify-center">
+                    <Link
+                        href={`/${locale}/auth/login`}
+                        className="inline-flex"
+                    >
+                        <motion.button
+                            type="button"
+                            whileHover={{ scale: 1.03 }}
+                            whileTap={{ scale: 0.97 }}
+                            className="h-[56px] px-8 rounded-xl font-semibold shadow-accent-lg"
+                            style={{
+                                background: "linear-gradient(135deg, #0052FF, #4D7CFF)",
+                                color: "#FFFFFF",
+                                width: "auto",
+                            }}
+                        >
+                            <span>
+                                {isKK ? t("cta_button_kk") : t("cta_button_en")}
+                            </span>
+                        </motion.button>
+                    </Link>
+                </div>
+
+                <p
+                    className="mt-5"
+                    style={{
+                        fontFamily: "'DM Sans', sans-serif",
+                        fontSize: 13,
+                        color: "rgba(255,255,255,0.4)",
+                    }}
+                >
+                    {isKK ? t("cta_small_kk") : t("cta_small_en")}
+                </p>
+            </div>
+        </motion.section>
+    );
+}
+
+function FooterSection({
+    locale,
+    t,
+}: {
+    locale: string;
+    t: ReturnType<typeof useTranslations>;
+}) {
+    const isKK = locale === "kk";
+
+    return (
+        <footer id="footer" className="bg-white border-t border-[#E2E8F0] py-12 px-6">
+            <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <h3
+                        style={{
+                            fontFamily: "'DM Sans', sans-serif",
+                            fontSize: 14,
+                            color: "#64748B",
+                            fontWeight: 500,
+                        }}
+                    >
+                        {t("footer_tagline")}
+                    </h3>
+                    <p
+                        style={{
+                            fontFamily: "'DM Sans', sans-serif",
+                            fontSize: 14,
+                            color: "#64748B",
+                            fontWeight: 500,
+                        }}
+                    >
+                        {t("footer_tagline")}
+                    </p>
+                </div>
+                <div>
+                    <div
+                        className="font-semibold mb-3"
+                        style={{
+                            fontFamily: "'DM Sans', sans-serif",
+                            color: "#0F172A",
+                            fontSize: 14,
+                        }}
+                    >
+                        {t("footer_links_header")}
+                    </div>
+                    <div
+                        className="flex flex-col gap-2 text-sm"
+                        style={{
+                            fontFamily: "'DM Sans', sans-serif",
+                            color: "#64748B",
+                        }}
+                    >
+                        <Link href={`/${locale}/fll#curriculum`} className="hover:text-[#0052FF]">
+                            {t("footer_link_courses")}
+                        </Link>
+                        <Link href={`/${locale}/quiz`} className="hover:text-[#0052FF]">
+                            {t("footer_link_quiz")}
+                        </Link>
+                        <Link href={`/${locale}/resources`} className="hover:text-[#0052FF]">
+                            {t("footer_link_resources")}
+                        </Link>
+                        <Link href={`/${locale}/#how-it-works`} className="hover:text-[#0052FF]">
+                            {t("footer_link_about")}
+                        </Link>
+                    </div>
+                </div>
+                <div className="text-right">
+                    <div
+                        style={{
+                            fontFamily: "'DM Sans', sans-serif",
+                            fontSize: 14,
+                            color: "#64748B",
+                        }}
+                    >
+                        © 2026 Tagylym
+                    </div>
+                    <div className="mt-3 flex justify-end gap-3 text-sm" style={{ fontFamily: "'DM Sans', sans-serif", color: "#64748B" }}>
+                        <Link href="/kk" className={isKK ? "text-[#0052FF]" : "hover:text-[#0052FF]"}>
+                            KK
+                        </Link>
+                        <span className="text-[#E2E8F0]">|</span>
+                        <Link href="/en" className={!isKK ? "text-[#0052FF]" : "hover:text-[#0052FF]"}>
+                            EN
+                        </Link>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    );
 }
 

@@ -396,6 +396,20 @@
     "howitworks_step2_desc_en": "video + text + quiz per lesson",
     "howitworks_step3_title_kk": "Жарысқа дайындал",
     "howitworks_step3_title_en": "Get competition-ready",
-    "howitworks_step3_desc_en": "checklists, artifacts, ROI tools"
+    "howitworks_step3_desc_en": "checklists, artifacts, ROI tools",
+    "cta_title_kk": "Бүгін бастауға дайынсың ба?",
+    "cta_title_en": "Ready to start today?",
+    "cta_subtitle_kk": "Тіркелу тегін. Бірінші сабақтар барлығына ашық.",
+    "cta_subtitle_en": "Registration is free. First lessons open to everyone.",
+    "cta_button_kk": "Тегін бастау →",
+    "cta_button_en": "Start for free →",
+    "cta_small_kk": "Несие картасы қажет емес",
+    "cta_small_en": "No credit card required",
+    "footer_tagline": "Raising future engineers",
+    "footer_links_header": "Links",
+    "footer_link_courses": "Courses",
+    "footer_link_quiz": "Quiz",
+    "footer_link_resources": "Resources",
+    "footer_link_about": "About"
   }
 }
