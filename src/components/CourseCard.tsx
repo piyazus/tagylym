@@ -1,22 +1,16 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import Link from "next/link";
+import { Link } from "@/i18n/routing";
 import { motion } from "framer-motion";
+import type { EnrichedCourse } from "@/lib/queries";
 
 interface CourseCardProps {
-    course: {
-        id: string;
-        title: string;
-        slug: string;
-        category?: string;
-        level?: string;
-        lessonCount?: number;
-    };
-    locale: string;
+    course: EnrichedCourse;
+    seasonSlug: string;
 }
 
-export default function CourseCard({ course, locale }: CourseCardProps) {
+export default function CourseCard({ course, seasonSlug }: CourseCardProps) {
     const t = useTranslations("courses");
 
     return (
@@ -29,10 +23,10 @@ export default function CourseCard({ course, locale }: CourseCardProps) {
             <div className="p-6 flex-grow space-y-4">
                 <div className="flex items-center justify-between gap-2">
                     <span className="px-2.5 py-1 rounded-md bg-accent/10 text-accent text-[10px] font-bold uppercase tracking-wider">
-                        {course.category || "FLL"}
+                        {course.categoryName || "FLL"}
                     </span>
                     <span className="text-[10px] font-medium text-slate-500 uppercase tracking-widest leading-none">
-                        {course.level || t("beginner")}
+                        {course.levelName || t("beginner")}
                     </span>
                 </div>
 
@@ -45,20 +39,13 @@ export default function CourseCard({ course, locale }: CourseCardProps) {
                         <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
                         {t("free_label")}
                     </div>
-                    {course.lessonCount && (
-                        <div className="flex items-center gap-1.5">
-                            <span className="w-1.5 h-1.5 rounded-full bg-slate-600" />
-                            {course.lessonCount} {t("lessons")}
-                        </div>
-                    )}
                 </div>
             </div>
 
             <div className="p-6 pt-0 mt-auto">
                 <Link
-                    href={`/${locale}/course/fll?courseId=${course.id}`}
+                    href={`/fll/${seasonSlug}/${course.categorySlug}/${course.levelSlug}` as any}
                     className="flex items-center justify-center w-full py-3 text-white text-xs font-black uppercase tracking-widest rounded-xl transition-all active:scale-[0.98] btn-primary"
-                    style={{}}
                 >
                     {t("start")}
                 </Link>
