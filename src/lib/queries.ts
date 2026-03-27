@@ -42,11 +42,10 @@ export async function getActiveSeasonByCompetition(
 
 export async function getSeasonBySlug(
     competitionSlug: string,
-    // seasonSlug is accepted for URL compatibility but seasons table has no slug column
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    _seasonSlug: string
+    seasonSlug: string
 ): Promise<Season | null> {
     const supabase = await createClient();
+    // seasonSlug format: "submerged-2025-26" → name: "SUBMERGED 2025-26"
     const { data: comp } = await supabase
         .from("competitions")
         .select("id")
@@ -54,12 +53,11 @@ export async function getSeasonBySlug(
         .single();
     if (!comp) return null;
 
-    // Fetch the active season for this competition
     const { data, error } = await supabase
         .from("seasons")
         .select("*")
         .eq("competition_id", comp.id)
-        .eq("is_active", true)
+        .eq("slug", seasonSlug)
         .single();
     if (error) return null;
     return data;
@@ -75,7 +73,7 @@ export async function getCategoriesBySeason(
         .from("categories")
         .select("*")
         .eq("season_id", seasonId)
-        .order("order", { ascending: true });
+        .order("sort_order", { ascending: true });
     if (error) throw error;
     return data ?? [];
 }
@@ -105,7 +103,7 @@ export async function getLevelsByCategory(
         .from("levels")
         .select("*")
         .eq("category_id", categoryId)
-        .order("order", { ascending: true });
+        .order("sort_order", { ascending: true });
     if (error) throw error;
     return data ?? [];
 }
@@ -115,19 +113,11 @@ export async function getLevelByCategoryAndName(
     levelName: string
 ): Promise<Level | null> {
     const supabase = await createClient();
-    // levelName from URL: "beginner" → DB name: "Начинающий"
-    const nameMap: Record<string, string> = {
-        beginner: "Начинающий",
-        intermediate: "Средний",
-        advanced: "Продвинутый",
-    };
-    const dbName = nameMap[levelName.toLowerCase()] || levelName;
-
     const { data, error } = await supabase
         .from("levels")
         .select("*")
         .eq("category_id", categoryId)
-        .eq("name", dbName)
+        .eq("name", levelName.toLowerCase())
         .single();
     if (error) return null;
     return data;
@@ -143,7 +133,7 @@ export async function getCoursesByLevel(
         .from("courses")
         .select("*")
         .eq("level_id", levelId)
-        .order("order", { ascending: true });
+        .order("sort_order", { ascending: true });
     if (error) throw error;
     return data ?? [];
 }
@@ -158,7 +148,7 @@ export async function getLessonsByCourse(
         .from("lessons")
         .select("*")
         .eq("course_id", courseId)
-        .order("order", { ascending: true });
+        .order("sort_order", { ascending: true });
     if (error) throw error;
     return data ?? [];
 }
@@ -188,6 +178,28 @@ export async function getLessonCountByLevel(
     return count ?? 0;
 }
 
+export async function getLessonTitlesByIds(
+    lessonIds: string[]
+): Promise<Record<string, { title: string; title_kk: string; title_en: string }>> {
+    const supabase = await createClient();
+    const { data, error } = await supabase
+        .from("lessons")
+        .select("id, title")
+        .in("id", lessonIds);
+    if (error || !data) return {};
+
+    const result: Record<string, { title: string; title_kk: string; title_en: string }> = {};
+    data.forEach((l) => {
+        // @ts-ignore - these columns might be missing in DB but we provide fallbacks
+        result[l.id] = { 
+            title: l.title, 
+            title_kk: (l as any).title_kk || l.title, 
+            title_en: (l as any).title_en || l.title 
+        };
+    });
+    return result;
+}
+
 // ─── Checklist Items ─────────────────────────────────────
 
 export async function getChecklistItems(
@@ -198,7 +210,7 @@ export async function getChecklistItems(
         .from("checklist_items")
         .select("*")
         .eq("level_id", levelId)
-        .order("order", { ascending: true });
+        .order("sort_order", { ascending: true });
     if (error) throw error;
     return data ?? [];
 }
@@ -288,6 +300,14 @@ export async function markLessonComplete(
     });
 }
 
+export async function unmarkLessonComplete(
+    userId: string,
+    lessonId: string
+): Promise<void> {
+    const supabase = await createClient();
+    await supabase.from("progress").delete().match({ user_id: userId, lesson_id: lessonId });
+}
+
 // ─── Checklist Progress ──────────────────────────────────
 
 export async function getChecklistProgress(
@@ -345,27 +365,14 @@ export interface EnrichedCourse extends Course {
     levelName: string;
     levelSlug: string;
     levelColor: string;
-    competitionSlug: string;
-    competitionName: string;
 }
 
-const levelSlugMap: Record<string, string> = {
-    "Начинающий": "beginner",
-    "Средний": "intermediate",
-    "Продвинутый": "advanced",
-};
 
 export async function getAllCoursesForSeason(
     seasonId: string
 ): Promise<EnrichedCourse[]> {
     const categories = await getCategoriesBySeason(seasonId);
     const allCourses: EnrichedCourse[] = [];
-
-    const { data: seasonData } = await (await createClient())
-        .from("seasons")
-        .select("competition:competitions(slug, name)")
-        .eq("id", seasonId)
-        .single();
 
     for (const cat of categories) {
         const levels = await getLevelsByCategory(cat.id);
@@ -377,10 +384,8 @@ export async function getAllCoursesForSeason(
                     categoryName: cat.name,
                     categorySlug: cat.slug,
                     levelName: level.name,
-                    levelSlug: levelSlugMap[level.name] || "beginner",
+                    levelSlug: level.name,
                     levelColor: level.color,
-                    competitionSlug: (seasonData?.competition as any)?.slug || "fll",
-                    competitionName: (seasonData?.competition as any)?.name || "FLL",
                 });
             }
         }

@@ -1,7 +1,6 @@
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/routing";
 import LevelBadge from "@/components/LevelBadge";
-import CoreValuesCallout from "@/components/CoreValuesCallout";
 import {
     getSeasonBySlug,
     getCategoryBySlug,
@@ -9,11 +8,7 @@ import {
 } from "@/lib/queries";
 import type { LevelName } from "@/types";
 
-const levelSlugMap: Record<string, LevelName> = {
-    "Начинающий": "beginner",
-    "Средний": "intermediate",
-    "Продвинутый": "advanced",
-};
+// Level names are stored as English slugs in DB
 
 export default async function CategoryPage({
     params,
@@ -49,7 +44,7 @@ function CategoryPageContent({
     category: string;
     season: string;
     cat: { id: string; name: string; slug: string; icon: string } | null;
-    levels: { id: string; name: string; color: string; order: number; lessonCount: number; checklistCount: number }[];
+    levels: { id: string; name: string; color: string; sort_order: number; lessonCount: number; checklistCount: number }[];
 }) {
     const tCommon = useTranslations("common");
     const tCourses = useTranslations("courses");
@@ -83,7 +78,7 @@ function CategoryPageContent({
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6 stagger-children">
                     {levels.map((level) => {
-                        const slug = levelSlugMap[level.name] || "beginner";
+                        const slug = (level.name as LevelName) || "beginner";
                         const displayNames: Record<string, string> = {
                             "beginner": tCourses("beginner"),
                             "intermediate": tCourses("intermediate"),
@@ -134,7 +129,15 @@ function CategoryPageContent({
 
             {/* Core Values */}
             <section className="max-w-7xl mx-auto px-6 pb-24">
-                <CoreValuesCallout />
+                <div className="bg-[#EFF6FF] rounded-2xl p-6 border-l-4 border-[#2563EB]">
+                    <h3 className="text-lg font-bold flex items-center gap-2 mb-3 text-[#1E40AF]">
+                        <span className="w-2 h-2 rounded-full bg-[#2563EB]" />
+                        {tFll("categories.core-values")}
+                    </h3>
+                    <p className="text-sm text-[#3B82F6] leading-relaxed">
+                        {tFll("core_values_text")}
+                    </p>
+                </div>
             </section>
         </div>
     );

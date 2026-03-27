@@ -1,8 +1,17 @@
 import { useTranslations } from "next-intl";
+import { getTranslations } from "next-intl/server";
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
+    const t = await getTranslations({ locale, namespace: "meta" });
+    return {
+        title: t("fll_title"),
+        description: t("fll_description"),
+    };
+}
 import { Link } from "@/i18n/routing";
 import Image from "next/image";
 import LevelBadge from "@/components/LevelBadge";
-import CourseCard from "@/components/CourseCard";
 import { getCourseThumbnail } from "@/lib/course-thumbnails";
 import {
     getActiveSeasonByCompetition,
@@ -10,7 +19,6 @@ import {
     getAllCoursesForSeason,
 } from "@/lib/queries";
 import type { EnrichedCourse } from "@/lib/queries";
-import { toSlug } from "@/lib/utils";
 
 export default async function FLLPage() {
     const season = await getActiveSeasonByCompetition("fll");
@@ -22,7 +30,7 @@ export default async function FLLPage() {
         : [];
 
     const seasonSlug = season
-        ? toSlug(season.name)
+        ? season.name.toLowerCase().replace(/\s+/g, "-")
         : "current";
 
     return (
@@ -43,7 +51,7 @@ function FLLPageContent({
     seasonName,
     seasonYear,
 }: {
-    categories: { id: string; name: string; slug: string; icon: string; order: number }[];
+    categories: { id: string; name: string; slug: string; icon: string; sort_order: number }[];
     courses: EnrichedCourse[];
     seasonSlug: string;
     seasonName: string;
@@ -52,6 +60,7 @@ function FLLPageContent({
     const tCourses = useTranslations("courses");
     const tFll = useTranslations("fll");
     const tCommon = useTranslations("common");
+    const tQuiz = useTranslations("quiz");
 
     return (
         <div className="min-h-screen bg-[#F5F5F5] text-[#1A1A1A]">
@@ -143,7 +152,48 @@ function FLLPageContent({
                 {courses.length > 0 ? (
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 stagger-children">
                         {courses.map((course) => (
-                            <CourseCard key={course.id} course={course} seasonSlug={seasonSlug} />
+                            <Link
+                                key={course.id}
+                                href={`/fll/${seasonSlug}/${course.categorySlug}/${course.levelSlug}/${course.id}` as "/"}
+                                className="bg-white rounded-xl overflow-hidden border border-[#E5E7EB] cursor-pointer transition-shadow duration-150 hover:shadow-md group"
+                            >
+                                {/* Thumbnail */}
+                                <div className="relative aspect-video overflow-hidden bg-[#1E293B]">
+                                    <Image
+                                        src={getCourseThumbnail(course.categorySlug)}
+                                        alt={course.title}
+                                        fill
+                                        className="object-cover"
+                                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                                    />
+                                    <span className="absolute top-2 right-2 bg-black/65 text-white text-[10px] font-medium px-[7px] py-[2px] rounded">
+                                        {tCourses("preview")}
+                                    </span>
+                                </div>
+
+                                {/* Body */}
+                                <div className="px-3.5 pt-3 pb-3.5">
+                                    <p className="text-[11px] text-[#9CA3AF] mb-1">
+                                        {tCourses("free_label")}
+                                    </p>
+                                    <h3 className="text-sm font-semibold text-[#1A1A1A] leading-[1.3] line-clamp-2 min-h-[2.4rem] mb-1.5">
+                                        FLL CHALLENGE: {tQuiz("filter_track").toUpperCase()} {course.categoryName}
+                                    </h3>
+                                    {course.description && (
+                                        <p className="text-[12px] text-[#6B7280] leading-[1.4] line-clamp-3 mb-2.5">
+                                            {course.description}
+                                        </p>
+                                    )}
+
+                                    {/* Level badge */}
+                                    <LevelBadge level={course.levelSlug} />
+
+                                    {/* Duration */}
+                                    <p className="text-[11px] text-[#9CA3AF] mt-0.5">
+                                        {tCourses("week_range")}
+                                    </p>
+                                </div>
+                            </Link>
                         ))}
                     </div>
                 ) : (

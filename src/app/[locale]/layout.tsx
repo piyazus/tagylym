@@ -1,8 +1,18 @@
 import { NextIntlClientProvider } from "next-intl";
-import { getMessages } from "next-intl/server";
+import { getMessages, getTranslations } from "next-intl/server";
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
+    const t = await getTranslations({ locale, namespace: "meta" });
+    return {
+        title: t("home_title"),
+        description: t("home_description"),
+    };
+}
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
-import NavFooterGate from "@/components/NavFooterGate";
+import Nav from "@/components/Nav";
+import Footer from "@/components/Footer";
 
 export function generateStaticParams() {
     return routing.locales.map((locale) => ({ locale }));
@@ -17,7 +27,7 @@ export default async function LocaleLayout({
 }) {
     const { locale } = await params;
 
-    if (!routing.locales.includes(locale as "ru" | "en")) {
+    if (!routing.locales.includes(locale as any)) {
         notFound();
     }
 
@@ -25,9 +35,11 @@ export default async function LocaleLayout({
 
     return (
         <html lang={locale} className="dark">
-            <body className="min-h-screen bg-surface text-slate-200 antialiased">
+            <body className="min-h-screen bg-background text-slate-100 antialiased">
                 <NextIntlClientProvider messages={messages}>
-                    <NavFooterGate locale={locale}>{children}</NavFooterGate>
+                    <Nav />
+                    <main className="pt-16">{children}</main>
+                    <Footer />
                 </NextIntlClientProvider>
             </body>
         </html>

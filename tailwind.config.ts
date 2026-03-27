@@ -23,6 +23,10 @@ const config: Config = {
                 'star-beginner': '#2563EB',
                 'star-intermediate': '#D97706',
                 'star-advanced': '#16A34A',
+                deepBlue: '#0C2D48',
+                teal: '#0D9488',
+                orange: '#F97316',
+                sand: '#F0F4F8',
                 // Minimalist Modern Tokens
                 background: '#FAFAFA',
                 foreground: '#0F172A',

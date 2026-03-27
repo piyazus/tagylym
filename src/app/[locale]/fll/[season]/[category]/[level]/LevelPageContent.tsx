@@ -10,7 +10,6 @@ import LevelBadge from "@/components/LevelBadge";
 import ChecklistBlock from "@/components/ChecklistBlock";
 import RubricCallout from "@/components/RubricCallout";
 import ArtifactCard from "@/components/ArtifactCard";
-import ProgressBar from "@/components/ProgressBar";
 import type { LevelName, ChecklistItem } from "@/types";
 
 const rubricCriterionMap: Record<string, "DESIGN" | "CREATE" | "INNOVATION" | "ITERATE"> = {
@@ -20,153 +19,6 @@ const rubricCriterionMap: Record<string, "DESIGN" | "CREATE" | "INNOVATION" | "I
     "robot-game": "ITERATE",
 };
 
-const rubricTexts: Record<string, Record<string, string>> = {
-    "robot-design": {
-        beginner: "Робот жобаланды, негізгі тапсырмаларды орындай алады. Команда дизайнның негізгі шешімдерін түсіндіре алады.",
-        intermediate: "Дизайн тестілеу негізінде жақсартылды. Инженерлік журналда процесс құжатталған.",
-        advanced: "Нақты негіздемесі бар инновациялық дизайн. Команда инженерлік процесті терең түсінетінін көрсетеді.",
-    },
-    coding: {
-        beginner: "Бағдарлама роботты миссияларды орындау үшін іске қосады. Код жүйелі және түсінікті.",
-        intermediate: "Датчиктер мен шарттарды қолдану. Дәл қозғалыс үшін P-контроллер.",
-        advanced: "PID-реттегіш, PyBricks-тегі модульдік код. Маршрутты оңтайландыру алгоритмдері.",
-    },
-    innovation: {
-        beginner: "Мәселе анықталды, шешім ұсынылды. Презентация құрылымдалған.",
-        intermediate: "Прототип нақты пайдаланушылармен сыналды. Әсер ету көрсеткіштері бар.",
-        advanced: "Impact First: алғашқы 10 секундта цифрлық нәтиже. Масштабталатын шешім.",
-    },
-    "robot-game": {
-        beginner: "Робот 3+ миссияны орындайды. Команда ережелер мен стратегияны біледі.",
-        intermediate: "Миссиялардың ROI-анализі. Оңтайландырылған маршруттар. 150+ ұпай.",
-        advanced: "300+ ұпай. Резервтік жоспарлары бар толық автономды стратегия.",
-    },
-};
-
-const levelLearnContent: Record<
-    string,
-    Record<
-        LevelName,
-        {
-            bullets: string[];
-            leadsTo?: string;
-        }
-    >
-> = {
-    "robot-design": {
-        beginner: {
-            bullets: [
-                "Rigid base construction for stability",
-                "Symmetrical wheel placement for predictable movement",
-                "Building your first passive attachment",
-                "Using the Roles Journal every session",
-                "Basic robot inspection checklist",
-            ],
-            leadsTo: "Leads to: Robot Design Intermediate",
-        },
-        intermediate: {
-            bullets: [
-                "Active attachments with moving parts",
-                "Innovation formula: X → Y because Z",
-                "Test Log documentation",
-                "ROI analysis for missions",
-            ],
-            leadsTo: "Leads to: Robot Design Advanced",
-        },
-        advanced: {
-            bullets: [
-                "Multi-attachment systems",
-                "Aligner mechanisms",
-                "Pitstop procedure under 15 seconds",
-                "Plan B strategy",
-            ],
-        },
-    },
-    innovation: {
-        beginner: {
-            bullets: [
-                "Identifying 3–5 real problems",
-                "Choosing one problem to solve",
-                "Creating a Project Plan with named roles",
-                "Research from 3+ sources",
-            ],
-            leadsTo: "Leads to: Innovation Project Intermediate",
-        },
-        intermediate: {
-            bullets: [
-                "Building an Iteration Log",
-                "Collecting feedback from 2+ sources",
-                "Creating numeric before/after impact data",
-                "Writing an impact statement with numbers",
-            ],
-            leadsTo: "Leads to: Innovation Project Advanced",
-        },
-        advanced: {
-            bullets: [
-                "Running 3 Mock Judging sessions",
-                "\"Impact First\" pitch structure",
-                "Presenting to partners with real numbers",
-                "Energy scale scoring ≥ 3",
-            ],
-        },
-    },
-    coding: {
-        beginner: {
-            bullets: [
-                "Error measurement in degrees vs seconds",
-                "Setting anchor points on the field",
-                "Code Log documentation",
-                "Building a hypothesis table",
-            ],
-            leadsTo: "Leads to: Coding Intermediate",
-        },
-        intermediate: {
-            bullets: [
-                "P-controller: motor power = error × Kp",
-                "Bisection method for finding optimal Kp",
-                "Custom block naming conventions",
-                "Route bisection debugging",
-            ],
-            leadsTo: "Leads to: Coding Advanced",
-        },
-        advanced: {
-            bullets: [
-                "PID controller (P + I + D components)",
-                "PyBricks Python programming",
-                "Hub menu for match-day selection",
-                "Explaining code to judges",
-            ],
-        },
-    },
-    "robot-game": {
-        beginner: {
-            bullets: [
-                "ROI formula: Points ÷ Time",
-                "Priority: >0.6 do it | 0.4–0.6 consider | <0.4 skip",
-                "Dividing the field into zones",
-                "Building Route 1 (priority missions)",
-            ],
-            leadsTo: "Leads to: Robot Game Intermediate",
-        },
-        intermediate: {
-            bullets: [
-                "Full ROI table for all missions",
-                "Pitstop system: Robot Captain, Code Lead, Pitstoppers",
-                "Attachment swap under 15 seconds",
-                "Route 2 (secondary missions)",
-            ],
-            leadsTo: "Leads to: Robot Game Advanced",
-        },
-        advanced: {
-            bullets: [
-                "Plan B: always loaded, handles attachment failure",
-                "Multi-mission runs",
-                "Anti-crisis protocols",
-                "Saving 30–40% of score with Plan B",
-            ],
-        },
-    },
-};
 
 export default function LevelPageContent({
     category,
@@ -184,7 +36,7 @@ export default function LevelPageContent({
     levelData: { id: string; name: string; color: string } | null;
     categoryData: { name: string } | null;
     checklist: ChecklistItem[];
-    courses: { id: string; title: string; description: string | null; order: number }[];
+    courses: { id: string; title: string; description: string | null; sort_order: number }[];
     artifacts: { id: string; name: string; file_url: string; description: string | null }[];
 }) {
     const tCommon = useTranslations("common");
@@ -194,25 +46,14 @@ export default function LevelPageContent({
     const tLesson = useTranslations("lesson");
     const tQuiz = useTranslations("quiz");
     const tChecklist = useTranslations("checklist");
-    const tFll = useTranslations("fll");
+    const tRubric = useTranslations("rubric");
     const levelName = level as LevelName;
     const rubricLevel = level === "advanced" ? "EXCEEDS" as const : "ACCOMPLISHED" as const;
     const criterion = rubricCriterionMap[category] || "DESIGN";
-    const rubricText = rubricTexts[category]?.[level] || "Бұл деңгей үшін бағалау критерийлері.";
-    const learn = levelLearnContent[category]?.[levelName];
-    const timeEstimate = `~4 ${tCommon("lessons")} · 2 ${tCommon("week")}`;
+    const rubricKey = `${category}_${level}` as Parameters<typeof tRubric>[0];
+    const rubricText = tRubric(rubricKey);
 
     const [checkedItems, setCheckedItems] = useState<Record<string, boolean>>({});
-    const [courseLessonState, setCourseLessonState] = useState<
-        Record<
-            string,
-            {
-                total: number;
-                completed: number;
-                firstIsFree: boolean;
-            }
-        >
-    >({});
 
     useEffect(() => {
         const loadProgress = async () => {
@@ -239,69 +80,6 @@ export default function LevelPageContent({
 
         loadProgress();
     }, [checklist]);
-
-    useEffect(() => {
-        const loadCourseProgress = async () => {
-            try {
-                if (courses.length === 0) {
-                    setCourseLessonState({});
-                    return;
-                }
-
-                const courseIds = courses.map((c) => c.id);
-
-                const { data: lessonsData, error: lessonsErr } = await supabase
-                    .from("lessons")
-                    // Include order so we can detect lesson #1 for "Free"
-                    .select('id, course_id, is_free, "order"')
-                    .in("course_id", courseIds);
-
-                if (lessonsErr || !lessonsData) return;
-
-                const byCourse: Record<string, typeof lessonsData> = {};
-                for (const lesson of lessonsData) {
-                    if (!byCourse[lesson.course_id]) byCourse[lesson.course_id] = [];
-                    byCourse[lesson.course_id].push(lesson);
-                }
-
-                for (const courseId of Object.keys(byCourse)) {
-                    byCourse[courseId].sort((a: any, b: any) => Number(a.order) - Number(b.order));
-                }
-
-                const allLessonIds = lessonsData.map((l) => l.id);
-                const completedSet = new Set<string>();
-
-                const { data: { user } } = await supabase.auth.getUser();
-                if (user && allLessonIds.length > 0) {
-                    const { data: progressRows } = await supabase
-                        .from("progress")
-                        .select("lesson_id")
-                        .eq("user_id", user.id)
-                        .in("lesson_id", allLessonIds);
-
-                    (progressRows ?? []).forEach((r) => completedSet.add(r.lesson_id));
-                }
-
-                const next: typeof courseLessonState = {};
-                for (const course of courses) {
-                    const lessons = byCourse[course.id] ?? [];
-                    const total = lessons.length;
-                    const firstIsFree = total > 0 ? Boolean((lessons[0] as any)?.is_free) : false;
-                    const completed = lessons.reduce(
-                        (acc, l: any) => acc + (completedSet.has(l.id) ? 1 : 0),
-                        0
-                    );
-                    next[course.id] = { total, completed, firstIsFree };
-                }
-
-                setCourseLessonState(next);
-            } catch {
-                // Non-fatal: if lessons/progress are missing, course cards still render.
-            }
-        };
-
-        loadCourseProgress();
-    }, [courses]);
 
     const handleToggle = async (itemId: string) => {
         const newChecked = !checkedItems[itemId];
@@ -352,7 +130,7 @@ export default function LevelPageContent({
                         </Link>
                         <div>
                             <h1 className="text-2xl font-bold text-[#1A1A1A]">
-                                {tFll(`categories.${category}`)}
+                                {categoryData?.name || tQuiz("filter_track")}
                             </h1>
                             <p className="text-sm text-[#6B7280] mt-1">
                                 {completedCount} / {checklist.length} {tChecklist("progress")}
@@ -382,7 +160,7 @@ export default function LevelPageContent({
             <div className="bg-white border-b border-[#E5E7EB]">
                 <div className="max-w-7xl mx-auto px-6 py-4 flex flex-col md:flex-row justify-between items-center gap-4">
                     <div className="flex items-center gap-3">
-                        <span className="text-lg font-semibold text-[#1A1A1A]">{tQuiz("filter_track")}: {tFll(`categories.${category}`)}</span>
+                        <span className="text-lg font-semibold text-[#1A1A1A]">{tQuiz("filter_track")}: {categoryData?.name}</span>
                         <LevelBadge level={levelName} />
                     </div>
                 </div>
@@ -392,124 +170,66 @@ export default function LevelPageContent({
                 {/* Rubric */}
                 <RubricCallout criterion={criterion} level={rubricLevel} text={rubricText} />
 
-                {/* What you'll learn */}
-                {learn && (
-                    <section className="bg-white rounded-2xl border border-[#E5E7EB] p-6">
-                        <h2 className="text-xl font-bold text-[#1A1A1A] mb-4">{tFll("level_learn_heading")}</h2>
-                        <ul className="list-disc pl-5 space-y-2 text-sm text-[#374151]">
-                            {learn.bullets.map((b, idx) => (
-                                <li key={idx}>{b}</li>
-                            ))}
-                        </ul>
-                        <div className="mt-4 text-sm text-[#6B7280] leading-relaxed">
-                            {timeEstimate}
-                            {learn.leadsTo ? <div className="mt-2">{learn.leadsTo}</div> : null}
-                        </div>
-                    </section>
-                )}
-
                 {/* Course Grid */}
                 <div>
                     <h2 className="text-2xl font-bold text-[#1A1A1A] mb-6 flex items-center gap-2">
                         {tCourses("page_title")}
                     </h2>
                     {courses.length > 0 ? (
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            {courses.map((course) => {
-                                const meta = courseLessonState[course.id];
-                                const total = meta?.total ?? 0;
-                                const completed = meta?.completed ?? 0;
-                                const firstIsFree = meta?.firstIsFree ?? false;
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                            {courses.map((course, idx) => (
+                                <Link
+                                    key={course.id}
+                                    href={`/course/fll?courseId=${course.id}` as any}
+                                    className="block bg-white border border-[#E5E7EB] rounded-2xl overflow-hidden hover:shadow-md transition-shadow group"
+                                >
+                                    {/* Course Thumbnail */}
+                                    <div className="relative aspect-video overflow-hidden">
+                                        <Image
+                                            src={getCourseThumbnail(category)}
+                                            alt={course.title}
+                                            fill
+                                            className="object-cover group-hover:scale-105 transition-transform duration-300"
+                                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                                        />
+                                        <span className="absolute top-2 right-2 bg-black/60 text-white text-xs px-2 py-0.5 rounded">
+                                            {tCommon("preview")}
+                                        </span>
+                                    </div>
 
-                                const ctaLabel =
-                                    total === 0
-                                        ? tCourses("start")
-                                        : completed === 0
-                                            ? tCourses("start")
-                                            : completed >= total
-                                                ? tLesson("complete")
-                                                : tCourses("continue");
-                                const ctaDisabled = total === 0;
+                                    {/* Content */}
+                                    <div className="p-5">
+                                        <span className="text-xs font-bold text-[#2563EB] tracking-wider mb-2 block uppercase">
+                                            {tCommon("lesson")} {idx + 1}
+                                        </span>
+                                        <h3 className="text-lg font-semibold text-[#1A1A1A] leading-tight mb-3 group-hover:text-[#2563EB] transition-colors">
+                                            {course.title}
+                                        </h3>
+                                        {course.description && (
+                                            <p className="text-sm text-[#6B7280] line-clamp-2 h-10">
+                                                {course.description}
+                                            </p>
+                                        )}
 
-                                return (
-                                    <div
-                                        key={course.id}
-                                        className="bg-white border border-[#E5E7EB] rounded-2xl overflow-hidden hover:shadow-md transition-shadow group flex flex-col h-full"
-                                    >
-                                        {/* Course Thumbnail */}
-                                        <div className="relative aspect-video overflow-hidden">
-                                            <Image
-                                                src={getCourseThumbnail(category)}
-                                                alt={course.title}
-                                                fill
-                                                className="object-cover group-hover:scale-105 transition-transform duration-300"
-                                                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                                            />
-                                            {firstIsFree && total > 0 ? (
-                                                <span className="absolute top-2 right-2 bg-black/60 text-white text-xs px-2 py-0.5 rounded">
-                                                    {tLesson("free_lesson")}
-                                                </span>
-                                            ) : total > 0 ? (
-                                                <span className="absolute top-2 right-2 bg-black/60 text-white text-xs px-2 py-0.5 rounded">
-                                                    {tLesson("locked")}
-                                                </span>
-                                            ) : null}
-                                        </div>
+                                        <div className="border-t border-[#F3F4F6] my-4" />
 
-                                        {/* Content */}
-                                        <div className="p-5 flex flex-col flex-1">
-                                            <h3 className="text-lg font-semibold text-[#1A1A1A] leading-tight mb-3 group-hover:text-[#2563EB] transition-colors">
-                                                {course.title}
-                                            </h3>
-
-                                            {course.description && (
-                                                <p className="text-sm text-[#6B7280] line-clamp-2 h-10">
-                                                    {course.description}
-                                                </p>
-                                            )}
-
-                                            <div className="mt-4">
-                                                <div className="flex items-center justify-between gap-3 text-xs font-medium text-[#6B7280] mb-2">
-                                                    <span>
-                                                        {total > 0 ? `${total} ${tCommon("lessons")}` : "—"}
-                                                    </span>
-                                                    <span className="text-[#2563EB]">
-                                                        {`~4 ${tCommon("lessons")} · 2 ${tCommon("week")}`}
-                                                    </span>
-                                                </div>
-
-                                                <ProgressBar completed={completed} total={total} />
+                                        {/* Footer */}
+                                        <div className="flex justify-between items-center text-xs font-medium text-[#6B7280]">
+                                            <div className="flex items-center gap-1.5">
+                                                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                                15 {tLesson("minutes")}
                                             </div>
-
-                                            <div className="mt-auto pt-4">
-                                                <button
-                                                    type="button"
-                                                    disabled={ctaDisabled}
-                                                    className={`w-full text-center px-4 py-2 rounded-xl text-sm font-semibold transition-colors ${
-                                                        ctaDisabled
-                                                            ? "bg-[#E5E7EB] text-[#6B7280] cursor-not-allowed"
-                                                            : "bg-[#2563EB] text-white hover:bg-[#1D4ED8]"
-                                                    }`}
-                                                >
-                                                    {ctaLabel}
-                                                </button>
+                                            <div className="flex items-center gap-1.5">
+                                                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path></svg>
+                                                3 {tCommon("lessons")}
                                             </div>
                                         </div>
                                     </div>
-                                );
-                            })}
+                                </Link>
+                            ))}
                         </div>
                     ) : (
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <div className="bg-white rounded-2xl border-2 border-dashed border-[#E5E7EB] p-6 opacity-60">
-                                <h3 className="text-lg font-semibold text-[#1A1A1A] mb-2">
-                                    {tCommon("coming_soon.badge")}
-                                </h3>
-                                <p className="text-sm text-[#6B7280] leading-relaxed">
-                                    {tCourses("coming_soon_course_desc")}
-                                </p>
-                            </div>
-                        </div>
+                        <p className="text-[#6B7280]">{tCourses("no_courses")}</p>
                     )}
                 </div>
 

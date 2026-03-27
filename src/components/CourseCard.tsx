@@ -1,65 +1,68 @@
 "use client";
 
-import Image from "next/image";
-import { Link } from "@/i18n/routing";
-import LevelBadge from "./LevelBadge";
-import { getCourseThumbnail } from "@/lib/course-thumbnails";
 import { useTranslations } from "next-intl";
-import type { EnrichedCourse } from "@/lib/queries";
+import Link from "next/link";
+import { motion } from "framer-motion";
 
 interface CourseCardProps {
-    course: EnrichedCourse;
-    seasonSlug: string;
+    course: {
+        id: string;
+        title: string;
+        slug: string;
+        category?: string;
+        level?: string;
+        lessonCount?: number;
+    };
+    locale: string;
 }
 
-export default function CourseCard({ course, seasonSlug }: CourseCardProps) {
-    const tCourses = useTranslations("courses");
-    const tFll = useTranslations("fll");
+export default function CourseCard({ course, locale }: CourseCardProps) {
+    const t = useTranslations("courses");
 
     return (
-        <Link
-            // Canonical FLL destination is the level page (no UUID in URL).
-            href={`/${course.competitionSlug}/${seasonSlug}/${course.categorySlug}/${course.levelSlug}` as "/"}
-            className="bg-white rounded-xl overflow-hidden border border-[#E5E7EB] cursor-pointer transition-shadow duration-150 hover:shadow-md group flex flex-col h-full"
+        <motion.div
+            whileHover={{ y: -5 }}
+            className="glass-card group relative overflow-hidden flex flex-col h-full bg-slate-900/40 border border-slate-800 hover:border-accent/40 transition-all duration-300 shadow-xl"
         >
-            {/* Thumbnail */}
-            <div className="relative aspect-video overflow-hidden bg-[#1E293B]">
-                <Image
-                    src={getCourseThumbnail(course.categorySlug)}
-                    alt={course.title}
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                />
-                <span className="absolute top-2 right-2 bg-black/65 text-white text-[10px] font-medium px-[7px] py-[2px] rounded">
-                    {tCourses("preview")}
-                </span>
-            </div>
+            <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-accent/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+            
+            <div className="p-6 flex-grow space-y-4">
+                <div className="flex items-center justify-between gap-2">
+                    <span className="px-2.5 py-1 rounded-md bg-accent/10 text-accent text-[10px] font-bold uppercase tracking-wider">
+                        {course.category || "FLL"}
+                    </span>
+                    <span className="text-[10px] font-medium text-slate-500 uppercase tracking-widest leading-none">
+                        {course.level || t("beginner")}
+                    </span>
+                </div>
 
-            {/* Body */}
-            <div className="px-3.5 pt-3 pb-3.5 flex flex-col flex-1">
-                <p className="text-[11px] text-slate-500 mb-1">
-                    {tCourses("free_label")}
-                </p>
-                <h3 className="text-sm font-semibold text-[#1A1A1A] leading-[1.3] line-clamp-2 min-h-[2.4rem] mb-1.5">
-                    {tCourses(`${course.competitionSlug}_label` as any)}: {tFll(`categories.${course.categorySlug}`).toUpperCase()}
+                <h3 className="text-lg font-bold text-white leading-snug group-hover:text-accent transition-colors">
+                    {course.title}
                 </h3>
-                {course.description && (
-                    <p className="text-[12px] text-slate-700 leading-[1.4] line-clamp-3 mb-2.5 flex-1">
-                        {course.description}
-                    </p>
-                )}
 
-                <div className="mt-auto">
-                    {/* Level badge */}
-                    <LevelBadge level={course.levelSlug} />
-
-                    {/* Duration */}
-                    <p className="text-[11px] text-slate-500 mt-0.5">
-                        {tCourses("week_range")}
-                    </p>
+                <div className="flex items-center gap-4 text-xs text-slate-400">
+                    <div className="flex items-center gap-1.5">
+                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+                        {t("free_label")}
+                    </div>
+                    {course.lessonCount && (
+                        <div className="flex items-center gap-1.5">
+                            <span className="w-1.5 h-1.5 rounded-full bg-slate-600" />
+                            {course.lessonCount} {t("lessons")}
+                        </div>
+                    )}
                 </div>
             </div>
-        </Link>
+
+            <div className="p-6 pt-0 mt-auto">
+                <Link
+                    href={`/${locale}/course/fll?courseId=${course.id}`}
+                    className="flex items-center justify-center w-full py-3 text-white text-xs font-black uppercase tracking-widest rounded-xl transition-all active:scale-[0.98] btn-primary"
+                    style={{}}
+                >
+                    {t("start")}
+                </Link>
+            </div>
+        </motion.div>
     );
 }
