@@ -1,3 +1,6 @@
+import { type ClassValue, clsx } from "clsx";
+import { twMerge } from "tailwind-merge";
+
 export function toSlug(str: string): string {
     return str
         .toLowerCase()
@@ -7,3 +10,6 @@ export function toSlug(str: string): string {
         .replace(/^-|-$/g, ""); // trim leading/trailing hyphens
 }
 
+export function cn(...inputs: ClassValue[]) {
+    return twMerge(clsx(inputs));
+}

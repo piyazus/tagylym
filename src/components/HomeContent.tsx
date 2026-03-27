@@ -7,6 +7,8 @@ import { motion } from "framer-motion";
 import CourseCard from "./CourseCard";
 import ComingSoonCard from "./ComingSoonCard";
 import type { EnrichedCourse } from "@/lib/queries";
+import { buttonVariants } from "@/components/ui/Button";
+import { SectionBadge } from "@/components/ui/SectionBadge";
 
 const easeOut = [0.16, 1, 0.3, 1] as const;
 
@@ -69,7 +71,7 @@ export default function HomeContent({ courses, seasonSlug }: HomeContentProps) {
                         <motion.div variants={fadeInUp}>
                             <Link
                                 href={"/fll" as "/"}
-                                className="inline-flex items-center gap-2 px-8 py-3.5 rounded-xl bg-[#8B5CF6] text-white font-semibold text-base hover:bg-[#7C3AED] transition-colors shadow-lg shadow-[#8B5CF6]/30"
+                                className={buttonVariants({ variant: "primary", size: "default" })}
                             >
                                 {t("hero_cta")}
                             </Link>
@@ -167,15 +169,8 @@ export default function HomeContent({ courses, seasonSlug }: HomeContentProps) {
                         variants={stagger}
                     >
                         {/* Badge */}
-                        <motion.div variants={fadeInUp} className="mb-6 inline-flex items-center gap-3 rounded-full border border-accent/30 bg-accent/5 px-5 py-2">
-                            <motion.span 
-                                animate={{ scale: [1, 1.3, 1], opacity: [1, 0.7, 1] }} 
-                                transition={{ duration: 2, repeat: Infinity }}
-                                className="h-2 w-2 rounded-full bg-accent" 
-                            />
-                            <span className="font-mono text-xs uppercase tracking-[0.15em] text-accent font-semibold">
-                                {t("about_label")}
-                            </span>
+                        <motion.div variants={fadeInUp} className="mb-6">
+                            <SectionBadge>{t("about_label")}</SectionBadge>
                         </motion.div>
 
                         <motion.h2 
@@ -243,16 +238,13 @@ export default function HomeContent({ courses, seasonSlug }: HomeContentProps) {
                         viewport={{ once: true, amount: 0.15, margin: "-60px" }}
                         variants={stagger}
                     >
-                         {/* Badge */}
-                         <motion.div variants={fadeInUp} className="mb-6 inline-flex items-center gap-3 rounded-full border border-accent-secondary/30 bg-background/5 px-5 py-2">
-                            <motion.span 
-                                animate={{ scale: [1, 1.3, 1], opacity: [1, 0.7, 1] }} 
-                                transition={{ duration: 2, repeat: Infinity, delay: 1 }}
-                                className="h-2 w-2 rounded-full bg-accent-secondary" 
-                            />
-                            <span className="font-mono text-xs uppercase tracking-[0.15em] text-accent-secondary font-semibold">
+                        {/* Badge */}
+                        <motion.div variants={fadeInUp} className="mb-6">
+                            <SectionBadge 
+                                className="border-accent-secondary/30 bg-background/5 [&>span:last-child]:text-accent-secondary [&>span:first-child]:bg-accent-secondary"
+                            >
                                 {t("highlight_label")}
-                            </span>
+                            </SectionBadge>
                         </motion.div>
 
                         <motion.h2 

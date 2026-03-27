@@ -9,24 +9,10 @@ const config: Config = {
     theme: {
         extend: {
             colors: {
-                page: '#F5F5F5',
                 card: '#FFFFFF',
-                'text-main': '#1A1A1A',
-                'text-muted': '#6B7280',
-                'text-light': '#9CA3AF',
-                blue: '#2563EB',
-                'blue-light': '#EFF6FF',
-                'border-card': '#E5E7EB',
-                'border-selected': '#2563EB',
-                'hero-from': '#1E3A8A',
-                'hero-to': '#3B82F6',
-                'star-beginner': '#2563EB',
-                'star-intermediate': '#D97706',
+                'star-beginner': '#0052FF',
+                'star-intermediate': '#F97316',
                 'star-advanced': '#16A34A',
-                deepBlue: '#0C2D48',
-                teal: '#0D9488',
-                orange: '#F97316',
-                sand: '#F0F4F8',
                 // Minimalist Modern Tokens
                 background: '#FAFAFA',
                 foreground: '#0F172A',
