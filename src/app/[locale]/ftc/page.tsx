@@ -15,13 +15,13 @@ export default function FTCPage() {
     };
 
     return (
-        <div className="min-h-screen bg-background text-white">
+        <div className="min-h-screen bg-background text-foreground">
             {/* Hero Section */}
             <section className="relative pt-32 pb-20 px-6 overflow-hidden">
                 {/* DECODE Theme Background */}
                 <div className="absolute inset-0 z-0">
-                    <div className="absolute top-1/4 -left-20 w-96 h-96 bg-primary/20 rounded-full blur-[120px]" />
-                    <div className="absolute bottom-1/4 -right-20 w-96 h-96 bg-accent/20 rounded-full blur-[120px]" />
+                    <div className="absolute top-1/4 -left-20 w-96 h-96 bg-accent/20 rounded-full blur-[120px]" />
+                    <div className="absolute bottom-1/4 -right-20 w-96 h-96 bg-accent-secondary/20 rounded-full blur-[120px]" />
                 </div>
 
                 <div className="max-w-7xl mx-auto relative z-10 text-center">
@@ -29,7 +29,7 @@ export default function FTCPage() {
                         variants={fadeInUp}
                         initial="initial"
                         animate="animate"
-                        className="inline-block px-4 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-bold uppercase tracking-[0.2em] mb-8"
+                        className="inline-block px-4 py-1.5 rounded-full bg-accent/10 border border-accent/20 text-accent text-xs font-bold uppercase tracking-[0.2em] mb-8"
                     >
                         FIRST® Tech Challenge
                     </motion.div>
@@ -41,7 +41,7 @@ export default function FTCPage() {
                         transition={{ delay: 0.1 }}
                         className="text-6xl md:text-8xl font-calistoga mb-6 tracking-tight"
                     >
-                        DECODE<span className="text-primary">™</span>
+                        DECODE<span className="text-accent">™</span>
                     </motion.h1>
 
                     <motion.p
@@ -49,7 +49,7 @@ export default function FTCPage() {
                         initial="initial"
                         animate="animate"
                         transition={{ delay: 0.2 }}
-                        className="text-xl md:text-2xl text-slate-400 max-w-3xl mx-auto font-medium leading-relaxed mb-12"
+                        className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto font-medium leading-relaxed mb-12"
                     >
                         {t("description")}
                     </motion.p>
@@ -63,13 +63,13 @@ export default function FTCPage() {
                     >
                         <Link 
                             href="/courses"
-                            className="px-8 py-4 rounded-xl bg-primary text-white font-bold text-lg shadow-xl shadow-primary/20 hover:shadow-primary/40 hover:scale-[1.05] transition-all"
+                            className="px-8 py-4 rounded-xl bg-gradient-to-r from-accent to-accent-secondary text-white font-bold text-lg shadow-accent hover:shadow-accent-lg hover:-translate-y-1 transition-all"
                         >
                             {t("start_learning")}
                         </Link>
                         <button 
                             onClick={() => document.getElementById('waitlist')?.scrollIntoView({ behavior: 'smooth' })}
-                            className="px-8 py-4 rounded-xl border border-white/10 bg-white/5 backdrop-blur-md text-white font-bold text-lg hover:bg-white/10 transition-all"
+                            className="px-8 py-4 rounded-xl border border-border text-foreground font-bold text-lg hover:bg-muted transition-all"
                         >
                             {t("join_waitlist")}
                         </button>
@@ -90,11 +90,11 @@ export default function FTCPage() {
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             transition={{ delay: idx * 0.1 }}
-                            className="glass-card p-10 border border-white/5 hover:border-primary/30 transition-all hover:-translate-y-2 group"
+                            className="glass-card p-10 hover:border-accent/30 transition-all hover:-translate-y-2 group"
                         >
                             <div className="text-4xl mb-6 group-hover:scale-110 transition-transform inline-block">{feature.icon}</div>
-                            <h3 className="text-2xl font-bold mb-4">{t(feature.titleKey)}</h3>
-                            <p className="text-slate-400 leading-relaxed">{t(feature.descKey)}</p>
+                            <h3 className="text-2xl font-bold text-foreground mb-4">{t(feature.titleKey)}</h3>
+                            <p className="text-muted-foreground leading-relaxed">{t(feature.descKey)}</p>
                         </motion.div>
                     ))}
                 </div>
@@ -103,10 +103,10 @@ export default function FTCPage() {
             {/* Waitlist Section */}
             <section id="waitlist" className="py-32 px-6">
                 <div className="max-w-4xl mx-auto relative">
-                     <div className="absolute inset-0 bg-primary/5 rounded-[3rem] blur-3xl -z-10" />
-                     <div className="glass-card p-12 md:p-20 text-center border-white/10">
-                        <h2 className="text-4xl font-calistoga mb-6">{t("waitlist_title")}</h2>
-                        <p className="text-lg text-slate-400 mb-10 max-w-xl mx-auto">{t("waitlist_subtitle")}</p>
+                     <div className="absolute inset-0 bg-accent/5 rounded-[3rem] blur-3xl -z-10" />
+                     <div className="glass-card p-12 md:p-20 text-center border-border">
+                        <h2 className="text-4xl font-calistoga text-foreground mb-6">{t("waitlist_title")}</h2>
+                        <p className="text-lg text-muted-foreground mb-10 max-w-xl mx-auto">{t("waitlist_subtitle")}</p>
                         <div className="max-w-md mx-auto">
                             <WaitlistForm track="ftc" />
                         </div>
@@ -115,13 +115,13 @@ export default function FTCPage() {
             </section>
 
             {/* Resources Footer */}
-            <footer className="py-20 border-t border-white/5">
+            <footer className="py-20 border-t border-border">
                 <div className="max-w-7xl mx-auto px-6 text-center">
-                    <h4 className="text-xs font-black tracking-[0.3em] uppercase text-slate-500 mb-8">Official Resources</h4>
+                    <h4 className="text-xs font-black tracking-[0.3em] uppercase text-muted-foreground mb-8">Official Resources</h4>
                     <div className="flex flex-wrap justify-center gap-10">
-                        <a href="https://www.firstinspires.org/robotics/ftc" target="_blank" className="text-slate-400 hover:text-primary transition-colors font-bold uppercase text-[10px] tracking-widest">First Inspires</a>
-                        <a href="https://ftc-events.firstinspires.org/" target="_blank" className="text-slate-400 hover:text-primary transition-colors font-bold uppercase text-[10px] tracking-widest">Events Portal</a>
-                        <a href="https://www.gobilda.com/" target="_blank" className="text-slate-400 hover:text-primary transition-colors font-bold uppercase text-[10px] tracking-widest">goBILDA®</a>
+                        <a href="https://www.firstinspires.org/robotics/ftc" target="_blank" className="text-muted-foreground hover:text-accent transition-colors font-bold uppercase text-[10px] tracking-widest">First Inspires</a>
+                        <a href="https://ftc-events.firstinspires.org/" target="_blank" className="text-muted-foreground hover:text-accent transition-colors font-bold uppercase text-[10px] tracking-widest">Events Portal</a>
+                        <a href="https://www.gobilda.com/" target="_blank" className="text-muted-foreground hover:text-accent transition-colors font-bold uppercase text-[10px] tracking-widest">goBILDA®</a>
                     </div>
                 </div>
             </footer>

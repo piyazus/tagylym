@@ -58,8 +58,8 @@ export default function LoginPage() {
     return (
         <div className="min-h-[calc(100vh-64px)] flex items-center justify-center px-6 relative overflow-hidden bg-background">
             {/* Background Decorations */}
-            <div className="absolute top-1/4 -left-20 w-80 h-80 bg-primary/20 rounded-full blur-[120px] pointer-events-none" />
-            <div className="absolute bottom-1/4 -right-20 w-80 h-80 bg-accent/20 rounded-full blur-[120px] pointer-events-none" />
+            <div className="absolute top-1/4 -left-20 w-80 h-80 bg-accent/20 rounded-full blur-[120px] pointer-events-none" />
+            <div className="absolute bottom-1/4 -right-20 w-80 h-80 bg-accent-secondary/20 rounded-full blur-[120px] pointer-events-none" />
             
             <motion.div 
                 initial={{ opacity: 0, y: 20 }}
@@ -70,19 +70,19 @@ export default function LoginPage() {
                 <div className="text-center mb-8">
                     <motion.div 
                         whileHover={{ scale: 1.05 }}
-                        className="w-20 h-20 rounded-2xl gradient-brand flex items-center justify-center mx-auto mb-6 text-3xl font-bold text-white shadow-xl shadow-primary/20"
+                        className="w-20 h-20 rounded-2xl bg-gradient-to-br from-accent to-accent-secondary flex items-center justify-center mx-auto mb-6 text-3xl font-bold text-white shadow-xl shadow-accent/20"
                     >
                         T
                     </motion.div>
-                    <h1 className="text-4xl font-calistoga text-white mb-3">
+                    <h1 className="text-4xl font-calistoga text-foreground mb-3">
                         {isSignUp ? tAuth("createAccount") : tAuth("login_title") || t("login")}
                     </h1>
-                    <p className="text-slate-400 max-w-xs mx-auto text-sm leading-relaxed">
+                    <p className="text-muted-foreground max-w-xs mx-auto text-sm leading-relaxed">
                         {isSignUp ? tAuth("register_subtitle") : tAuth("subtitle")}
                     </p>
                 </div>
 
-                <div className="glass-card overflow-hidden border border-white/10 shadow-2xl">
+                <div className="glass-card overflow-hidden border border-border bg-card shadow-xl">
                     <div className="p-8">
                         <form onSubmit={handleSubmit} className="space-y-6">
                             <AnimatePresence mode="wait">
@@ -110,7 +110,7 @@ export default function LoginPage() {
 
                             <div className="space-y-4">
                                 <div>
-                                    <label className="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2 ml-1">
+                                    <label className="block text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-2 ml-1">
                                         {tAuth("email")}
                                     </label>
                                     <div className="relative group">
@@ -119,13 +119,13 @@ export default function LoginPage() {
                                             value={email}
                                             onChange={(e) => setEmail(e.target.value)}
                                             required
-                                            className="w-full bg-slate-800/50 text-white text-sm rounded-xl px-4 py-3.5 border border-white/5 group-hover:border-white/10 focus:border-primary/50 focus:outline-none focus:ring-4 focus:ring-primary/10 transition-all placeholder:text-slate-600"
+                                            className="w-full bg-background text-foreground text-sm rounded-xl px-4 py-3.5 border border-border group-hover:border-border/80 focus:border-accent focus:outline-none focus:ring-4 focus:ring-accent/10 transition-all placeholder:text-muted-foreground/50"
                                             placeholder={tAuth("email_placeholder")}
                                         />
                                     </div>
                                 </div>
                                 <div>
-                                    <label className="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2 ml-1">
+                                    <label className="block text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-2 ml-1">
                                         {tAuth("password")}
                                     </label>
                                     <div className="relative group">
@@ -135,7 +135,7 @@ export default function LoginPage() {
                                             onChange={(e) => setPassword(e.target.value)}
                                             required
                                             minLength={6}
-                                            className="w-full bg-slate-800/50 text-white text-sm rounded-xl px-4 py-3.5 border border-white/5 group-hover:border-white/10 focus:border-primary/50 focus:outline-none focus:ring-4 focus:ring-primary/10 transition-all placeholder:text-slate-600"
+                                            className="w-full bg-background text-foreground text-sm rounded-xl px-4 py-3.5 border border-border group-hover:border-border/80 focus:border-accent focus:outline-none focus:ring-4 focus:ring-accent/10 transition-all placeholder:text-muted-foreground/50"
                                             placeholder="••••••••"
                                         />
                                     </div>
@@ -145,7 +145,7 @@ export default function LoginPage() {
                             <button
                                 type="submit"
                                 disabled={loading}
-                                className="w-full py-4 rounded-xl gradient-brand text-white font-bold text-sm shadow-lg shadow-primary/25 hover:shadow-primary/40 hover:scale-[1.02] transition-all disabled:opacity-50 disabled:scale-100 flex items-center justify-center gap-2"
+                                className="w-full py-4 rounded-xl bg-gradient-to-r from-accent to-accent-secondary text-white font-bold text-sm shadow-md shadow-accent/25 hover:shadow-accent/40 hover:brightness-110 hover:scale-[1.02] transition-all disabled:opacity-50 disabled:scale-100 flex items-center justify-center gap-2"
                             >
                                 {loading && (
                                     <svg className="animate-spin h-4 w-4 text-white" fill="none" viewBox="0 0 24 24">
@@ -164,7 +164,7 @@ export default function LoginPage() {
                                         setError("");
                                         setSuccess("");
                                     }}
-                                    className="text-sm font-medium text-slate-400 hover:text-white transition-colors"
+                                    className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
                                 >
                                     {isSignUp ? tAuth("alreadyHaveAccount") : tAuth("noAccount")}
                                 </button>
@@ -179,7 +179,7 @@ export default function LoginPage() {
                     transition={{ delay: 0.5 }}
                     className="text-center mt-10"
                 >
-                    <Link href="/" className="text-xs font-semibold uppercase tracking-widest text-slate-500 hover:text-primary transition-colors inline-flex items-center gap-2">
+                    <Link href="/" className="text-xs font-semibold uppercase tracking-widest text-muted-foreground hover:text-accent transition-colors inline-flex items-center gap-2">
                         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
                         </svg>
