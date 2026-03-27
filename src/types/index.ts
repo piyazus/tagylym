@@ -50,6 +50,7 @@ export interface Course {
     level_id: string;
     title: string;
     description: string | null;
+    slug: string;
     sort_order: number;
 }
 
