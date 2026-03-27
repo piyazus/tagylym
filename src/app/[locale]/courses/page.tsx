@@ -39,10 +39,11 @@ export default function CoursesPage() {
                 const mapped = data.map((c: any) => ({
                     id: c.id,
                     title: c.title,
-                    slug: (c as any).slug || c.id,
-                    level: c.levels?.name,
-                    category: locale === 'kk' ? (c.levels?.categories as any)?.name_kk || c.levels?.categories?.name : locale === 'en' ? (c.levels?.categories as any)?.name_en || c.levels?.categories?.name : c.levels?.categories?.name,
-                    lessonCount: c.lessons?.length || 0
+                    slug: c.slug || c.id,
+                    levelName: c.levels?.name,
+                    levelSlug: c.levels?.name,
+                    categoryName: c.levels?.categories?.name,
+                    categorySlug: 'fll'
                 }));
                 setCourses(mapped);
             }
@@ -107,7 +108,7 @@ export default function CoursesPage() {
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ delay: 0.1 * idx }}
                             >
-                                <CourseCard course={course} locale={locale} />
+                                <CourseCard course={course as any} seasonSlug="submerged-2024-25" />
                             </motion.div>
                         ))}
                     </div>
