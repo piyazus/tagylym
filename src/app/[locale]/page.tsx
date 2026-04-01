@@ -7,7 +7,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "@/i18n/routing";
 import AnimatedCounter from "@/components/AnimatedCounter";
 import FeedbackForm from "@/components/FeedbackForm";
-import { FaEnvelope, FaInstagram, FaTelegram } from "react-icons/fa";
+import { FaEnvelope, FaInstagram } from "react-icons/fa";
 
 const easeOut = [0.16, 1, 0.3, 1] as const;
 
@@ -547,31 +547,22 @@ export default function HomePage() {
                             transition={{ duration: 0.6, ease: easeOut }}
                             className="space-y-6"
                         >
-                            <a href="mailto:tagylym11@gmail.com" className="glass-card p-5 flex items-center gap-4 hover:-translate-y-1 transition-all duration-300 group">
-                                <div className="w-12 h-12 rounded-xl bg-accent/10 border border-accent/20 flex items-center justify-center text-accent group-hover:scale-110 transition-transform">
+                            <div className="glass-card p-5 flex items-center gap-4">
+                                <div className="w-12 h-12 rounded-xl bg-accent/10 border border-accent/20 flex items-center justify-center text-accent">
                                     <FaEnvelope className="w-5 h-5" />
                                 </div>
                                 <div>
                                     <p className="text-sm text-white/60">Email</p>
                                     <p className="text-white font-medium">tagylym11@gmail.com</p>
                                 </div>
-                            </a>
-                            <a href="https://instagram.com/tagylym.kz" target="_blank" rel="noopener noreferrer" className="glass-card p-5 flex items-center gap-4 hover:-translate-y-1 transition-all duration-300 group">
+                            </div>
+                            <a href="https://www.instagram.com/tagylym.education?igsh=ejlvNnY2OWdscWxz" target="_blank" rel="noopener noreferrer" className="glass-card p-5 flex items-center gap-4 hover:-translate-y-1 transition-all duration-300 group">
                                 <div className="w-12 h-12 rounded-xl bg-pink-500/10 border border-pink-500/20 flex items-center justify-center text-pink-400 group-hover:scale-110 transition-transform">
                                     <FaInstagram className="w-5 h-5" />
                                 </div>
                                 <div>
                                     <p className="text-sm text-white/60">Instagram</p>
-                                    <p className="text-white font-medium">@tagylym.kz</p>
-                                </div>
-                            </a>
-                            <a href="https://t.me/tagylym" target="_blank" rel="noopener noreferrer" className="glass-card p-5 flex items-center gap-4 hover:-translate-y-1 transition-all duration-300 group">
-                                <div className="w-12 h-12 rounded-xl bg-sky-500/10 border border-sky-500/20 flex items-center justify-center text-sky-400 group-hover:scale-110 transition-transform">
-                                    <FaTelegram className="w-5 h-5" />
-                                </div>
-                                <div>
-                                    <p className="text-sm text-white/60">Telegram</p>
-                                    <p className="text-white font-medium">@tagylym</p>
+                                    <p className="text-white font-medium">@tagylym.education</p>
                                 </div>
                             </a>
                         </motion.div>

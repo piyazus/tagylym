@@ -1,7 +1,7 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { FaEnvelope, FaInstagram, FaTelegram } from "react-icons/fa";
+import { FaEnvelope, FaInstagram } from "react-icons/fa";
 
 export default function Footer() {
     const t = useTranslations("footer");
@@ -39,21 +39,15 @@ export default function Footer() {
                         <h4 className="font-semibold mb-3 text-white">{t("contact")}</h4>
                         <ul className="space-y-3 text-sm">
                             <li>
-                                <a href="mailto:tagylym11@gmail.com" className="flex items-center gap-2 text-white/80 hover:text-accent transition-colors">
+                                <span className="flex items-center gap-2 text-white/80">
                                     <FaEnvelope className="w-4 h-4 shrink-0" />
                                     <span>tagylym11@gmail.com</span>
-                                </a>
+                                </span>
                             </li>
                             <li>
-                                <a href="https://instagram.com/tagylym.kz" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-white/80 hover:text-pink-400 transition-colors">
+                                <a href="https://www.instagram.com/tagylym.education?igsh=ejlvNnY2OWdscWxz" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-white/80 hover:text-pink-400 transition-colors">
                                     <FaInstagram className="w-4 h-4 shrink-0" />
-                                    <span>@tagylym.kz</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="https://t.me/tagylym" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-white/80 hover:text-sky-400 transition-colors">
-                                    <FaTelegram className="w-4 h-4 shrink-0" />
-                                    <span>@tagylym</span>
+                                    <span>@tagylym.education</span>
                                 </a>
                             </li>
                         </ul>
