@@ -360,6 +360,7 @@ export async function getLevelsWithCounts(
 // ─── All courses for a season (flat grid) ────────────────
 
 export interface EnrichedCourse extends Course {
+    slug: string;
     categoryName: string;
     categorySlug: string;
     levelName: string;

@@ -15,7 +15,7 @@ export default function FGCPage() {
     };
 
     return (
-        <div className="min-h-screen bg-background text-white">
+        <div className="min-h-screen bg-background text-foreground">
             {/* Hero Section */}
             <section className="relative pt-32 pb-20 px-6 overflow-hidden">
                 {/* FGC Theme Background */}
@@ -29,7 +29,7 @@ export default function FGCPage() {
                         variants={fadeInUp}
                         initial="initial"
                         animate="animate"
-                        className="inline-block px-4 py-1.5 rounded-full bg-teal-500/10 border border-teal-500/20 text-teal-400 text-xs font-bold uppercase tracking-[0.2em] mb-8"
+                        className="inline-block px-4 py-1.5 rounded-full bg-teal-500/10 border border-teal-500/20 text-teal-600 text-xs font-bold uppercase tracking-[0.2em] mb-8"
                     >
                         FIRST® Global Challenge
                     </motion.div>
@@ -41,7 +41,7 @@ export default function FGCPage() {
                         transition={{ delay: 0.1 }}
                         className="text-6xl md:text-8xl font-calistoga mb-6 tracking-tight"
                     >
-                        INCHEON <span className="text-teal-400">2026</span>
+                        INCHEON <span className="text-teal-600">2026</span>
                     </motion.h1>
 
                     <motion.p
@@ -49,7 +49,7 @@ export default function FGCPage() {
                         initial="initial"
                         animate="animate"
                         transition={{ delay: 0.2 }}
-                        className="text-xl md:text-2xl text-slate-400 max-w-3xl mx-auto font-medium leading-relaxed mb-12"
+                        className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto font-medium leading-relaxed mb-12"
                     >
                         {t("description")}
                     </motion.p>
@@ -63,13 +63,13 @@ export default function FGCPage() {
                     >
                         <button 
                             onClick={() => document.getElementById('waitlist')?.scrollIntoView({ behavior: 'smooth' })}
-                            className="px-8 py-4 rounded-xl bg-teal-600 text-white font-bold text-lg shadow-xl shadow-teal-500/20 hover:shadow-teal-500/40 hover:scale-[1.05] transition-all"
+                            className="px-8 py-4 rounded-xl bg-teal-600 text-white font-bold text-lg shadow-md hover:shadow-lg hover:-translate-y-1 transition-all"
                         >
                             {t("join_waitlist")}
                         </button>
                         <Link 
                             href="/"
-                            className="px-8 py-4 rounded-xl border border-white/10 bg-white/5 backdrop-blur-md text-white font-bold text-lg hover:bg-white/10 transition-all"
+                            className="px-8 py-4 rounded-xl border border-border text-foreground font-bold text-lg hover:bg-muted transition-all"
                         >
                             {t("back_to_home")}
                         </Link>
@@ -90,11 +90,11 @@ export default function FGCPage() {
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             transition={{ delay: idx * 0.1 }}
-                            className="glass-card p-10 border border-white/5 hover:border-teal-500/30 transition-all hover:-translate-y-2 group"
+                            className="glass-card p-10 hover:border-teal-500/30 transition-all hover:-translate-y-2 group"
                         >
                             <div className="text-4xl mb-6 group-hover:scale-110 transition-transform inline-block">{feature.icon}</div>
-                            <h3 className="text-2xl font-bold mb-4">{t(feature.titleKey)}</h3>
-                            <p className="text-slate-400 leading-relaxed">{t(feature.descKey)}</p>
+                            <h3 className="text-2xl font-bold text-foreground mb-4">{t(feature.titleKey)}</h3>
+                            <p className="text-muted-foreground leading-relaxed">{t(feature.descKey)}</p>
                         </motion.div>
                     ))}
                 </div>
@@ -104,9 +104,9 @@ export default function FGCPage() {
             <section id="waitlist" className="py-32 px-6">
                 <div className="max-w-4xl mx-auto relative">
                      <div className="absolute inset-0 bg-teal-500/5 rounded-[3rem] blur-3xl -z-10" />
-                     <div className="glass-card p-12 md:p-20 text-center border-white/10">
-                        <h2 className="text-4xl font-calistoga mb-6">{t("waitlist_title")}</h2>
-                        <p className="text-lg text-slate-400 mb-10 max-w-xl mx-auto">{t("waitlist_subtitle")}</p>
+                     <div className="glass-card p-12 md:p-20 text-center border-border">
+                        <h2 className="text-4xl font-calistoga text-foreground mb-6">{t("waitlist_title")}</h2>
+                        <p className="text-lg text-muted-foreground mb-10 max-w-xl mx-auto">{t("waitlist_subtitle")}</p>
                         <div className="max-w-md mx-auto">
                             <WaitlistForm track="fgc" />
                         </div>
@@ -115,12 +115,12 @@ export default function FGCPage() {
             </section>
 
              {/* Resources Footer */}
-             <footer className="py-20 border-t border-white/5">
+             <footer className="py-20 border-t border-border">
                 <div className="max-w-7xl mx-auto px-6 text-center">
-                    <h4 className="text-xs font-black tracking-[0.3em] uppercase text-slate-500 mb-8">Official Resources</h4>
+                    <h4 className="text-xs font-black tracking-[0.3em] uppercase text-muted-foreground mb-8">Official Resources</h4>
                     <div className="flex flex-wrap justify-center gap-10">
-                        <a href="https://first.global/" target="_blank" className="text-slate-400 hover:text-teal-400 transition-colors font-bold uppercase text-[10px] tracking-widest">FIRST Global</a>
-                        <a href="https://first.global/fgc/" target="_blank" className="text-slate-400 hover:text-teal-400 transition-colors font-bold uppercase text-[10px] tracking-widest">The Challenge</a>
+                        <a href="https://first.global/" target="_blank" className="text-muted-foreground hover:text-teal-600 transition-colors font-bold uppercase text-[10px] tracking-widest">FIRST Global</a>
+                        <a href="https://first.global/fgc/" target="_blank" className="text-muted-foreground hover:text-teal-600 transition-colors font-bold uppercase text-[10px] tracking-widest">The Challenge</a>
                     </div>
                 </div>
             </footer>

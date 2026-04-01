@@ -3,19 +3,16 @@
 @import "tailwindcss";
 
 @theme {
-  --color-background: #1e3a5f;
-  --color-foreground: #F1F5F9;
-  --color-surface: #274D7A;
-  --color-surface-hover: #2E5A8A;
-  --color-border: #3A6A9A;
-  --color-primary: #A855F7;
-  --color-primary-hover: #9333EA;
-  --color-accent: #38BDF8;
-  --color-deep-blue: #0C2D48;
-  --color-teal: #0D9488;
-  --color-orange: #F97316;
-  --color-sand: #F0F4F8;
-  --color-muted-foreground: #94A3B8;
+  --color-background: #FAFAFA;
+  --color-foreground: #0F172A;
+  --color-card: #FFFFFF;
+  --color-muted: #F1F5F9;
+  --color-muted-foreground: #64748B;
+  --color-accent: #0052FF;
+  --color-accent-secondary: #4D7CFF;
+  --color-border: #E2E8F0;
+  --color-ring: #0052FF;
+  
   --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
   --font-calistoga: 'Calistoga', Georgia, serif;
   --font-mono: 'JetBrains Mono', monospace;
@@ -74,14 +71,14 @@ body {
 
 /* ─── Gradient Text ───────────────────────────────────── */
 .gradient-text {
-  background: linear-gradient(135deg, #c084fc 0%, #a855f7 40%, #38bdf8 100%);
+  background: linear-gradient(to right, var(--color-accent), var(--color-accent-secondary));
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
 }
 
 .gradient-text-hero {
-  background: linear-gradient(135deg, #e9d5ff 0%, #c084fc 35%, #7dd3fc 100%);
+  background: linear-gradient(135deg, var(--color-accent), var(--color-accent-secondary));
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -91,11 +88,10 @@ body {
   position: absolute;
   bottom: -0.25rem;
   left: 0;
-  height: 0.5rem;
+  height: 0.75rem;
   width: 100%;
   border-radius: 0.125rem;
-  background: linear-gradient(to right, rgba(168, 85, 247, 0.5), rgba(56, 189, 248, 0.2));
-  filter: blur(4px);
+  background: linear-gradient(to right, rgba(0, 82, 255, 0.15), rgba(77, 124, 255, 0.1));
 }
 
 @media (min-width: 768px) {
@@ -158,7 +154,7 @@ body {
 
 .prose-custom p {
   margin-bottom: 1rem;
-  color: #CBD5E1;
+  color: var(--color-muted-foreground);
 }
 
 .prose-custom ul {
@@ -175,7 +171,7 @@ body {
 
 .prose-custom li {
   margin-bottom: 0.5rem;
-  color: #CBD5E1;
+  color: var(--color-muted-foreground);
 }
 
 .prose-custom code {
@@ -211,43 +207,38 @@ body {
 
 /* ─── Premium UI Utilities ────────────────────────────── */
 .glass-card {
-  background: rgba(39, 77, 122, 0.7);
+  background: rgba(255, 255, 255, 0.7);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  border-radius: 1.5rem;
+  border: 1px solid var(--color-border);
+  border-radius: 1rem;
   transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease, border-color 0.3s ease;
 }
 
 .glass-card:hover {
   box-shadow: 0 8px 32px rgba(168, 85, 247, 0.12), 0 0 0 1px rgba(255, 255, 255, 0.08);
-  border-color: rgba(255, 255, 255, 0.22);
 }
 
 .glass-card-bright {
-  background: rgba(58, 106, 154, 0.65);
+  background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.22);
-  border-radius: 1.5rem;
-}
-
-.gradient-brand {
-  background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+  border: 1px solid var(--color-border);
+  border-radius: 1rem;
 }
 
 .btn-primary {
-  background: linear-gradient(135deg, #A855F7, #38BDF8);
+  background: linear-gradient(to right, var(--color-accent), var(--color-accent-secondary));
   color: white;
   font-weight: 600;
   transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-  box-shadow: 0 0 28px rgba(168, 85, 247, 0.4);
+  box-shadow: 0 4px 14px rgba(0, 82, 255, 0.25);
 }
 
 .btn-primary:hover {
-  background: linear-gradient(135deg, #9333EA, #0EA5E9);
-  box-shadow: 0 0 42px rgba(168, 85, 247, 0.6);
+  box-shadow: 0 8px 24px rgba(0, 82, 255, 0.35);
   transform: translateY(-2px) scale(1.02);
+  filter: brightness(1.1);
 }
 
 .btn-primary:active {
@@ -255,41 +246,23 @@ body {
   box-shadow: 0 0 16px rgba(168, 85, 247, 0.3);
 }
 
-.glow-purple {
-  box-shadow: 0 0 40px rgba(139, 92, 246, 0.25);
-}
-
-.glow-cyan {
-  box-shadow: 0 0 40px rgba(14, 165, 233, 0.2);
-}
-
-.animated-gradient {
-  background: linear-gradient(-45deg, #8B5CF6, #0EA5E9, #8B5CF6, #06B6D4);
-  background-size: 400% 400%;
-  animation: gradient 15s ease infinite;
-}
-
-@keyframes gradient {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+.glow-accent {
+  box-shadow: 0 0 40px rgba(0, 82, 255, 0.25);
 }
 
 /* ─── Ambient background orbs ────────────────────────── */
-.orb-purple {
-  position: fixed;
+.radial-glow-accent {
+  position: absolute;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(168, 85, 247, 0.2) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(0, 82, 255, 0.06) 0%, transparent 70%);
+  filter: blur(150px);
   pointer-events: none;
   z-index: 0;
-  filter: blur(60px);
 }
 
-.orb-cyan {
-  position: fixed;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(56, 189, 248, 0.15) 0%, transparent 70%);
-  pointer-events: none;
-  z-index: 0;
-  filter: blur(60px);
+.bg-dot-pattern {
+  background-image: radial-gradient(circle, white 1px, transparent 1px);
+  background-size: 32px 32px;
+  background-color: var(--color-foreground);
+  color: var(--color-background);
 }

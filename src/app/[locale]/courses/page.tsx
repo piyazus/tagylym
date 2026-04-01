@@ -39,10 +39,11 @@ export default function CoursesPage() {
                 const mapped = data.map((c: any) => ({
                     id: c.id,
                     title: c.title,
-                    slug: (c as any).slug || c.id,
-                    level: c.levels?.name,
-                    category: locale === 'kk' ? (c.levels?.categories as any)?.name_kk || c.levels?.categories?.name : locale === 'en' ? (c.levels?.categories as any)?.name_en || c.levels?.categories?.name : c.levels?.categories?.name,
-                    lessonCount: c.lessons?.length || 0
+                    slug: c.slug || c.id,
+                    levelName: c.levels?.name,
+                    levelSlug: c.levels?.name,
+                    categoryName: c.levels?.categories?.name,
+                    categorySlug: 'fll'
                 }));
                 setCourses(mapped);
             }
@@ -77,7 +78,7 @@ export default function CoursesPage() {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.1 }}
-                        className="text-4xl md:text-5xl font-black text-white tracking-tight"
+                        className="text-4xl md:text-5xl font-calistoga text-foreground tracking-tight mb-4"
                     >
                         {t("page_title")}
                     </motion.h1>
@@ -85,7 +86,7 @@ export default function CoursesPage() {
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ delay: 0.2 }}
-                        className="text-slate-400 max-w-2xl mx-auto"
+                        className="text-muted-foreground text-lg max-w-2xl mx-auto"
                     >
                         {t("begin_learning")}
                     </motion.p>
@@ -95,8 +96,8 @@ export default function CoursesPage() {
             {/* Grid */}
             <main className="max-w-7xl mx-auto px-6">
                 {courses.length === 0 ? (
-                    <div className="text-center py-20 bg-slate-900/40 rounded-3xl border border-dashed border-slate-800">
-                        <p className="text-slate-500 font-medium">{t("no_courses")}</p>
+                    <div className="text-center py-20 bg-muted/50 rounded-3xl border border-dashed border-border mt-8">
+                        <p className="text-muted-foreground font-medium">{t("no_courses")}</p>
                     </div>
                 ) : (
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
@@ -107,7 +108,7 @@ export default function CoursesPage() {
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ delay: 0.1 * idx }}
                             >
-                                <CourseCard course={course} locale={locale} />
+                                <CourseCard course={course as any} seasonSlug="submerged-2024-25" />
                             </motion.div>
                         ))}
                     </div>

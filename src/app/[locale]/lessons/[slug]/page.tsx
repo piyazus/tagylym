@@ -25,8 +25,8 @@ interface LessonData {
 
 function LoadingSpinner() {
     return (
-        <div className="min-h-screen flex items-center justify-center bg-[#0f172a]">
-            <div className="w-8 h-8 border-2 border-primary/30 border-t-primary rounded-full animate-spin" />
+        <div className="min-h-screen flex items-center justify-center bg-background">
+            <div className="w-8 h-8 border-2 border-accent/30 border-t-accent rounded-full animate-spin" />
         </div>
     );
 }
@@ -95,13 +95,13 @@ function LessonContent({ id, locale }: { id: string; locale: string }) {
 
     if (notFound || !lesson) {
         return (
-            <div className="min-h-screen flex items-center justify-center bg-[#0f172a] text-white">
+            <div className="min-h-screen flex items-center justify-center bg-background text-foreground">
                 <div className="text-center max-w-md px-6">
                     <h1 className="text-2xl font-bold mb-3">{tCommon("coming_soon")}</h1>
-                    <p className="text-slate-400 text-sm mb-6">{t("no_content")}</p>
+                    <p className="text-muted-foreground text-sm mb-6">{t("no_content")}</p>
                     <Link
                         href={"/fll" as "/"}
-                        className="inline-flex px-6 py-2.5 rounded-lg bg-primary text-white font-medium text-sm hover:opacity-90 transition-opacity"
+                        className="inline-flex px-6 py-2.5 rounded-lg bg-gradient-to-r from-accent to-accent-secondary text-white font-medium text-sm hover:brightness-110 shadow-sm transition-all"
                     >
                         ← {t("back_to_courses")}
                     </Link>
@@ -126,18 +126,18 @@ function LessonContent({ id, locale }: { id: string; locale: string }) {
     const nextLesson = currentIdx < siblings.length - 1 ? siblings[currentIdx + 1] : null;
 
     return (
-        <div className="min-h-screen bg-[#0f172a] text-white">
+        <div className="min-h-screen bg-background text-foreground">
             <div className="max-w-3xl mx-auto py-10 px-6">
                 <Link
                     href={"/fll" as "/"}
-                    className="inline-flex items-center gap-1.5 text-slate-400 hover:text-white text-sm mb-6 transition-colors"
+                    className="inline-flex items-center gap-1.5 text-muted-foreground hover:text-foreground text-sm mb-6 transition-colors"
                 >
                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7" />
                     </svg>
                     FLL
                 </Link>
-                <h1 className="text-3xl font-bold text-white mb-6">{title}</h1>
+                <h1 className="text-3xl font-bold text-foreground mb-6">{title}</h1>
 
                 {videoUrl && videoUrl.split(',').map((rawUrl, idx) => (
                     <div key={idx} className="aspect-video bg-black rounded-2xl overflow-hidden mb-8 shadow-lg">
@@ -146,14 +146,14 @@ function LessonContent({ id, locale }: { id: string; locale: string }) {
                 ))}
 
                 {presentationUrl && (
-                    <div className="mb-8 border border-white/10 rounded-2xl overflow-hidden shadow-lg">
-                        <div className="bg-slate-800 px-4 py-3 flex justify-between items-center">
-                            <h3 className="font-semibold text-sm text-white">{t("presentation")}</h3>
+                    <div className="mb-8 border border-border bg-card rounded-2xl overflow-hidden shadow-sm">
+                        <div className="bg-muted px-4 py-3 flex justify-between items-center border-b border-border">
+                            <h3 className="font-semibold text-sm text-foreground">{t("presentation")}</h3>
                             <a
                                 href={presentationUrl}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="text-sm text-primary hover:opacity-80 flex items-center gap-2"
+                                className="text-sm text-accent hover:brightness-110 flex items-center gap-2 font-medium"
                             >
                                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
@@ -177,14 +177,14 @@ function LessonContent({ id, locale }: { id: string; locale: string }) {
                 )}
 
                 {lesson.content_md && (
-                    <div className="mb-8 text-slate-300 leading-relaxed whitespace-pre-wrap text-base">
+                    <div className="mb-8 text-muted-foreground leading-relaxed whitespace-pre-wrap text-base">
                         {lesson.content_md}
                     </div>
                 )}
 
                 {quizzes.length > 0 && (
                     <div className="mt-12 mb-6">
-                        <h2 className="text-2xl font-bold text-white mb-6">{t("quiz_title")}</h2>
+                        <h2 className="text-2xl font-bold text-foreground mb-6">{t("quiz_title")}</h2>
                         <div className="space-y-6">
                             {quizzes.map((q) => (
                                 <QuizCard key={q.id} quiz={q} />
@@ -193,11 +193,11 @@ function LessonContent({ id, locale }: { id: string; locale: string }) {
                     </div>
                 )}
 
-                <div className="mt-12 flex items-center justify-between border-t border-white/10 pt-8">
+                <div className="mt-12 flex items-center justify-between border-t border-border pt-8">
                     {prevLesson ? (
                         <Link
                             href={`/lessons/${prevLesson.id}` as "/"}
-                            className="border border-white/10 text-slate-300 hover:bg-white/5 transition-colors rounded-lg px-6 py-2.5 text-sm font-medium flex items-center gap-2"
+                            className="border border-border text-muted-foreground hover:bg-muted font-medium transition-colors rounded-lg px-6 py-2.5 text-sm flex items-center gap-2"
                         >
                             ← {t("prev")}
                         </Link>
@@ -207,7 +207,7 @@ function LessonContent({ id, locale }: { id: string; locale: string }) {
                     {nextLesson ? (
                         <Link
                             href={`/lessons/${nextLesson.id}` as "/"}
-                            className="bg-primary text-white hover:opacity-90 transition-opacity rounded-lg px-6 py-2.5 text-sm font-medium flex items-center gap-2"
+                            className="bg-gradient-to-r from-accent to-accent-secondary text-white hover:brightness-110 shadow-sm transition-all rounded-lg px-6 py-2.5 text-sm font-medium flex items-center gap-2"
                         >
                             {t("next")} →
                         </Link>

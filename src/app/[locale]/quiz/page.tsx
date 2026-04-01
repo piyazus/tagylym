@@ -54,8 +54,8 @@ export default function QuizPage() {
     return (
         <div className="min-h-screen bg-background relative overflow-hidden">
             {/* Background Decorations */}
-            <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-primary/10 rounded-full blur-[120px] pointer-events-none" />
-            <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-accent/10 rounded-full blur-[120px] pointer-events-none" />
+            <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-accent/10 rounded-full blur-[120px] pointer-events-none" />
+            <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-accent-secondary/10 rounded-full blur-[120px] pointer-events-none" />
 
             <div className="max-w-6xl mx-auto px-6 pt-20 pb-24 relative z-10">
                 {/* Header */}
@@ -64,10 +64,10 @@ export default function QuizPage() {
                     animate={{ opacity: 1, y: 0 }}
                     className="text-center mb-16"
                 >
-                    <h1 className="text-5xl md:text-6xl font-calistoga text-white mb-4">
+                    <h1 className="text-5xl md:text-6xl font-calistoga text-foreground mb-4">
                         {t("page_title")}
                     </h1>
-                    <p className="text-slate-400 max-w-lg mx-auto leading-relaxed text-sm md:text-base">
+                    <p className="text-muted-foreground max-w-lg mx-auto leading-relaxed text-sm md:text-base">
                         {t("subtitle")}
                     </p>
                 </motion.div>
@@ -81,16 +81,16 @@ export default function QuizPage() {
                 >
                     <Link
                         href={"/quiz/cat" as "/"}
-                        className="flex items-center justify-between gap-4 glass-card px-6 py-4 border border-[#8B5CF6]/20 hover:border-[#8B5CF6]/50 transition-all group"
+                        className="flex items-center justify-between gap-4 glass-card px-6 py-4 border border-accent/20 hover:border-accent/50 transition-all group"
                     >
                         <div className="flex items-center gap-3">
-                            <span className="text-xs font-bold px-2 py-0.5 rounded-md bg-[#8B5CF6]/10 text-[#8B5CF6] border border-[#8B5CF6]/20 uppercase tracking-widest">CAT</span>
+                            <span className="text-xs font-bold px-2 py-0.5 rounded-md bg-accent/10 text-accent border border-accent/20 uppercase tracking-widest">CAT</span>
                             <div>
-                                <p className="text-white font-semibold text-sm">{t("cat_title")}</p>
-                                <p className="text-slate-500 text-xs">{t("cat_subtitle")}</p>
+                                <p className="text-foreground font-semibold text-sm">{t("cat_title")}</p>
+                                <p className="text-muted-foreground text-xs">{t("cat_subtitle")}</p>
                             </div>
                         </div>
-                        <span className="text-[#8B5CF6] text-sm font-bold group-hover:translate-x-1 transition-transform">→</span>
+                        <span className="text-accent text-sm font-bold group-hover:translate-x-1 transition-transform">→</span>
                     </Link>
                 </motion.div>
 
@@ -98,39 +98,39 @@ export default function QuizPage() {
                 <motion.div
                     initial={{ opacity: 0, scale: 0.95 }}
                     animate={{ opacity: 1, scale: 1 }}
-                    className="glass-card p-6 mb-12 flex flex-wrap gap-6 items-end border-white/5 shadow-2xl"
+                    className="glass-card bg-card/80 p-6 mb-12 flex flex-wrap gap-6 items-end border-border shadow-sm"
                 >
                     <div className="flex-1 min-w-[200px] space-y-2">
-                        <label className="block text-xs font-bold text-slate-500 uppercase tracking-widest ml-1">
+                        <label className="block text-xs font-bold text-muted-foreground uppercase tracking-widest ml-1">
                             {t("filter_track")}
                         </label>
                         <select
                             value={filterCategory}
                             onChange={(e) => setFilterCategory(e.target.value)}
-                            className="w-full bg-slate-800/40 text-slate-200 text-sm rounded-xl px-4 py-3 border border-white/10 focus:border-primary/50 focus:outline-none focus:ring-4 focus:ring-primary/10 transition-all cursor-pointer appearance-none"
+                            className="w-full bg-background text-foreground text-sm rounded-xl px-4 py-3 border border-border focus:border-accent focus:outline-none focus:ring-4 focus:ring-accent/10 transition-all cursor-pointer appearance-none"
                         >
                             {categories.map((c) => (
-                                <option key={c.value} value={c.value} className="bg-slate-900">{c.label}</option>
+                                <option key={c.value} value={c.value} className="bg-background">{c.label}</option>
                             ))}
                         </select>
                     </div>
 
                     <div className="flex-1 min-w-[200px] space-y-2">
-                        <label className="block text-xs font-bold text-slate-500 uppercase tracking-widest ml-1">
+                        <label className="block text-xs font-bold text-muted-foreground uppercase tracking-widest ml-1">
                             {t("filter_level")}
                         </label>
                         <select
                             value={filterLevel}
                             onChange={(e) => setFilterLevel(e.target.value)}
-                            className="w-full bg-slate-800/40 text-slate-200 text-sm rounded-xl px-4 py-3 border border-white/10 focus:border-primary/50 focus:outline-none focus:ring-4 focus:ring-primary/10 transition-all cursor-pointer appearance-none"
+                            className="w-full bg-background text-foreground text-sm rounded-xl px-4 py-3 border border-border focus:border-accent focus:outline-none focus:ring-4 focus:ring-accent/10 transition-all cursor-pointer appearance-none"
                         >
                             {levels.map((l) => (
-                                <option key={l.value} value={l.value} className="bg-slate-900">{l.label}</option>
+                                <option key={l.value} value={l.value} className="bg-background">{l.label}</option>
                             ))}
                         </select>
                     </div>
 
-                    <div className="px-4 py-3 text-sm text-slate-500 font-medium whitespace-nowrap">
+                    <div className="px-4 py-3 text-sm text-muted-foreground font-medium whitespace-nowrap">
                         {loading ? tCommon("loading") : `${quizzes.length} ${t("results_count")}`}
                     </div>
                 </motion.div>
@@ -145,7 +145,7 @@ export default function QuizPage() {
                             exit={{ opacity: 0 }}
                             className="flex justify-center py-20"
                         >
-                            <div className="w-12 h-12 border-4 border-primary/30 border-t-primary rounded-full animate-spin" />
+                            <div className="w-12 h-12 border-4 border-accent/30 border-t-accent rounded-full animate-spin" />
                         </motion.div>
                     ) : quizzes.length > 0 ? (
                         <motion.div 
@@ -170,11 +170,11 @@ export default function QuizPage() {
                             key="empty"
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
-                            className="text-center py-24 glass-card border-dashed border-white/10"
+                            className="text-center py-24 glass-card border-dashed border-border bg-card/50"
                         >
-                            <span className="text-6xl mb-6 block opacity-50">🔬</span>
-                            <h3 className="text-xl font-bold text-white mb-2">{t("no_results")}</h3>
-                            <p className="text-slate-500">{tCommon("try_other_filters")}</p>
+                            <span className="text-6xl mb-6 block opacity-80">🔬</span>
+                            <h3 className="text-xl font-bold text-foreground mb-2">{t("no_results")}</h3>
+                            <p className="text-muted-foreground">{tCommon("try_other_filters")}</p>
                         </motion.div>
                     )}
                 </AnimatePresence>

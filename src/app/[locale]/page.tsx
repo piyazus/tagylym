@@ -60,16 +60,16 @@ const FAQ_ITEMS = [
 function FAQItem({ question, answer }: { question: string; answer: string }) {
   const [isOpen, setIsOpen] = useState(false);
   return (
-    <div className="glass-card overflow-hidden border-white/5">
+    <div className="glass-card overflow-hidden">
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="w-full flex items-center justify-between px-6 py-5 text-left hover:bg-white/3 transition-colors"
+        className="w-full flex items-center justify-between px-6 py-5 text-left hover:bg-muted/50 transition-colors"
       >
-        <span className="font-semibold text-sm text-white pr-4">{question}</span>
+        <span className="font-semibold text-sm text-foreground pr-4">{question}</span>
         <motion.svg
           animate={{ rotate: isOpen ? 180 : 0 }}
           transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-          className="w-5 h-5 text-slate-400 shrink-0"
+          className="w-5 h-5 text-muted-foreground shrink-0"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
@@ -86,8 +86,8 @@ function FAQItem({ question, answer }: { question: string; answer: string }) {
             transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
             className="overflow-hidden"
           >
-            <div className="px-6 pb-5 border-t border-white/5 pt-4">
-              <p className="text-sm text-slate-400 leading-relaxed">{answer}</p>
+            <div className="px-6 pb-5 border-t border-border pt-4">
+              <p className="text-sm text-muted-foreground leading-relaxed">{answer}</p>
             </div>
           </motion.div>
         )}
@@ -172,10 +172,10 @@ export default function HomePage() {
                                 ...(visitorCount > 0 ? [{ target: visitorCount, suffix: "", label: t("stat_visitors") }] : []),
                             ].map((stat, i) => (
                                 <div key={i} className="flex flex-col">
-                                    <span className="text-2xl font-black text-white">
+                                    <span className="text-2xl font-black text-foreground">
                                         <AnimatedCounter target={stat.target} suffix={stat.suffix} />
                                     </span>
-                                    <span className="text-xs text-slate-400 uppercase tracking-wider">{stat.label}</span>
+                                    <span className="text-xs text-muted-foreground uppercase tracking-wider">{stat.label}</span>
                                 </div>
                             ))}
                         </motion.div>
@@ -229,7 +229,7 @@ export default function HomePage() {
                     >
                         <motion.h2
                             variants={fadeInUp}
-                            className="text-3xl md:text-4xl font-calistoga text-white mb-4"
+                            className="text-3xl md:text-4xl font-calistoga text-foreground mb-4"
                         >
                             {t("audience_title")}
                         </motion.h2>
@@ -252,10 +252,10 @@ export default function HomePage() {
                                 >
                                     {card.icon}
                                 </div>
-                                <h3 className="text-xl font-bold text-white mb-3">
+                                <h3 className="text-xl font-bold text-foreground mb-3">
                                     {t(card.titleKey)}
                                 </h3>
-                                <p className="text-sm text-slate-300 leading-relaxed mb-6 flex-grow">
+                                <p className="text-sm text-muted-foreground leading-relaxed mb-6 flex-grow">
                                     {t(card.descKey)}
                                 </p>
                                 <Link
@@ -297,19 +297,19 @@ export default function HomePage() {
 
                         <motion.h2
                             variants={fadeInUp}
-                            className="text-4xl md:text-5xl font-calistoga text-white mb-6 leading-tight"
+                            className="text-4xl md:text-5xl font-calistoga text-foreground mb-6 leading-tight"
                         >
                             {t("about_title")}
                         </motion.h2>
                         
-                        <motion.p variants={fadeInUp} className="text-lg text-slate-400 leading-relaxed mb-8">
+                        <motion.p variants={fadeInUp} className="text-lg text-muted-foreground leading-relaxed mb-8">
                             {t("about_body")}
                         </motion.p>
 
                         {/* Callout Card */}
                         <motion.div variants={fadeInUp} className="glass-card-bright p-6 hover:shadow-xl transition-shadow duration-300 relative">
                             <div className="absolute top-0 right-8 -translate-y-[40%] text-[8rem] text-primary/10 font-calistoga leading-none select-none">&quot;</div>
-                            <p className="italic text-lg text-slate-200 relative z-10 font-medium tracking-tight">
+                            <p className="italic text-lg text-foreground relative z-10 font-medium tracking-tight">
                                 {t("about_quote")}
                             </p>
                         </motion.div>
@@ -333,7 +333,7 @@ export default function HomePage() {
             </section>
 
             {/* "Проблема" Section (Inverted Contrast) */}
-            <section className="text-white px-6 py-32 relative overflow-hidden" style={{ backgroundColor: '#274D7A' }}>
+            <section className="text-background bg-foreground px-6 py-32 relative overflow-hidden">
                 {/* Dot grid texture */}
                 <div className="absolute inset-0 opacity-[0.05]" style={{ backgroundImage: "radial-gradient(circle, white 1px, transparent 1px)", backgroundSize: "32px 32px" }} />
 
@@ -374,21 +374,21 @@ export default function HomePage() {
 
                         <motion.h2 
                             variants={fadeInUp}
-                            className="text-4xl md:text-5xl font-calistoga text-white mb-6 leading-tight"
+                            className="text-4xl md:text-5xl font-calistoga text-background mb-6 leading-tight"
                         >
                             {t("problem_title")}
                         </motion.h2>
 
-                        <motion.p variants={fadeInUp} className="text-lg text-white leading-relaxed mb-8">
+                        <motion.p variants={fadeInUp} className="text-lg text-muted/80 leading-relaxed mb-8">
                             {t("problem_body")}
                         </motion.p>
 
                         {/* Callout Card */}
-                        <motion.div variants={fadeInUp} className="border border-[#0D9488] rounded-2xl p-6 shadow-xl" style={{ backgroundColor: '#0C2D48' }}>
-                            <p className="italic text-lg text-white font-medium" style={{ color: "#ffffff" }}>
-                                <span className="text-orange mr-2 font-calistoga text-2xl leading-none">&quot;</span>
+                        <motion.div variants={fadeInUp} className="border border-border/10 rounded-2xl p-6 shadow-xl bg-card/5">
+                            <p className="italic text-lg text-background font-medium">
+                                <span className="text-accent mr-2 font-calistoga text-2xl leading-none">&quot;</span>
                                 {t("problem_quote")}
-                                <span className="text-orange ml-2 font-calistoga text-2xl leading-none">&quot;</span>
+                                <span className="text-accent ml-2 font-calistoga text-2xl leading-none">&quot;</span>
                             </p>
                         </motion.div>
                     </motion.div>
@@ -417,7 +417,7 @@ export default function HomePage() {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: 0.1 }}
-                            className="text-4xl md:text-5xl font-calistoga text-white"
+                            className="text-4xl md:text-5xl font-calistoga text-foreground"
                         >
                             {t("presentations_title")}
                         </motion.h2>
@@ -425,9 +425,9 @@ export default function HomePage() {
                     
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                         {[
-                            { titleKey: "track_fll_title" as const, descKey: "track_fll_desc" as const, slug: "fll", color: "#8B5CF6", icon: "🤖" },
-                            { titleKey: "track_ftc_title" as const, descKey: "track_ftc_desc" as const, slug: "ftc", color: "#F97316", icon: "⚙️" },
-                            { titleKey: "track_fgc_title" as const, descKey: "track_fgc_desc" as const, slug: "fgc", color: "#10B981", icon: "🌍" },
+                            { titleKey: "track_fll_title" as const, descKey: "track_fll_desc" as const, slug: "fll", color: "#0052FF", icon: "🤖" },
+                            { titleKey: "track_ftc_title" as const, descKey: "track_ftc_desc" as const, slug: "ftc", color: "#0052FF", icon: "⚙️" },
+                            { titleKey: "track_fgc_title" as const, descKey: "track_fgc_desc" as const, slug: "fgc", color: "#0052FF", icon: "🌍" },
                         ].map((track, idx) => (
                             <motion.div 
                                 key={idx}
@@ -435,17 +435,17 @@ export default function HomePage() {
                                 whileInView={{ opacity: 1, scale: 1 }}
                                 viewport={{ once: true }}
                                 transition={{ duration: 0.5, delay: idx * 0.1 }}
-                                className="glass-card group p-8 border border-white/5 hover:border-white/10 transition-all hover:-translate-y-2 flex flex-col"
+                                className="glass-card group p-8 hover:-translate-y-2 flex flex-col"
                             >
-                                <div className="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-3xl mb-6 group-hover:scale-110 transition-transform">
+                                <div className="w-14 h-14 rounded-2xl border border-border bg-muted/20 flex items-center justify-center text-3xl mb-6 group-hover:scale-110 transition-transform">
                                     {track.icon}
                                 </div>
-                                <h3 className="text-2xl font-bold text-white mb-4">{t(track.titleKey)}</h3>
-                                <p className="text-slate-400 leading-relaxed mb-8 flex-grow">{t(track.descKey)}</p>
+                                <h3 className="text-2xl font-bold text-foreground mb-4">{t(track.titleKey)}</h3>
+                                <p className="text-muted-foreground leading-relaxed mb-8 flex-grow">{t(track.descKey)}</p>
                                 
                                 <Link 
                                     href={`/${track.slug}` as "/"}
-                                    className="inline-flex items-center gap-2 text-sm font-bold text-white hover:text-primary transition-colors group/link"
+                                    className="inline-flex items-center gap-2 text-sm font-bold text-foreground hover:text-accent transition-colors group/link"
                                 >
                                     {t("view_track")}
                                     <svg className="w-4 h-4 transform group-hover/link:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -459,7 +459,7 @@ export default function HomePage() {
                     <div className="mt-20 text-center">
                         <Link 
                             href="/courses"
-                            className="inline-flex items-center gap-3 px-8 py-4 rounded-xl bg-white/5 border border-white/10 text-white font-bold hover:bg-white/10 transition-all"
+                            className="inline-flex items-center gap-3 px-8 py-4 rounded-xl border border-border text-foreground font-bold hover:bg-muted/50 transition-all shadow-sm"
                         >
                             <span>{t("all_courses")}</span>
                             <div className="w-8 h-8 rounded-lg bg-primary/20 flex items-center justify-center text-primary">
@@ -482,7 +482,7 @@ export default function HomePage() {
                     >
                         <motion.h2
                             variants={fadeInUp}
-                            className="text-3xl md:text-4xl font-calistoga text-white"
+                            className="text-3xl md:text-4xl font-calistoga text-foreground"
                         >
                             {t("faq_title")}
                         </motion.h2>
