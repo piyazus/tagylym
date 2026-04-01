@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import { useTranslations } from "next-intl";
-import { supabase } from "@/lib/supabase";
 
 interface WaitlistFormProps {
     track: "ftc" | "fgc";
@@ -19,19 +18,13 @@ export default function WaitlistForm({ track }: WaitlistFormProps) {
 
         setStatus("loading");
         try {
-            const { error } = await supabase.from("waitlist").insert([
-                { email, track }
-            ]);
-
-            if (error) {
-                if (error.code === "23505") { // Unique violation
-                    setStatus("success"); // Act as success if already subscribed
-                } else {
-                    throw error;
-                }
-            } else {
-                setStatus("success");
-            }
+            const res = await fetch("/api/waitlist", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ email, track }),
+            });
+            if (!res.ok) throw new Error("Failed");
+            setStatus("success");
         } catch (err) {
             console.error("Waitlist error:", err);
             setStatus("error");
