@@ -1,0 +1,321 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="theme-color" content="#DCEEF8" />
+    <title>Tagylym — курс робототехники</title>
+    <meta
+      name="description"
+      content="Бесплатные материалы по робототехнике для учеников 3–4 классов и их менторов: 36 занятий, презентации PDF и PPTX, самостоятельные задания."
+    />
+    <link rel="stylesheet" href="/catalog/assets/fonts/fonts.css" />
+    <link rel="stylesheet" href="/catalog/styles.css" />
+    <script src="/catalog/i18n.js" defer></script>
+    <script src="/catalog/app.js" defer></script>
+  </head>
+  <body>
+    <a class="skip" href="#course">Перейти к занятиям</a>
+    <header class="masthead page">
+      <a class="wordmark" href="#" aria-label="Tagylym, главная"
+        >Tagylym<span aria-hidden="true">.</span></a
+      >
+      <nav aria-label="Навигация">
+        <a class="current" href="#course">Курс</a
+        ><a href="#practice">Без робота</a><a href="#mentor">Менторам</a>
+      </nav>
+      <a class="contact-top" href="mailto:tagylym11@gmail.com">Написать нам</a>
+      <div class="language-switch" role="group" aria-label="Language / Язык">
+        <button type="button" data-language="ru" aria-pressed="true" lang="ru">
+          РУС</button
+        ><button
+          type="button"
+          data-language="en"
+          aria-pressed="false"
+          lang="en"
+        >
+          ENG
+        </button>
+      </div>
+    </header>
+    <main>
+      <section class="intro page">
+        <div>
+          <h1>
+            Робототехника.<br />
+            Своими руками.
+          </h1>
+          <p>Бесплатный курс для 3–4 классов (8–11 лет) и менторов.</p>
+        </div>
+        <dl class="course-facts">
+          <div>
+            <dt>36 занятий</dt>
+            <dd>в шести модулях</dd>
+          </div>
+          <div>
+            <dt>8–11 лет</dt>
+            <dd>SPIKE Prime и EV3</dd>
+          </div>
+          <div>
+            <dt>Бесплатно</dt>
+            <dd>без аккаунта Tagylym</dd>
+          </div>
+        </dl>
+      </section>
+      <div class="course-layout page" id="course">
+        <aside class="course-sidebar">
+          <div class="sidebar-top">
+            <h2>Программа</h2>
+            <span>36 занятий</span>
+          </div>
+          <nav id="chapter-nav" aria-label="Модули курса">
+            <span class="nav-loading">Загружаем модули…</span>
+          </nav>
+          <label class="mobile-chapter-select"
+            >Перейти к модулю<select id="chapter-select">
+              <option value="">Выбрать модуль</option>
+            </select></label
+          >
+          <div class="progress-area">
+            <div class="progress-copy">
+              <span>Пройдено</span><strong id="progress-count">0 из 36</strong>
+            </div>
+            <progress id="course-progress" value="0" max="36">0 из 36</progress>
+            <p>Только в этом браузере.</p>
+          </div>
+          <a
+            class="sidebar-source"
+            href="https://drive.google.com/drive/folders/1RbuA-boTM_OCuYcIMMUtJlN-sfW0Lm5Z"
+            target="_blank"
+            rel="noopener"
+            >Все файлы курса<svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M14 4h6v6M20 4l-9 9M10 5H5v15h15v-6" /></svg
+          ></a>
+        </aside>
+        <div class="course-content">
+          <div class="catalog-toolbar">
+            <div
+              class="role-controls"
+              role="group"
+              aria-label="Материалы для ученика или ментора"
+            >
+              <button
+                class="role-button active"
+                data-role="learner"
+                aria-pressed="true"
+              >
+                Ученик</button
+              ><button
+                class="role-button"
+                data-role="mentor"
+                aria-pressed="false"
+              >
+                Ментор
+              </button>
+            </div>
+            <label class="search-control"
+              ><svg viewBox="0 0 24 24" aria-hidden="true">
+                <circle cx="10.5" cy="10.5" r="6.5" />
+                <path d="m16 16 5 5" /></svg
+              ><input
+                id="lesson-search"
+                type="search"
+                placeholder="Найти тему или занятие"
+                aria-label="Найти тему или занятие"
+            /></label>
+          </div>
+          <div class="search-state" id="search-state" hidden>
+            <p id="search-message" aria-live="polite"></p>
+            <button id="reset-search">Сбросить поиск</button>
+          </div>
+          <div class="reading-note" id="reading-note">
+            <p>
+              Открой занятие и выбери презентацию. После практики отметь, что
+              прошёл.
+            </p>
+            <span>PDF + PPTX</span>
+          </div>
+          <p class="language-notice">
+            Исходные PDF и презентации на Google Drive доступны на русском
+            языке.
+          </p>
+          <div id="chapter-list">
+            <div class="load-state"><p>Загружаем программу курса…</p></div>
+          </div>
+          <noscript
+            ><p class="load-state">
+              Для поиска и просмотра программы включите JavaScript или
+              <a
+                href="https://drive.google.com/drive/folders/1RbuA-boTM_OCuYcIMMUtJlN-sfW0Lm5Z"
+                >откройте папку курса</a
+              >.
+            </p></noscript
+          >
+        </div>
+      </div>
+      <section class="practice-section page" id="practice">
+        <div class="section-heading">
+          <div>
+            <h2>
+              Начать можно<br />
+              без робота.
+            </h2>
+            <p>
+              Задания на бумаге и в Scratch. Обычно 15–25 минут; что
+              понадобится, указано внутри.
+            </p>
+          </div>
+          <a
+            id="practice-pdf"
+            class="file-action"
+            href="https://drive.google.com/file/d/1d35UagS3ErmmsmAZ72gEBcc1w50r_u2G/view"
+            target="_blank"
+            rel="noopener"
+            >Открыть 12 карточек PDF<svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M14 4h6v6M20 4l-9 9M10 5H5v15h15v-6" /></svg
+          ></a>
+        </div>
+        <p class="practice-guidance">
+          Начни с заданий 1, 5 и 9. Они рассчитаны на детей 8–10 лет. Для
+          заданий с физической моделью понадобится подходящий набор.
+        </p>
+        <div id="practice-list" class="practice-list"></div>
+      </section>
+      <section class="mentor-section page" id="mentor">
+        <div class="mentor-intro">
+          <h2>
+            Подготовиться<br />
+            к занятию.
+          </h2>
+          <p>
+            Для ментора: структура курса, презентации и план каждого модуля.
+            Выбери режим «Ментор» в программе, чтобы увидеть материалы для
+            подготовки.
+          </p>
+          <button id="mentor-mode" class="text-action">
+            Открыть материалы ментора
+          </button>
+        </div>
+        <div class="mentor-documents">
+          <a
+            id="syllabus-link"
+            href="https://docs.google.com/document/d/1syoSCyCI4f3e239GzhWIGfCEmSwM2FGx/edit"
+            target="_blank"
+            rel="noopener"
+            ><div>
+              <span>Силлабус курса</span>
+              <p>36 занятий, 72 академических часа</p>
+            </div>
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M14 4h6v6M20 4l-9 9M10 5H5v15h15v-6" /></svg></a
+          ><a
+            id="overview-link"
+            href="https://drive.google.com/file/d/1C-t8Tsc73o-ASR92UsqCFgjFDsCgWSrw/view"
+            target="_blank"
+            rel="noopener"
+            ><div>
+              <span>Вводная презентация</span>
+              <p>Обзор всего курса в PDF</p>
+            </div>
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M14 4h6v6M20 4l-9 9M10 5H5v15h15v-6" /></svg></a
+          ><a href="mailto:tagylym11@gmail.com"
+            ><div>
+              <span>Обратная связь</span>
+              <p>Расскажите, чего не хватает вашим ученикам</p>
+            </div>
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M4 5h16v14H4zM4 5l8 7 8-7" /></svg
+          ></a>
+        </div>
+      </section>
+      <section class="questions page">
+        <h2>Что нужно знать перед стартом</h2>
+        <div class="questions-list">
+          <details>
+            <summary>
+              Какое оборудование нужно?<svg
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+              >
+                <path d="m6 9 6 6 6-6" />
+              </svg>
+            </summary>
+            <p>
+              Практическая часть курса рассчитана на LEGO SPIKE Prime или EV3 и
+              устройство с подходящим приложением. Уточняйте требования к
+              конкретному занятию вместе с ментором. Часть самостоятельных
+              заданий можно выполнить без робота.
+            </p>
+          </details>
+          <details>
+            <summary>
+              Как пользоваться материалами?<svg
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+              >
+                <path d="m6 9 6 6 6-6" />
+              </svg>
+            </summary>
+            <p>
+              Откройте модуль и занятие. PDF подходит для просмотра, PPTX — для
+              подготовки и проведения урока. Файлы открываются в Google Drive;
+              их доступность зависит от настроек исходного файла.
+            </p>
+          </details>
+          <details>
+            <summary>
+              Это официальный курс FIRST или LEGO?<svg
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+              >
+                <path d="m6 9 6 6 6-6" />
+              </svg>
+            </summary>
+            <p>
+              Tagylym — самостоятельный образовательный проект. Курс помогает
+              освоить основы и типовые задачи робототехники. Возрастные
+              требования и действующие правила конкретного турнира проверяйте
+              отдельно.
+            </p>
+          </details>
+          <details>
+            <summary>
+              Что происходит с отметками о прохождении?<svg
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+              >
+                <path d="m6 9 6 6 6-6" />
+              </svg>
+            </summary>
+            <p>
+              Вы ставите отметки сами после практики. Они хранятся только в
+              текущем браузере и не синхронизируются с другими устройствами.
+              После очистки данных браузера отметки могут исчезнуть.
+            </p>
+          </details>
+        </div>
+      </section>
+    </main>
+    <footer class="page">
+      <div class="footer-top">
+        <a class="wordmark" href="#">Tagylym<span>.</span></a>
+        <div>
+          <a href="mailto:tagylym11@gmail.com">tagylym11@gmail.com</a
+          ><a
+            href="https://www.instagram.com/tagylym.education"
+            target="_blank"
+            rel="noopener"
+            >Instagram</a
+          >
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 Tagylym</span
+        ><span>Методология и продукт — Арнур Кемербек</span
+        ><span>Текущие материалы бесплатные</span>
+      </div>
+    </footer>
+    <p id="status-message" role="status" class="status-message"></p>
+  </body>
+</html>

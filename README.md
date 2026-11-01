@@ -1,4 +1,37 @@
-# Tagylym — Robotics Education Platform
+# Tagylym — bilingual robotics learning catalog
+
+The updated homepage is a free Russian/English course catalog for grades 3–4 (ages 8–11) and their mentors. It contains 36 lessons in six modules, 12 translated self-study activities, direct PDF/PPTX links, learner/mentor views, bilingual search and browser-local completion marks.
+
+## Updated homepage
+
+- `/ru` — Russian catalog; `/en` — English catalog.
+- The page language takes precedence over a saved preference; the language controls update the URL and remember the selection.
+- The original PDF/PPTX files on Google Drive are in Russian. This is explicitly disclosed in both interface languages; the site does not claim that the source files were translated.
+- Completion marks are self-reported and remain in the current browser. No number of learners is inferred from visit counts.
+- The catalog has no account or payment requirement. Existing account, dashboard, API and administration routes remain in the Next.js application.
+
+The implementation is in `public/catalog/`. `next.config.ts` serves it for `/ru` and `/en` using `beforeFiles` rewrites, ahead of the retained React homepage. Assets and JSON use absolute `/catalog/` URLs so they work at either locale route. Historical `/kk` and `/kz` URLs redirect to Russian. The old React homepage remains in `src/app/[locale]/page.tsx` as legacy source; it is not the active homepage.
+
+## Run and validate
+
+```bash
+npm ci
+npm run dev
+# Open http://localhost:3000/ru or http://localhost:3000/en
+npm run build
+npm start
+```
+
+The catalog itself does not require backend environment variables. The retained Supabase, Sanity, Stripe and other backend features still need their existing configuration, as documented below.
+
+## What Codex changed
+
+Codex helped turn the current course materials into a navigable catalog, implement a responsive interface, add Russian/English text for six modules and 36 lesson titles, translate the 12 on-page practice activities, and connect search, mentor resources and completion controls. The source links are retained from the current course map. The redesign was previously checked on desktop and phone layouts; this repository integration adds locale routing and self-hosted assets.
+
+The design uses self-hosted Onest and Dela Gothic One with their OFL licenses in `public/catalog/assets/fonts/`. English text is in `public/catalog/i18n.js` and `public/catalog/tasks-en.json`; Russian course data and original document URLs are in `public/catalog/curriculum.json`.
+
+## Existing application documentation
+
 
 Комплексная образовательная платформа для команд FIRST (FLL, FTC, FGC). Видеоуроки, тесты, чек-листы и стратегии для подготовки к соревнованиям.
 

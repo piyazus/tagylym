@@ -51,7 +51,6 @@ export default function Nav() {
     };
 
     const locales = [
-        { code: 'kk', label: 'ҚАЗ' },
         { code: 'ru', label: 'РУС' },
         { code: 'en', label: 'ENG' },
     ];
