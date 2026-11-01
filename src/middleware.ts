@@ -27,7 +27,7 @@ export default function middleware(request: NextRequest) {
 
         if (!hasAuthToken) {
             // Redirect to login
-            const locale = pathname.match(/^\/(kk|ru|en)/)?.[1] || "kk";
+            const locale = pathname.match(/^\/(kk|ru|en)/)?.[1] || "ru";
             const loginUrl = new URL(`/${locale}/auth/login`, request.url);
             loginUrl.searchParams.set("redirect", pathname);
             return NextResponse.redirect(loginUrl);

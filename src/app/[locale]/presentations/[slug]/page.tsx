@@ -82,7 +82,7 @@ function convertToEmbedUrl(driveUrl: string, locale: string): string {
 export default function PresentationPage() {
   const params = useParams();
   const slug = params.slug as string;
-  const locale = (params.locale as string) || "kk";
+  const locale = (params.locale as string) || "ru";
   const track = presentations[slug];
   const t = useTranslations("presentations");
 

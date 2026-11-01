@@ -1,0 +1,636 @@
+{
+  "title": "Tagylym",
+  "source": "https://drive.google.com/drive/folders/1RbuA-boTM_OCuYcIMMUtJlN-sfW0Lm5Z",
+  "updated": "2026-10-04",
+  "grades": "3–4 классы",
+  "age": "8–11 лет",
+  "language": "ru",
+  "lessonCount": 36,
+  "academicHours": 72,
+  "slideCountReported": 737,
+  "modules": [
+    {
+      "number": 1,
+      "title": "Команда, робот и безопасная работа",
+      "range": [1, 4],
+      "folder": "https://drive.google.com/drive/folders/18gqK-DvY6rOjmepAi6hiHi2xbmS-IWQp",
+      "syllabus": "https://docs.google.com/document/d/1XA0O_f2H0VjSeHdJeGYcSGAya92348rHs1wu1FhDJiQ/edit?usp=drivesdk",
+      "introPptx": "https://docs.google.com/presentation/d/1wLWjZKoPrPMaGp5c_ddbUUCgQhDcfx9R/edit",
+      "introPdf": "https://drive.google.com/file/d/1LV9YhhE_ecyskD80QtPFboztspyOJRtk/view",
+      "lessonsFolder": "https://drive.google.com/drive/folders/1r7e90dtt5_QptZtx8eKT3Um33oaJ-SrF",
+      "lessons": [
+        {
+          "number": 1,
+          "title": "Пробное занятие Знакомство с роботом",
+          "folder": "https://drive.google.com/drive/folders/1QByUeHoDRuAhEqJoCk2aiXJJyJdpJK1f",
+          "pptx": "https://docs.google.com/presentation/d/18CspF7sNzm0YtWEBO_d6t5pY0Uv_tX_L/edit?usp=drivesdk&ouid=109674372095175490244&rtpof=true&sd=true",
+          "pdf": "https://drive.google.com/file/d/1zYlvEVG7o8L5hoVSPQp35_H3Q0ClGZeN/view?usp=drivesdk"
+        },
+        {
+          "number": 2,
+          "title": "Детали LEGO и прочная сборка",
+          "folder": "https://drive.google.com/drive/folders/1fN7EiAeS7nWAuGnd1tqGb2AwDtW7GA5B",
+          "pptx": "https://docs.google.com/presentation/d/1jm1hAKon-81YOR55U7xo4l-OCQhLJ0dG/edit?usp=drivesdk&ouid=109674372095175490244&rtpof=true&sd=true",
+          "pdf": "https://drive.google.com/file/d/1xMcsyNT0KX1L7xjx3uOIEjkbqXpPqMDX/view?usp=drivesdk"
+        },
+        {
+          "number": 3,
+          "title": "Хаб моторы датчики и порты",
+          "folder": "https://drive.google.com/drive/folders/1G4CbRgOphQ-jvgausFWqz6wH2d_PTnEp",
+          "pptx": "https://docs.google.com/presentation/d/1hp0wCaz2bnMcgni8QyysEF7njXAlGywn/edit?usp=drivesdk&ouid=109674372095175490244&rtpof=true&sd=true",
+          "pdf": "https://drive.google.com/file/d/1Bnu1r-s_9XY5ywISleT7c5S417rJ_UgD/view?usp=drivesdk"
+        },
+        {
+          "number": 4,
+          "title": "Первая движущаяся модель",
+          "folder": "https://drive.google.com/drive/folders/1o_3AgtV0kIhu5t_ke2e2xvfT-4hFvWtb",
+          "pptx": "https://docs.google.com/presentation/d/1m56sQkzhVUV4lR7fNk4Z5_VDWtxQWgZu/edit?usp=drivesdk&ouid=109674372095175490244&rtpof=true&sd=true",
+          "pdf": "https://drive.google.com/file/d/14Zk_7DHZhB_CKWUuozFXmuS4f0kR1akN/view?usp=drivesdk"
+        }
+      ]
+    },
+    {
+      "number": 2,
+      "title": "Механика соревновательного робота",
+      "range": [5, 10],
+      "folder": "https://drive.google.com/drive/folders/1kGZWzz0xO5C2Cug5p97SoBuf19SNgjm0",
+      "syllabus": "https://docs.google.com/document/d/1KCsZUlp2IkfqEiUtX-7LhwkONhxBor5cRb4Ecma3-Xw/edit?usp=drivesdk",
+      "introPptx": "https://docs.google.com/presentation/d/16fVyS2lNEE9gW_rcT4F1ROcR1p7E-kWI/edit",
+      "introPdf": "https://drive.google.com/file/d/1OJfx9aVgnEOS6ULyLh9-CbHFMJyejPeO/view",
+      "lessonsFolder": "https://drive.google.com/drive/folders/1my5wBuWDfiPoxN5qxnsCJSnrjeGPISc8",
+      "lessons": [
+        {
+          "number": 5,
+          "title": "Колеса расстояние и измерение",
+          "folder": "https://drive.google.com/drive/folders/1vwAAvu-0PtLsNXXkEczISv9F_kj5gukl",
+          "pptx": "https://docs.google.com/presentation/d/1wPO4aYEW8l2jTgdJQNRQCYbEIdE56xl7/edit?usp=drivesdk&ouid=109674372095175490244&rtpof=true&sd=true",
+          "pdf": "https://drive.google.com/file/d/1SKOafAKS0mFnzFqAnIQwl_bmRhMBkuIa/view?usp=drivesdk"
+        },
+        {
+          "number": 6,
+          "title": "Повороты и опорное колесо",
+          "folder": "https://drive.google.com/drive/folders/1TkUW-mYjhY36e73KhftF9OW-xK4EXUNw",
+          "pptx": "https://docs.google.com/presentation/d/1V5v8TqvO6NAJpYyP4lngIgDHSI5cKlx2/edit?usp=drivesdk&ouid=109674372095175490244&rtpof=true&sd=true",
+          "pdf": "https://drive.google.com/file/d/1mOQWUnvxK88SFFfcZPaDGHJdQ1E5Ufwu/view?usp=drivesdk"
+        },
+        {
+          "number": 7,
+          "title": "Шестерни скорость и сила",
+          "folder": "https://drive.google.com/drive/folders/19F5SvF-2b2qMUa2o3e0XZvxs2R76kD78",
+          "pptx": "https://docs.google.com/presentation/d/1sqg-0Vz_LezMsaTH9PbdN58DL22lfQ9W/edit?usp=drivesdk&ouid=109674372095175490244&rtpof=true&sd=true",
+          "pdf": "https://drive.google.com/file/d/1RR9pBYtVGGnmPAXsVXQTmShBOFHIpgV4/view?usp=drivesdk"
+        },
+        {
+          "number": 8,
+          "title": "Жесткая рама и симметрия",
+          "folder": "https://drive.google.com/drive/folders/1aQM7IKSQWQBYxsKL5ERL-Sg8vwooE3rc",
+          "pptx": "https://docs.google.com/presentation/d/142As4FxGPONCW-Bs5AzlzS0MxRiwP5vH/edit?usp=drivesdk&ouid=109674372095175490244&rtpof=true&sd=true",
+          "pdf": "https://drive.google.com/file/d/1QNZ1W95OKWPpLxl8pQraw5ywsh4H_Ez0/view?usp=drivesdk"
+        },
+        {
+          "number": 9,
+          "title": "Пассивные механизмы",
+          "folder": "https://drive.google.com/drive/folders/1NmooBt-IDeq9HttTvU9jbatB1KoGnjlb",
+          "pptx": "https://docs.google.com/presentation/d/18IIbAN7DZTG69QQ1zxqOACefrjJRIyef/edit?usp=drivesdk&ouid=109674372095175490244&rtpof=true&sd=true",
+          "pdf": "https://drive.google.com/file/d/1bobXR60ss3nOJPvEIhNRgKQ-GEoWQsKZ/view?usp=drivesdk"
+        },
+        {
+          "number": 10,
+          "title": "Моторные насадки",
+          "folder": "https://drive.google.com/drive/folders/1IDRP35fg2R8Ex8Xr6201kmEh8lJFCG-h",
+          "pptx": "https://docs.google.com/presentation/d/16k7Y3rUCsErTCXfJsh5IAGtHhwUpAX1b/edit?usp=drivesdk&ouid=109674372095175490244&rtpof=true&sd=true",
+          "pdf": "https://drive.google.com/file/d/1fg9Sy4--NR4iIqCt_yVp7AHvKKgNYADF/view?usp=drivesdk"
+        }
+      ]
+    },
+    {
+      "number": 3,
+      "title": "Программирование движения",
+      "range": [11, 17],
+      "folder": "https://drive.google.com/drive/folders/1BTYpi6NCj1KeHyBtjtyyTz6SCnwZg8lC",
+      "syllabus": "https://docs.google.com/document/d/1pwaCLItTKfjXklI7HXSYsB0OCnlazm9g4_L1A2G7OIw/edit?usp=drivesdk",
+      "introPptx": "https://docs.google.com/presentation/d/1PBHOxm5Nen66EzMtZ5C_zZ5-Jbi2lC0F/edit",
+      "introPdf": "https://drive.google.com/file/d/11dcX40y8lCjmFFeMLzs31_rJUXl9aMGx/view",
+      "lessonsFolder": "https://drive.google.com/drive/folders/1vpEMtkUfMcmCfXzUbopfv8RmdAwyetmg",
+      "lessons": [
+        {
+          "number": 11,
+          "title": "Алгоритм и последовательность",
+          "folder": "https://drive.google.com/drive/folders/1YihrRm3GWF00FxJex9OO1ZYFERhQqv_A",
+          "pptx": "https://docs.google.com/presentation/d/1DyAyJS27FxvpTuKs_XVtUfwn3R52i6uD/edit?usp=drivesdk&ouid=109674372095175490244&rtpof=true&sd=true",
+          "pdf": "https://drive.google.com/file/d/1GKfSp5CdzOJN_9B_EoPFD8O3lvlH7MCu/view?usp=drivesdk"
+        },
+        {
+          "number": 12,
+          "title": "Повторение и циклы",
+          "folder": "https://drive.google.com/drive/folders/1GfPC34UUfTFKSqOYeFZsgncRBYUK0nV4",
+          "pptx": "https://docs.google.com/presentation/d/1A383SYlytcdnrVIzSVi1zciXpJ1drF6y/edit?usp=drivesdk&ouid=109674372095175490244&rtpof=true&sd=true",
+          "pdf": "https://drive.google.com/file/d/1OqgbPHmGQVilqzOLiJCaVhyc4sJwCrxW/view?usp=drivesdk"
+        },
+        {
+          "number": 13,
+          "title": "Условия и выбор",
+          "folder": "https://drive.google.com/drive/folders/1BywkczruBg8ZtWbTpi88KHxjioKkhwzI",
+          "pptx": "https://docs.google.com/presentation/d/1_a6CATax25zIfdmm96UsqbJw81EAUnaj/edit?usp=drivesdk&ouid=109674372095175490244&rtpof=true&sd=true",
+          "pdf": "https://drive.google.com/file/d/1m7k01nZD2QR2No_Oi_OP2-VNJoAomrAe/view?usp=drivesdk"
+        },
+        {
+          "number": 14,
+          "title": "Переменные и данные",
+          "folder": "https://drive.google.com/drive/folders/1XZHVoVgzJBjW4y4V0v_SmugpsQJPiTM6",
+          "pptx": "https://docs.google.com/presentation/d/1c4feUVzBzRL3lpXaKCc4dzFvI2RcynpA/edit?usp=drivesdk&ouid=109674372095175490244&rtpof=true&sd=true",
+          "pdf": "https://drive.google.com/file/d/1zOlWd0Xd2Ynp1YVmlHfcVQ28YH59KmuQ/view?usp=drivesdk"
+        },
+        {
+          "number": 15,
+          "title": "Свои блоки и функции",
+          "folder": "https://drive.google.com/drive/folders/1FpuyYcJB3Ek1JUlGv3EuauJGqcSRg-_g",
+          "pptx": "https://docs.google.com/presentation/d/1c0uS-FqgK23JWuO0hWSjnsGaTmVNi2W4/edit?usp=drivesdk&ouid=109674372095175490244&rtpof=true&sd=true",
+          "pdf": "https://drive.google.com/file/d/1z2Zc5ymu3q2POtsE6GWEJr0xihFIUVrr/view?usp=drivesdk"
+        },
+        {
+          "number": 16,
+          "title": "Поиск ошибок",
+          "folder": "https://drive.google.com/drive/folders/12aHCiWH2OQDNtZtbb0Dwp4Ykw13UzJzB",
+          "pptx": "https://docs.google.com/presentation/d/1DD2147PHPYXaegmzmd5ri1V-EHXauV_n/edit?usp=drivesdk&ouid=109674372095175490244&rtpof=true&sd=true",
+          "pdf": "https://drive.google.com/file/d/14nDBgehR-CGNPCIkhwGmPlNwaP_8KAE-/view?usp=drivesdk"
+        },
+        {
+          "number": 17,
+          "title": "Точное прямое движение",
+          "folder": "https://drive.google.com/drive/folders/1Y1CGxu4aIRO57UOKu9CYcWlIpAXDBlif",
+          "pptx": "https://docs.google.com/presentation/d/1R5oE0kVqh4iZHUOT54uD4zobMEStjYCn/edit?usp=drivesdk&ouid=109674372095175490244&rtpof=true&sd=true",
+          "pdf": "https://drive.google.com/file/d/1mpIQ8gOwklHGzuXmLuZgugCOHxPCSSxw/view?usp=drivesdk"
+        }
+      ]
+    },
+    {
+      "number": 4,
+      "title": "Датчики и автономная навигация",
+      "range": [18, 24],
+      "folder": "https://drive.google.com/drive/folders/1HZ4vmz_tWng1NRug1VEeK0ZU9VhueT12",
+      "syllabus": "https://docs.google.com/document/d/1xWpGDcnK2ZuplfmWr9dxD3bhPqkJJCw0LpE3O6b8Iwk/edit?usp=drivesdk",
+      "introPptx": "https://docs.google.com/presentation/d/1uTq-oCNA4QolprjAmhNfZTb0ChF3M-yi/edit",
+      "introPdf": "https://drive.google.com/file/d/1JDNb20YAUxes8Ea_rD4TOmXzpUXFO-xI/view",
+      "lessonsFolder": "https://drive.google.com/drive/folders/1z3x_-X56_55wZH-gNa-MoT9jrPAA8UbY",
+      "lessons": [
+        {
+          "number": 18,
+          "title": "Датчик цвета и калибровка",
+          "folder": "https://drive.google.com/drive/folders/1ZWMJ4jC8Yjxxfzl9h69raIFsgyUnn6yK",
+          "pptx": "https://docs.google.com/presentation/d/1SJCY3cjizbOHGCFwJU3lfpEm3X_pGrC9/edit?usp=drivesdk&ouid=109674372095175490244&rtpof=true&sd=true",
+          "pdf": "https://drive.google.com/file/d/17BRPzy9UjgQsRF-g0lTgPF2joFKQ_cPK/view?usp=drivesdk"
+        },
+        {
+          "number": 19,
+          "title": "Остановка на линии",
+          "folder": "https://drive.google.com/drive/folders/1La9hnziJL1fiIkZlFTVBfVt6OnotEeR8",
+          "pptx": "https://docs.google.com/presentation/d/1XTJg_faD8avMxMjubiYJp1BOQzb7b4Th/edit?usp=drivesdk&ouid=109674372095175490244&rtpof=true&sd=true",
+          "pdf": "https://drive.google.com/file/d/1MGWcCVcyM4avKINtz3_DqE-H_6qCWhLW/view?usp=drivesdk"
+        },
+        {
+          "number": 20,
+          "title": "Движение вдоль линии",
+          "folder": "https://drive.google.com/drive/folders/1Xm4WeFLzPWTT6U5abJMcmWd9BjcZYSfc",
+          "pptx": "https://docs.google.com/presentation/d/1fwf1ge7AXDuD5r7_K3dJ98sXKmbnfu_f/edit?usp=drivesdk&ouid=109674372095175490244&rtpof=true&sd=true",
+          "pdf": "https://drive.google.com/file/d/1QxlDvOmCoXEE2QL6t7fOmR3JJOEvF9WA/view?usp=drivesdk"
+        },
+        {
+          "number": 21,
+          "title": "Гироскоп и точный угол",
+          "folder": "https://drive.google.com/drive/folders/1el6GpiISQJzHpMsBg-cnAllljsMN0Cgv",
+          "pptx": "https://docs.google.com/presentation/d/1sWkHTadsRfZRVCkyU3WlfqqKERx-cPLS/edit?usp=drivesdk&ouid=109674372095175490244&rtpof=true&sd=true",
+          "pdf": "https://drive.google.com/file/d/17w-IwVoeh5MV-FBKJ4ECNyvRi-kKoe74/view?usp=drivesdk"
+        },
+        {
+          "number": 22,
+          "title": "Касание сила и расстояние",
+          "folder": "https://drive.google.com/drive/folders/1W3IKPsdPtKrsheM6UyQvW-TtQPR1Kul_",
+          "pptx": "https://docs.google.com/presentation/d/1w7LfPGOFPjuGxWwc7yS9gPWhZuo-7T6f/edit?usp=drivesdk&ouid=109674372095175490244&rtpof=true&sd=true",
+          "pdf": "https://drive.google.com/file/d/1nCD_OdQFiJ6dRPAxbyyLE_cfOxddlg7v/view?usp=drivesdk"
+        },
+        {
+          "number": 23,
+          "title": "Два сигнала в одной задаче",
+          "folder": "https://drive.google.com/drive/folders/1klX26U0xRTbFxKNKj1kYfzzJ8LbyqVFg",
+          "pptx": "https://docs.google.com/presentation/d/1sntqIe3HiDiMmQp9gcfxIoUaBXi_4UgZ/edit?usp=drivesdk&ouid=109674372095175490244&rtpof=true&sd=true",
+          "pdf": "https://drive.google.com/file/d/1iJKZlHr3kDYRCdASgBPOEBFO5h6LdFzA/view?usp=drivesdk"
+        },
+        {
+          "number": 24,
+          "title": "Контрольная трасса",
+          "folder": "https://drive.google.com/drive/folders/1tMwGh-hJnaV-ZUnuNiTZhBVzE2tJXSP6",
+          "pptx": "https://docs.google.com/presentation/d/1nNnQ9an1DU3YaS2h3TFZsLSh4-yEY-Ol/edit?usp=drivesdk&ouid=109674372095175490244&rtpof=true&sd=true",
+          "pdf": "https://drive.google.com/file/d/1bR6KviGo8-08OFu1WNediAKyNgfSRwED/view?usp=drivesdk"
+        }
+      ]
+    },
+    {
+      "number": 5,
+      "title": "Инженерия соревнований",
+      "range": [25, 32],
+      "folder": "https://drive.google.com/drive/folders/1Im3fhh0YbTOyckM3plm005NwLUIN9Q6j",
+      "syllabus": "https://docs.google.com/document/d/1NFP6Ruc-DI28Uy-lpCA76sDN2zGu_ntcs95KcQaF97s/edit?usp=drivesdk",
+      "introPptx": "https://docs.google.com/presentation/d/18Uzd-y5byDOApRKPr-MKgWYBOYktgczT/edit",
+      "introPdf": "https://drive.google.com/file/d/1dG9Rfo2brEvvELpW73wr7R-nGcK5yP3K/view",
+      "lessonsFolder": "https://drive.google.com/drive/folders/1Z55fjJhacDCOXSX_7fTGZs_lgQK66QmF",
+      "lessons": [
+        {
+          "number": 25,
+          "title": "Правила поле баллы и тема сезона",
+          "folder": "https://drive.google.com/drive/folders/19jNYMeAJAngG48pg4awiK0dS0ARD9gpf",
+          "pptx": "https://docs.google.com/presentation/d/1GQueKe_obu0phYSbuSJ4Q7jzlQSvRDN-/edit?usp=drivesdk&ouid=109674372095175490244&rtpof=true&sd=true",
+          "pdf": "https://drive.google.com/file/d/1-1eGi6yPVCETpkdxXq5GqK-qCoHuDUZG/view?usp=drivesdk"
+        },
+        {
+          "number": 26,
+          "title": "Точный старт и базирование",
+          "folder": "https://drive.google.com/drive/folders/1rDvd-WTaQGjWeONsfqmhrySJA7E8beTX",
+          "pptx": "https://docs.google.com/presentation/d/1iwGQ2OmKJdk3D__iyoCItHJsf2KjRed-/edit?usp=drivesdk&ouid=109674372095175490244&rtpof=true&sd=true",
+          "pdf": "https://drive.google.com/file/d/1EnPGnCl09U6vD-wfE40ljU5Nw3ukodWl/view?usp=drivesdk"
+        },
+        {
+          "number": 27,
+          "title": "Сменные насадки",
+          "folder": "https://drive.google.com/drive/folders/1FZAQj22qgiHyBGwJrEMLU-5dlbX0S-Ep",
+          "pptx": "https://docs.google.com/presentation/d/1jwRMXWBScEg8BEaTLHJdetYZ13nR4KWd/edit?usp=drivesdk&ouid=109674372095175490244&rtpof=true&sd=true",
+          "pdf": "https://drive.google.com/file/d/1rUuMr45KFfTH30s9WVWXGTzx4AUEeCY_/view?usp=drivesdk"
+        },
+        {
+          "number": 28,
+          "title": "Одна миссия от начала до конца",
+          "folder": "https://drive.google.com/drive/folders/1iY631-htOLfF40EGcKsR9KkOG2Td1TL3",
+          "pptx": "https://docs.google.com/presentation/d/1c7CdclUVogX0eoILQUgWcbhKvv2VVuDe/edit?usp=drivesdk&ouid=109674372095175490244&rtpof=true&sd=true",
+          "pdf": "https://drive.google.com/file/d/1DZ6LKIhQRRjdpbrVEq0FC4h5Pjd7b-uh/view?usp=drivesdk"
+        },
+        {
+          "number": 29,
+          "title": "Маршрут из нескольких миссий",
+          "folder": "https://drive.google.com/drive/folders/14dkR2Vsr48g7BkwqdhaT4_c6CLMHxeT-",
+          "pptx": "https://docs.google.com/presentation/d/1n6JuPICyC9IbO6kJfLdsZfiZIebF3D8f/edit?usp=drivesdk&ouid=109674372095175490244&rtpof=true&sd=true",
+          "pdf": "https://drive.google.com/file/d/1UIFPk99eSNVg6sc23vdzLJxUoLsH9roL/view?usp=drivesdk"
+        },
+        {
+          "number": 30,
+          "title": "Проверка дневника и план проекта",
+          "folder": "https://drive.google.com/drive/folders/19yzgYPufgQmFUoAH5_rRtpoTeiOIaFw5",
+          "pptx": "https://docs.google.com/presentation/d/1nQToLQqKFTlIVCjZSHUyfTkhvVwf81NJ/edit?usp=drivesdk&ouid=109674372095175490244&rtpof=true&sd=true",
+          "pdf": "https://drive.google.com/file/d/1Ri4kNNhyCpO87tR0Q-BkhvnmeNwmfATf/view?usp=drivesdk"
+        },
+        {
+          "number": 31,
+          "title": "Неожиданное изменение",
+          "folder": "https://drive.google.com/drive/folders/1t_SFtGNYnVnzzsckUIk7YSFliTR8sKIA",
+          "pptx": "https://docs.google.com/presentation/d/1zb39SLl8T249Ym3aaiPk7MP2W_4t66U8/edit?usp=drivesdk&ouid=109674372095175490244&rtpof=true&sd=true",
+          "pdf": "https://drive.google.com/file/d/1lpM2NMe3Mbl5ck6KVugA25ZLNhFXlowZ/view?usp=drivesdk"
+        },
+        {
+          "number": 32,
+          "title": "Надежность и тренировка заезда",
+          "folder": "https://drive.google.com/drive/folders/1uw0i9dWVZ-cze1Y2ND77sYSg4rxFRpZl",
+          "pptx": "https://docs.google.com/presentation/d/1rbMnWJMWlkSgSTTzId70_PlzxsGQDoT_/edit?usp=drivesdk&ouid=109674372095175490244&rtpof=true&sd=true",
+          "pdf": "https://drive.google.com/file/d/18hQTqNbl6Cw3mNzU0nYR5n60R1j3xamq/view?usp=drivesdk"
+        }
+      ]
+    },
+    {
+      "number": 6,
+      "title": "Проект, команда и пробный турнир",
+      "range": [33, 36],
+      "folder": "https://drive.google.com/drive/folders/1MNprlRXcCguLDLzSSNwDZMIZB1CkeLcU",
+      "syllabus": "https://docs.google.com/document/d/1_SKK0EYtpiLPkwxEErjYI2jlj248AQhYQ9bcC3br5So/edit?usp=drivesdk",
+      "introPptx": "https://docs.google.com/presentation/d/1yM_pGsdS670fFNs9pu_68L4o4vevnBJh/edit",
+      "introPdf": "https://drive.google.com/file/d/1Zl8sAoiZtTLYSVFtWVdsQw_VaJ9orkhr/view",
+      "lessonsFolder": "https://drive.google.com/drive/folders/1oDqeLLyS1bxUrdSKPRLymfcUDkMXbZI5",
+      "lessons": [
+        {
+          "number": 33,
+          "title": "Исследование прототип и советы",
+          "folder": "https://drive.google.com/drive/folders/1HrG32DDoT44HYLpGWWNn5LVVy7MNH0pC",
+          "pptx": "https://docs.google.com/presentation/d/1N7tThSuUPiacUoapkjxoU0uX7d6I9UEr/edit?usp=drivesdk&ouid=109674372095175490244&rtpof=true&sd=true",
+          "pdf": "https://drive.google.com/file/d/1Z60_ZlZluPfUppypz1mEKXurCDlOn7SX/view?usp=drivesdk"
+        },
+        {
+          "number": 34,
+          "title": "Улучшение проекта и рассказ команды",
+          "folder": "https://drive.google.com/drive/folders/1b9hvyd1hb3vb2FfRx69T5OeG-cgqVhJS",
+          "pptx": "https://docs.google.com/presentation/d/1quc-VAWJPiOtrPhVaysFROBz_gy4pK65/edit?usp=drivesdk&ouid=109674372095175490244&rtpof=true&sd=true",
+          "pdf": "https://drive.google.com/file/d/1-l5T0Ik6re45BIRPqOQVUNye2r78_1EC/view?usp=drivesdk"
+        },
+        {
+          "number": 35,
+          "title": "Пробный турнир FLL",
+          "folder": "https://drive.google.com/drive/folders/1zEt-UMZclwbR3bsD3aqPLVQaaF8W0rYs",
+          "pptx": "https://docs.google.com/presentation/d/1q1QLv4LqUdsjaYLAWHDBzRO53XdcEU37/edit?usp=drivesdk&ouid=109674372095175490244&rtpof=true&sd=true",
+          "pdf": "https://drive.google.com/file/d/1y26CI_b0Vd905f9vUNI32xIRVs5drs4I/view?usp=drivesdk"
+        },
+        {
+          "number": 36,
+          "title": "Пробный турнир WRO и итог",
+          "folder": "https://drive.google.com/drive/folders/1k0-Tt_L7OCrIIFNpHrNBKtjDXwFtQy-X",
+          "pptx": "https://docs.google.com/presentation/d/1bE8UTo-CcDrHrvKdFwYlZk5jqMBqiAoO/edit?usp=drivesdk&ouid=109674372095175490244&rtpof=true&sd=true",
+          "pdf": "https://drive.google.com/file/d/1In8HCqBWvheKXDJQSMQkXz-aQg6FFKA4/view?usp=drivesdk"
+        }
+      ]
+    }
+  ],
+  "syllabus": "https://docs.google.com/document/d/1syoSCyCI4f3e239GzhWIGfCEmSwM2FGx/edit",
+  "introPptx": "https://docs.google.com/presentation/d/1MZAusC7E5LAdtQCyG7tTrO3EwsFSdT7p/edit",
+  "introPdf": "https://drive.google.com/file/d/1C-t8Tsc73o-ASR92UsqCFgjFDsCgWSrw/view",
+  "selfStudy": {
+    "title": "Самостоятельное обучение",
+    "age": "8–10 лет",
+    "folder": "https://drive.google.com/drive/folders/1JjvrQ6-2UGT6al85MvbAgPGrFHQ1rcZJ",
+    "recommendedStart": [1, 5, 9],
+    "durationGuidance": "15–25 минут на небольшое задание",
+    "taskCount": 12,
+    "files": [
+      {
+        "title": "Связь с 36 уроками.md",
+        "id": "1QVzw5MO-rK3QnRVzqIgo8VjFxpRsiyfZ",
+        "url": "https://drive.google.com/file/d/1QVzw5MO-rK3QnRVzqIgo8VjFxpRsiyfZ/view?usp=drivesdk",
+        "mimeType": "text/markdown"
+      },
+      {
+        "title": "Проверка комплекта.md",
+        "id": "1k2i-sGTW__d9fCbjWgk8Hn_YtOIkTwu_",
+        "url": "https://drive.google.com/file/d/1k2i-sGTW__d9fCbjWgk8Hn_YtOIkTwu_/view?usp=drivesdk",
+        "mimeType": "text/markdown"
+      },
+      {
+        "title": "Подсказки и проверка.md",
+        "id": "1Gg7CE0wV9E21rnjU3Q-Hnghm_cDvj3pk",
+        "url": "https://drive.google.com/file/d/1Gg7CE0wV9E21rnjU3Q-Hnghm_cDvj3pk/view?usp=drivesdk",
+        "mimeType": "text/markdown"
+      },
+      {
+        "title": "Начать здесь.md",
+        "id": "1Z6HeFmvWKdK5Cv1npxSgjU16xNrXDW4G",
+        "url": "https://drive.google.com/file/d/1Z6HeFmvWKdK5Cv1npxSgjU16xNrXDW4G/view?usp=drivesdk",
+        "mimeType": "text/markdown"
+      },
+      {
+        "title": "Источники и использование.md",
+        "id": "1oGelxZwzYsMkwe2R0qXcsTtfU7v9dWWC",
+        "url": "https://drive.google.com/file/d/1oGelxZwzYsMkwe2R0qXcsTtfU7v9dWWC/view?usp=drivesdk",
+        "mimeType": "text/markdown"
+      },
+      {
+        "title": "Задания ученику.md",
+        "id": "1MlhYk6x03hRPRdSlbkt8caXhi96yL6D5",
+        "url": "https://drive.google.com/file/d/1MlhYk6x03hRPRdSlbkt8caXhi96yL6D5/view?usp=drivesdk",
+        "mimeType": "text/markdown"
+      },
+      {
+        "title": "Задания ученику — 12 карточек.pdf",
+        "id": "1d35UagS3ErmmsmAZ72gEBcc1w50r_u2G",
+        "url": "https://drive.google.com/file/d/1d35UagS3ErmmsmAZ72gEBcc1w50r_u2G/view?usp=drivesdk",
+        "mimeType": "application/pdf"
+      }
+    ],
+    "tasks": [
+      {
+        "number": 1,
+        "title": "Команды по порядку",
+        "goal": "Составь маршрут, который другой человек сможет повторить.",
+        "needs": "Бумага; дополнительно Scratch или Course C",
+        "content": "01. Команды по порядку\n\n**Нужно:** Бумага; дополнительно Scratch или Course C\n\n**Цель:** Составь маршрут, который другой человек сможет повторить.\n\n**Предположи:** Что случится, если поменять местами поворот и шаг вперёд?\n\n1. Нарисуй сетку 5 на 5. Старт: клетка (1, 1), направление вправо. Финиш: (4, 3). Координата вверх увеличивается.\n2. Команды: «вперёд на одну клетку» и «поворот налево на месте». Запиши маршрут до финиша.\n3. Проведи фишку по командам. Затем дай запись другу, не показывая свой пример.\n\nС роботом: разбей маршрут на короткие участки. Длину движения подбирают под колёса и поверхность.\n\n**Проверь себя:** Фишка дошла до (4, 3). Ты объяснил значение каждой команды.\n\n**Частая ошибка:** «Поверни сюда» непонятно исполнителю. Укажи сторону поворота.\n\nДополнительно: [Code.org: Course C](https://studio.code.org/ru/courses/coursec-2025/units/1), [Scratch: первый проект](https://scratch.mit.edu/projects/editor/?tutorial=getStarted)\n\n",
+        "links": [
+          {
+            "label": "Code.org: Course C",
+            "url": "https://studio.code.org/ru/courses/coursec-2025/units/1"
+          },
+          {
+            "label": "Scratch: первый проект",
+            "url": "https://scratch.mit.edu/projects/editor/?tutorial=getStarted"
+          }
+        ]
+      },
+      {
+        "number": 2,
+        "title": "Прочная модель",
+        "goal": "Объясни, почему детали держатся вместе.",
+        "needs": "Бумага; инструкции LEGO; набор понадобится позже",
+        "content": "02. Прочная модель\n\n**Нужно:** Бумага; инструкции LEGO; набор понадобится позже\n\n**Цель:** Объясни, почему детали держатся вместе.\n\n**Предположи:** Какая часть модели может перекоситься, если закрепить её только с одной стороны?\n\n1. Открой инструкции LEGO и найди Driving Base. Рассмотри первые шаги и готовую модель.\n2. Нарисуй две стороны своей рамы. Отметь места соединения и места крепления моторов.\n3. Добавь вторую опору там, где деталь могла бы вращаться или качаться. Объясни своё решение.\n\nС набором: собери раму. Взрослый поможет проверить соединения без сильного изгиба деталей.\n\n**Проверь себя:** На рисунке видно, что соединено и где находится дополнительная опора.\n\n**Частая ошибка:** Красивый рисунок ещё не доказывает прочность. Её проверяют на сборке.\n\nДополнительно: [LEGO: инструкции по сборке](https://education.lego.com/en-us/product-resources/spike-prime/downloads/building-instructions/)\n\n",
+        "links": [
+          {
+            "label": "LEGO: инструкции по сборке",
+            "url": "https://education.lego.com/en-us/product-resources/spike-prime/downloads/building-instructions/"
+          }
+        ]
+      },
+      {
+        "number": 3,
+        "title": "Движение и измерение",
+        "goal": "Различай расстояние, оборот колеса и угол поворота робота.",
+        "needs": "Линейка и бумага; дополнительно SPIKE App",
+        "content": "03. Движение и измерение\n\n**Нужно:** Линейка и бумага; дополнительно SPIKE App\n\n**Цель:** Различай расстояние, оборот колеса и угол поворота робота.\n\n**Предположи:** Если мотор повернётся на 360 градусов, робот обязательно повернётся на полный круг?\n\n1. Нарисуй колесо и робот сверху. Подпиши отдельно «оборот колеса» и «поворот корпуса».\n2. Подготовь таблицу из трёх строк: команда, пройденные сантиметры, отклонение от цели. Пока оставь результаты пустыми.\n3. Нарисуй поворот корпуса на 90 градусов. Объясни, почему это не команда «повернуть мотор на 90 градусов».\n\nС роботом: после проверки портов повтори один короткий проезд 3 раза с одинакового старта. Измеряй результат, меняй только один параметр.\n\n**Проверь себя:** Ты не приравнял градусы мотора к углу корпуса и не записал выдуманные измерения.\n\n**Частая ошибка:** Одна удачная попытка ещё не показывает повторяемость.\n\nДополнительно: [LEGO SPIKE App: редактор](https://spike.legoeducation.com/prime/lobby/), [LEGO: Driving Around](https://education.lego.com/en-us/lessons/prime-competition-ready/training-camp-1-driving-around/)\n\n",
+        "links": [
+          {
+            "label": "LEGO SPIKE App: редактор",
+            "url": "https://spike.legoeducation.com/prime/lobby/"
+          },
+          {
+            "label": "LEGO: Driving Around",
+            "url": "https://education.lego.com/en-us/lessons/prime-competition-ready/training-camp-1-driving-around/"
+          }
+        ]
+      },
+      {
+        "number": 4,
+        "title": "Выбери полезную насадку",
+        "goal": "Подбери механизм под задачу, а не под красивую форму.",
+        "needs": "Бумага; каталог моделей LEGO",
+        "content": "04. Выбери полезную насадку\n\n**Нужно:** Бумага; каталог моделей LEGO\n\n**Цель:** Подбери механизм под задачу, а не под красивую форму.\n\n**Предположи:** Нужен ли отдельный мотор, чтобы толкнуть лёгкий предмет вперёд?\n\n1. Задача: сдвинуть лёгкую коробочку по столу. Нарисуй простой толкатель и захват, который открывается.\n2. Отметь, что движется вместе с корпусом, а чему нужен свой привод.\n3. Выбери один вариант. Нарисуй, как он крепится к раме и как его можно снять. Дополнительно: нарисуй пару сцепленных шестерён и стрелки вращения.\n\nС набором: взрослый поможет собрать насадку. Проверяй её медленно; пальцы держи вдали от движущихся частей.\n\n**Проверь себя:** Ты объяснил выбор, крепление и различие пассивной насадки и моторной.\n\n**Частая ошибка:** Не добавляй мотор, если задачу уже выполняет движение корпуса.\n\nДополнительно: [LEGO: инструкции по сборке](https://education.lego.com/en-us/product-resources/spike-prime/downloads/building-instructions/)\n\n",
+        "links": [
+          {
+            "label": "LEGO: инструкции по сборке",
+            "url": "https://education.lego.com/en-us/product-resources/spike-prime/downloads/building-instructions/"
+          }
+        ]
+      },
+      {
+        "number": 5,
+        "title": "Повтори без длинной записи",
+        "goal": "Замени одинаковые команды одним циклом.",
+        "needs": "Бумага; дополнительно Scratch или Course C",
+        "content": "05. Повтори без длинной записи\n\n**Нужно:** Бумага; дополнительно Scratch или Course C\n\n**Цель:** Замени одинаковые команды одним циклом.\n\n**Предположи:** Сколько шагов получится, если 3 раза повторить 2 шага вперёд?\n\n1. Запиши 6 одинаковых шагов вперёд. Рядом перепиши их как «повторить 3 раза: 2 шага вперёд».\n2. Выполни обе записи фишкой и сравни конечные клетки.\n3. В Scratch собери: зелёный флаг, повторить 3 раза, внутри идти 20 шагов. Перед каждым запуском ставь персонажа в одну и ту же точку.\n\nС роботом: сначала проверь один участок маршрута; затем повторяй его. В конце маршрута должна быть остановка.\n\n**Проверь себя:** Ты получил 6 шагов на бумаге и объяснил, какие команды входят в цикл.\n\n**Частая ошибка:** Команда после цикла выполняется один раз, а команда внутри - при каждом повторении.\n\nДополнительно: [Code.org: Course C](https://studio.code.org/ru/courses/coursec-2025/units/1), [Scratch: первый проект](https://scratch.mit.edu/projects/editor/?tutorial=getStarted)\n\n",
+        "links": [
+          {
+            "label": "Code.org: Course C",
+            "url": "https://studio.code.org/ru/courses/coursec-2025/units/1"
+          },
+          {
+            "label": "Scratch: первый проект",
+            "url": "https://scratch.mit.edu/projects/editor/?tutorial=getStarted"
+          }
+        ]
+      },
+      {
+        "number": 6,
+        "title": "Если препятствие рядом",
+        "goal": "Выбери действие по условию и продумай остановку.",
+        "needs": "Бумага; дополнительно Course D или SPIKE App",
+        "content": "06. Если препятствие рядом\n\n**Нужно:** Бумага; дополнительно Course D или SPIKE App\n\n**Цель:** Выбери действие по условию и продумай остановку.\n\n**Предположи:** Что выберет правило «если расстояние меньше 10» для значения ровно 10?\n\n1. Правило на бумаге: если расстояние меньше 10 см - остановиться; иначе - двигаться.\n2. Проверь учебные значения 7, 10 и 14 см. Для каждого запиши выбранную ветку.\n3. Добавь второй сигнал: если кнопка остановки нажата ИЛИ предмет ближе 10 см - остановиться. Объясни отличие «ИЛИ» от «И».\n\nС роботом: датчик расстояния F - пример для курса, фактический порт проверь. Условие проверяй в цикле; добавь ограничение времени. Учитель подбирает безопасный порог.\n\n**Проверь себя:** Для 7 выбрана остановка; для 10 и 14 - движение по учебному правилу.\n\n**Частая ошибка:** Одна проверка перед движением не заметит предмет, который появился позже.\n\nДополнительно: [Code.org: Course D](https://studio.code.org/courses/coursed-2025/units/1), [LEGO SPIKE App: редактор](https://spike.legoeducation.com/prime/lobby/), [LEGO: Playing with Objects](https://education.lego.com/en-us/lessons/prime-competition-ready/training-camp-2-playing-with-objects/)\n\n",
+        "links": [
+          {
+            "label": "Code.org: Course D",
+            "url": "https://studio.code.org/courses/coursed-2025/units/1"
+          },
+          {
+            "label": "LEGO SPIKE App: редактор",
+            "url": "https://spike.legoeducation.com/prime/lobby/"
+          },
+          {
+            "label": "LEGO: Playing with Objects",
+            "url": "https://education.lego.com/en-us/lessons/prime-competition-ready/training-camp-2-playing-with-objects/"
+          }
+        ]
+      },
+      {
+        "number": 7,
+        "title": "Счётчик в Scratch",
+        "goal": "Сохрани число в переменной и измени его.",
+        "needs": "Scratch; без компьютера - бумага",
+        "content": "07. Счётчик в Scratch\n\n**Нужно:** Scratch; без компьютера - бумага\n\n**Цель:** Сохрани число в переменной и измени его.\n\n**Предположи:** Начальное значение 0. Прибавляем 1 три раза. Какой будет результат?\n\n1. В Scratch открой «Переменные» и создай переменную «счётчик».\n2. Собери: зелёный флаг; задать счётчик 0; повторить 3 раза; внутри изменить счётчик на 1.\n3. Запусти два раза. Объясни, зачем задавать 0 в начале. На бумаге выпиши значения после каждого повторения.\n\nВ SPIKE похожий счётчик может считать действия программы. Успешность настоящей миссии нужно проверять отдельно.\n\n**Проверь себя:** После каждого нового запуска счётчик равен 3. На бумаге: 0, 1, 2, 3.\n\n**Частая ошибка:** Счётчик вызовов не доказывает, что робот действительно выполнил миссию.\n\nДополнительно: [Scratch: первый проект](https://scratch.mit.edu/projects/editor/?tutorial=getStarted)\n\n",
+        "links": [
+          {
+            "label": "Scratch: первый проект",
+            "url": "https://scratch.mit.edu/projects/editor/?tutorial=getStarted"
+          }
+        ]
+      },
+      {
+        "number": 8,
+        "title": "Свой блок: короткая команда",
+        "goal": "Отдели описание блока от его вызова.",
+        "needs": "Scratch; дополнительно SPIKE App",
+        "content": "08. Свой блок: короткая команда\n\n**Нужно:** Scratch; дополнительно SPIKE App\n\n**Цель:** Отдели описание блока от его вызова.\n\n**Предположи:** Достаточно ли создать блок, чтобы персонаж сразу начал движение?\n\n1. В Scratch открой «Другие блоки», создай «короткий шаг». Под его определением поставь «идти 20 шагов».\n2. Под зелёным флагом поставь два вызова «короткий шаг». Перед запуском задай одинаковую начальную точку.\n3. Запусти. Объясни другу: где записано, что делает блок, и где мы просим его выполнить действие.\n\nВ SPIKE начни со своего короткого блока движения. Перед длинным маршрутом отдельно проверь каждый блок на модели.\n\n**Проверь себя:** Два вызова дают 40 экранных шагов. Определение и вызов найдены отдельно.\n\n**Частая ошибка:** Определение блока само по себе не запускает действие.\n\nДополнительно: [Scratch: первый проект](https://scratch.mit.edu/projects/editor/?tutorial=getStarted), [LEGO SPIKE App: редактор](https://spike.legoeducation.com/prime/lobby/), [LEGO: My Code, Our Program](https://education.lego.com/en-us/lessons/prime-competition-ready/my-code-our-program/)\n\n",
+        "links": [
+          {
+            "label": "Scratch: первый проект",
+            "url": "https://scratch.mit.edu/projects/editor/?tutorial=getStarted"
+          },
+          {
+            "label": "LEGO SPIKE App: редактор",
+            "url": "https://spike.legoeducation.com/prime/lobby/"
+          },
+          {
+            "label": "LEGO: My Code, Our Program",
+            "url": "https://education.lego.com/en-us/lessons/prime-competition-ready/my-code-our-program/"
+          }
+        ]
+      },
+      {
+        "number": 9,
+        "title": "Найди первую ошибку",
+        "goal": "Найди место, где результат впервые расходится с планом.",
+        "needs": "Бумага; дополнительно Code.org или Scratch",
+        "content": "09. Найди первую ошибку\n\n**Нужно:** Бумага; дополнительно Code.org или Scratch\n\n**Цель:** Найди место, где результат впервые расходится с планом.\n\n**Предположи:** Что лучше проверить первым: все команды сразу или первую неверную позицию?\n\n1. Сетка 5 на 5. Старт (1, 1), смотрим вправо. Цель (3, 2). Код: вперёд, вперёд, направо, вперёд.\n2. Выполни код фишкой. Запиши позицию и направление после каждой команды.\n3. Измени одну команду. Повтори с того же старта и объясни, почему именно эта замена помогает.\n\nС роботом: отдельно проверяй алгоритм, порты и сборку. Один и тот же сбой может иметь разные причины.\n\n**Проверь себя:** После замены «направо» на «налево» фишка достигает (3, 2).\n\n**Частая ошибка:** Если одновременно изменить скорость, порты и маршрут, трудно понять причину улучшения.\n\nДополнительно: [Code.org: Course C](https://studio.code.org/ru/courses/coursec-2025/units/1), [Scratch: первый проект](https://scratch.mit.edu/projects/editor/?tutorial=getStarted)\n\n",
+        "links": [
+          {
+            "label": "Code.org: Course C",
+            "url": "https://studio.code.org/ru/courses/coursec-2025/units/1"
+          },
+          {
+            "label": "Scratch: первый проект",
+            "url": "https://scratch.mit.edu/projects/editor/?tutorial=getStarted"
+          }
+        ]
+      },
+      {
+        "number": 10,
+        "title": "Светлая поверхность и линия",
+        "goal": "Разбери порог и повторную проверку датчика.",
+        "needs": "Бумага; дополнительно SPIKE App",
+        "content": "10. Светлая поверхность и линия\n\n**Нужно:** Бумага; дополнительно SPIKE App\n\n**Цель:** Разбери порог и повторную проверку датчика.\n\n**Предположи:** Учебные показания: тёмное 20, светлое 80. Какое число лежит посередине?\n\n1. Это придуманные числа для задачи. Вычисли середину: (20 + 80) / 2. Запиши порог 50.\n2. Остановка на линии: если отражённый свет меньше 50 - остановиться. Разбери значения 35, 50, 65.\n3. Для движения по краю линии придумай две ветки: тёмное - маленькая поправка в одну сторону; светлое - в другую. Сигнал проверяется снова и снова.\n\nС роботом: измерь свои поверхности и подбери порог. Проверь режим отражённого света, высоту датчика и знак поправки. Цветовой датчик B - только схема курса.\n\n**Проверь себя:** Ты различаешь остановку на линии и движение вдоль её края.\n\n**Частая ошибка:** Число 50 не подходит автоматически к любому полю. Режим «цвет» и отражённый свет - разные данные.\n\nДополнительно: [LEGO SPIKE App: редактор](https://spike.legoeducation.com/prime/lobby/), [LEGO: Reacting to Lines](https://education.lego.com/en-us/lessons/prime-competition-ready/training-camp-3-react-to-lines/)\n\n",
+        "links": [
+          {
+            "label": "LEGO SPIKE App: редактор",
+            "url": "https://spike.legoeducation.com/prime/lobby/"
+          },
+          {
+            "label": "LEGO: Reacting to Lines",
+            "url": "https://education.lego.com/en-us/lessons/prime-competition-ready/training-camp-3-react-to-lines/"
+          }
+        ]
+      },
+      {
+        "number": 11,
+        "title": "Миссия и повторяемость",
+        "goal": "Составь проверяемую миссию и одинаковые условия старта.",
+        "needs": "Бумага; SPIKE и набор понадобятся позже",
+        "content": "11. Миссия и повторяемость\n\n**Нужно:** Бумага; SPIKE и набор понадобятся позже\n\n**Цель:** Составь проверяемую миссию и одинаковые условия старта.\n\n**Предположи:** Если старт каждый раз чуть другой, можно ли честно сравнить две программы?\n\n1. Придумай учебную миссию: подвести фишку к коробочке и вернуть на старт. Это собственная задача Tagylym.\n2. Нарисуй стартовую линию и направление. Запиши, что считается выполнением, а что - ошибкой.\n3. Подготовь пять пустых строк для попыток: результат, причина ошибки, одна следующая правка. На бумаге измени положение коробочки и пересмотри маршрут.\n\nС роботом: заполни строки только после настоящих запусков. Сравни одинаковые условия, отдельно проверь возвращение и остановку.\n\n**Проверь себя:** Есть критерий успеха, схема старта и план проверки. Выдуманных побед или баллов нет.\n\n**Частая ошибка:** План миссии не является результатом испытания. Правила FLL/WRO берутся из актуальных документов конкретного турнира.\n\nДополнительно: [LEGO SPIKE App: редактор](https://spike.legoeducation.com/prime/lobby/), [LEGO: Playing with Objects](https://education.lego.com/en-us/lessons/prime-competition-ready/training-camp-2-playing-with-objects/)\n\n",
+        "links": [
+          {
+            "label": "LEGO SPIKE App: редактор",
+            "url": "https://spike.legoeducation.com/prime/lobby/"
+          },
+          {
+            "label": "LEGO: Playing with Objects",
+            "url": "https://education.lego.com/en-us/lessons/prime-competition-ready/training-camp-2-playing-with-objects/"
+          }
+        ]
+      },
+      {
+        "number": 12,
+        "title": "Покажи и объясни проект",
+        "goal": "Покажи идею, устройство и то, что действительно проверено.",
+        "needs": "Бумага; дополнительно Scratch",
+        "content": "12. Покажи и объясни проект\n\n**Нужно:** Бумага; дополнительно Scratch\n\n**Цель:** Покажи идею, устройство и то, что действительно проверено.\n\n**Предположи:** Какие вопросы помогут узнать, удобна ли твоя идея другому человеку?\n\n1. Выбери простую проблему: как доставить маленький предмет или предупредить о препятствии. Нарисуй три кадра: проблема, решение, проверка.\n2. На бумаге или в Scratch покажи последовательность действий. Попроси друга объяснить её своими словами.\n3. Расскажи за минуту: что делает модель, что уже проверено, что нужно проверить на роботе. Запиши один совет и следующую правку.\n\nС роботом: добавь фото своей модели и реальные наблюдения. Перед пробным турниром сверяй задания с правилами учителя.\n\n**Проверь себя:** Друг понял идею. Ты отличаешь экранный пример от испытания настоящей модели.\n\n**Частая ошибка:** Нельзя назвать идею надёжной только потому, что картинка выглядит хорошо.\n\nДополнительно: [Scratch: первый проект](https://scratch.mit.edu/projects/editor/?tutorial=getStarted)\n",
+        "links": [
+          {
+            "label": "Scratch: первый проект",
+            "url": "https://scratch.mit.edu/projects/editor/?tutorial=getStarted"
+          }
+        ]
+      }
+    ],
+    "externalResources": [
+      {
+        "label": "Code.org: Course C",
+        "url": "https://studio.code.org/ru/courses/coursec-2025/units/1"
+      },
+      {
+        "label": "Code.org: Course D",
+        "url": "https://studio.code.org/courses/coursed-2025/units/1"
+      },
+      {
+        "label": "Scratch: первый проект",
+        "url": "https://scratch.mit.edu/projects/editor/?tutorial=getStarted"
+      },
+      {
+        "label": "LEGO SPIKE App: редактор",
+        "url": "https://spike.legoeducation.com/prime/lobby/"
+      },
+      {
+        "label": "LEGO: инструкции по сборке",
+        "url": "https://education.lego.com/en-us/product-resources/spike-prime/downloads/building-instructions/"
+      },
+      {
+        "label": "LEGO: Driving Around",
+        "url": "https://education.lego.com/en-us/lessons/prime-competition-ready/training-camp-1-driving-around/"
+      },
+      {
+        "label": "LEGO: Playing with Objects",
+        "url": "https://education.lego.com/en-us/lessons/prime-competition-ready/training-camp-2-playing-with-objects/"
+      },
+      {
+        "label": "LEGO: Reacting to Lines",
+        "url": "https://education.lego.com/en-us/lessons/prime-competition-ready/training-camp-3-react-to-lines/"
+      },
+      {
+        "label": "LEGO: My Code, Our Program",
+        "url": "https://education.lego.com/en-us/lessons/prime-competition-ready/my-code-our-program/"
+      }
+    ]
+  },
+  "verification": {
+    "sourceMapReports": "Все 36 актуальных уроков обновлены 3–4 октября; 737 слайдов и 737 страниц PDF. Вводные презентации и силлабус — сентябрьские версии.",
+    "limitations": [
+      "Физические запуски робота и занятие с детьми не проверены в рамках комплекта.",
+      "Подготовка к типовым задачам FLL/WRO; соответствие возрасту и действующим правилам конкретного турнира проверяется отдельно.",
+      "Посещения сайта не равны уникальным ученикам или менторам; количества пользователей нет."
+    ]
+  }
+}

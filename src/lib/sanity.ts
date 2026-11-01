@@ -10,7 +10,7 @@ export const sanityClient = createClient({
 
 // ─── Lesson queries ──────────────────────────────────────
 
-export async function getLessonBySlug(slug: string, locale: string = 'kk') {
+export async function getLessonBySlug(slug: string, locale: string = 'ru') {
     const l = locale === 'en' ? 'en' : locale === 'ru' ? 'ru' : 'kk';
     return sanityClient.fetch(
         `*[_type == "lesson" && slug.current == $slug][0]{
@@ -30,7 +30,7 @@ export async function getLessonBySlug(slug: string, locale: string = 'kk') {
     );
 }
 
-export async function getLessonsByCourseSlug(courseSlug: string, locale: string = 'kk') {
+export async function getLessonsByCourseSlug(courseSlug: string, locale: string = 'ru') {
     const l = locale === 'en' ? 'en' : locale === 'ru' ? 'ru' : 'kk';
     return sanityClient.fetch(
         `*[_type == "lesson" && courseSlug == $courseSlug] | order(order asc){
@@ -46,7 +46,7 @@ export async function getLessonsByCourseSlug(courseSlug: string, locale: string 
 
 // ─── Course queries ──────────────────────────────────────
 
-export async function getCourseBySlug(slug: string, locale: string = 'kk') {
+export async function getCourseBySlug(slug: string, locale: string = 'ru') {
     const l = locale === 'en' ? 'en' : locale === 'ru' ? 'ru' : 'kk';
     return sanityClient.fetch(
         `*[_type == "course" && slug.current == $slug][0]{
